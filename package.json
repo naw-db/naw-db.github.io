@@ -1,7 +1,7 @@
 {
-  "name": "gatsby-starter-portfolio-minimal-theme",
+  "name": "nba-all-world-db",
   "version": "1.0.0",
-  "description": "A Gatsby Starter Project to easily get started with the Portfolio Minimal Theme.",
+  "description": "A database fan site of the NBA All-World mobile game.",
   "scripts": {
     "clean": "gatsby clean",
     "develop": "gatsby develop",
@@ -13,11 +13,17 @@
   },
   "dependencies": {
     "gatsby": "^5.0.1",
-    "gatsby-theme-portfolio-minimal": "latest",
+    "gatsby-source-filesystem": "^5.8.0",
+    "gatsby-theme-portfolio-minimal": "^4.4.0",
+    "gatsby-transformer-csv": "^5.8.0",
+    "js-big-decimal": "^1.4.1",
+    "match-sorter": "^6.3.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-select": "^5.7.2",
+    "react-table": "^7.8.0",
+    "styled-components": "^5.3.9"
   },
-  "author": "Konstantin Münster <mail@konstantin.digital>",
+  "author": "Drew Wei",
   "license": "0BSD",
   "starter-name": "gatsby-starter-portfolio-minimal-theme",
   "homepage": "https://github.com/konstantinmuenster/gatsby-starter-portfolio-minimal-theme#readme",

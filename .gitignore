@@ -13,7 +13,9 @@ public
 #development
 .cache
 .husky
+.idea
 .vscode
+*.iml
 
 # misc
 .DS_Store
