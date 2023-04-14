@@ -12,7 +12,11 @@
     "node": ">=18.0.0"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
+    "@mui/material": "^5.12.0",
     "gatsby": "^5.0.1",
+    "gatsby-plugin-root-import": "^2.0.9",
     "gatsby-source-filesystem": "^5.8.0",
     "gatsby-theme-portfolio-minimal": "^4.4.0",
     "gatsby-transformer-csv": "^5.8.0",

@@ -25,6 +25,7 @@ module.exports = {
         // }
       }
     },
+    "gatsby-plugin-root-import",
     {
       resolve: "gatsby-source-filesystem",
       options: {
