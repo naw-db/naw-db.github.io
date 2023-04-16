@@ -1,3 +1,5 @@
+const path = require("path");
+
 module.exports = {
   plugins: [
     {
@@ -25,7 +27,12 @@ module.exports = {
         // }
       }
     },
-    "gatsby-plugin-root-import",
+    {
+      resolve: "gatsby-plugin-root-import",
+      options: {
+        resolveModules: [path.join(__dirname, "content")]
+      }
+    },
     {
       resolve: "gatsby-source-filesystem",
       options: {

@@ -1,9 +1,7 @@
 import { graphql } from "gatsby";
 import { Animation, Page, Section, Seo } from "gatsby-theme-portfolio-minimal";
-import bigDecimal from "js-big-decimal";
 import React from "react";
 
-import { Styles } from "src/components/common/Table";
 import { columnDefinitions, PlayersTable } from "src/components/players/PlayersTable";
 
 export default function Players({ data }) {
@@ -20,21 +18,9 @@ export default function Players({ data }) {
           entry => {
             const enriched = Object.assign({}, entry);
 
-            enriched.total_offense_base = new bigDecimal(enriched.ball_handling_base)
-              .add(new bigDecimal(enriched.perimeter_shooting_base))
-              .add(new bigDecimal(enriched.mid_range_shooting_base))
-              .add(new bigDecimal(enriched.dunk_power_base))
-              .getValue();
-
-            enriched.total_defense_base = new bigDecimal(enriched.defense_base)
-              .add(new bigDecimal(enriched.blocking_base))
-              .add(new bigDecimal(enriched.stealing_base))
-              .getValue();
-
-            enriched.total_fitness_base = new bigDecimal(enriched.strength_base)
-              .add(new bigDecimal(enriched.speed_base))
-              .add(new bigDecimal(enriched.stamina_base))
-              .getValue();
+            enriched.position = enriched.position_2 === ""
+              ? enriched.position_1
+              : `${enriched.position_1}, ${enriched.position_2}`;
 
             return enriched;
           }
@@ -49,9 +35,7 @@ export default function Players({ data }) {
       <Page useSplashScreenAnimation>
         <Animation type="fadeUp">
           <Section heading="Players">
-            <Styles>
-              <PlayersTable columns={tableColumns} data={tableData} />
-            </Styles>
+            <PlayersTable columns={tableColumns} data={tableData} />
           </Section>
         </Animation>
       </Page>
@@ -66,6 +50,8 @@ export const pageQuery = graphql`
         id
         name
         level_available
+        starting_rank
+        max_rank
         type
         team
         conference
@@ -82,16 +68,16 @@ export const pageQuery = graphql`
         strength_base
         speed_base
         stamina_base
-        ball_handling_gradient
-        perimeter_shooting_gradient
-        mid_range_shooting_gradient
-        dunk_power_gradient
-        defense_gradient
-        blocking_gradient
-        stealing_gradient
-        strength_gradient
-        speed_gradient
-        stamina_gradient
+        ball_handling_max
+        perimeter_shooting_max
+        mid_range_shooting_max
+        dunk_power_max
+        defense_max
+        blocking_max
+        stealing_max
+        strength_max
+        speed_max
+        stamina_max
       }
     }
   }

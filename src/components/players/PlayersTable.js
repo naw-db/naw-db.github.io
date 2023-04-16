@@ -1,18 +1,36 @@
 import {
   createTheme,
   CssBaseline,
-  Table, TableBody,
+  FormControlLabel,
+  MenuItem,
+  Switch,
+  Table,
+  TableBody,
   TableCell,
   TableHead,
   TableRow,
+  TextField,
   ThemeProvider,
   useMediaQuery
 } from "@mui/material";
+import bigDecimal from "js-big-decimal";
 import { matchSorter } from "match-sorter";
 import React from "react";
 import { useFilters, useSortBy, useTable } from "react-table";
+import styled from "styled-components";
 
 import { SelectColumnFilter, TextColumnFilter } from "src/components/common/Table";
+import { statCategories } from "src/components/players/PlayerStats";
+
+const Styles = styled.div`
+  .scrollableTable {
+    display: block;
+    max-width: 100%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    border-bottom: 1px solid black;
+  }
+`
 
 export const columnDefinitions = [
   {
@@ -20,7 +38,7 @@ export const columnDefinitions = [
     columns: [
       {
         accessor: "name",
-        label: "Name",
+        helperText: "Name",
         Filter: TextColumnFilter,
         disableSortBy: true
       },
@@ -58,55 +76,53 @@ export const columnDefinitions = [
         Filter: SelectColumnFilter,
         filter: "equals",
         disableSortBy: true
+      },
+      {
+        accessor: "position",
+        helperText: "Pos.",
+        Filter: PositionColumnFilter,
+        filter: "includes",
+        disableSortBy: true
       }
     ]
   },
   {
-    Header: "Position",
+    Header: "OVR",
     showHeader: true,
-    columns: [
-      {
-        Header: "1",
-        showHeader: true,
-        accessor: "position_1",
-        disableFilters: true
-      },
-      {
-        Header: "2",
-        showHeader: true,
-        accessor: "position_2",
-        disableFilters: true
-      }
-    ]
+    accessor: "overall",
+    disableFilters: true
   },
   {
     Header: "Offense",
     showHeader: true,
     columns: [
       {
-        Header: "OVR",
+        Header: "TOT",
         showHeader: true,
-        accessor: "total_offense_base",
+        accessor: "total_offense",
         disableFilters: true
       },
       {
-        Header: "BLH",
+        Header: "BHL",
         showHeader: true,
-        accessor: "ball_handling_base",
+        accessor: "ball_handling",
         disableFilters: true
       },
       {
-        Header: "PES",showHeader: true,
-        accessor: "perimeter_shooting_base",
+        Header: "PES",
+        showHeader: true,
+        accessor: "perimeter_shooting",
         disableFilters: true
       },{
-        Header: "MRS",showHeader: true,
-        accessor: "mid_range_shooting_base",
+        Header: "MRS",
+        showHeader: true,
+        accessor: "mid_range_shooting",
         disableFilters: true
       },
       {
-        Header: "DNK",showHeader: true,
-        accessor: "dunk_power_base",
+        Header: "DNK",
+        showHeader: true,
+        accessor: "dunk_power",
         disableFilters: true
       }
     ]
@@ -116,27 +132,27 @@ export const columnDefinitions = [
     showHeader: true,
     columns: [
       {
-        Header: "OVR",
+        Header: "TOT",
         showHeader: true,
-        accessor: "total_defense_base",
+        accessor: "total_defense",
         disableFilters: true
       },
       {
         Header: "DEF",
         showHeader: true,
-        accessor: "defense_base",
+        accessor: "defense",
         disableFilters: true
       },
       {
         Header: "BLK",
         showHeader: true,
-        accessor: "blocking_base",
+        accessor: "blocking",
         disableFilters: true
       },
       {
         Header: "STL",
         showHeader: true,
-        accessor: "stealing_base",
+        accessor: "stealing",
         disableFilters: true
       }
     ]
@@ -146,26 +162,26 @@ export const columnDefinitions = [
     showHeader: true,
     columns: [
       {
-        Header: "OVR",
+        Header: "TOT",
         showHeader: true,
-        accessor: "total_fitness_base",
+        accessor: "total_fitness",
         disableFilters: true
       },
       {
         Header: "STR",
         showHeader: true,
-        accessor: "strength_base",
+        accessor: "strength",
         disableFilters: true
       },
       {
         Header: "SPD",showHeader: true,
-        accessor: "speed_base",
+        accessor: "speed",
         disableFilters: true
       },
       {
         Header: "STA",
         showHeader: true,
-        accessor: "stamina_base",
+        accessor: "stamina",
         disableFilters: true
       }
     ]
@@ -179,8 +195,75 @@ function fuzzyTextFilterFn(rows, id, filterValue) {
 // Remove the filter if the string is empty.
 fuzzyTextFilterFn.autoRemove = val => !val;
 
+function PositionColumnFilter({ column: { label, helperText, filterValue, setFilter } }) {
+  return (
+    <TextField
+      select
+      label={label}
+      helperText={helperText}
+      defaultValue=""
+      value={filterValue}
+      size="small"
+      fullWidth
+      onChange={
+        e => {
+          setFilter(e.target.value || undefined);
+        }
+      }
+    >
+      <MenuItem value="">All</MenuItem>
+      <MenuItem value="PG">PG</MenuItem>
+      <MenuItem value="SG">SG</MenuItem>
+      <MenuItem value="SF">SF</MenuItem>
+      <MenuItem value="PF">PF</MenuItem>
+      <MenuItem value="C">C</MenuItem>
+    </TextField>
+  );
+}
+
+function calculateDisplayData(data, displayMaxStats) {
+  return data.map(
+    entry => {
+      const displayedEntry = Object.assign({}, entry);
+
+      statCategories.forEach(
+        category => {
+          displayedEntry[category] = displayedEntry[`${category}_${displayMaxStats ? "max" : "base"}`];
+        }
+      );
+
+      displayedEntry.total_offense = new bigDecimal(displayedEntry.ball_handling)
+        .add(new bigDecimal(displayedEntry.perimeter_shooting))
+        .add(new bigDecimal(displayedEntry.mid_range_shooting))
+        .add(new bigDecimal(displayedEntry.dunk_power))
+        .getValue();
+
+      displayedEntry.total_defense = new bigDecimal(displayedEntry.defense)
+        .add(new bigDecimal(displayedEntry.blocking))
+        .add(new bigDecimal(displayedEntry.stealing))
+        .getValue();
+
+      displayedEntry.total_fitness = new bigDecimal(displayedEntry.strength)
+        .add(new bigDecimal(displayedEntry.speed))
+        .add(new bigDecimal(displayedEntry.stamina))
+        .getValue();
+
+      displayedEntry.overall = new bigDecimal(displayedEntry.total_offense)
+        .add(new bigDecimal(displayedEntry.total_defense))
+        .add(new bigDecimal(displayedEntry.total_fitness))
+        .getValue();
+
+      return displayedEntry;
+    }
+  );
+}
+
 export function PlayersTable({ columns, data }) {
   const isDarkModePreferred = useMediaQuery("(prefers-color-scheme: dark)");
+  const [ baseStatsData ] = React.useState(calculateDisplayData(data, false));
+  const [ maxStatsData ] = React.useState(calculateDisplayData(data, true));
+  const [ displayData, setDisplayData ] = React.useState(maxStatsData);
+  const [ showMaxStats, setShowMaxStats ] = React.useState(true);
 
   const theme = createTheme({
     palette: {
@@ -213,82 +296,81 @@ export function PlayersTable({ columns, data }) {
     headerGroups,
     rows,
     prepareRow,
-    state,
-    visibleColumns
   } = useTable(
     {
       columns,
-      data,
+      data: displayData,
       filterTypes
     },
     useFilters,
     useSortBy
   );
 
+  function updateStats(event) {
+    setDisplayData(event.target.checked ? maxStatsData : baseStatsData);
+    setShowMaxStats(event.target.checked);
+  }
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline>
-        <Table {...getTableProps()} stickyHeader>
-          <TableHead>
-            {headerGroups.map(
-              headerGroup => (
-                <TableRow {...headerGroup.getHeaderGroupProps()}>
-                  {headerGroup.headers.map(
-                    column => (
-                      <TableCell
-                        {...column.getHeaderProps()}
-                        align="center"
-                        style={{
-                          whiteSpace: "nowrap"
-                        }}
-                      >
-                        <div {...column.getSortByToggleProps()}>
-                          <div>{column.showHeader ? column.render("Header") : null}</div>
-                          <div>{column.canFilter ? column.render("Filter") : null}</div>
-                        </div>
-                      </TableCell>
-                    ))}
-                </TableRow>
-              )
-            )}
-            <TableRow>
-              <TableCell
-                colSpan={visibleColumns.length}
-                style={{ textAlign: "left", whiteSpace: "nowrap" }}
-              >
-              </TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody {...getTableBodyProps()}>
-            {rows.map(
-              (row, i) => {
-                prepareRow(row)
-                return (
-                  <TableRow {...row.getRowProps()}>
-                    {row.cells.map(
-                      cell => {
-                        return <TableCell
-                          {...cell.getCellProps()}
+        <FormControlLabel
+          control={<Switch checked={showMaxStats} onChange={updateStats} />}
+          label="Show Max Stats"
+        />
+        <Styles>
+          <Table className="scrollableTable" {...getTableProps()} stickyHeader size="small">
+            <TableHead>
+              {headerGroups.map(
+                headerGroup => (
+                  <TableRow {...headerGroup.getHeaderGroupProps()}>
+                    {headerGroup.headers.map(
+                      column => (
+                        <TableCell
+                          {...column.getHeaderProps()}
+                          align="center"
                           style={{
                             whiteSpace: "nowrap"
                           }}
                         >
-                          {cell.render("Cell")}
-                        </TableCell>;
-                      }
-                    )}
+                          <div {...column.getSortByToggleProps()}>
+                            <div>{column.showHeader ? column.render("Header") : null}</div>
+                            <div>{column.canFilter ? column.render("Filter") : null}</div>
+                          </div>
+                        </TableCell>
+                      ))}
                   </TableRow>
-                );
-              }
-            )}
-          </TableBody>
-        </Table>
-        <br />
-        <div>
-          <pre>
-            <code>{JSON.stringify(state.filters, null, 2)}</code>
-          </pre>
-        </div>
+                )
+              )}
+            </TableHead>
+            <TableBody {...getTableBodyProps()}>
+              {rows.map(
+                (row, i) => {
+                  prepareRow(row)
+                  return (
+                    <TableRow {...row.getRowProps()}>
+                      {row.cells.map(
+                        cell => {
+                          return <TableCell
+                            {...cell.getCellProps()}
+                            style={{
+                              textAlign: cell.getCellProps().key.endsWith("name") ? "left" : "center",
+                              whiteSpace: "nowrap",
+                              backgroundColor: cell.getCellProps().key.includes("total")
+                                ? theme.palette.primary.contrastText : null
+                            }}
+                          >
+                            {cell.render("Cell")}
+                          </TableCell>;
+                        }
+                      )}
+                    </TableRow>
+                  );
+                }
+              )}
+            </TableBody>
+          </Table>
+        </Styles>
       </CssBaseline>
     </ThemeProvider>
   );
