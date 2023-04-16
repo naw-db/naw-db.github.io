@@ -1,22 +1,23 @@
 import {
-  createTheme,
   CssBaseline,
   FormControlLabel,
   MenuItem,
+  Stack,
   Switch,
   Table,
   TableBody,
   TableCell,
   TableHead,
+  TablePagination,
   TableRow,
   TextField,
   ThemeProvider,
-  useMediaQuery
+  useTheme
 } from "@mui/material";
 import bigDecimal from "js-big-decimal";
 import { matchSorter } from "match-sorter";
 import React from "react";
-import { useFilters, useSortBy, useTable } from "react-table";
+import { useFilters, usePagination, useSortBy, useTable } from "react-table";
 import styled from "styled-components";
 
 import { SelectColumnFilter, TextColumnFilter } from "src/components/common/Table";
@@ -259,17 +260,12 @@ function calculateDisplayData(data, displayMaxStats) {
 }
 
 export function PlayersTable({ columns, data }) {
-  const isDarkModePreferred = useMediaQuery("(prefers-color-scheme: dark)");
   const [ baseStatsData ] = React.useState(calculateDisplayData(data, false));
   const [ maxStatsData ] = React.useState(calculateDisplayData(data, true));
   const [ displayData, setDisplayData ] = React.useState(maxStatsData);
   const [ showMaxStats, setShowMaxStats ] = React.useState(true);
 
-  const theme = createTheme({
-    palette: {
-      mode: isDarkModePreferred ? "dark" : "light"
-    }
-  });
+  const theme = useTheme();
 
   const filterTypes = React.useMemo(
     () => ({
@@ -294,8 +290,12 @@ export function PlayersTable({ columns, data }) {
     getTableProps,
     getTableBodyProps,
     headerGroups,
-    rows,
     prepareRow,
+    rows,
+    page,
+    gotoPage,
+    setPageSize,
+    state: { pageIndex, pageSize }
   } = useTable(
     {
       columns,
@@ -303,12 +303,17 @@ export function PlayersTable({ columns, data }) {
       filterTypes
     },
     useFilters,
-    useSortBy
+    useSortBy,
+    usePagination
   );
 
   function updateStats(event) {
     setDisplayData(event.target.checked ? maxStatsData : baseStatsData);
     setShowMaxStats(event.target.checked);
+  }
+
+  function updatePage(event, page) {
+    gotoPage(page);
   }
 
   return (
@@ -344,7 +349,7 @@ export function PlayersTable({ columns, data }) {
               )}
             </TableHead>
             <TableBody {...getTableBodyProps()}>
-              {rows.map(
+              {page.map(
                 (row, i) => {
                   prepareRow(row)
                   return (
@@ -357,7 +362,7 @@ export function PlayersTable({ columns, data }) {
                               textAlign: cell.getCellProps().key.endsWith("name") ? "left" : "center",
                               whiteSpace: "nowrap",
                               backgroundColor: cell.getCellProps().key.includes("total")
-                                ? theme.palette.primary.contrastText : null
+                                ? theme.palette.text.secondary : null
                             }}
                           >
                             {cell.render("Cell")}
@@ -370,6 +375,18 @@ export function PlayersTable({ columns, data }) {
               )}
             </TableBody>
           </Table>
+          <Stack spacing={2}>
+            <TablePagination
+              component="div"
+              count={rows.length}
+              rowsPerPage={pageSize}
+              page={pageIndex}
+              showFirstButton
+              showLastButton
+              onPageChange={updatePage}
+              onRowsPerPageChange={e => setPageSize(Number(e.target.value))}
+            />
+          </Stack>
         </Styles>
       </CssBaseline>
     </ThemeProvider>
