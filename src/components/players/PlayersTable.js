@@ -1,4 +1,5 @@
 import {
+  createTheme,
   CssBaseline,
   FormControlLabel,
   MenuItem,
@@ -11,14 +12,14 @@ import {
   TablePagination,
   TableRow,
   TextField,
-  ThemeProvider,
-  useTheme
+  ThemeProvider
 } from "@mui/material";
 import bigDecimal from "js-big-decimal";
 import { matchSorter } from "match-sorter";
 import React from "react";
 import { useFilters, usePagination, useSortBy, useTable } from "react-table";
 import styled from "styled-components";
+import { useGlobalState } from "gatsby-theme-portfolio-minimal/src/context"
 
 import { SelectColumnFilter, TextColumnFilter } from "src/components/common/Table";
 import { statCategories } from "src/components/players/PlayerStats";
@@ -265,7 +266,13 @@ export function PlayersTable({ columns, data }) {
   const [ displayData, setDisplayData ] = React.useState(maxStatsData);
   const [ showMaxStats, setShowMaxStats ] = React.useState(true);
 
-  const theme = useTheme();
+  const { globalState } = useGlobalState();
+
+  const theme = createTheme({
+    palette: {
+      mode: globalState.theme.replace("Theme", "")
+    }
+  });
 
   const filterTypes = React.useMemo(
     () => ({

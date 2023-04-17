@@ -2,18 +2,14 @@
   "siteMetadata": {
     "language": "en",
     "siteUrl": "https://gatsby-starter-portfolio-minimal-theme.netlify.app/",
-    "title": "Gatsby Starter for Portfolio Minimal",
-    "titleTemplate": "%s · Portfolio Minimal",
-    "description": "A Gatsby Starter Project to easily get started with Portfolio Minimal theme.",
-    "author": "Konstantin Münster",
-    "avatar": "../content/images/gatsby.png",
-    "bio": "This biography will be used in the footer area of an article and can contain some more details about the author.",
+    "title": "NBA All-World Database",
+    "titleTemplate": "%s",
+    "description": "A database fan site of the NBA All-World mobile game.",
+    "author": "Drew Wei",
+    "avatar": "../content/images/nba-all-world.png",
+    "bio": "",
     "social": {
-      "behance": "https://behance.com",
-      "github": "https://github.com/konstantinmuenster",
-      "medium": "https://konstantinmuenster.medium.com",
-      "linkedin": "https://www.linkedin.com/in/konstantin-muenster/",
-      "mail": "mailto:mail@konstantin.digital"
+      "github": "https://github.com/unkdrew/nba-all-world-db"
     }
   },
   "siteConfiguration": {
@@ -21,8 +17,7 @@
     "navigation": {
       "header": [
         { "label": "About", "url": "/#about" },
-        { "label": "Players", "url": "/players" },
-        { "label": "Features", "url": "/#features" }
+        { "label": "Players", "url": "/players" }
       ],
       "footer": [
         { "label": "Privacy", "url": "/privacy" },

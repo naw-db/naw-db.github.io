@@ -1,54 +1,43 @@
-<img src="screenshot.png" alt="Gatsby Theme Portfolio Minimal Screenshot" width="700" />
+TODO: Build badge.
 
-<a href="https://www.gatsbyjs.com/dashboard/deploynow?url=https://github.com/konstantinmuenster/gatsby-starter-portfolio-minimal-theme" target="_blank">
-<img src="https://www.gatsbyjs.com/deploynow.svg" alt="Deploy to Gatsby Cloud" />
-</a>
+### 1. Environment Setup
+* Install [Homebrew](https://docs.brew.sh/Installation).
+* Install `nvm`
+   * Visit: https://github.com/nvm-sh/nvm
+* Install `node` and `npm`
+   * Run command: `nvm install --lts`
+   * Run command: `npm install -g npm@latest`
+   * Verify version of the installed `node` and `npm`
+      * Run command: `node --version` (Version should be greater than or equal to `v18.9.1`.)
+      * Run command: `npm --version` (Version should be greater than or equal to `9.6.4`.)
+* Install Git.
+   * If you use a Mac, you can skip this. Apple ships their own fork of `git`.
+* Install Gatsby CLI.
+   * Run command: `npm install -g gatsby-cli`
 
-# Gatsby Starter Portfolio Minimal Theme
+### 2. Recommended Development Tools
+* Terminal: [iTerm2](https://www.iterm2.com/)
+* Shell: [Oh My Zsh](https://github.com/robbyrussell/oh-my-zsh)
 
-#### A Gatsby Starter Project to easily get started with the Portfolio Minimal Theme.
+### 3. Local Development
+#### 3.1 Check package health
+* Upgrade `node` and `npm`.
+   * Run commands:
+      * `nvm install --lts`
+      * `npm install -g npm@latest`
+* Check if there are dependencies not declared in `package.json`.
+   * This checks if there are dependencies that are available on your machine but not declared in this package's dependency closure, e.g. dependencies that were installed via `npm install` without specifying the `--save` flag.
+   * Run command: `npm prune`
+* Check if there are upgradable global dependencies.
+   * Run command: `npm outdated -g --depth=0`
+   * To update all global dependencies:
+      * Run command: `npm update -g`
+* Check if there are upgradable project dependencies.
+   * Use `npm-check-updates`:
+      * `npm i -g npm-check-updates`
+      * `ncu -u`
+      * `npm install`
 
-Portfolio Minimal is a Gatsby Theme that let's you create outstanding one-page portfolios within minutes. This Gatsby Starter is a boilerplate project that has the theme pre-installed and pre-configured.
-
-Just clone this Gatsby Starter, add the content. And that's it!
-
-[Live Demo on Gatsby Cloud](https://gatsbystarterportfoliominimalt.gatsbyjs.io/) · [Live Demo on Netlify](https://gatsby-starter-portfolio-minimal-theme.netlify.app/) · [Portfolio Minimal Theme on Github](https://github.com/konstantinmuenster/gatsby-theme-portfolio-minimal)
-
----
-
-## Installation
-
-1. Install the Gatsby CLI
-
-   ```sh
-   npm install -g gatsby-cli
-   ```
-
-2. Create a new Gatsby site with the Portfolio Minimal Starter.
-
-   ```sh
-   gatsby new portfolio-minimal https://github.com/konstantinmuenster/gatsby-starter-portfolio-minimal-theme
-   ```
-
-3. Once installed, you can begin developing your site.
-
-   ```sh
-   cd portfolio-minimal
-   gatsby develop
-   ```
-
-4. By default, the Portfolio Minimal Starter has a `content` directory at the root of your Gatsby site. There, you can edit the theme settings as well as add content for your sections. To learn more about it, have a look at the [Readme of Portfolio Minimal](https://github.com/konstantinmuenster/gatsby-theme-portfolio-minimal/tree/main/gatsby-theme-portfolio-minimal#readme).
-
----
-
-## Issues?
-
-If you find any bugs or have feature suggestions, create a new issue or pull request 🙏
-
-Thanks a lot for using this starter! 💪
-
----
-
-<a href="https://www.buymeacoffee.com/kmuenster" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
-
-Konstantin Münster – [konstantin.digital](https://konstantin.digital)
+#### 3.2 To run the website locally on your machine
+* `cd` into the root directory of the website project.
+* Run command: `npm install && gatsby develop`
