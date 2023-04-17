@@ -2,7 +2,7 @@
   "siteMetadata": {
     "language": "en",
     "siteUrl": "https://gatsby-starter-portfolio-minimal-theme.netlify.app/",
-    "title": "NBA All-World Database",
+    "title": "NAWDB",
     "titleTemplate": "%s",
     "description": "A database fan site of the NBA All-World mobile game.",
     "author": "Drew Wei",
@@ -13,15 +13,14 @@
     }
   },
   "siteConfiguration": {
-    "logo": { "text": "NBA All-World Database" },
+    "logo": { "text": "NAWDB" },
     "navigation": {
       "header": [
         { "label": "About", "url": "/#about" },
         { "label": "Players", "url": "/players" }
       ],
       "footer": [
-        { "label": "Privacy", "url": "/privacy" },
-        { "label": "Imprint", "url": "/imprint" }
+        { "label": "Copyright", "url": "/copyright" }
       ]
     },
     "featureToggles": {
