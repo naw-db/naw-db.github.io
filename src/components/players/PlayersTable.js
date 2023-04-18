@@ -14,25 +14,23 @@ import {
   TextField,
   ThemeProvider
 } from "@mui/material";
+import { styled } from "@mui/material/styles";
+import { useGlobalState } from "gatsby-theme-portfolio-minimal/src/context"
 import bigDecimal from "js-big-decimal";
 import { matchSorter } from "match-sorter";
 import React from "react";
 import { useFilters, usePagination, useSortBy, useTable } from "react-table";
-import styled from "styled-components";
-import { useGlobalState } from "gatsby-theme-portfolio-minimal/src/context"
 
 import { SelectColumnFilter, TextColumnFilter } from "src/components/common/Table";
 import { statCategories } from "src/components/players/PlayerStats";
 
-const Styles = styled.div`
-  .scrollableTable {
-    display: block;
-    max-width: 100%;
-    overflow-x: scroll;
-    overflow-y: hidden;
-    border-bottom: 1px solid black;
-  }
-`
+const ScrollableTable = styled(Table)`
+  display: block;
+  max-width: 100%;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  border-bottom: 1px solid black;
+`;
 
 export const columnDefinitions = [
   {
@@ -45,7 +43,7 @@ export const columnDefinitions = [
         disableSortBy: true
       },
       {
-        accessor: "level_available",
+        accessor: "levelAvailable",
         helperText: "Lvl Avail.",
         Filter: SelectColumnFilter,
         filter: "equals",
@@ -101,30 +99,30 @@ export const columnDefinitions = [
       {
         Header: "TOT",
         showHeader: true,
-        accessor: "total_offense",
+        accessor: "totalOffense",
         disableFilters: true
       },
       {
         Header: "BHL",
         showHeader: true,
-        accessor: "ball_handling",
+        accessor: "ballHandling",
         disableFilters: true
       },
       {
         Header: "PES",
         showHeader: true,
-        accessor: "perimeter_shooting",
+        accessor: "perimeterShooting",
         disableFilters: true
       },{
         Header: "MRS",
         showHeader: true,
-        accessor: "mid_range_shooting",
+        accessor: "midRangeShooting",
         disableFilters: true
       },
       {
         Header: "DNK",
         showHeader: true,
-        accessor: "dunk_power",
+        accessor: "dunkPower",
         disableFilters: true
       }
     ]
@@ -136,7 +134,7 @@ export const columnDefinitions = [
       {
         Header: "TOT",
         showHeader: true,
-        accessor: "total_defense",
+        accessor: "totalDefense",
         disableFilters: true
       },
       {
@@ -166,7 +164,7 @@ export const columnDefinitions = [
       {
         Header: "TOT",
         showHeader: true,
-        accessor: "total_fitness",
+        accessor: "totalFitness",
         disableFilters: true
       },
       {
@@ -230,29 +228,29 @@ function calculateDisplayData(data, displayMaxStats) {
 
       statCategories.forEach(
         category => {
-          displayedEntry[category] = displayedEntry[`${category}_${displayMaxStats ? "max" : "base"}`];
+          displayedEntry[category] = displayedEntry[`${category}${displayMaxStats ? "Max" : "Base"}`];
         }
       );
 
-      displayedEntry.total_offense = new bigDecimal(displayedEntry.ball_handling)
-        .add(new bigDecimal(displayedEntry.perimeter_shooting))
-        .add(new bigDecimal(displayedEntry.mid_range_shooting))
-        .add(new bigDecimal(displayedEntry.dunk_power))
+      displayedEntry.totalOffense = new bigDecimal(displayedEntry.ballHandling)
+        .add(new bigDecimal(displayedEntry.perimeterShooting))
+        .add(new bigDecimal(displayedEntry.midRangeShooting))
+        .add(new bigDecimal(displayedEntry.dunkPower))
         .getValue();
 
-      displayedEntry.total_defense = new bigDecimal(displayedEntry.defense)
+      displayedEntry.totalDefense = new bigDecimal(displayedEntry.defense)
         .add(new bigDecimal(displayedEntry.blocking))
         .add(new bigDecimal(displayedEntry.stealing))
         .getValue();
 
-      displayedEntry.total_fitness = new bigDecimal(displayedEntry.strength)
+      displayedEntry.totalFitness = new bigDecimal(displayedEntry.strength)
         .add(new bigDecimal(displayedEntry.speed))
         .add(new bigDecimal(displayedEntry.stamina))
         .getValue();
 
-      displayedEntry.overall = new bigDecimal(displayedEntry.total_offense)
-        .add(new bigDecimal(displayedEntry.total_defense))
-        .add(new bigDecimal(displayedEntry.total_fitness))
+      displayedEntry.overall = new bigDecimal(displayedEntry.totalOffense)
+        .add(new bigDecimal(displayedEntry.totalDefense))
+        .add(new bigDecimal(displayedEntry.totalFitness))
         .getValue();
 
       return displayedEntry;
@@ -330,71 +328,69 @@ export function PlayersTable({ columns, data }) {
           control={<Switch checked={showMaxStats} onChange={updateStats} />}
           label="Show Max Stats"
         />
-        <Styles>
-          <Table className="scrollableTable" {...getTableProps()} stickyHeader size="small">
-            <TableHead>
-              {headerGroups.map(
-                headerGroup => (
-                  <TableRow {...headerGroup.getHeaderGroupProps()}>
-                    {headerGroup.headers.map(
-                      column => (
-                        <TableCell
-                          {...column.getHeaderProps()}
-                          align="center"
+        <ScrollableTable {...getTableProps()} stickyHeader size="small">
+          <TableHead>
+            {headerGroups.map(
+              headerGroup => (
+                <TableRow {...headerGroup.getHeaderGroupProps()}>
+                  {headerGroup.headers.map(
+                    column => (
+                      <TableCell
+                        {...column.getHeaderProps()}
+                        align="center"
+                        style={{
+                          whiteSpace: "nowrap"
+                        }}
+                      >
+                        <div {...column.getSortByToggleProps()}>
+                          <div>{column.showHeader ? column.render("Header") : null}</div>
+                          <div>{column.canFilter ? column.render("Filter") : null}</div>
+                        </div>
+                      </TableCell>
+                    ))}
+                </TableRow>
+              )
+            )}
+          </TableHead>
+          <TableBody {...getTableBodyProps()}>
+            {page.map(
+              (row, i) => {
+                prepareRow(row)
+                return (
+                  <TableRow {...row.getRowProps()}>
+                    {row.cells.map(
+                      cell => {
+                        return <TableCell
+                          {...cell.getCellProps()}
                           style={{
-                            whiteSpace: "nowrap"
+                            textAlign: cell.getCellProps().key.endsWith("name") ? "left" : "center",
+                            whiteSpace: "nowrap",
+                            backgroundColor: cell.getCellProps().key.includes("total")
+                              ? theme.palette.text.secondary : null
                           }}
                         >
-                          <div {...column.getSortByToggleProps()}>
-                            <div>{column.showHeader ? column.render("Header") : null}</div>
-                            <div>{column.canFilter ? column.render("Filter") : null}</div>
-                          </div>
-                        </TableCell>
-                      ))}
+                          {cell.render("Cell")}
+                        </TableCell>;
+                      }
+                    )}
                   </TableRow>
-                )
-              )}
-            </TableHead>
-            <TableBody {...getTableBodyProps()}>
-              {page.map(
-                (row, i) => {
-                  prepareRow(row)
-                  return (
-                    <TableRow {...row.getRowProps()}>
-                      {row.cells.map(
-                        cell => {
-                          return <TableCell
-                            {...cell.getCellProps()}
-                            style={{
-                              textAlign: cell.getCellProps().key.endsWith("name") ? "left" : "center",
-                              whiteSpace: "nowrap",
-                              backgroundColor: cell.getCellProps().key.includes("total")
-                                ? theme.palette.text.secondary : null
-                            }}
-                          >
-                            {cell.render("Cell")}
-                          </TableCell>;
-                        }
-                      )}
-                    </TableRow>
-                  );
-                }
-              )}
-            </TableBody>
-          </Table>
-          <Stack spacing={2}>
-            <TablePagination
-              component="div"
-              count={rows.length}
-              rowsPerPage={pageSize}
-              page={pageIndex}
-              showFirstButton
-              showLastButton
-              onPageChange={updatePage}
-              onRowsPerPageChange={e => setPageSize(Number(e.target.value))}
-            />
-          </Stack>
-        </Styles>
+                );
+              }
+            )}
+          </TableBody>
+        </ScrollableTable>
+        <Stack spacing={2}>
+          <TablePagination
+            component="div"
+            count={rows.length}
+            rowsPerPage={pageSize}
+            page={pageIndex}
+            showFirstButton
+            showLastButton
+            onPageChange={updatePage}
+            onRowsPerPageChange={e => setPageSize(Number(e.target.value))}
+          />
+        </Stack>
       </CssBaseline>
     </ThemeProvider>
   );

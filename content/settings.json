@@ -17,7 +17,8 @@
     "navigation": {
       "header": [
         { "label": "About", "url": "/#about" },
-        { "label": "Players", "url": "/players" }
+        { "label": "Explore Players", "url": "/explore-players" },
+        { "label": "Compare Players", "url": "/compare-players" }
       ],
       "footer": [
         { "label": "Copyright", "url": "/copyright" }

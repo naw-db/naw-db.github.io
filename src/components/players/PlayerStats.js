@@ -1,12 +1,12 @@
 import bigDecimal from "js-big-decimal";
 
-import gradientMultipliers from "data/player_stat_gradients.json";
+import gradients from "data/player_stat_gradients.json";
 
 export const statCategories = [
-  "ball_handling",
-  "perimeter_shooting",
-  "mid_range_shooting",
-  "dunk_power",
+  "ballHandling",
+  "perimeterShooting",
+  "midRangeShooting",
+  "dunkPower",
   "defense",
   "blocking",
   "stealing",
@@ -15,142 +15,99 @@ export const statCategories = [
   "stamina"
 ];
 
-function calculateStat(baseStats, gradientMultiplierSum, totalBonus) {
-  const stats = Object.assign({}, baseStats);
+export function calculateStat(playerStats, targetRank, targetLevel) {
+  const rankUpCount = new bigDecimal(targetRank)
+    .subtract(
+      new bigDecimal(playerStats.startingRank)
+    );
+
+  const displayedStats = {};
 
   statCategories.forEach(
     category => {
-      // stat = baseStat + multiplierSum * gradient
-      stats[category] = new bigDecimal(baseStats[`${category}_base`])
-        .add(
-          gradientMultiplierSum.multiply(
-            new bigDecimal(baseStats[`${category}_gradient`])
-          )
+      // perStatGradient = (maxStat - baseStat - (maxRank - baseRank) * rankUpBonus) / gradientMultiplierSum
+      const gradient = new bigDecimal(playerStats[`${category}Max`])
+        .subtract(
+          new bigDecimal(playerStats[`${category}Base`])
         )
-        .add(totalBonus)
-        .round(0, bigDecimal.RoundingModes.UP)
-        .getValue();
+        .subtract(
+          new bigDecimal(playerStats.maxRank)
+            .subtract(
+              new bigDecimal(playerStats.startingRank)
+            )
+            .multiply(
+              new bigDecimal(gradients.startingRank[playerStats.startingRank].rankUpBonus)
+            )
+        )
+        .divide(
+          new bigDecimal(gradients.startingRank[playerStats.startingRank].gradientMultiplierSum)
+        );
+
+      if (playerStats.startingRank === targetRank && targetLevel === "1") {
+        displayedStats[category] = playerStats[`${category}Base`];
+      } else if (playerStats.maxRank === targetRank && targetLevel === "10") {
+        displayedStats[category] = playerStats[`${category}Max`];
+      } else {
+        // stat = baseStat + rankUpCount * rankUpBonus + gradientMultiplierSum * gradient
+        //
+        // gradientMultiplierSum:
+        //   when rankUpCount == 0:
+        //     gradientMultiplierSum = targetLevel * firstRankGradient (StartingRank Lvl 1 => StartingRank Lvl 2 rewards 2X, so the delta is targetLevel - 1 + 1)
+        //   when rankUpCount == 1:
+        //     gradientMultiplierSum = 10 * firstLevelGradient + targetLevel * secondRankGradient (StartingRank Lvl 10 => SecondRank Lvl 1 counts as a level-up)
+        //   when rankUpCount == 2:
+        //     gradientMultiplierSum = 10 * (firstLevelGradient + secondRankGradient) + targetLevel * thirdRankGradient
+        //   when rankUpCount == 3:
+        //     gradientMultiplierSum = 10 * (firstLevelGradient + secondRankGradient + thirdRankGradient) + targetLevel * fourthRankGradient
+
+        let rankUpGradientMultiplierSum = new bigDecimal(0);
+        let currentRank = new bigDecimal(playerStats.startingRank);
+
+        while (new bigDecimal(targetRank).compareTo(currentRank) === 1) {
+          rankUpGradientMultiplierSum = rankUpGradientMultiplierSum.add(
+            new bigDecimal(
+              gradients.startingRank[playerStats.startingRank].gradientAtRank[currentRank.getValue()]
+            )
+          );
+
+          currentRank = currentRank.add(new bigDecimal(1));
+        }
+
+        const stat = new bigDecimal(playerStats[`${category}Base`])  // baseStat
+          .add(
+            rankUpCount.multiply(
+              new bigDecimal(gradients.startingRank[playerStats.startingRank].rankUpBonus)
+            )
+          )  // rankUpCount * rankUpBonus
+          .add(
+            new bigDecimal(10).multiply(rankUpGradientMultiplierSum)
+              .add(
+                new bigDecimal(targetLevel)
+                  .multiply(
+                    new bigDecimal(gradients.startingRank[playerStats.startingRank].gradientAtRank[targetRank])
+                  )
+              )
+              .multiply(gradient)
+          );  // (10 * rankUpGradientMultiplierSum + targetLevel * targetRankGradient) * gradient
+
+        displayedStats[category] = stat.round(1, bigDecimal.RoundingModes.HALF_DOWN).getValue();
+      }
     }
   );
 
-  return stats;
-}
+  displayedStats.totalOffense = new bigDecimal(displayedStats.ballHandling)
+    .add(new bigDecimal(displayedStats.perimeterShooting))
+    .add(new bigDecimal(displayedStats.midRangeShooting))
+    .add(new bigDecimal(displayedStats.dunkPower))
+    .getValue();
+  displayedStats.totalDefense = new bigDecimal(displayedStats.defense)
+    .add(new bigDecimal(displayedStats.blocking))
+    .add(new bigDecimal(displayedStats.stealing))
+    .getValue();
+  displayedStats.totalFitness = new bigDecimal(displayedStats.strength)
+    .add(new bigDecimal(displayedStats.speed))
+    .add(new bigDecimal(displayedStats.stamina))
+    .getValue();
 
-export function calculate(playerStats, targetRank, targetLevel) {
-  const startingRank = playerStats.starting_rank;
-
-  if (!(startingRank in gradientMultipliers)) {
-    throw new Error(`Invalid startingRank: '${startingRank}'`);
-  }
-
-  if (targetRank === startingRank) {
-    // multiplierSum = targetLevel * gradientMultiplier(startingRank)  Note: Base Rank Lvl 1 => Base Rank Lvl 2 rewards 2X increase.
-    const gradientMultiplierSum = new bigDecimal(targetLevel === "1" ? 0 : targetLevel)
-      .multiply(
-        new bigDecimal(gradientMultipliers[startingRank][startingRank])
-      );
-
-    // stat = baseStat + multiplierSum * gradient
-    return calculateStat(
-      playerStats,
-      gradientMultiplierSum,
-      new bigDecimal(0)
-    );
-  } else if (new bigDecimal(targetRank).subtract(new bigDecimal(startingRank)).compareTo(new bigDecimal(1)) === 0) {
-    // targetRank == startingRank + 1
-
-    // multiplierSum = 10 * gradientMultiplier(startingRank) + targetLevel * gradientMultiplier(startingRank + 1)
-    const gradientMultiplierSum = new bigDecimal(10)
-      .multiply(
-        new bigDecimal(gradientMultipliers[startingRank][startingRank])
-      )
-      .add(
-        new bigDecimal(targetLevel)
-          .multiply(
-            new bigDecimal(
-              gradientMultipliers[startingRank][new bigDecimal(startingRank).add(new bigDecimal(1)).getValue()]
-            )
-          )
-      );
-
-    // stat = baseStat + multiplierSum * gradient + bonus
-    return calculateStat(
-      playerStats,
-      gradientMultiplierSum,
-      new bigDecimal(gradientMultipliers[startingRank]["bonus"])
-    );
-  } else if (new bigDecimal(targetRank).subtract(new bigDecimal(startingRank)).compareTo(new bigDecimal(2)) === 0) {
-    // targetRank == startingRank + 2
-
-    // multiplierSum = 10 * gradientMultiplier(startingRank)
-    //               + 10 * gradientMultiplier(startingRank + 1)
-    //               + targetLevel * gradientMultiplier(startingRank + 2)
-    const gradientMultiplierSum = new bigDecimal(10)
-      .multiply(
-        new bigDecimal(gradientMultipliers[startingRank][startingRank])
-      )
-      .add(
-        new bigDecimal(10)
-          .multiply(
-            new bigDecimal(gradientMultipliers[startingRank][new bigDecimal(startingRank).add(new bigDecimal(1)).getValue()])
-          )
-      )
-      .add(
-        new bigDecimal(targetLevel)
-          .multiply(
-            new bigDecimal(
-              gradientMultipliers[startingRank][new bigDecimal(startingRank).add(new bigDecimal(2)).getValue()]
-            )
-          )
-      );
-
-    // stat = baseStat + multiplierSum * gradient + bonus * 2
-    return calculateStat(
-      playerStats,
-      gradientMultiplierSum,
-      new bigDecimal(gradientMultipliers[startingRank]["bonus"]).multiply(new bigDecimal(2))
-    );
-  } else if (new bigDecimal(targetRank).subtract(new bigDecimal(startingRank)).compareTo(new bigDecimal(3)) === 0) {
-    // targetRank == startingRank + 3
-
-    // multiplierSum = 10 * gradientMultiplier(startingRank)
-    //               + 10 * gradientMultiplier(startingRank + 1)
-    //               + 10 * gradientMultiplier(startingRank + 2)
-    //               + targetLevel * gradientMultiplier(startingRank + 3)
-    const gradientMultiplierSum = new bigDecimal(10)
-      .multiply(
-        new bigDecimal(gradientMultipliers[startingRank][startingRank])
-      )
-      .add(
-        new bigDecimal(10)
-          .multiply(
-            new bigDecimal(gradientMultipliers[startingRank][new bigDecimal(startingRank).add(new bigDecimal(1)).getValue()])
-          )
-      )
-      .add(
-        new bigDecimal(10)
-          .multiply(
-            new bigDecimal(
-              gradientMultipliers[startingRank][new bigDecimal(startingRank).add(new bigDecimal(2)).getValue()]
-            )
-          )
-      )
-      .add(
-        new bigDecimal(targetLevel)
-          .multiply(
-            new bigDecimal(
-              gradientMultipliers[startingRank][new bigDecimal(startingRank).add(new bigDecimal(3)).getValue()]
-            )
-          )
-      );
-
-    // stat = baseStat + multiplierSum * gradient + bonus * 3
-    return calculateStat(
-      playerStats,
-      gradientMultiplierSum,
-      new bigDecimal(gradientMultipliers[startingRank]["bonus"]).multiply(new bigDecimal(3))
-    );
-  } else {
-    throw new Error(`startingRank '${startingRank}' and targetRank '${targetRank}' must satisfy: startingRank <= targetRank - 3`);
-  }
+  return displayedStats;
 }

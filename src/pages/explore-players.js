@@ -4,7 +4,7 @@ import React from "react";
 
 import { columnDefinitions, PlayersTable } from "src/components/players/PlayersTable";
 
-export default function Players({ data }) {
+export default function ExplorePlayers({ data }) {
   const tableColumns = React.useMemo(
     () => columnDefinitions,
     []
@@ -18,30 +18,30 @@ export default function Players({ data }) {
           entry => {
             const enriched = Object.assign({}, entry);
 
-            enriched.position = enriched.position_2 === ""
-              ? enriched.position_1
-              : `${enriched.position_1}, ${enriched.position_2}`;
+            enriched.position = enriched.position2 === ""
+              ? enriched.position1
+              : `${enriched.position1}, ${enriched.position2}`;
 
             return enriched;
           }
         );
     },
-    []
+    [ data.allPlayersCsv.nodes ]
   );
 
   return (
     <>
-      <Seo title="Players" />
+      <Seo title="Explore Players" />
       <Page useSplashScreenAnimation>
         <Animation type="fadeUp">
-          <Section heading="Players">
+          <Section heading="Explore Players">
             <PlayersTable columns={tableColumns} data={tableData} />
           </Section>
         </Animation>
       </Page>
     </>
   );
-};
+}
 
 export const pageQuery = graphql`
   query pageQuery {
@@ -49,35 +49,35 @@ export const pageQuery = graphql`
       nodes {
         id
         name
-        level_available
-        starting_rank
-        max_rank
+        levelAvailable
+        startingRank
+        maxRank
         type
         team
         conference
         division
-        position_1
-        position_2
-        ball_handling_base
-        perimeter_shooting_base
-        mid_range_shooting_base
-        dunk_power_base
-        defense_base
-        blocking_base
-        stealing_base
-        strength_base
-        speed_base
-        stamina_base
-        ball_handling_max
-        perimeter_shooting_max
-        mid_range_shooting_max
-        dunk_power_max
-        defense_max
-        blocking_max
-        stealing_max
-        strength_max
-        speed_max
-        stamina_max
+        position1
+        position2
+        ballHandlingBase
+        perimeterShootingBase
+        midRangeShootingBase
+        dunkPowerBase
+        defenseBase
+        blockingBase
+        stealingBase
+        strengthBase
+        speedBase
+        staminaBase
+        ballHandlingMax
+        perimeterShootingMax
+        midRangeShootingMax
+        dunkPowerMax
+        defenseMax
+        blockingMax
+        stealingMax
+        strengthMax
+        speedMax
+        staminaMax
       }
     }
   }
