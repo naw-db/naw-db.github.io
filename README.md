@@ -1,4 +1,4 @@
-TODO: Build badge.
+[![GitHub Pages Deployment Status](https://github.com/naw-db/naw-db.github.io/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/naw-db/naw-db.github.io/actions/workflows/pages/pages-build-deployment)
 
 ### 1. Environment Setup
 * Install [Homebrew](https://docs.brew.sh/Installation).
@@ -38,6 +38,15 @@ TODO: Build badge.
       * `ncu -u`
       * `npm install`
 
-#### 3.2 To run the website locally on your machine
+#### 3.2 To run a testing build of your website locally on your machine
 * `cd` into the root directory of the website project.
 * Run command: `npm install && gatsby develop`
+
+#### 3.2 To run a production build of your website locally on your machine
+* `cd` into the root directory of the website project.
+* Run command: `npm install && gatsby serve`
+
+### 4. Publish to GitHub Pages
+* `cd` into the root directory of the website project.
+* Run command: `npm run deploy`
+* Monitor the deployment [here](https://github.com/naw-db/naw-db.github.io/actions/workflows/pages/pages-build-deployment).
