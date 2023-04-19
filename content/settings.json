@@ -16,7 +16,7 @@
     "logo": { "text": "NAWDB" },
     "navigation": {
       "header": [
-        { "label": "About", "url": "/#about" },
+        { "label": "Home", "url": "/" },
         { "label": "Explore Players", "url": "/explore-players" },
         { "label": "Compare Players", "url": "/compare-players" }
       ],

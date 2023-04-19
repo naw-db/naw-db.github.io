@@ -1,5 +1,6 @@
 import {
   AboutSection,
+  ContactSection,
   HeroSection,
   Page,
   Seo,
@@ -13,6 +14,7 @@ export default function IndexPage() {
       <Page useSplashScreenAnimation>
         <HeroSection sectionId="hero" />
         <AboutSection sectionId="about" heading="About" />
+        <ContactSection sectionId="github" heading="Issues?" />
       </Page>
     </>
   );
