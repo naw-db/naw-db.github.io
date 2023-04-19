@@ -1,22 +1,21 @@
 {
-  "intro": "Hej",
+  "intro": "Hello",
   "heroPhoto": {
-    "src": "../../images/lego-dummy.png",
-    "alt": "My Photo"
+    "src": "../../images/nba-all-world-hero.png",
+    "alt": "NBA All-World Poster"
   },
   "image": {
     "src": "../../images/waving-hand.png",
     "alt": "Waving Hand Emoji"
   },
-  "title": "I'm a Gatsby Starter",
+  "title": "Welcome to NAWDB",
   "subtitle": {
-    "prefix": "I do all the setup ",
-    "highlight": "for you",
-    "suffix": "."
+    "prefix": "I provide ",
+    "highlight": "in-game data and user tools",
+    "suffix": " to give you an edge in the NBA All-World mobile game."
   },
-  "description": "A Gatsby Starter Project to easily get started with Portfolio Minimal theme.",
   "socialProfiles": {
-    "from": ["LinkedIn", "Medium", "Github", "Mail"],
-    "showIcons": false
+    "from": [ "GitHub" ],
+    "showIcons": true
   }
 }

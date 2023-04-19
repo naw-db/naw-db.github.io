@@ -1,7 +1,7 @@
 {
-  "name": "gatsby-starter-portfolio-minimal-theme",
+  "name": "naw-db",
   "version": "1.0.0",
-  "description": "A Gatsby Starter Project to easily get started with the Portfolio Minimal Theme.",
+  "description": "A database fan site of the NBA All-World mobile game.",
   "scripts": {
     "clean": "gatsby clean",
     "develop": "gatsby develop",
@@ -12,12 +12,27 @@
     "node": ">=18.0.0"
   },
   "dependencies": {
+    "@devexpress/dx-react-chart": "^4.0.3",
+    "@devexpress/dx-react-chart-material-ui": "^4.0.3",
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
+    "@mui/icons-material": "^5.11.16",
+    "@mui/material": "^5.12.0",
     "gatsby": "^5.0.1",
-    "gatsby-theme-portfolio-minimal": "latest",
+    "gatsby-plugin-root-import": "^2.0.9",
+    "gatsby-source-filesystem": "^5.8.0",
+    "gatsby-theme-portfolio-minimal": "^4.4.0",
+    "gatsby-transformer-csv": "^5.8.0",
+    "gatsby-transformer-inline-svg": "^1.2.0",
+    "js-big-decimal": "^1.4.1",
+    "lodash": "^4.17.21",
+    "match-sorter": "^6.3.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-table": "^7.8.0",
+    "react-use-query-param-string": "^2.0.10",
+    "use-query-params": "^2.2.1"
   },
-  "author": "Konstantin Münster <mail@konstantin.digital>",
+  "author": "Drew Wei",
   "license": "0BSD",
   "starter-name": "gatsby-starter-portfolio-minimal-theme",
   "homepage": "https://github.com/konstantinmuenster/gatsby-starter-portfolio-minimal-theme#readme",

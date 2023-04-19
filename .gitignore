@@ -1,21 +1,28 @@
-# dependencies
+# Dependencies
 node_modules
 /.pnp
 .pnp.js
 
-# testing
+# Development
+.cache
+.husky
+.idea
+.vscode
+*.iml
+
+# Auto-created by gatsby-theme-portfolio-minimal
+content/sections/interests/
+content/sections/legal/imprint.md
+content/sections/projects/
+
+# Testing
 /coverage
 
-# production
+# Production
 build
 public
 
-#development
-.cache
-.husky
-.vscode
-
-# misc
+# Misc
 .DS_Store
 .env.local
 .env.development.local
@@ -25,4 +32,3 @@ public
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-package-lock.json
