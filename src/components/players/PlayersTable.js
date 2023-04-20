@@ -95,6 +95,7 @@ export const columnDefinitions = [
   {
     Header: "Offense",
     showHeader: true,
+    backgroundColor: "secondary",
     columns: [
       {
         Header: "TOT",
@@ -113,7 +114,8 @@ export const columnDefinitions = [
         showHeader: true,
         accessor: "perimeterShooting",
         disableFilters: true
-      },{
+      },
+      {
         Header: "MRS",
         showHeader: true,
         accessor: "midRangeShooting",
@@ -160,6 +162,7 @@ export const columnDefinitions = [
   {
     Header: "Fitness",
     showHeader: true,
+    backgroundColor: "secondary",
     columns: [
       {
         Header: "TOT",
@@ -174,7 +177,8 @@ export const columnDefinitions = [
         disableFilters: true
       },
       {
-        Header: "SPD",showHeader: true,
+        Header: "SPD",
+        showHeader: true,
         accessor: "speed",
         disableFilters: true
       },
@@ -258,7 +262,7 @@ function calculateDisplayData(data, displayMaxStats) {
   );
 }
 
-export function PlayersTable({ columns, data }) {
+export function PlayersTable({ data }) {
   const [ baseStatsData ] = React.useState(calculateDisplayData(data, false));
   const [ maxStatsData ] = React.useState(calculateDisplayData(data, true));
   const [ displayData, setDisplayData ] = React.useState(maxStatsData);
@@ -271,6 +275,11 @@ export function PlayersTable({ columns, data }) {
       mode: globalState.theme.replace("Theme", "")
     }
   });
+
+  const columns = React.useMemo(
+    () => columnDefinitions,
+    []
+  );
 
   const filterTypes = React.useMemo(
     () => ({
@@ -339,7 +348,10 @@ export function PlayersTable({ columns, data }) {
                         {...column.getHeaderProps()}
                         align="center"
                         style={{
-                          whiteSpace: "nowrap"
+                          whiteSpace: "nowrap",
+                          backgroundColor: column.backgroundColor != null
+                            ? theme.palette.text[column.backgroundColor]
+                            : null
                         }}
                       >
                         <div {...column.getSortByToggleProps()}>
@@ -366,7 +378,8 @@ export function PlayersTable({ columns, data }) {
                             textAlign: cell.getCellProps().key.endsWith("name") ? "left" : "center",
                             whiteSpace: "nowrap",
                             backgroundColor: cell.getCellProps().key.includes("total")
-                              ? theme.palette.text.secondary : null
+                              ? theme.palette.text.secondary
+                              : null
                           }}
                         >
                           {cell.render("Cell")}

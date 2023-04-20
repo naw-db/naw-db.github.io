@@ -1,7 +1,7 @@
 {
   "siteMetadata": {
     "language": "en",
-    "siteUrl": "https://gatsby-starter-portfolio-minimal-theme.netlify.app/",
+    "siteUrl": "https://naw-db.github.io/",
     "title": "NAWDB",
     "titleTemplate": "%s",
     "description": "A database fan site of the NBA All-World mobile game.",
@@ -9,7 +9,7 @@
     "avatar": "../content/images/nba-all-world.png",
     "bio": "",
     "social": {
-      "github": "https://github.com/unkdrew/nba-all-world-db"
+      "github": "https://github.com/naw-db/naw-db.github.io"
     }
   },
   "siteConfiguration": {
@@ -18,7 +18,8 @@
       "header": [
         { "label": "Home", "url": "/" },
         { "label": "Explore Players", "url": "/explore-players" },
-        { "label": "Compare Players", "url": "/compare-players" }
+        { "label": "Compare Players", "url": "/compare-players" },
+        { "label": "Gear", "url": "/gear" }
       ],
       "footer": [
         { "label": "Copyright", "url": "/copyright" }

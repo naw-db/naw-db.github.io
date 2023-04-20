@@ -1,7 +1,7 @@
 {
   "name": "naw-db",
   "version": "1.0.0",
-  "description": "A database fan site of the NBA All-World mobile game.",
+  "description": "A database fan site for the NBA All-World mobile game.",
   "scripts": {
     "clean": "gatsby clean",
     "develop": "gatsby develop",
@@ -28,6 +28,7 @@
     "js-big-decimal": "^1.4.1",
     "lodash": "^4.17.21",
     "match-sorter": "^6.3.1",
+    "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-table": "^7.8.0",
     "react-use-query-param-string": "^2.0.10",
@@ -36,25 +37,19 @@
   "author": "Drew Wei",
   "license": "0BSD",
   "starter-name": "gatsby-starter-portfolio-minimal-theme",
-  "homepage": "https://github.com/konstantinmuenster/gatsby-starter-portfolio-minimal-theme#readme",
+  "homepage": "https://naw-db.github.io/",
   "repository": {
     "type": "git",
-    "url": "https://github.com/konstantinmuenster/gatsby-starter-portfolio-minimal-theme.git"
+    "url": "https://github.com/naw-db/naw-db.github.io.git"
   },
   "bugs": {
-    "url": "https://github.com/konstantinmuenster/gatsby-starter-portfolio-minimal-theme/issues"
+    "url": "https://github.com/naw-db/naw-db.github.io/issues"
   },
   "keywords": [
     "react",
     "gatsby",
-    "gatsby-theme",
     "PWA",
-    "portfolio",
-    "showcase",
-    "minimal",
-    "animations",
-    "dark-mode",
-    "gdpr-compliant"
+    "NBA All-World"
   ],
   "devDependencies": {
     "gh-pages": "^5.0.0"
