@@ -232,7 +232,7 @@ const columnDefinitions = [
   }
 ];
 
-export function ShirtsTable({ theme, data }) {
+export function PantsTable({ theme, data }) {
   const columns = React.useMemo(
     () => columnDefinitions,
     []

@@ -33,27 +33,6 @@ module.exports = {
         resolveModules: [path.join(__dirname, "content")]
       }
     },
-    {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        name: "oneOnOneRewards",
-        path: `${__dirname}/content/data/one_on_one_rewards.csv`
-      }
-    },
-    {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        name: "players",
-        path: `${__dirname}/content/data/players.csv`
-      }
-    },
-    {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        name: "shirts",
-        path: `${__dirname}/content/data/shirts.csv`
-      }
-    },
     "gatsby-transformer-csv"
   ]
 };

@@ -5,7 +5,6 @@ import {
   MenuItem,
   Stack,
   Switch,
-  Table,
   TableBody,
   TableCell,
   TableHead,
@@ -14,23 +13,14 @@ import {
   TextField,
   ThemeProvider
 } from "@mui/material";
-import { styled } from "@mui/material/styles";
 import { useGlobalState } from "gatsby-theme-portfolio-minimal/src/context"
 import bigDecimal from "js-big-decimal";
 import { matchSorter } from "match-sorter";
 import React from "react";
 import { useFilters, usePagination, useSortBy, useTable } from "react-table";
 
-import { SelectColumnFilter, TextColumnFilter } from "src/components/common/Table";
+import { ScrollableTable, SelectColumnFilter, TextColumnFilter } from "src/components/common/Table";
 import { statCategories } from "src/components/players/PlayerStats";
-
-const ScrollableTable = styled(Table)`
-  display: block;
-  max-width: 100%;
-  overflow-x: scroll;
-  overflow-y: hidden;
-  border-bottom: 1px solid black;
-`;
 
 export const columnDefinitions = [
   {
@@ -60,6 +50,7 @@ export const columnDefinitions = [
         accessor: "team",
         helperText: "Team",
         Filter: SelectColumnFilter,
+        sortOptions: true,
         filter: "equals",
         disableSortBy: true
       },
@@ -67,6 +58,7 @@ export const columnDefinitions = [
         accessor: "conference",
         helperText: "Conf.",
         Filter: SelectColumnFilter,
+        sortOptions: true,
         filter: "equals",
         disableSortBy: true
       },
@@ -74,6 +66,7 @@ export const columnDefinitions = [
         accessor: "division",
         helperText: "Division",
         Filter: SelectColumnFilter,
+        sortOptions: true,
         filter: "equals",
         disableSortBy: true
       },

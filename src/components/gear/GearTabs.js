@@ -1,9 +1,15 @@
-import { Box, createTheme, CssBaseline, Tab, Tabs, ThemeProvider} from "@mui/material";
+import { Box, createTheme, CssBaseline, Tab, Tabs, ThemeProvider } from "@mui/material";
 import { useGlobalState } from "gatsby-theme-portfolio-minimal/src/context";
 import PropTypes from "prop-types";
 import React from "react";
 
+import { BallsTable } from "src/components/gear/BallsTable";
+import { EyewearTable } from "src/components/gear/EyewearTable";
+import { HeadwearTable } from "src/components/gear/HeadwearTable";
+import { PantsTable } from "src/components/gear/PantsTable";
 import { ShirtsTable } from "src/components/gear/ShirtsTable";
+import { SneakersTable } from "src/components/gear/SneakersTable";
+import { SocksTable } from "src/components/gear/SocksTable";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -58,6 +64,36 @@ export function GearTabs({ data }) {
     [ data.allShirtsCsv.nodes ]
   );
 
+  const pantsTableData = React.useMemo(
+    () => data.allPantsCsv.nodes,
+    [ data.allPantsCsv.nodes ]
+  );
+
+  const sneakersTableData = React.useMemo(
+    () => data.allSneakersCsv.nodes,
+    [ data.allSneakersCsv.nodes ]
+  );
+
+  const headwearTableData = React.useMemo(
+    () => data.allHeadwearCsv.nodes,
+    [ data.allHeadwearCsv.nodes ]
+  );
+
+  const eyewearTableData = React.useMemo(
+    () => data.allEyewearCsv.nodes,
+    [ data.allEyewearCsv.nodes ]
+  );
+
+  const ballsTableData = React.useMemo(
+    () => data.allBallsCsv.nodes,
+    [ data.allBallsCsv.nodes ]
+  );
+
+  const socksTableData = React.useMemo(
+    () => data.allSocksCsv.nodes,
+    [ data.allSocksCsv.nodes ]
+  );
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline>
@@ -86,22 +122,22 @@ export function GearTabs({ data }) {
             <ShirtsTable theme={theme} data={shirtsTableData} />
           </TabPanel>
           <TabPanel value={tab} index={1}>
-            Pants
+            <PantsTable theme={theme} data={pantsTableData} />
           </TabPanel>
           <TabPanel value={tab} index={2}>
-            Sneakers
+            <SneakersTable theme={theme} data={sneakersTableData} />
           </TabPanel>
           <TabPanel value={tab} index={3}>
-            Headwear
+            <HeadwearTable theme={theme} data={headwearTableData} />
           </TabPanel>
           <TabPanel value={tab} index={4}>
-            Eyewear
+            <EyewearTable theme={theme} data={eyewearTableData} />
           </TabPanel>
           <TabPanel value={tab} index={5}>
-            Balls
+            <BallsTable theme={theme} data={ballsTableData} />
           </TabPanel>
           <TabPanel value={tab} index={6}>
-            Socks
+            <SocksTable theme={theme} data={socksTableData} />
           </TabPanel>
         </Box>
       </CssBaseline>

@@ -1,4 +1,6 @@
-import { MenuItem, TextField } from "@mui/material";
+import { MenuItem, Table, TextField } from "@mui/material";
+import { styled } from "@mui/material/styles";
+import { matchSorter } from "match-sorter";
 import React from "react";
 
 export function TextColumnFilter({ column: { label, helperText, filterValue, setFilter }}) {
@@ -17,19 +19,25 @@ export function TextColumnFilter({ column: { label, helperText, filterValue, set
   );
 }
 
-export function SelectColumnFilter({ column: { id, label, helperText, filterValue, setFilter, preFilteredRows } }) {
+export function SelectColumnFilter({ column: { id, label, helperText, filterValue, setFilter, preFilteredRows, sortOptions } }) {
   // Calculate the options for filtering using the preFilteredRows.
-  const options = React.useMemo(
-    () => {
-      const options = new Set();
-      preFilteredRows.forEach(
-        row => { options.add(row.values[id]); }
-      );
+  const options = Array.from(
+    React.useMemo(
+      () => {
+        const options = new Set();
+        preFilteredRows.forEach(
+          row => { options.add(row.values[id]); }
+        );
 
-      return [...options.values()];
-    },
-    [id, preFilteredRows]
+        return [...options.values()];
+      },
+      [id, preFilteredRows]
+    )
   );
+
+  if (sortOptions) {
+    options.sort();
+  }
 
   // Render a multi-select box.
   return (
@@ -48,11 +56,27 @@ export function SelectColumnFilter({ column: { id, label, helperText, filterValu
       }
     >
       <MenuItem value="">All</MenuItem>
-      {options.map(
-        (option, i) => (
-          <MenuItem key={i} value={option}>{option}</MenuItem>
+      {
+        options.map(
+          (option, i) => (
+            <MenuItem key={i} value={option}>{option}</MenuItem>
+          )
         )
-      )}
+      }
     </TextField>
   );
 }
+
+export const ScrollableTable = styled(Table)`
+  display: block;
+  width: 100%;
+  overflow-x: scroll;
+  overflow-y: hidden;
+`;
+
+export function fuzzyTextFilterFn(rows, id, filterValue) {
+  return matchSorter(rows, filterValue, { keys: [row => row.values[id]] });
+}
+
+// Remove the filter if the string is empty.
+fuzzyTextFilterFn.autoRemove = val => !val;

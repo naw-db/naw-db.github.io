@@ -3,7 +3,7 @@ import React from "react";
 import { SelectColumnFilter, TextColumnFilter } from "src/components/common/Table";
 import { BaseTable } from "src/components/gear/BaseTable";
 
-const columnDefinitions = [
+export const columnDefinitions = [
   {
     id: "info",
     columns: [
@@ -232,7 +232,7 @@ const columnDefinitions = [
   }
 ];
 
-export function ShirtsTable({ theme, data }) {
+export function SneakersTable({ theme, data }) {
   const columns = React.useMemo(
     () => columnDefinitions,
     []
