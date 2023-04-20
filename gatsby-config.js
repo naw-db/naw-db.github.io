@@ -33,15 +33,6 @@ module.exports = {
         resolveModules: [path.join(__dirname, "content")]
       }
     },
-    {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        // The unique name for each instance
-        name: "player_base_stats",
-        // Path to the directory
-        path: `${__dirname}/content/data/players.csv`
-      }
-    },
     "gatsby-transformer-csv"
   ]
 };

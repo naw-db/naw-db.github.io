@@ -2,14 +2,9 @@ import { graphql } from "gatsby";
 import { Animation, Page, Section, Seo } from "gatsby-theme-portfolio-minimal";
 import React from "react";
 
-import { columnDefinitions, PlayersTable } from "src/components/players/PlayersTable";
+import { PlayersTable } from "src/components/players/PlayersTable";
 
 export default function ExplorePlayers({ data }) {
-  const tableColumns = React.useMemo(
-    () => columnDefinitions,
-    []
-  );
-
   const tableData = React.useMemo(
     () => {
       return data.allPlayersCsv
@@ -35,7 +30,7 @@ export default function ExplorePlayers({ data }) {
       <Page useSplashScreenAnimation>
         <Animation type="fadeUp">
           <Section heading="Explore Players">
-            <PlayersTable columns={tableColumns} data={tableData} />
+            <PlayersTable data={tableData} />
           </Section>
         </Animation>
       </Page>
