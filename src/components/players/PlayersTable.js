@@ -1,3 +1,6 @@
+import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
+import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
+import SwapVertIcon from "@mui/icons-material/SwapVert";
 import {
   createTheme,
   CssBaseline,
@@ -20,9 +23,9 @@ import React from "react";
 import { useFilters, usePagination, useSortBy, useTable } from "react-table";
 
 import { ScrollableTable, SelectColumnFilter, TextColumnFilter } from "src/components/common/Table";
-import { statCategories } from "src/components/players/PlayerStats";
+import { STAT_CATEGORIES } from "src/components/players/PlayerStats";
 
-export const columnDefinitions = [
+const COLUMN_DEFINITIONS = [
   {
     id: "info",
     columns: [
@@ -80,9 +83,10 @@ export const columnDefinitions = [
     ]
   },
   {
+    accessor: "overall",
     Header: "OVR",
     showHeader: true,
-    accessor: "overall",
+    showSortLabel: true,
     disableFilters: true
   },
   {
@@ -91,33 +95,38 @@ export const columnDefinitions = [
     backgroundColor: "secondary",
     columns: [
       {
+        accessor: "totalOffense",
         Header: "TOT",
         showHeader: true,
-        accessor: "totalOffense",
+        showSortLabel: true,
         disableFilters: true
       },
       {
+        accessor: "ballHandling",
         Header: "BHL",
         showHeader: true,
-        accessor: "ballHandling",
+        showSortLabel: true,
         disableFilters: true
       },
       {
+        accessor: "perimeterShooting",
         Header: "PES",
         showHeader: true,
-        accessor: "perimeterShooting",
+        showSortLabel: true,
         disableFilters: true
       },
       {
+        accessor: "midRangeShooting",
         Header: "MRS",
         showHeader: true,
-        accessor: "midRangeShooting",
+        showSortLabel: true,
         disableFilters: true
       },
       {
+        accessor: "dunkPower",
         Header: "DNK",
         showHeader: true,
-        accessor: "dunkPower",
+        showSortLabel: true,
         disableFilters: true
       }
     ]
@@ -127,27 +136,31 @@ export const columnDefinitions = [
     showHeader: true,
     columns: [
       {
+        accessor: "totalDefense",
         Header: "TOT",
         showHeader: true,
-        accessor: "totalDefense",
+        showSortLabel: true,
         disableFilters: true
       },
       {
+        accessor: "defense",
         Header: "DEF",
         showHeader: true,
-        accessor: "defense",
+        showSortLabel: true,
         disableFilters: true
       },
       {
+        accessor: "blocking",
         Header: "BLK",
         showHeader: true,
-        accessor: "blocking",
+        showSortLabel: true,
         disableFilters: true
       },
       {
+        accessor: "stealing",
         Header: "STL",
         showHeader: true,
-        accessor: "stealing",
+        showSortLabel: true,
         disableFilters: true
       }
     ]
@@ -158,27 +171,31 @@ export const columnDefinitions = [
     backgroundColor: "secondary",
     columns: [
       {
+        accessor: "totalFitness",
         Header: "TOT",
         showHeader: true,
-        accessor: "totalFitness",
+        showSortLabel: true,
         disableFilters: true
       },
       {
+        accessor: "strength",
         Header: "STR",
         showHeader: true,
-        accessor: "strength",
+        showSortLabel: true,
         disableFilters: true
       },
       {
+        accessor: "speed",
         Header: "SPD",
         showHeader: true,
-        accessor: "speed",
+        showSortLabel: true,
         disableFilters: true
       },
       {
+        accessor: "stamina",
         Header: "STA",
         showHeader: true,
-        accessor: "stamina",
+        showSortLabel: true,
         disableFilters: true
       }
     ]
@@ -223,7 +240,7 @@ function calculateDisplayData(data, displayMaxStats) {
     entry => {
       const displayedEntry = Object.assign({}, entry);
 
-      statCategories.forEach(
+      STAT_CATEGORIES.forEach(
         category => {
           displayedEntry[category] = displayedEntry[`${category}${displayMaxStats ? "Max" : "Base"}`];
         }
@@ -270,7 +287,7 @@ export function PlayersTable({ data }) {
   });
 
   const columns = React.useMemo(
-    () => columnDefinitions,
+    () => COLUMN_DEFINITIONS,
     []
   );
 
@@ -348,6 +365,15 @@ export function PlayersTable({ data }) {
                         }}
                       >
                         <div {...column.getSortByToggleProps()}>
+                          <span>
+                            {
+                              column.showSortLabel
+                                ? column.isSorted
+                                  ? (column.isSortedDesc ? <ArrowDownwardIcon fontSize="small" /> : <ArrowUpwardIcon fontSize="small" />)
+                                  : <SwapVertIcon fontSize="small" />
+                                : null
+                            }
+                          </span>
                           <div>{column.showHeader ? column.render("Header") : null}</div>
                           <div>{column.canFilter ? column.render("Filter") : null}</div>
                         </div>

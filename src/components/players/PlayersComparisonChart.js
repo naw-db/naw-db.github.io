@@ -13,13 +13,13 @@ import gradients from "data/player_stat_gradients.json";
 
 // Chart displays attributes in reversed order.
 
-const overallAttributesToCompare = [
+const OVERALL_ATTRIBUTES = [
   "Total Fitness",
   "Total Defense",
   "Total Offense"
 ];
 
-const detailedAttributesToCompare = [
+const DETAILED_ATTRIBUTES = [
   "Stamina",
   "Speed",
   "Strength",
@@ -32,6 +32,8 @@ const detailedAttributesToCompare = [
   "Ball Handling"
 ];
 
+const BAR_SERIES_LABEL_ANIMATIONS = Symbol("animation");
+
 const PlayerDropdown = styled(Select)`
   margin-left: 5px;
   margin-right: 5px;
@@ -42,11 +44,58 @@ const RankDropdown = styled(Select)`
   margin-right: 5px;
 `;
 
-const ChartRoot = props => (
+const addKeyframe = (name, def) => {
+  if (typeof document === "undefined") {
+    return;
+  }
+  const head = document.getElementsByTagName("head")[0];
+  let style = Array.from(head.getElementsByTagName("style"))
+    .find(node => node.dataset[BAR_SERIES_LABEL_ANIMATIONS]);
+  if (!style) {
+    style = document.createElement("style");
+    style.dataset[BAR_SERIES_LABEL_ANIMATIONS] = true;
+    head.appendChild(style);
+  }
+  const content = style.textContent;
+  if (!content.includes(name)) {
+    style.textContent += `\n@keyframes ${name} ${def}\n`;
+  }
+};
+
+const getBarSeriesLabelAnimationName = () => {
+  const name = "animation_label_opacity";
+  addKeyframe(name, "{ 0% { opacity: 0; } 99% { opacity: 0; } 100% { opacity: 1; } }");
+  return name;
+};
+
+const StyledBarSeriesLabel = styled(Chart.Label)(() => ({
+  [`&.BarSeriesLabel`]: {
+    fill: "#ffffff",
+    fontSize: "10px",
+    animation: `${getBarSeriesLabelAnimationName()} 1s`,
+  }
+}));
+
+const LegendRoot = props => (
   <Legend.Root {...props} sx={{ display: "flex", margin: "auto", flexDirection: "row" }} />
 );
-const ChartLabel = props => (
+const LegendLabel = props => (
   <Legend.Label {...props} sx={{ whiteSpace: "nowrap" }} />
+);
+
+const BarWithLabel = ({ value, ...restProps }) => (
+  <React.Fragment>
+    <BarSeries.Point {...restProps} />
+    <StyledBarSeriesLabel
+      x={restProps.val + restProps.startVal - 20}
+      y={restProps.arg}
+      dominantBaseline="middle"
+      textAnchor="middle"
+      className="BarSeriesLabel"
+    >
+      {value}
+    </StyledBarSeriesLabel>
+  </React.Fragment>
 );
 
 function PlayerSelection(data, playerRawData, qualifier, queryParams, forceUpdate) {
@@ -155,7 +204,7 @@ export function PlayersComparisonChart({ defaultPlayers, barColors, data }) {
 
   const overallChartData = [];
 
-  overallAttributesToCompare.forEach(
+  OVERALL_ATTRIBUTES.forEach(
     attribute => {
       const entry = { attribute: attribute };
       entry[playerOneName] = parseFloat(playerOneDisplayedData[camelCase(attribute)]);
@@ -167,7 +216,7 @@ export function PlayersComparisonChart({ defaultPlayers, barColors, data }) {
 
   const detailedChartData = [];
 
-  detailedAttributesToCompare.forEach(
+  DETAILED_ATTRIBUTES.forEach(
     attribute => {
       const entry = { attribute: attribute };
       entry[playerOneName] = parseFloat(playerOneDisplayedData[camelCase(attribute)]);
@@ -218,15 +267,17 @@ export function PlayersComparisonChart({ defaultPlayers, barColors, data }) {
               valueField={playerOneName}
               argumentField="attribute"
               color={barColors[0]}
+              pointComponent={BarWithLabel}
             />
             <BarSeries
               name={playerTwoRawData.shortName}
               valueField={playerTwoName}
               argumentField="attribute"
               color={barColors[1]}
+              pointComponent={BarWithLabel}
             />
             <Animation />
-            <Legend position="top" rootComponent={ChartRoot} labelComponent={ChartLabel} />
+            <Legend position="top" rootComponent={LegendRoot} labelComponent={LegendLabel} />
             <Stack />
           </Chart>
         </Section>
@@ -243,15 +294,17 @@ export function PlayersComparisonChart({ defaultPlayers, barColors, data }) {
               valueField={playerOneName}
               argumentField="attribute"
               color={barColors[0]}
+              pointComponent={BarWithLabel}
             />
             <BarSeries
               name={playerTwoRawData.shortName}
               valueField={playerTwoName}
               argumentField="attribute"
               color={barColors[1]}
+              pointComponent={BarWithLabel}
             />
             <Animation />
-            <Legend position="top" rootComponent={ChartRoot} labelComponent={ChartLabel} />
+            <Legend position="top" rootComponent={LegendRoot} labelComponent={LegendLabel} />
             <Stack />
           </Chart>
         </Section>

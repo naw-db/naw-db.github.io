@@ -2,7 +2,7 @@ import bigDecimal from "js-big-decimal";
 
 import gradients from "data/player_stat_gradients.json";
 
-export const statCategories = [
+export const STAT_CATEGORIES = [
   "ballHandling",
   "perimeterShooting",
   "midRangeShooting",
@@ -23,7 +23,7 @@ export function calculateStat(playerStats, targetRank, targetLevel) {
 
   const displayedStats = {};
 
-  statCategories.forEach(
+  STAT_CATEGORIES.forEach(
     category => {
       // perStatGradient = (maxStat - baseStat - (maxRank - baseRank) * rankUpBonus) / gradientMultiplierSum
       const gradient = new bigDecimal(playerStats[`${category}Max`])

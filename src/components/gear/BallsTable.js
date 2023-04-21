@@ -1,71 +1,76 @@
 import React from "react";
 
-import { SelectColumnFilter, TextColumnFilter } from "src/components/common/Table";
+import {
+  generateBrandOptions,
+  generateColorOptions,
+  generateRarityOptions,
+  SelectColumnFilter,
+  TextColumnFilter
+} from "src/components/common/Table";
 import { BaseTable } from "src/components/gear/BaseTable";
-
-
-const columnDefinitions = [
-  {
-    id: "info",
-    columns: [
-      {
-        accessor: "name",
-        helperText: "Name",
-        Filter: TextColumnFilter,
-        disableSortBy: true
-      },
-      {
-        accessor: "levelAvailable",
-        helperText: "Lvl Avail.",
-        Filter: SelectColumnFilter,
-        filter: "equals",
-        disableSortBy: true
-      },
-      {
-        accessor: "brand",
-        helperText: "Brand",
-        Filter: SelectColumnFilter,
-        sortOptions: true,
-        filter: "equals",
-        disableSortBy: true
-      },
-      {
-        accessor: "pattern",
-        helperText: "Style",
-        Filter: SelectColumnFilter,
-        sortOptions: true,
-        filter: "equals",
-        disableSortBy: true
-      },
-      {
-        accessor: "color",
-        helperText: "Color",
-        Filter: SelectColumnFilter,
-        sortOptions: true,
-        filter: "equals",
-        disableSortBy: true
-      },
-      {
-        accessor: "rarity",
-        helperText: "Rarity",
-        Filter: SelectColumnFilter,
-        filter: "equals",
-        disableSortBy: true
-      },
-      {
-        Header: "Price",
-        showHeader: true,
-        accessor: "price",
-        disableFilters: true
-      }
-    ]
-  }
-];
 
 export function BallsTable({ theme, data }) {
   const columns = React.useMemo(
-    () => columnDefinitions,
-    []
+    () => [
+      {
+        id: "info",
+        columns: [
+          {
+            accessor: "name",
+            helperText: "Name",
+            Filter: TextColumnFilter,
+            disableSortBy: true
+          },
+          {
+            accessor: "levelAvailable",
+            helperText: "Lvl Avail.",
+            Filter: SelectColumnFilter,
+            filter: "equals",
+            disableSortBy: true
+          },
+          {
+            accessor: "brand",
+            helperText: "Brand",
+            options: generateBrandOptions(data, e => e.brand),
+            Filter: SelectColumnFilter,
+            filter: "equals",
+            disableSortBy: true
+          },
+          {
+            accessor: "pattern",
+            helperText: "Pattern",
+            Filter: SelectColumnFilter,
+            sortOptions: true,
+            filter: "equals",
+            disableSortBy: true
+          },
+          {
+            accessor: "color",
+            helperText: "Color",
+            options: generateColorOptions(data, e => e.color),
+            Filter: SelectColumnFilter,
+            filter: "includes",
+            disableSortBy: true
+          },
+          {
+            accessor: "rarity",
+            helperText: "Rarity",
+            options: generateRarityOptions(data, e => e.rarity),
+            Filter: SelectColumnFilter,
+            filter: "equals",
+            disableSortBy: true
+          },
+          {
+            Header: "Price",
+            showHeader: true,
+            showSortLabel: true,
+            accessor: "price",
+            disableFilters: true
+          }
+        ]
+      }
+    ],
+    [ data ]
   );
 
   return (

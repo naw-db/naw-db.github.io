@@ -3,6 +3,29 @@ import { styled } from "@mui/material/styles";
 import { matchSorter } from "match-sorter";
 import React from "react";
 
+const BRAND_SORT_ORDER = {
+  "N/A": "0",
+  "Varies": "00"
+};
+
+const STYLE_SORT_ORDER = {
+  "N/A": "0",
+  "Varies": "00"
+};
+
+const COLOR_SORT_ORDER = {
+  "N/A": "0",
+  "Varies": "00"
+};
+
+const RARITY_SORT_ORDER = {
+  "N/A": "0",
+  "Varies": "00",
+  "Starter": "000",
+  "All-Star": "0000",
+  "All-World": "00000"
+};
+
 export function TextColumnFilter({ column: { label, helperText, filterValue, setFilter }}) {
   return (
     <TextField
@@ -19,24 +42,25 @@ export function TextColumnFilter({ column: { label, helperText, filterValue, set
   );
 }
 
-export function SelectColumnFilter({ column: { id, label, helperText, filterValue, setFilter, preFilteredRows, sortOptions } }) {
-  // Calculate the options for filtering using the preFilteredRows.
-  const options = Array.from(
+export function SelectColumnFilter({ column: { id, label, helperText, options = null, filterValue, setFilter, preFilteredRows, sortOptions = false } }) {
+  // Calculate the organic options for filtering using the preFilteredRows.
+  const columnOptions = Array.from(
     React.useMemo(
       () => {
-        const options = new Set();
-        preFilteredRows.forEach(
-          row => { options.add(row.values[id]); }
+        const optionsSet = options ? options : new Set(
+          preFilteredRows.map(
+            row => row.values[id]
+          )
         );
 
-        return [...options.values()];
+        return [...optionsSet.values()];
       },
-      [id, preFilteredRows]
+      [ id, options, preFilteredRows ]
     )
   );
 
   if (sortOptions) {
-    options.sort();
+    columnOptions.sort();
   }
 
   // Render a multi-select box.
@@ -46,7 +70,7 @@ export function SelectColumnFilter({ column: { id, label, helperText, filterValu
       label={label}
       helperText={helperText}
       defaultValue=""
-      value={filterValue}
+      value={filterValue || ""}
       size="small"
       fullWidth
       onChange={
@@ -57,7 +81,7 @@ export function SelectColumnFilter({ column: { id, label, helperText, filterValu
     >
       <MenuItem value="">All</MenuItem>
       {
-        options.map(
+        columnOptions.map(
           (option, i) => (
             <MenuItem key={i} value={option}>{option}</MenuItem>
           )
@@ -80,3 +104,57 @@ export function fuzzyTextFilterFn(rows, id, filterValue) {
 
 // Remove the filter if the string is empty.
 fuzzyTextFilterFn.autoRemove = val => !val;
+
+export function generateBrandOptions(data, selectFieldFunction) {
+  return new Set(
+    data.map(e => selectFieldFunction(e))
+      .sort(
+        (a, b) => {
+          const normalizedA = BRAND_SORT_ORDER[a] ? BRAND_SORT_ORDER[a] : a;
+          const normalizedB = BRAND_SORT_ORDER[b] ? BRAND_SORT_ORDER[b] : b;
+
+          return normalizedA.localeCompare(normalizedB);
+        }
+      )
+  );
+}
+
+export function generateStyleOptions(data, selectFieldFunction) {
+  return new Set(
+    data.map(e => selectFieldFunction(e))
+      .sort(
+        (a, b) => {
+          const normalizedA = STYLE_SORT_ORDER[a] ? STYLE_SORT_ORDER[a] : a;
+          const normalizedB = STYLE_SORT_ORDER[b] ? STYLE_SORT_ORDER[b] : b;
+
+          return normalizedA.localeCompare(normalizedB);
+        }
+      )
+  );
+}
+
+export function generateColorOptions(data, selectFieldFunction) {
+  return new Set(
+    data.flatMap(e => selectFieldFunction(e).split("/"))
+      .map(e => e.trim())
+      .sort(
+        (a, b) => {
+          const normalizedA = COLOR_SORT_ORDER[a] ? COLOR_SORT_ORDER[a] : a;
+          const normalizedB = COLOR_SORT_ORDER[b] ? COLOR_SORT_ORDER[b] : b;
+
+          return normalizedA.localeCompare(normalizedB);
+        }
+      )
+  );
+}
+
+export function generateRarityOptions(data, selectFieldFunction) {
+  return new Set(
+    data.map(e => selectFieldFunction(e))
+      .sort(
+        (a, b) => {
+          return RARITY_SORT_ORDER[a].localeCompare(RARITY_SORT_ORDER[b]);
+        }
+      )
+  );
+}

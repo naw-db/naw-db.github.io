@@ -44,7 +44,7 @@
 
 #### 3.2 To run a production build of your website locally on your machine
 * `cd` into the root directory of the website project.
-* Run command: `npm install && gatsby serve`
+* Run command: `npm install && gatsby build && gatsby serve`
 
 ### 4. Publish to GitHub Pages
 * `cd` into the root directory of the website project.
