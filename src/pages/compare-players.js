@@ -4,14 +4,16 @@ import React from "react";
 
 import { PlayersComparisonChart } from "src/components/players/PlayersComparisonChart";
 
-const defaultPlayers = [ "Stephen Curry", "LeBron James" ];
+const DEFAULT_PLAYERS = [ "Stephen Curry", "LeBron James" ];
+
+const BAR_CHART_COLORS = [ "#55B4B0", "#D65076" ];
 
 export default function ComparePlayers({ data }) {
   return (
     <>
       <Seo title="Compare Players" />
       <Page useSplashScreenAnimation>
-        <PlayersComparisonChart defaultPlayers={defaultPlayers} barColors={["#F96167", "#FCE77D"]} data={data}/>
+        <PlayersComparisonChart defaultPlayers={DEFAULT_PLAYERS} barColors={BAR_CHART_COLORS} data={data}/>
       </Page>
     </>
   );

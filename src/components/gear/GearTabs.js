@@ -23,7 +23,7 @@ function TabPanel(props) {
       {...other}
     >
       {value === index && (
-        <Box p={3}>
+        <Box>
           {children}
         </Box>
       )}
@@ -97,49 +97,42 @@ export function GearTabs({ data }) {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline>
-        <Box
-          sx={{
-            flexGrow: 1,
-            bgcolor: "background.paper",
-          }}
+        <Tabs
+          variant="scrollable"
+          scrollButtons
+          allowScrollButtonsMobile
+          value={tab}
+          onChange={handleTabChange}
         >
-          <Tabs
-            variant="scrollable"
-            scrollButtons
-            allowScrollButtonsMobile
-            value={tab}
-            onChange={handleTabChange}
-          >
-            <Tab label="Shirts" {...a11yProps(0)} />
-            <Tab label="Pants" {...a11yProps(1)} />
-            <Tab label="Sneakers" {...a11yProps(2)} />
-            <Tab label="Headwear" {...a11yProps(3)} />
-            <Tab label="Eyewear" {...a11yProps(4)} />
-            <Tab label="Balls" {...a11yProps(5)} />
-            <Tab label="Socks" {...a11yProps(6)} />
-          </Tabs>
-          <TabPanel value={tab} index={0}>
-            <ShirtsTable theme={theme} data={shirtsTableData} />
-          </TabPanel>
-          <TabPanel value={tab} index={1}>
-            <PantsTable theme={theme} data={pantsTableData} />
-          </TabPanel>
-          <TabPanel value={tab} index={2}>
-            <SneakersTable theme={theme} data={sneakersTableData} />
-          </TabPanel>
-          <TabPanel value={tab} index={3}>
-            <HeadwearTable theme={theme} data={headwearTableData} />
-          </TabPanel>
-          <TabPanel value={tab} index={4}>
-            <EyewearTable theme={theme} data={eyewearTableData} />
-          </TabPanel>
-          <TabPanel value={tab} index={5}>
-            <BallsTable theme={theme} data={ballsTableData} />
-          </TabPanel>
-          <TabPanel value={tab} index={6}>
-            <SocksTable theme={theme} data={socksTableData} />
-          </TabPanel>
-        </Box>
+          <Tab label="Shirts" {...a11yProps(0)} />
+          <Tab label="Pants" {...a11yProps(1)} />
+          <Tab label="Sneakers" {...a11yProps(2)} />
+          <Tab label="Headwear" {...a11yProps(3)} />
+          <Tab label="Eyewear" {...a11yProps(4)} />
+          <Tab label="Balls" {...a11yProps(5)} />
+          <Tab label="Socks" {...a11yProps(6)} />
+        </Tabs>
+        <TabPanel value={tab} index={0}>
+          <ShirtsTable theme={theme} data={shirtsTableData} />
+        </TabPanel>
+        <TabPanel value={tab} index={1}>
+          <PantsTable theme={theme} data={pantsTableData} />
+        </TabPanel>
+        <TabPanel value={tab} index={2}>
+          <SneakersTable theme={theme} data={sneakersTableData} />
+        </TabPanel>
+        <TabPanel value={tab} index={3}>
+          <HeadwearTable theme={theme} data={headwearTableData} />
+        </TabPanel>
+        <TabPanel value={tab} index={4}>
+          <EyewearTable theme={theme} data={eyewearTableData} />
+        </TabPanel>
+        <TabPanel value={tab} index={5}>
+          <BallsTable theme={theme} data={ballsTableData} />
+        </TabPanel>
+        <TabPanel value={tab} index={6}>
+          <SocksTable theme={theme} data={socksTableData} />
+        </TabPanel>
       </CssBaseline>
     </ThemeProvider>
   );

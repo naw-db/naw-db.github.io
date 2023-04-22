@@ -1,8 +1,19 @@
-import { Stack, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow } from "@mui/material";
+import {
+  Stack,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TablePagination,
+  TableRow
+} from "@mui/material";
 import React from "react";
 import { useFilters, usePagination, useSortBy, useTable } from "react-table";
 
 import { fuzzyTextFilterFn, ScrollableTable } from "src/components/common/Table";
+import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
+import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
+import SwapVertIcon from "@mui/icons-material/SwapVert";
 
 export function BaseTable({ theme, columns, data }) {
   const filterTypes = React.useMemo(
@@ -61,6 +72,7 @@ export function BaseTable({ theme, columns, data }) {
                     <TableCell
                       {...column.getHeaderProps()}
                       align="center"
+                      width={column.width}
                       style={{
                         whiteSpace: "nowrap",
                         backgroundColor: column.backgroundColor != null
@@ -69,6 +81,15 @@ export function BaseTable({ theme, columns, data }) {
                       }}
                     >
                       <div {...column.getSortByToggleProps()}>
+                        <span>
+                          {
+                            column.showSortLabel
+                              ? column.isSorted
+                                ? (column.isSortedDesc ? <ArrowDownwardIcon fontSize="small" /> : <ArrowUpwardIcon fontSize="small" />)
+                                : <SwapVertIcon fontSize="small" />
+                              : null
+                          }
+                        </span>
                         <div>{column.showHeader ? column.render("Header") : null}</div>
                         <div>{column.canFilter ? column.render("Filter") : null}</div>
                       </div>
@@ -110,6 +131,7 @@ export function BaseTable({ theme, columns, data }) {
         <TablePagination
           component="div"
           count={rows.length}
+          labelRowsPerPage="Rows"
           rowsPerPage={pageSize}
           page={pageIndex}
           showFirstButton
