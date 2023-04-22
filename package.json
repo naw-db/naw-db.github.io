@@ -5,9 +5,9 @@
   "scripts": {
     "clean": "gatsby clean",
     "develop": "gatsby develop",
-    "build": "gatsby build",
+    "build": "gatsby clean && gatsby build",
     "serve": "gatsby serve",
-    "deploy": "gatsby build && gh-pages -d public -b site"
+    "deploy": "gatsby clean && gatsby build && gh-pages -d public -b site"
   },
   "engines": {
     "node": ">=18.0.0"
@@ -20,6 +20,7 @@
     "@mui/icons-material": "^5.11.16",
     "@mui/material": "^5.12.0",
     "gatsby": "^5.0.1",
+    "gatsby-plugin-google-tagmanager": "^5.9.0",
     "gatsby-plugin-root-import": "^2.0.9",
     "gatsby-source-filesystem": "^5.8.0",
     "gatsby-theme-portfolio-minimal": "^4.4.0",
