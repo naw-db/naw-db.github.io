@@ -19,12 +19,16 @@ module.exports = {
         blogSettings: {
           path: "/guides",  // Defines the slug for the blog listing page
           usePathPrefixForArticles: false  // Default true (i.e. path will be /blog/first-article)
-        },
-        googleAnalytics: {
-          trackingId: "G-0ZE4TQH7H3",
-          anonymize: true,
-          environments: [ "production" ]
         }
+      }
+    },
+    {
+      resolve: "gatsby-plugin-google-tagmanager",
+      options: {
+        id: "G-0ZE4TQH7H3",
+        includeInDevelopment: true,
+        defaultDataLayer: { platform: "gatsby" },
+        enableWebVitalsTracking: true
       }
     },
     {
