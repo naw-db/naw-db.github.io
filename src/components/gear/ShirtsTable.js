@@ -1,14 +1,7 @@
 import React from "react";
 
-import {
-  generateBrandOptions,
-  generateColorOptions,
-  generateRarityOptions,
-  generateStyleOptions,
-  SelectColumnFilter,
-  TextColumnFilter
-} from "src/components/common/Table";
-import { BaseTable } from "src/components/gear/BaseTable";
+import { SelectColumnFilter, TextColumnFilter } from "src/components/common/Table";
+import { BaseTable, generateBrandOptions, generateColorOptions, generateRarityOptions, generateStyleOptions } from "src/components/gear/BaseTable";
 
 export function ShirtsTable({ theme, data }) {
   const columns = React.useMemo(
