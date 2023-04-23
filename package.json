@@ -4,10 +4,10 @@
   "description": "A database fan site for the NBA All-World mobile game.",
   "scripts": {
     "clean": "gatsby clean",
+    "validate-data": "node ./bin/validate_csv.mjs ./content/data/ && node ./bin/validate_json.mjs ./content/data/",
     "develop": "gatsby develop",
-    "build": "gatsby clean && gatsby build",
-    "serve": "gatsby serve",
-    "deploy": "gatsby clean && gatsby build && gh-pages -d public -b site"
+    "build": "npm run clean && gatsby build",
+    "serve": "gatsby serve"
   },
   "engines": {
     "node": ">=18.0.0"
@@ -53,6 +53,7 @@
     "NBA All-World"
   ],
   "devDependencies": {
+    "csv-parse": "^5.3.8",
     "gh-pages": "^5.0.0"
   }
 }
