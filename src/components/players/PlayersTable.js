@@ -18,196 +18,13 @@ import {
 } from "@mui/material";
 import { useGlobalState } from "gatsby-theme-portfolio-minimal/src/context"
 import bigDecimal from "js-big-decimal";
-import { matchSorter } from "match-sorter";
 import React from "react";
 import { useFilters, usePagination, useSortBy, useTable } from "react-table";
 
-import { ScrollableTable, SelectColumnFilter, TextColumnFilter } from "src/components/common/Table";
+import { fuzzyTextFilterFn, ScrollableTable, SelectColumnFilter, TextColumnFilter } from "src/components/common/Table";
 import { STAT_CATEGORIES } from "src/components/players/PlayerStats";
 
-const COLUMN_DEFINITIONS = [
-  {
-    id: "info",
-    columns: [
-      {
-        accessor: "name",
-        helperText: "Name",
-        Filter: TextColumnFilter,
-        disableSortBy: true
-      },
-      {
-        accessor: "levelAvailable",
-        helperText: "Lvl Avail.",
-        Filter: SelectColumnFilter,
-        filter: "equals",
-        disableSortBy: true
-      },
-      {
-        accessor: "type",
-        helperText: "Type",
-        Filter: SelectColumnFilter,
-        filter: "equals",
-        disableSortBy: true
-      },
-      {
-        accessor: "team",
-        helperText: "Team",
-        Filter: SelectColumnFilter,
-        sortOptions: true,
-        filter: "equals",
-        disableSortBy: true
-      },
-      {
-        accessor: "conference",
-        helperText: "Conf.",
-        Filter: SelectColumnFilter,
-        sortOptions: true,
-        filter: "equals",
-        disableSortBy: true
-      },
-      {
-        accessor: "division",
-        helperText: "Division",
-        Filter: SelectColumnFilter,
-        sortOptions: true,
-        filter: "equals",
-        disableSortBy: true
-      },
-      {
-        accessor: "position",
-        helperText: "Pos.",
-        Filter: PositionColumnFilter,
-        filter: "includes",
-        disableSortBy: true
-      }
-    ]
-  },
-  {
-    accessor: "overall",
-    Header: "OVR",
-    showHeader: true,
-    showSortLabel: true,
-    disableFilters: true
-  },
-  {
-    Header: "Offense",
-    showHeader: true,
-    backgroundColor: "secondary",
-    columns: [
-      {
-        accessor: "totalOffense",
-        Header: "TOT",
-        showHeader: true,
-        showSortLabel: true,
-        disableFilters: true
-      },
-      {
-        accessor: "ballHandling",
-        Header: "BHL",
-        showHeader: true,
-        showSortLabel: true,
-        disableFilters: true
-      },
-      {
-        accessor: "perimeterShooting",
-        Header: "PES",
-        showHeader: true,
-        showSortLabel: true,
-        disableFilters: true
-      },
-      {
-        accessor: "midRangeShooting",
-        Header: "MRS",
-        showHeader: true,
-        showSortLabel: true,
-        disableFilters: true
-      },
-      {
-        accessor: "dunkPower",
-        Header: "DNK",
-        showHeader: true,
-        showSortLabel: true,
-        disableFilters: true
-      }
-    ]
-  },
-  {
-    Header: "Defense",
-    showHeader: true,
-    columns: [
-      {
-        accessor: "totalDefense",
-        Header: "TOT",
-        showHeader: true,
-        showSortLabel: true,
-        disableFilters: true
-      },
-      {
-        accessor: "defense",
-        Header: "DEF",
-        showHeader: true,
-        showSortLabel: true,
-        disableFilters: true
-      },
-      {
-        accessor: "blocking",
-        Header: "BLK",
-        showHeader: true,
-        showSortLabel: true,
-        disableFilters: true
-      },
-      {
-        accessor: "stealing",
-        Header: "STL",
-        showHeader: true,
-        showSortLabel: true,
-        disableFilters: true
-      }
-    ]
-  },
-  {
-    Header: "Fitness",
-    showHeader: true,
-    backgroundColor: "secondary",
-    columns: [
-      {
-        accessor: "totalFitness",
-        Header: "TOT",
-        showHeader: true,
-        showSortLabel: true,
-        disableFilters: true
-      },
-      {
-        accessor: "strength",
-        Header: "STR",
-        showHeader: true,
-        showSortLabel: true,
-        disableFilters: true
-      },
-      {
-        accessor: "speed",
-        Header: "SPD",
-        showHeader: true,
-        showSortLabel: true,
-        disableFilters: true
-      },
-      {
-        accessor: "stamina",
-        Header: "STA",
-        showHeader: true,
-        showSortLabel: true,
-        disableFilters: true
-      }
-    ]
-  }
-];
-
-function fuzzyTextFilterFn(rows, id, filterValue) {
-  return matchSorter(rows, filterValue, { keys: [row => row.values[id]] });
-}
-
-// Remove the filter if the string is empty.
-fuzzyTextFilterFn.autoRemove = val => !val;
+export const RANK_UP_REQUIREMENT_SEPARATOR = " → ";
 
 function PositionColumnFilter({ column: { label, helperText, filterValue, setFilter } }) {
   return (
@@ -232,6 +49,14 @@ function PositionColumnFilter({ column: { label, helperText, filterValue, setFil
       <MenuItem value="PF">PF</MenuItem>
       <MenuItem value="C">C</MenuItem>
     </TextField>
+  );
+}
+
+function generateRankUpRequirementsOptions(data, selectFieldFunction) {
+  return new Set(
+    data.flatMap(e => selectFieldFunction(e).split(RANK_UP_REQUIREMENT_SEPARATOR))
+      .map(e => e.trim())
+      .sort()
   );
 }
 
@@ -287,8 +112,192 @@ export function PlayersTable({ data }) {
   });
 
   const columns = React.useMemo(
-    () => COLUMN_DEFINITIONS,
-    []
+    () => [
+      {
+        id: "info",
+        columns: [
+          {
+            accessor: "name",
+            helperText: "Name",
+            Filter: TextColumnFilter,
+            disableSortBy: true
+          },
+          {
+            accessor: "levelAvailable",
+            helperText: "Lvl Avail.",
+            Filter: SelectColumnFilter,
+            filter: "equals",
+            disableSortBy: true
+          },
+          {
+            accessor: "type",
+            helperText: "Type",
+            Filter: SelectColumnFilter,
+            filter: "equals",
+            disableSortBy: true
+          },
+          {
+            accessor: "team",
+            helperText: "Team",
+            Filter: SelectColumnFilter,
+            sortOptions: true,
+            filter: "equals",
+            disableSortBy: true
+          },
+          {
+            accessor: "conference",
+            helperText: "Conf.",
+            Filter: SelectColumnFilter,
+            sortOptions: true,
+            filter: "equals",
+            disableSortBy: true
+          },
+          {
+            accessor: "division",
+            helperText: "Division",
+            Filter: SelectColumnFilter,
+            sortOptions: true,
+            filter: "equals",
+            disableSortBy: true
+          },
+          {
+            accessor: "position",
+            helperText: "Pos.",
+            Filter: PositionColumnFilter,
+            filter: "includes",
+            disableSortBy: true
+          }
+        ]
+      },
+      {
+        accessor: "overall",
+        Header: "OVR",
+        showHeader: true,
+        showSortLabel: true,
+        disableFilters: true
+      },
+      {
+        Header: "Offense",
+        showHeader: true,
+        backgroundColor: "secondary",
+        columns: [
+          {
+            accessor: "totalOffense",
+            Header: "TOT",
+            showHeader: true,
+            showSortLabel: true,
+            disableFilters: true
+          },
+          {
+            accessor: "ballHandling",
+            Header: "BHL",
+            showHeader: true,
+            showSortLabel: true,
+            disableFilters: true
+          },
+          {
+            accessor: "perimeterShooting",
+            Header: "PES",
+            showHeader: true,
+            showSortLabel: true,
+            disableFilters: true
+          },
+          {
+            accessor: "midRangeShooting",
+            Header: "MRS",
+            showHeader: true,
+            showSortLabel: true,
+            disableFilters: true
+          },
+          {
+            accessor: "dunkPower",
+            Header: "DNK",
+            showHeader: true,
+            showSortLabel: true,
+            disableFilters: true
+          }
+        ]
+      },
+      {
+        Header: "Defense",
+        showHeader: true,
+        columns: [
+          {
+            accessor: "totalDefense",
+            Header: "TOT",
+            showHeader: true,
+            showSortLabel: true,
+            disableFilters: true
+          },
+          {
+            accessor: "defense",
+            Header: "DEF",
+            showHeader: true,
+            showSortLabel: true,
+            disableFilters: true
+          },
+          {
+            accessor: "blocking",
+            Header: "BLK",
+            showHeader: true,
+            showSortLabel: true,
+            disableFilters: true
+          },
+          {
+            accessor: "stealing",
+            Header: "STL",
+            showHeader: true,
+            showSortLabel: true,
+            disableFilters: true
+          }
+        ]
+      },
+      {
+        Header: "Fitness",
+        showHeader: true,
+        backgroundColor: "secondary",
+        columns: [
+          {
+            accessor: "totalFitness",
+            Header: "TOT",
+            showHeader: true,
+            showSortLabel: true,
+            disableFilters: true
+          },
+          {
+            accessor: "strength",
+            Header: "STR",
+            showHeader: true,
+            showSortLabel: true,
+            disableFilters: true
+          },
+          {
+            accessor: "speed",
+            Header: "SPD",
+            showHeader: true,
+            showSortLabel: true,
+            disableFilters: true
+          },
+          {
+            accessor: "stamina",
+            Header: "STA",
+            showHeader: true,
+            showSortLabel: true,
+            disableFilters: true
+          }
+        ]
+      },
+      {
+        accessor: "beatToRankUp",
+        Header: "Beat to Rank Up",
+        showHeader: true,
+        options: generateRankUpRequirementsOptions(data, e => e.beatToRankUp),
+        Filter: SelectColumnFilter,
+        filter: "includes",
+        disableSortBy: true
+      }
+    ],
+    [ data ]
   );
 
   const filterTypes = React.useMemo(

@@ -1,13 +1,7 @@
 import React from "react";
 
-import {
-  generateBrandOptions,
-  generateColorOptions,
-  generateStyleOptions,
-  SelectColumnFilter,
-  TextColumnFilter
-} from "src/components/common/Table";
-import { BaseTable } from "src/components/gear/BaseTable";
+import { SelectColumnFilter, TextColumnFilter } from "src/components/common/Table";
+import { BaseTable, generateBrandOptions, generateColorOptions, generateStyleOptions } from "src/components/gear/BaseTable";
 
 export function HeadwearTable({ theme, data }) {
   const columns = React.useMemo(

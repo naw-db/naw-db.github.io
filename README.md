@@ -1,4 +1,4 @@
-[![GitHub Pages Deployment Status](https://github.com/naw-db/naw-db.github.io/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/naw-db/naw-db.github.io/actions/workflows/pages/pages-build-deployment)
+[![GitHub Pages Deployment Status](https://github.com/naw-db/naw-db.github.io/actions/workflows/gh-pages.yml/badge.svg)](https://github.com/naw-db/naw-db.github.io/actions/workflows/gh-pages.yml)
 
 ### 1. Environment Setup
 * Install [Homebrew](https://docs.brew.sh/Installation).
@@ -47,6 +47,9 @@
 * Run command: `npm install && gatsby build && gatsby serve`
 
 ### 4. Publish to GitHub Pages
+A GitHub Action is set up to automatically deploy the updated website.
+
+To manually deploy the website, do the following:
 * `cd` into the root directory of the website project.
 * Run command: `npm run deploy`
-* Monitor the deployment [here](https://github.com/naw-db/naw-db.github.io/actions/workflows/pages/pages-build-deployment).
+* Monitor the deployment [here](https://github.com/naw-db/naw-db.github.io/actions/workflows/gh-pages.yml).

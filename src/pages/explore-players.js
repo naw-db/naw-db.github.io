@@ -2,7 +2,7 @@ import { graphql } from "gatsby";
 import { Animation, Page, Section, Seo } from "gatsby-theme-portfolio-minimal";
 import React from "react";
 
-import { PlayersTable } from "src/components/players/PlayersTable";
+import { PlayersTable, RANK_UP_REQUIREMENT_SEPARATOR } from "src/components/players/PlayersTable";
 
 export default function ExplorePlayers({ data }) {
   const tableData = React.useMemo(
@@ -16,6 +16,16 @@ export default function ExplorePlayers({ data }) {
             enriched.position = enriched.position2 === ""
               ? enriched.position1
               : `${enriched.position1}, ${enriched.position2}`;
+
+            enriched.beatToRankUp = [
+              enriched.beatToReachRank2,
+              enriched.beatToReachRank3,
+              enriched.beatToReachRank4,
+              enriched.beatToReachRank5,
+              enriched.beatToReachRank6
+            ]
+              .filter(player => player !== "")
+              .join(RANK_UP_REQUIREMENT_SEPARATOR);
 
             return enriched;
           }
@@ -73,6 +83,11 @@ export const pageQuery = graphql`
         strengthMax
         speedMax
         staminaMax
+        beatToReachRank2
+        beatToReachRank3
+        beatToReachRank4
+        beatToReachRank5
+        beatToReachRank6
       }
     }
   }
