@@ -1,6 +1,6 @@
 levelAvailable,name,brand,style,color,rarity,price,level1Offense,level1Defense,level1Fitness,level1QuantityRequiredToUpgrade,level1CredsRequiredToUpgrade,level2Offense,level2Defense,level2Fitness,level2QuantityRequiredToUpgrade,level2CredsRequiredToUpgrade,level3Offense,level3Defense,level3Fitness,level3QuantityRequiredToUpgrade,level3CredsRequiredToUpgrade,level4Offense,level4Defense,level4Fitness,level4QuantityRequiredToUpgrade,level4CredsRequiredToUpgrade,level5Offense,level5Defense,level5Fitness
-N/A,Starter Jersey,N/A,Varies,Varies,N/A,,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-N/A,Icon Jersey,N/A,Jersey,Varies,Starter,,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+N/A,Starter Jersey,N/A,Varies,Varies,N/A,N/A,,,,,,,,,,,,,,,,,,,,,,,
+N/A,Icon Jersey,N/A,Jersey,Varies,Starter,N/A,,,,,,,,,,,,,,,,,,,,,,,
 1,Tshirt (Custom) 1,All-World,T-shirt,Purple,Starter,$50,0,1,0,3,150,0,2,0,5,500,1,2,0,7,1000,?,2,?,10,2500,2,2,1
 1,LD CZ Hoodie,Adidas,Hoodie,Black,All-Star,N/A,0,0,2,3,150,?,?,?,5,500,?,?,?,7,1000,?,?,?,10,2500,1,2,3
 1,LD CZ Hoodie,Adidas,Hoodie,Navy Blue,All-Star,N/A,0,0,2,3,150,?,?,?,5,500,?,?,?,7,1000,?,?,?,10,2500,1,2,3
