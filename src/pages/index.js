@@ -1,10 +1,4 @@
-import {
-  AboutSection,
-  ContactSection,
-  HeroSection,
-  Page,
-  Seo,
-} from "gatsby-theme-portfolio-minimal";
+import { AboutSection, ContactSection, HeroSection, Page, Seo } from "gatsby-theme-portfolio-minimal";
 import React from "react";
 
 export default function IndexPage() {

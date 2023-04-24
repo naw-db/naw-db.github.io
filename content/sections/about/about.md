@@ -3,4 +3,8 @@ imageSrc: "../../images/nba-all-world-banner.png"
 imageAlt: "About NAWDB"
 ---
 
-NAWDB is a fan site for in-game data and useful tools to give you an edge in the [NBA All-World](https://nbaallworld.com/) mobile game.
+Want to get notified whenever we have major updates to NAWDB, or to submit missing data?
+
+Come join us at the **[NBA All World Community](https://disboard.org/server/1032854323752869964)** Discord server where we chat everything NBA All-World.
+
+[![Discord](https://img.shields.io/badge/Discord-%235865F2.svg?style=for-the-badge&logo=discord&logoColor=white)](https://disboard.org/server/1032854323752869964)
