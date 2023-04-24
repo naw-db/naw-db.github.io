@@ -18,6 +18,7 @@ import {
 } from "@mui/material";
 import { useGlobalState } from "gatsby-theme-portfolio-minimal/src/context"
 import bigDecimal from "js-big-decimal";
+import { parseFullName } from "parse-full-name";
 import React from "react";
 import { useFilters, usePagination, useSortBy, useTable } from "react-table";
 
@@ -56,7 +57,12 @@ function generateRankUpRequirementsOptions(data, selectFieldFunction) {
   return new Set(
     data.flatMap(e => selectFieldFunction(e).split(RANK_UP_REQUIREMENT_SEPARATOR))
       .map(e => e.trim())
-      .sort()
+      .sort(
+        (a, b) => {
+          return parseFullName(a).last
+            .localeCompare(parseFullName(b).last);
+        }
+      )
   );
 }
 
