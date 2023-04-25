@@ -3,7 +3,7 @@ import React from "react";
 import { SelectColumnFilter, TextColumnFilter } from "src/components/common/Table";
 import { BaseTable, generateBrandOptions, generateColorOptions, generateStyleOptions } from "src/components/gear/BaseTable";
 
-export function HeadwearTable({ theme, data }) {
+export function HeadwearTable({ defaultPageSize, data }) {
   const columns = React.useMemo(
     () => {
       return [
@@ -69,6 +69,6 @@ export function HeadwearTable({ theme, data }) {
   );
 
   return (
-    <BaseTable theme={theme} columns={columns} data={data} />
+    <BaseTable defaultPageSize={defaultPageSize} columns={columns} data={data} />
   );
 }

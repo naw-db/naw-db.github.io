@@ -53,7 +53,7 @@ export function BaseTable({ theme, columns, data }) {
                       {...column.getHeaderProps()}
                       align="center"
                       width={column.width}
-                      style={{
+                      sx={{
                         whiteSpace: "nowrap",
                         backgroundColor: column.backgroundColor != null
                           ? theme.palette.text[column.backgroundColor]
@@ -89,7 +89,7 @@ export function BaseTable({ theme, columns, data }) {
                     cell => {
                       return <TableCell
                         {...cell.getCellProps()}
-                        style={{
+                        sx={{
                           textAlign: cell.getCellProps().key.endsWith("name") ? "left" : "center",
                           whiteSpace: "nowrap",
                           backgroundColor: cell.column.backgroundColor != null

@@ -92,7 +92,7 @@ export function generateRarityOptions(data, selectFieldFunction) {
   );
 }
 
-export function BaseTable({ theme, columns, data }) {
+export function BaseTable({ defaultPageSize, columns, data }) {
   const filterTypes = React.useMemo(
     () => ({
       fuzzyText: fuzzyTextFilterFn,
@@ -126,7 +126,10 @@ export function BaseTable({ theme, columns, data }) {
     {
       columns,
       data,
-      filterTypes
+      filterTypes,
+      initialState: {
+        pageSize: defaultPageSize
+      }
     },
     useFilters,
     useSortBy,
@@ -150,11 +153,11 @@ export function BaseTable({ theme, columns, data }) {
                       {...column.getHeaderProps()}
                       align="center"
                       width={column.width}
-                      style={{
+                      sx={{
                         whiteSpace: "nowrap",
-                        backgroundColor: column.backgroundColor != null
-                          ? theme.palette.text[column.backgroundColor]
-                          : null
+                        backgroundColor: column.backgroundColor
+                          ? column.backgroundColor
+                          : undefined
                       }}
                     >
                       <div {...column.getSortByToggleProps()}>
@@ -186,12 +189,14 @@ export function BaseTable({ theme, columns, data }) {
                     cell => {
                       return <TableCell
                         {...cell.getCellProps()}
-                        style={{
-                          textAlign: cell.getCellProps().key.endsWith("name") ? "left" : "center",
+                        sx={{
+                          left: cell.column.sticky ? 0 : undefined,
+                          position: cell.column.sticky ? "sticky" : undefined,
+                          textAlign: cell.column.textAlign ? cell.column.textAlign : "center",
                           whiteSpace: "nowrap",
-                          backgroundColor: cell.column.backgroundColor != null
-                            ? theme.palette.text[cell.column.backgroundColor]
-                            : null
+                          backgroundColor: cell.column.backgroundColor
+                            ? cell.column.backgroundColor
+                            : undefined
                         }}
                       >
                         {cell.render("Cell")}

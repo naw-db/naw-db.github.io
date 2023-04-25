@@ -1,0 +1,2 @@
+export const DEFAULT_PAGE_SIZE = 10;
+export const DEFAULT_PAGE_SIZE_IN_DESKTOP_VIEW = 25;
