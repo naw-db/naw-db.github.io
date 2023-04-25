@@ -2,13 +2,15 @@ import React from "react";
 
 import { BaseTable } from "src/components/rewards/BaseTable";
 
-export function RuleTheCourtRewardsTable({ theme, data }) {
+export function RuleTheCourtRewardsTable({ defaultPageSize, theme, data }) {
   const columns = React.useMemo(
     () => [
       {
         accessor: "wins",
         Header: "Wins",
         showHeader: true,
+        sticky: true,
+        backgroundColor: theme.palette.background.default,
         disableFilters: true,
         disableSortBy: true
       },
@@ -48,10 +50,10 @@ export function RuleTheCourtRewardsTable({ theme, data }) {
         disableSortBy: true
       }
     ],
-    []
+    [ theme.palette.background.default ]
   );
 
   return (
-    <BaseTable theme={theme} columns={columns} data={data} />
+    <BaseTable defaultPageSize={defaultPageSize} columns={columns} data={data} />
   );
 }

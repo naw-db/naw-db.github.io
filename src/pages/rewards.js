@@ -93,14 +93,16 @@ export const pageQuery = graphql`
         id
         teamLevel
         requireArenaPass
-        thirdWinReward
-        mondayBonus
-        tuesdayBonus
-        wednesdayBonus
-        thursdayBonus
-        fridayBonus
-        saturdayBonus
-        sundayBonus
+        regularThirdWinReward
+        sundaySecondWinReward
+        sundayThirdWinReward
+        mondayLeaderBoardBonus
+        tuesdayLeaderBoardBonus
+        wednesdayLeaderBoardBonus
+        thursdayLeaderBoardBonus
+        fridayLeaderBoardBonus
+        saturdayLeaderBoardBonus
+        sundayLeaderBoardBonus
       }
     }
     allPracticeCourtRewardsCsv {

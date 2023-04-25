@@ -2,7 +2,9 @@ import { Box, createTheme, CssBaseline, Tab, Tabs, ThemeProvider, Typography } f
 import { useGlobalState } from "gatsby-theme-portfolio-minimal/src/context";
 import PropTypes from "prop-types";
 import React from "react";
+import { isBrowser } from "react-device-detect";
 
+import { DEFAULT_PAGE_SIZE, DEFAULT_PAGE_SIZE_IN_DESKTOP_VIEW } from "src/components/common/Defaults";
 import {
   DailyArenaTournamentRewardsByTeamLevelTable,
   DailyArenaTournamentRewardsTable,
@@ -48,6 +50,8 @@ function a11yProps(index) {
 }
 
 export function RewardsTabs({ data }) {
+  const defaultPageSize = isBrowser ? DEFAULT_PAGE_SIZE_IN_DESKTOP_VIEW : DEFAULT_PAGE_SIZE;
+
   const { globalState } = useGlobalState();
 
   const theme = createTheme({
@@ -120,31 +124,31 @@ export function RewardsTabs({ data }) {
           <Tab label="1v1" {...a11yProps(5)} />
         </Tabs>
         <TabPanel value={tab} index={0}>
-          <TeamLevelRewardsTable theme={theme} data={teamLevelRewardsTableData} />
+          <TeamLevelRewardsTable defaultPageSize={defaultPageSize} theme={theme} data={teamLevelRewardsTableData} />
         </TabPanel>
         <TabPanel value={tab} index={1}>
-          <EncounterRewardsTable theme={theme} data={encounterRewardsTableData} />
+          <EncounterRewardsTable defaultPageSize={defaultPageSize} theme={theme} data={encounterRewardsTableData} />
         </TabPanel>
         <TabPanel value={tab} index={2}>
-          <RuleTheCourtRewardsTable theme={theme} data={ruleTheCourtRewardsTableData} />
+          <RuleTheCourtRewardsTable defaultPageSize={defaultPageSize} theme={theme} data={ruleTheCourtRewardsTableData} />
         </TabPanel>
         <TabPanel value={tab} index={3}>
           <Typography variant="h6" gutterBottom>
             Weekly
           </Typography>
-          <WeeklyArenaTournamentRewardsTable theme={theme} data={weeklyArenaTournamentRewardsTableData} />
+          <WeeklyArenaTournamentRewardsTable defaultPageSize={defaultPageSize} theme={theme} data={weeklyArenaTournamentRewardsTableData} />
           <br/>
           <Typography variant="h6" gutterBottom>
             Daily
           </Typography>
-          <DailyArenaTournamentRewardsTable theme={theme} data={dailyArenaTournamentRewardsTableData} />
-          <DailyArenaTournamentRewardsByTeamLevelTable theme={theme} data={dailyArenaTournamentRewardsByTeamLevelTableData} />
+          <DailyArenaTournamentRewardsTable defaultPageSize={defaultPageSize} theme={theme} data={dailyArenaTournamentRewardsTableData} />
+          <DailyArenaTournamentRewardsByTeamLevelTable defaultPageSize={defaultPageSize} theme={theme} data={dailyArenaTournamentRewardsByTeamLevelTableData} />
         </TabPanel>
         <TabPanel value={tab} index={4}>
-          <PracticeCourtRewardsTable theme={theme} data={practiceCourtRewardsTableData} />
+          <PracticeCourtRewardsTable defaultPageSize={defaultPageSize} theme={theme} data={practiceCourtRewardsTableData} />
         </TabPanel>
         <TabPanel value={tab} index={5}>
-          <OneOnOneRewardsTable theme={theme} data={oneOnOneRewardsTableData} />
+          <OneOnOneRewardsTable defaultPageSize={defaultPageSize} theme={theme} data={oneOnOneRewardsTableData} />
         </TabPanel>
       </CssBaseline>
     </ThemeProvider>

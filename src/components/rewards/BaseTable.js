@@ -8,14 +8,14 @@ import {
   TableRow
 } from "@mui/material";
 import React from "react";
-import {useFilters, usePagination, useSortBy, useTable} from "react-table";
+import { useFilters, usePagination, useSortBy, useTable } from "react-table";
 
 import { ScrollableTable } from "src/components/common/Table";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 import SwapVertIcon from "@mui/icons-material/SwapVert";
 
-export function BaseTable({ theme, columns, data }) {
+export function BaseTable({ defaultPageSize, columns, data }) {
   const {
     getTableProps,
     getTableBodyProps,
@@ -30,6 +30,9 @@ export function BaseTable({ theme, columns, data }) {
     {
       columns,
       data,
+      initialState: {
+        pageSize: defaultPageSize
+      }
     },
     useFilters,
     useSortBy,
@@ -55,9 +58,9 @@ export function BaseTable({ theme, columns, data }) {
                       width={column.width}
                       sx={{
                         whiteSpace: "nowrap",
-                        backgroundColor: column.backgroundColor != null
-                          ? theme.palette.text[column.backgroundColor]
-                          : null
+                        backgroundColor: column.backgroundColor
+                          ? column.backgroundColor
+                          : undefined
                       }}
                     >
                       <div {...column.getSortByToggleProps()}>
@@ -90,11 +93,13 @@ export function BaseTable({ theme, columns, data }) {
                       return <TableCell
                         {...cell.getCellProps()}
                         sx={{
-                          textAlign: cell.getCellProps().key.endsWith("name") ? "left" : "center",
+                          left: cell.column.sticky ? 0 : undefined,
+                          position: cell.column.sticky ? "sticky" : undefined,
+                          textAlign: cell.column.textAlign ? cell.column.textAlign : "center",
                           whiteSpace: "nowrap",
-                          backgroundColor: cell.column.backgroundColor != null
-                            ? theme.palette.text[cell.column.backgroundColor]
-                            : null
+                          backgroundColor: cell.column.backgroundColor
+                            ? cell.column.backgroundColor
+                            : undefined
                         }}
                       >
                         {cell.render("Cell")}
