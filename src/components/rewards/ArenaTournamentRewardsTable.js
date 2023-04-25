@@ -2,13 +2,15 @@ import React from "react";
 
 import { BaseTable } from "src/components/rewards/BaseTable";
 
-export function WeeklyArenaTournamentRewardsTable({ theme, data }) {
+export function WeeklyArenaTournamentRewardsTable({ defaultPageSize, theme, data }) {
   const columns = React.useMemo(
     () => [
       {
         accessor: "type",
         Header: "Type",
         showHeader: true,
+        sticky: true,
+        backgroundColor: theme.palette.background.default,
         disableFilters: true,
         disableSortBy: true
       },
@@ -69,21 +71,23 @@ export function WeeklyArenaTournamentRewardsTable({ theme, data }) {
         disableSortBy: true
       }
     ],
-    []
+    [ theme.palette.background.default ]
   );
 
   return (
-    <BaseTable theme={theme} columns={columns} data={data} />
+    <BaseTable defaultPageSize={defaultPageSize} columns={columns} data={data} />
   );
 }
 
-export function DailyArenaTournamentRewardsTable({ theme, data }) {
+export function DailyArenaTournamentRewardsTable({ defaultPageSize, theme, data }) {
   const columns = React.useMemo(
     () => [
       {
         accessor: "type",
         Header: "Type",
         showHeader: true,
+        sticky: true,
+        backgroundColor: theme.palette.background.default,
         disableFilters: true,
         disableSortBy: true
       },
@@ -144,21 +148,23 @@ export function DailyArenaTournamentRewardsTable({ theme, data }) {
         disableSortBy: true
       }
     ],
-    []
+    [ theme.palette.background.default ]
   );
 
   return (
-    <BaseTable theme={theme} columns={columns} data={data} />
+    <BaseTable defaultPageSize={defaultPageSize} columns={columns} data={data} />
   );
 }
 
-export function DailyArenaTournamentRewardsByTeamLevelTable({ theme, data }) {
+export function DailyArenaTournamentRewardsByTeamLevelTable({ defaultPageSize, theme, data }) {
   const columns = React.useMemo(
     () => [
       {
         accessor: "teamLevel",
         Header: "Team Level",
         showHeader: true,
+        sticky: true,
+        backgroundColor: theme.palette.background.default,
         disableFilters: true,
         disableSortBy: true
       },
@@ -170,66 +176,90 @@ export function DailyArenaTournamentRewardsByTeamLevelTable({ theme, data }) {
         disableSortBy: true
       },
       {
-        accessor: "thirdWinReward",
-        Header: "3rd Win Reward",
+        accessor: "regularThirdWinReward",
+        Header: "3rd Win Reward (Mon. ~ Sat.)",
         showHeader: true,
         disableFilters: true,
         disableSortBy: true
       },
       {
-        accessor: "mondayBonus",
-        Header: "Monday Bonus",
+        accessor: "sundaySecondWinReward",
+        Header: "2nd Win Reward (Sun.)",
         showHeader: true,
         disableFilters: true,
         disableSortBy: true
       },
       {
-        accessor: "tuesdayBonus",
-        Header: "Tuesday Bonus",
+        accessor: "sundayThirdWinReward",
+        Header: "3rd Win Reward (Sun.)",
         showHeader: true,
         disableFilters: true,
         disableSortBy: true
       },
       {
-        accessor: "wednesdayBonus",
-        Header: "Wednesday Bonus",
+        Header: "Leader Board Bonus",
         showHeader: true,
-        disableFilters: true,
-        disableSortBy: true
-      },
-      {
-        accessor: "thursdayBonus",
-        Header: "Thursday Bonus",
-        showHeader: true,
-        disableFilters: true,
-        disableSortBy: true
-      },
-      {
-        accessor: "fridayBonus",
-        Header: "Friday Bonus",
-        showHeader: true,
-        disableFilters: true,
-        disableSortBy: true
-      },
-      {
-        accessor: "saturdayBonus",
-        Header: "Saturday Bonus",
-        showHeader: true,
-        disableFilters: true,
-        disableSortBy: true
-      },
-      {
-        accessor: "sundayBonus",
-        Header: "Sunday Bonus",
-        showHeader: true,
-        disableFilters: true,
-        disableSortBy: true
+        backgroundColor: theme.palette.text.secondary,
+        columns: [
+          {
+            accessor: "mondayLeaderBoardBonus",
+            Header: "Monday",
+            showHeader: true,
+            disableFilters: true,
+            disableSortBy: true
+          },
+          {
+            accessor: "tuesdayLeaderBoardBonus",
+            Header: "Tuesday",
+            showHeader: true,
+            disableFilters: true,
+            disableSortBy: true
+          },
+          {
+            accessor: "wednesdayLeaderBoardBonus",
+            Header: "Wednesday",
+            showHeader: true,
+            disableFilters: true,
+            disableSortBy: true
+          },
+          {
+            accessor: "thursdayLeaderBoardBonus",
+            Header: "Thursday",
+            showHeader: true,
+            disableFilters: true,
+            disableSortBy: true
+          },
+          {
+            accessor: "fridayLeaderBoardBonus",
+            Header: "Friday",
+            showHeader: true,
+            disableFilters: true,
+            disableSortBy: true
+          },
+          {
+            accessor: "saturdayLeaderBoardBonus",
+            Header: "Saturday",
+            showHeader: true,
+            disableFilters: true,
+            disableSortBy: true
+          },
+          {
+            accessor: "sundayLeaderBoardBonus",
+            Header: "Sunday",
+            showHeader: true,
+            disableFilters: true,
+            disableSortBy: true
+          }
+        ]
       }
     ],
-    []
+    [
+      theme.palette.background.default,
+      theme.palette.text.secondary
+    ]
   );
 
   return (
-    <BaseTable theme={theme} columns={columns} data={data} />
+    <BaseTable defaultPageSize={defaultPageSize} columns={columns} data={data} />
   );
 }

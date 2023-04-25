@@ -3,7 +3,7 @@ import React from "react";
 import { SelectColumnFilter, TextColumnFilter } from "src/components/common/Table";
 import { BaseTable, generateBrandOptions, generateColorOptions, generateRarityOptions } from "src/components/gear/BaseTable";
 
-export function BallsTable({ defaultPageSize, data }) {
+export function BallsTable({ defaultPageSize, theme, data }) {
   const columns = React.useMemo(
     () => [
       {
@@ -12,6 +12,8 @@ export function BallsTable({ defaultPageSize, data }) {
           {
             accessor: "name",
             helperText: "Name",
+            sticky: true,
+            backgroundColor: theme.palette.background.default,
             Filter: TextColumnFilter,
             disableSortBy: true
           },
@@ -64,7 +66,10 @@ export function BallsTable({ defaultPageSize, data }) {
         ]
       }
     ],
-    [ data ]
+    [
+      theme.palette.background.default,
+      data
+    ]
   );
 
   return (

@@ -3,7 +3,7 @@ import React from "react";
 import { SelectColumnFilter, TextColumnFilter } from "src/components/common/Table";
 import { BaseTable, generateBrandOptions, generateColorOptions, generateRarityOptions } from "src/components/gear/BaseTable";
 
-export function SocksTable({ defaultPageSize, data }) {
+export function SocksTable({ defaultPageSize, theme, data }) {
   const columns = React.useMemo(
     () => [
       {
@@ -12,6 +12,8 @@ export function SocksTable({ defaultPageSize, data }) {
           {
             accessor: "name",
             helperText: "Name",
+            sticky: true,
+            backgroundColor: theme.palette.background.default,
             Filter: TextColumnFilter,
             disableSortBy: true
           },
@@ -56,7 +58,10 @@ export function SocksTable({ defaultPageSize, data }) {
         ]
       }
     ],
-    [ data ]
+    [
+      theme.palette.background.default,
+      data
+    ]
   );
 
   return (

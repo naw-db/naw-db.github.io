@@ -13,7 +13,6 @@ export function ShirtsTable({ defaultPageSize, theme, data }) {
             accessor: "name",
             helperText: "Name",
             sticky: true,
-            textAlign: "left",
             backgroundColor: theme.palette.background.default,
             Filter: TextColumnFilter,
             disableSortBy: true

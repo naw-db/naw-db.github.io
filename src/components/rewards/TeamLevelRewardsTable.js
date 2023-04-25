@@ -2,13 +2,15 @@ import React from "react";
 
 import { BaseTable } from "src/components/rewards/BaseTable";
 
-export function TeamLevelRewardsTable({ theme, data }) {
+export function TeamLevelRewardsTable({ defaultPageSize, theme, data }) {
   const columns = React.useMemo(
     () => [
       {
         accessor: "teamLevel",
         Header: "Team Level",
         showHeader: true,
+        sticky: true,
+        backgroundColor: theme.palette.background.default,
         disableFilters: true,
         disableSortBy: true
       },
@@ -83,10 +85,10 @@ export function TeamLevelRewardsTable({ theme, data }) {
         disableSortBy: true
       }
     ],
-    []
+    [ theme.palette.background.default ]
   );
 
   return (
-    <BaseTable theme={theme} columns={columns} data={data} />
+    <BaseTable defaultPageSize={defaultPageSize} columns={columns} data={data} />
   );
 }

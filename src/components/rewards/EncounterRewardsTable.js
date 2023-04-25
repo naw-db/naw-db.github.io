@@ -3,12 +3,14 @@ import React from "react";
 import { BaseTable } from "src/components/rewards/BaseTable";
 import { SelectColumnFilter } from "src/components/common/Table";
 
-export function EncounterRewardsTable({ theme, data }) {
+export function EncounterRewardsTable({ defaultPageSize, theme, data }) {
   const columns = React.useMemo(
     () => [
       {
         accessor: "teamLevel",
         helperText: "Team Level",
+        sticky: true,
+        backgroundColor: theme.palette.background.default,
         Filter: SelectColumnFilter,
         filter: "equals",
         disableSortBy: true
@@ -56,10 +58,10 @@ export function EncounterRewardsTable({ theme, data }) {
         disableSortBy: true
       }
     ],
-    []
+    [ theme.palette.background.default ]
   );
 
   return (
-    <BaseTable theme={theme} columns={columns} data={data} />
+    <BaseTable defaultPageSize={defaultPageSize} columns={columns} data={data} />
   );
 }

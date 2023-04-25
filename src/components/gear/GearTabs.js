@@ -126,16 +126,16 @@ export function GearTabs({ data }) {
           <SneakersTable defaultPageSize={defaultPageSize} theme={theme} data={sneakersTableData} />
         </TabPanel>
         <TabPanel value={tab} index={3}>
-          <HeadwearTable defaultPageSize={defaultPageSize} data={headwearTableData} />
+          <HeadwearTable defaultPageSize={defaultPageSize} theme={theme} data={headwearTableData} />
         </TabPanel>
         <TabPanel value={tab} index={4}>
-          <EyewearTable defaultPageSize={defaultPageSize} data={eyewearTableData} />
+          <EyewearTable defaultPageSize={defaultPageSize} theme={theme} data={eyewearTableData} />
         </TabPanel>
         <TabPanel value={tab} index={5}>
-          <BallsTable defaultPageSize={defaultPageSize} data={ballsTableData} />
+          <BallsTable defaultPageSize={defaultPageSize} theme={theme} data={ballsTableData} />
         </TabPanel>
         <TabPanel value={tab} index={6}>
-          <SocksTable defaultPageSize={defaultPageSize} data={socksTableData} />
+          <SocksTable defaultPageSize={defaultPageSize} theme={theme} data={socksTableData} />
         </TabPanel>
       </CssBaseline>
     </ThemeProvider>
