@@ -56,7 +56,7 @@ export function SelectColumnFilter({ column: { id, label, helperText, options = 
         }
       }
     >
-      <MenuItem value="">All</MenuItem>
+      <MenuItem value="">Any</MenuItem>
       {
         columnOptions.map(
           (option, i) => (

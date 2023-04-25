@@ -295,8 +295,7 @@ export function PlayersTable({ data }) {
       },
       {
         accessor: "beatToRankUp",
-        Header: "Beat to Rank Up",
-        showHeader: true,
+        helperText: "Beat to Rank Up",
         options: generateRankUpRequirementsOptions(data, e => e.beatToRankUp),
         Filter: SelectColumnFilter,
         filter: "includes",
@@ -430,6 +429,7 @@ export function PlayersTable({ data }) {
           <TablePagination
             component="div"
             count={rows.length}
+            labelRowsPerPage="Rows"
             rowsPerPage={pageSize}
             page={pageIndex}
             showFirstButton
