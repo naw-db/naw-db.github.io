@@ -20,7 +20,7 @@ export default function Gear({ data }) {
 }
 
 export const pageQuery = graphql`
-  query dataQuery {
+  query pageQuery {
     allShirtsCsv {
       nodes {
         id

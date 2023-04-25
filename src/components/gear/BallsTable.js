@@ -55,10 +55,10 @@ export function BallsTable({ theme, data }) {
             disableSortBy: true
           },
           {
+            accessor: "price",
             Header: "Price",
             showHeader: true,
             showSortLabel: true,
-            accessor: "price",
             disableFilters: true
           }
         ]
