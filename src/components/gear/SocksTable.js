@@ -3,7 +3,7 @@ import React from "react";
 import { SelectColumnFilter, TextColumnFilter } from "src/components/common/Table";
 import { BaseTable, generateBrandOptions, generateColorOptions, generateRarityOptions } from "src/components/gear/BaseTable";
 
-export function SocksTable({ theme, data }) {
+export function SocksTable({ defaultPageSize, data }) {
   const columns = React.useMemo(
     () => [
       {
@@ -60,6 +60,6 @@ export function SocksTable({ theme, data }) {
   );
 
   return (
-    <BaseTable theme={theme} columns={columns} data={data} />
+    <BaseTable defaultPageSize={defaultPageSize} columns={columns} data={data} />
   );
 }

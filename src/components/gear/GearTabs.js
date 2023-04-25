@@ -2,7 +2,9 @@ import { Box, createTheme, CssBaseline, Tab, Tabs, ThemeProvider } from "@mui/ma
 import { useGlobalState } from "gatsby-theme-portfolio-minimal/src/context";
 import PropTypes from "prop-types";
 import React from "react";
+import { isBrowser } from "react-device-detect";
 
+import { DEFAULT_PAGE_SIZE, DEFAULT_PAGE_SIZE_IN_DESKTOP_VIEW } from "src/components/common/Defaults";
 import { BallsTable } from "src/components/gear/BallsTable";
 import { EyewearTable } from "src/components/gear/EyewearTable";
 import { HeadwearTable } from "src/components/gear/HeadwearTable";
@@ -45,6 +47,8 @@ function a11yProps(index) {
 }
 
 export function GearTabs({ data }) {
+  const defaultPageSize = isBrowser ? DEFAULT_PAGE_SIZE_IN_DESKTOP_VIEW : DEFAULT_PAGE_SIZE;
+
   const { globalState } = useGlobalState();
 
   const theme = createTheme({
@@ -113,25 +117,25 @@ export function GearTabs({ data }) {
           <Tab label="Socks" {...a11yProps(6)} />
         </Tabs>
         <TabPanel value={tab} index={0}>
-          <ShirtsTable theme={theme} data={shirtsTableData} />
+          <ShirtsTable defaultPageSize={defaultPageSize} theme={theme} data={shirtsTableData} />
         </TabPanel>
         <TabPanel value={tab} index={1}>
-          <PantsTable theme={theme} data={pantsTableData} />
+          <PantsTable defaultPageSize={defaultPageSize} theme={theme} data={pantsTableData} />
         </TabPanel>
         <TabPanel value={tab} index={2}>
-          <SneakersTable theme={theme} data={sneakersTableData} />
+          <SneakersTable defaultPageSize={defaultPageSize} theme={theme} data={sneakersTableData} />
         </TabPanel>
         <TabPanel value={tab} index={3}>
-          <HeadwearTable theme={theme} data={headwearTableData} />
+          <HeadwearTable defaultPageSize={defaultPageSize} data={headwearTableData} />
         </TabPanel>
         <TabPanel value={tab} index={4}>
-          <EyewearTable theme={theme} data={eyewearTableData} />
+          <EyewearTable defaultPageSize={defaultPageSize} data={eyewearTableData} />
         </TabPanel>
         <TabPanel value={tab} index={5}>
-          <BallsTable theme={theme} data={ballsTableData} />
+          <BallsTable defaultPageSize={defaultPageSize} data={ballsTableData} />
         </TabPanel>
         <TabPanel value={tab} index={6}>
-          <SocksTable theme={theme} data={socksTableData} />
+          <SocksTable defaultPageSize={defaultPageSize} data={socksTableData} />
         </TabPanel>
       </CssBaseline>
     </ThemeProvider>

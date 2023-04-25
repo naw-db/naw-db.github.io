@@ -3,7 +3,7 @@ import React from "react";
 import { SelectColumnFilter } from "src/components/common/Table";
 import { BaseTable, generateBrandOptions, generateColorOptions, generateRarityOptions, generateStyleOptions } from "src/components/gear/BaseTable";
 
-export function EyewearTable({ theme, data }) {
+export function EyewearTable({ defaultPageSize, data }) {
   const columns = React.useMemo(
     () => [
       {
@@ -69,6 +69,6 @@ export function EyewearTable({ theme, data }) {
   );
 
   return (
-    <BaseTable theme={theme} columns={columns} data={data} />
+    <BaseTable defaultPageSize={defaultPageSize} columns={columns} data={data} />
   );
 }

@@ -26,7 +26,7 @@ module.exports = {
       resolve: "gatsby-plugin-google-tagmanager",
       options: {
         id: "G-0ZE4TQH7H3",
-        includeInDevelopment: true,
+        includeInDevelopment: false,
         defaultDataLayer: { platform: "gatsby" },
         enableWebVitalsTracking: true
       }
