@@ -4,7 +4,7 @@ import React from "react";
 
 import { RewardsTabs } from "src/components/rewards/RewardsTabs";
 
-export default function Rewards({ data }) {
+export default function RewardsPage({ data }) {
   return (
     <>
       <Seo title="Rewards" />
