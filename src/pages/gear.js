@@ -4,7 +4,7 @@ import React from "react";
 
 import { GearTabs } from "src/components/gear/GearTabs";
 
-export default function Gear({ data }) {
+export default function GearPage({ data }) {
   return (
     <>
       <Seo title="Gear" />

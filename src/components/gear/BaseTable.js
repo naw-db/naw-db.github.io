@@ -1,3 +1,6 @@
+import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
+import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
+import SwapVertIcon from "@mui/icons-material/SwapVert";
 import {
   Stack,
   TableBody,
@@ -11,9 +14,6 @@ import React from "react";
 import { useFilters, usePagination, useSortBy, useTable } from "react-table";
 
 import { fuzzyTextFilterFn, ScrollableTable } from "src/components/common/Table";
-import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
-import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
-import SwapVertIcon from "@mui/icons-material/SwapVert";
 
 const BRAND_SORT_ORDER = {
   "N/A": "0",

@@ -8,7 +8,7 @@ const DEFAULT_PLAYERS = [ "Stephen Curry", "LeBron James" ];
 
 const BAR_CHART_COLORS = [ "#55B4B0", "#D65076" ];
 
-export default function ComparePlayers({ data }) {
+export default function ComparePlayersPage({ data }) {
   return (
     <>
       <Seo title="Compare Players" />
