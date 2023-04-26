@@ -13,7 +13,7 @@ teamLevel,teamRep,playersRecruited,playerLevelRequirements,metersTraveled,creds,
 12,17760,33,4x Rank 3,N/A,3000,2,20,?,N/A,?
 13,22360,38,7x Rank 3,N/A,3250,2,20,?,N/A,?
 14,27300,42,10x Rank 3,N/A,3500,2,20,?,N/A,?
-15,33000,45,2x Rank 4,N/A,3750,2,20,?,N/A,?
+15,33000,45,2x Rank 4,N/A,3750,2,20,+75 x30,N/A,3
 16,39360,51,4x Rank 4,N/A,4000,2,20,+75 x30,N/A,?
 17,46240,57,10x Rank 4,N/A,4250,2,20,+75 x30,N/A,4
 18,54000,63,2x Rank 5,N/A,4500,2,20,+75 x30,N/A,3

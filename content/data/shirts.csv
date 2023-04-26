@@ -2,8 +2,8 @@ levelAvailable,name,brand,style,color,rarity,price,level1Offense,level1Defense,l
 N/A,Starter Jersey,N/A,Varies,Varies,N/A,N/A,,,,,,,,,,,,,,,,,,,,,,,
 N/A,Icon Jersey,N/A,Jersey,Varies,Starter,N/A,,,,,,,,,,,,,,,,,,,,,,,
 1,Tshirt (Custom) 1,All-World,T-shirt,Purple,Starter,50,0,1,0,3,150,0,2,0,5,500,1,2,0,7,1000,?,2,?,10,2500,2,2,1
-1,LD CZ Hoodie,Adidas,Hoodie,Black,All-Star,N/A,0,0,2,3,150,?,?,?,5,500,?,?,?,7,1000,?,?,?,10,2500,1,2,3
-1,LD CZ Hoodie,Adidas,Hoodie,Navy Blue,All-Star,N/A,0,0,2,3,150,?,?,?,5,500,?,?,?,7,1000,?,?,?,10,2500,1,2,3
+1,LD CZ Hoodie,Adidas,Hoodie,Black,All-Star,N/A,0,0,2,3,150,0,1,2,5,500,?,?,?,7,1000,?,?,?,10,2500,1,2,3
+1,LD CZ Hoodie,Adidas,Hoodie,Navy Blue,All-Star,N/A,0,0,2,3,150,0,1,2,5,500,0,2,2,7,1000,?,?,?,10,2500,1,2,3
 1,Long Sleeve,SLAM,Long Sleeve,White,All-Star,75,2,0,0,3,150,2,0,1,5,500,?,?,?,7,1000,?,?,?,10,2500,3,1,2
 1,Long Sleeve,SLAM,Long Sleeve,Gray,All-Star,75,2,0,0,3,150,2,0,1,5,500,?,?,?,7,1000,?,?,?,10,2500,3,1,2
 1,76ers Tee,HOMAGE,T-shirt,Blue,All-Star,N/A,0,2,0,3,150,0,2,1,5,500,0,2,2,7,1000,?,?,2,10,2500,1,3,2
@@ -11,7 +11,7 @@ N/A,Icon Jersey,N/A,Jersey,Varies,Starter,N/A,,,,,,,,,,,,,,,,,,,,,,,
 1,Bucks Tee,HOMAGE,T-shirt,Red,All-Star,N/A,0,2,0,3,150,0,2,1,5,500,0,2,2,7,1000,?,?,2,10,2500,1,3,2
 1,Legacy of Greatness,All-World,T-shirt,Black,Starter,75,0,1,1,3,150,1,1,1,5,500,1,1,2,7,1000,1,2,2,10,2500,2,2,2
 1,Uniform (Custom) 1,All-World,Jersey,Black,Starter,50,0,0,1,3,150,0,1,1,5,500,0,1,2,7,1000,0,2,2,10,2500,1,2,2
-1,Basic Sweatshirt,All-World,Hoodie,Gray,Starter,50,1,0,0,3,150,1,0,1,5,500,?,?,?,7,1000,?,?,?,10,2500,2,1,2
+1,Basic Sweatshirt,All-World,Hoodie,Gray,Starter,50,1,0,0,3,150,1,0,1,5,500,2,0,1,7,1000,?,?,?,10,2500,2,1,2
 1,Untucked (Custom) 1,All-World,Jersey,Black,Starter,50,0,0,1,3,150,0,1,1,5,500,0,1,2,7,1000,0,2,2,10,2500,1,2,2
 2,Warm Up Jacket,All-World,Jacket,Red,Starter,60,0,2,0,3,150,?,?,0,5,500,?,?,0,7,1000,2,3,0,10,2500,2,3,1
 2,Uniform (Custom) 2,All-World,Jersey,Purple,Starter,60,0,0,2,3,150,0,1,2,5,500,?,?,?,7,1000,?,?,?,10,2500,1,2,3
@@ -20,7 +20,7 @@ N/A,Icon Jersey,N/A,Jersey,Varies,Starter,N/A,,,,,,,,,,,,,,,,,,,,,,,
 2,LD CZ Hoodie,Adidas,Hoodie,Royal Blue,Starter,N/A,0,0,3,3,150,0,1,3,5,500,0,2,3,7,1000,?,?,?,10,2500,1,2,4
 2,LD CZ Hoodie,Adidas,Hoodie,Gray,Starter,N/A,0,0,3,3,150,0,1,3,5,500,0,2,3,7,1000,?,?,?,10,2500,1,2,4
 2,LD CZ Hoodie,Adidas,Hoodie,Red,Starter,N/A,0,0,3,3,150,0,1,3,5,500,0,2,3,7,1000,?,?,?,10,2500,1,2,4
-2,Ja Morant Tee,SLAM,T-shirt,Black,All-Star,250,3,0,0,3,150,?,?,?,5,500,?,?,?,7,1000,?,?,?,10,2500,4,1,2
+2,Ja Morant Tee,SLAM,T-shirt,Black,All-Star,250,3,0,0,3,150,3,0,1,5,500,3,0,2,7,1000,?,?,?,10,2500,4,1,2
 2,Classic Hoodie,OVERTIME,Hoodie,Navy,All-Star,N/A,0,2,1,3,150,0,2,2,5,500,?,?,?,7,1000,?,?,?,10,2500,2,3,2
 3,Booker Cover Tee,SLAM,T-shirt,Black,All-Star,250,3,0,1,3,150,3,0,2,5,500,3,1,2,7,1000,3,1,3,10,2500,4,1,3
 3,Rose Cover Tee,SLAM,T-shirt,Black,All-Star,250,3,0,1,3,150,3,0,2,5,500,3,1,2,7,1000,3,1,3,10,2500,4,1,3
@@ -57,14 +57,14 @@ N/A,Icon Jersey,N/A,Jersey,Varies,Starter,N/A,,,,,,,,,,,,,,,,,,,,,,,
 5,AW Tee Gray Stars,All-World,T-shirt,Blue,Starter,150,3,1,1,3,150,3,1,2,5,500,4,1,2,7,1000,4,2,2,10,2500,4,2,3
 5,Kyrie Cover Tee,SLAM,T-shirt,Black,All-Star,250,3,1,2,3,150,4,1,2,5,500,?,?,?,7,1000,?,?,?,10,2500,5,2,3
 5,Tatum Cover Tee,SLAM,T-shirt,Black,All-Star,250,3,1,2,3,150,4,1,2,5,500,?,?,?,7,1000,?,?,?,10,2500,5,2,3
-5,Memphis Cover Tee,SLAM,T-shirt,Black,All-Star,250,3,1,2,3,150,4,1,2,5,500,?,?,?,7,1000,?,?,?,10,2500,5,2,3
+5,Memphis Cover Tee,SLAM,T-shirt,Black,All-Star,250,3,1,2,3,150,4,1,2,5,500,4,1,3,7,1000,?,?,?,10,2500,5,2,3
 5,Hornets Tee,HOMAGE,T-shirt,Cyan,All-Star,N/A,1,3,2,3,150,2,3,2,5,500,2,3,3,7,1000,3,3,3,10,2500,3,4,3
 5,Jazz Tee,HOMAGE,T-shirt,Yellow,All-Star,N/A,1,3,2,3,150,2,3,2,5,500,2,3,3,7,1000,3,3,3,10,2500,3,4,3
 5,Kings Tee,HOMAGE,T-shirt,Purple,All-Star,N/A,1,3,2,3,150,2,3,2,5,500,2,3,3,7,1000,3,3,3,10,2500,3,4,3
 5,Nets Sweatshirt,Todd Snyder,Hoodie,White,All-Star,250,2,3,1,3,150,2,3,2,5,500,2,4,2,7,1000,3,4,2,10,2500,4,4,2
 5,Warriors Sweatshirt,Todd Snyder,Hoodie,White,All-Star,250,2,3,1,3,150,2,3,2,5,500,2,4,2,7,1000,3,4,2,10,2500,4,4,2
 6,Curry Cover Tee,SLAM,T-shirt,Black,All-Star,250,4,1,2,3,150,4,1,3,5,500,4,2,3,7,1000,5,2,3,10,2500,5,3,3
-6,Giannis Cover Tee,SLAM,T-shirt,Black,All-Star,250,4,1,2,3,150,4,1,3,5,500,4,2,3,7,1000,?,?,3,10,2500,5,3,3
+6,Giannis Cover Tee,SLAM,T-shirt,Black,All-Star,250,4,1,2,3,150,4,1,3,5,500,4,2,3,7,1000,5,2,3,10,2500,5,3,3
 6,Cade Cover Tee,SLAM,T-shirt,Black,All-Star,250,4,1,2,3,150,4,1,3,5,500,4,2,3,7,1000,?,?,3,10,2500,5,3,3
 6,365 Tee,Adidas,T-shirt,Blue,All-Star,N/A,2,1,4,3,150,2,2,4,5,500,3,2,4,7,1000,?,?,?,10,2500,3,2,6
 6,365 Tee,Adidas,T-shirt,Gray,All-Star,N/A,2,1,4,3,150,2,2,4,5,500,3,2,4,7,1000,?,?,?,10,2500,3,2,6
@@ -124,7 +124,7 @@ N/A,Icon Jersey,N/A,Jersey,Varies,Starter,N/A,,,,,,,,,,,,,,,,,,,,,,,
 12,Sleeveless Tee,Adidas,Tank Top,Black,All-Star,N/A,4,3,6,3,150,5,3,6,5,500,5,4,6,7,1000,5,4,7,10,2500,6,4,7
 12,Sleeveless Tee,Adidas,Tank Top,White,All-Star,N/A,4,3,6,3,150,5,3,6,5,500,5,4,6,7,1000,5,4,7,10,2500,6,4,7
 12,Sleeveless Tee,Adidas,Tank Top,Red,All-Star,N/A,4,3,6,3,150,5,3,6,5,500,5,4,6,7,1000,5,4,7,10,2500,6,4,7
-13,WBT Sleeveless Tee,Adidas,Tank Top,Black,All-Star,N/A,5,3,5,3,150,5,4,6,5,500,5,4,7,7,1000,6,4,7,10,2500,6,5,7
+13,WBT Sleeveless Tee,Adidas,Tank Top,Black,All-Star,N/A,5,3,6,3,150,5,4,6,5,500,5,4,7,7,1000,6,4,7,10,2500,6,5,7
 13,WBT Sleeveless Tee,Adidas,Tank Top,Gray,All-Star,N/A,5,3,5,3,150,5,4,6,5,500,5,4,7,7,1000,6,4,7,10,2500,6,5,7
 13,Skull Hoodie,All-World,Hoodie,Purple,Starter,350,5,4,4,3,150,5,5,4,5,500,6,5,4,7,1000,6,5,5,10,2500,6,5,6
 13,Skull Hoodie,All-World,Hoodie,Green,Starter,350,5,4,4,3,150,5,5,4,5,500,6,5,4,7,1000,6,5,5,10,2500,6,5,6
