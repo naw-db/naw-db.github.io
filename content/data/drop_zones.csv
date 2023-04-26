@@ -1,4 +1,4 @@
-dropZone,rechargeTime,dailyLimit,primaryDrop,secondaryDropCred,secondaryDropEnergyDrink,secondaryDropBoost,secondaryDropXpWildcard,secondaryDropStarToken,secondaryDropArenaPass
+dropZone,rechargeTime,dailyLimit,primaryDrop,secondaryDropCreds,secondaryDropEnergyDrinks,secondaryDropBoosts,secondaryDropXpWildcards,secondaryDropStarTokens,secondaryDropArenaPasses
 Cred,30 minutes,50,Up to 12.5x Current team level of Cred,Up to 7x Team Level,1x +100/+25/+10,3x +10 Off/Def/Fit,2x +75/2x +50/3x +25,Up to 5 Star Tokens,1x Random Arena Pass
 Energy Drink,30 minutes,50,1x +100 Energy/2x +25 Energy/3x +10 Energy,Up to 7x Team Level,1x +100/+25/+10,3x +10 Off/Def/Fit,2x +75/2x +50/3x +25,Up to 5 Star Tokens,1x Random Arena Pass
 Boost,30 minutes,50,3x +10 Offense/3x +10 Fitness/1x +10 Defense,Up to 7x Team Level,1x +100/+25/+10,3x +10 Off/Def/Fit,2x +75/2x +50/3x +25,Up to 5 Star Tokens,1x Random Arena Pass
