@@ -3,7 +3,7 @@ import React from "react";
 import { SelectColumnFilter } from "src/components/common/Table";
 import { BaseTable, generateBrandOptions, generateColorOptions, generateRarityOptions, generateStyleOptions } from "src/components/gear/BaseTable";
 
-export function EyewearTable({ theme, data }) {
+export function EyewearTable({ defaultPageSize, theme, data }) {
   const columns = React.useMemo(
     () => [
       {
@@ -12,6 +12,8 @@ export function EyewearTable({ theme, data }) {
           {
             accessor: "type",
             helperText: "Type",
+            sticky: true,
+            backgroundColor: theme.palette.background.default,
             Filter: SelectColumnFilter,
             filter: "equals",
             disableSortBy: true
@@ -65,10 +67,13 @@ export function EyewearTable({ theme, data }) {
         ]
       }
     ],
-    [ data ]
+    [
+      theme.palette.background.default,
+      data
+    ]
   );
 
   return (
-    <BaseTable theme={theme} columns={columns} data={data} />
+    <BaseTable defaultPageSize={defaultPageSize} columns={columns} data={data} />
   );
 }

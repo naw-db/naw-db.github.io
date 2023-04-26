@@ -10,6 +10,7 @@ import {
   Switch,
   TableBody,
   TableCell,
+  TableContainer,
   TableHead,
   TablePagination,
   TableRow,
@@ -20,8 +21,10 @@ import { useGlobalState } from "gatsby-theme-portfolio-minimal/src/context"
 import bigDecimal from "js-big-decimal";
 import { parseFullName } from "parse-full-name";
 import React from "react";
+import { isBrowser } from "react-device-detect";
 import { useFilters, usePagination, useSortBy, useTable } from "react-table";
 
+import { DEFAULT_PAGE_SIZE, DEFAULT_PAGE_SIZE_IN_DESKTOP_VIEW } from "src/components/common/Defaults";
 import { fuzzyTextFilterFn, ScrollableTable, SelectColumnFilter, TextColumnFilter } from "src/components/common/Table";
 import { STAT_CATEGORIES } from "src/components/players/PlayerStats";
 
@@ -109,6 +112,8 @@ export function PlayersTable({ data }) {
   const [ displayData, setDisplayData ] = React.useState(maxStatsData);
   const [ showMaxStats, setShowMaxStats ] = React.useState(true);
 
+  const defaultPageSize = isBrowser ? DEFAULT_PAGE_SIZE_IN_DESKTOP_VIEW : DEFAULT_PAGE_SIZE;
+
   const { globalState } = useGlobalState();
 
   const theme = createTheme({
@@ -125,6 +130,9 @@ export function PlayersTable({ data }) {
           {
             accessor: "name",
             helperText: "Name",
+            sticky: true,
+            textAlign: "left",
+            backgroundColor: theme.palette.background.default,
             Filter: TextColumnFilter,
             disableSortBy: true
           },
@@ -185,12 +193,13 @@ export function PlayersTable({ data }) {
       {
         Header: "Offense",
         showHeader: true,
-        backgroundColor: "secondary",
+        backgroundColor: theme.palette.text.secondary,
         columns: [
           {
             accessor: "totalOffense",
             Header: "TOT",
             showHeader: true,
+            backgroundColor: theme.palette.text.secondary,
             showSortLabel: true,
             disableFilters: true
           },
@@ -232,6 +241,7 @@ export function PlayersTable({ data }) {
             accessor: "totalDefense",
             Header: "TOT",
             showHeader: true,
+            backgroundColor: theme.palette.text.secondary,
             showSortLabel: true,
             disableFilters: true
           },
@@ -261,12 +271,13 @@ export function PlayersTable({ data }) {
       {
         Header: "Fitness",
         showHeader: true,
-        backgroundColor: "secondary",
+        backgroundColor: theme.palette.text.secondary,
         columns: [
           {
             accessor: "totalFitness",
             Header: "TOT",
             showHeader: true,
+            backgroundColor: theme.palette.text.secondary,
             showSortLabel: true,
             disableFilters: true
           },
@@ -302,7 +313,11 @@ export function PlayersTable({ data }) {
         disableSortBy: true
       }
     ],
-    [ data ]
+    [
+      data,
+      theme.palette.background.default,
+      theme.palette.text.secondary
+    ]
   );
 
   const filterTypes = React.useMemo(
@@ -338,7 +353,10 @@ export function PlayersTable({ data }) {
     {
       columns,
       data: displayData,
-      filterTypes
+      filterTypes,
+      initialState: {
+        pageSize: defaultPageSize
+      }
     },
     useFilters,
     useSortBy,
@@ -361,24 +379,25 @@ export function PlayersTable({ data }) {
           control={<Switch checked={showMaxStats} onChange={updateStats} />}
           label="Show Max Stats"
         />
-        <ScrollableTable {...getTableProps()} stickyHeader size="small">
-          <TableHead>
-            {headerGroups.map(
-              headerGroup => (
-                <TableRow {...headerGroup.getHeaderGroupProps()}>
-                  {headerGroup.headers.map(
-                    column => (
-                      <TableCell
-                        {...column.getHeaderProps()}
-                        align="center"
-                        style={{
-                          whiteSpace: "nowrap",
-                          backgroundColor: column.backgroundColor != null
-                            ? theme.palette.text[column.backgroundColor]
-                            : null
-                        }}
-                      >
-                        <div {...column.getSortByToggleProps()}>
+        <TableContainer>
+          <ScrollableTable {...getTableProps()} stickyHeader size="small">
+            <TableHead>
+              {headerGroups.map(
+                headerGroup => (
+                  <TableRow {...headerGroup.getHeaderGroupProps()}>
+                    {headerGroup.headers.map(
+                      column => (
+                        <TableCell
+                          {...column.getHeaderProps()}
+                          align="center"
+                          sx={{
+                            whiteSpace: "nowrap",
+                            backgroundColor: column.backgroundColor
+                              ? column.backgroundColor
+                              : undefined
+                          }}
+                        >
+                          <div {...column.getSortByToggleProps()}>
                           <span>
                             {
                               column.showSortLabel
@@ -388,56 +407,59 @@ export function PlayersTable({ data }) {
                                 : null
                             }
                           </span>
-                          <div>{column.showHeader ? column.render("Header") : null}</div>
-                          <div>{column.canFilter ? column.render("Filter") : null}</div>
-                        </div>
-                      </TableCell>
-                    ))}
-                </TableRow>
-              )
-            )}
-          </TableHead>
-          <TableBody {...getTableBodyProps()}>
-            {page.map(
-              (row, i) => {
-                prepareRow(row)
-                return (
-                  <TableRow {...row.getRowProps()}>
-                    {row.cells.map(
-                      cell => {
-                        return <TableCell
-                          {...cell.getCellProps()}
-                          style={{
-                            textAlign: cell.getCellProps().key.endsWith("name") ? "left" : "center",
-                            whiteSpace: "nowrap",
-                            backgroundColor: cell.getCellProps().key.includes("total")
-                              ? theme.palette.text.secondary
-                              : null
-                          }}
-                        >
-                          {cell.render("Cell")}
-                        </TableCell>;
-                      }
-                    )}
+                            <div>{column.showHeader ? column.render("Header") : null}</div>
+                            <div>{column.canFilter ? column.render("Filter") : null}</div>
+                          </div>
+                        </TableCell>
+                      ))}
                   </TableRow>
-                );
-              }
-            )}
-          </TableBody>
-        </ScrollableTable>
-        <Stack spacing={2}>
-          <TablePagination
-            component="div"
-            count={rows.length}
-            labelRowsPerPage="Rows"
-            rowsPerPage={pageSize}
-            page={pageIndex}
-            showFirstButton
-            showLastButton
-            onPageChange={updatePage}
-            onRowsPerPageChange={e => setPageSize(Number(e.target.value))}
-          />
-        </Stack>
+                )
+              )}
+            </TableHead>
+            <TableBody {...getTableBodyProps()}>
+              {page.map(
+                (row, i) => {
+                  prepareRow(row);
+                  return (
+                    <TableRow {...row.getRowProps()}>
+                      {row.cells.map(
+                        cell => {
+                          return <TableCell
+                            {...cell.getCellProps()}
+                            sx={{
+                              left: cell.column.sticky ? 0 : undefined,
+                              position: cell.column.sticky ? "sticky" : undefined,
+                              textAlign: cell.column.textAlign ? cell.column.textAlign : "center",
+                              whiteSpace: "nowrap",
+                              backgroundColor: cell.column.backgroundColor
+                                ? cell.column.backgroundColor
+                                : undefined
+                            }}
+                          >
+                            {cell.render("Cell")}
+                          </TableCell>;
+                        }
+                      )}
+                    </TableRow>
+                  );
+                }
+              )}
+            </TableBody>
+          </ScrollableTable>
+          <Stack spacing={2}>
+            <TablePagination
+              component="div"
+              count={rows.length}
+              labelRowsPerPage="Rows"
+              rowsPerPage={pageSize}
+              page={pageIndex}
+              showFirstButton
+              showLastButton
+              onPageChange={updatePage}
+              onRowsPerPageChange={e => setPageSize(Number(e.target.value))}
+            />
+          </Stack>
+        </TableContainer>
       </CssBaseline>
     </ThemeProvider>
   );
