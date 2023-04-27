@@ -4,7 +4,7 @@ import React from "react";
 
 import { PlayersTable, RANK_UP_REQUIREMENT_SEPARATOR } from "src/components/players/PlayersTable";
 
-export default function ExplorePlayers({ data }) {
+export default function ExplorePlayersPage({ data }) {
   const tableData = React.useMemo(
     () => {
       return data.allPlayersCsv
