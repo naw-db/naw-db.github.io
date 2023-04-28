@@ -2,7 +2,7 @@ import React from "react";
 
 import { BaseTable } from "src/components/rewards/BaseTable";
 
-export function WeeklyArenaTournamentRewardsTable({ defaultPageSize, theme, data }) {
+export function WeeklyArenaTournamentRewardsTable({ theme, defaultPageSize, data }) {
   const columns = React.useMemo(
     () => [
       {
@@ -75,11 +75,11 @@ export function WeeklyArenaTournamentRewardsTable({ defaultPageSize, theme, data
   );
 
   return (
-    <BaseTable defaultPageSize={defaultPageSize} columns={columns} data={data} />
+    <BaseTable theme={theme} columns={columns} defaultPageSize={defaultPageSize} data={data} />
   );
 }
 
-export function DailyArenaTournamentRewardsTable({ defaultPageSize, theme, data }) {
+export function DailyArenaTournamentRewardsTable({ theme, defaultPageSize, data }) {
   const columns = React.useMemo(
     () => [
       {
@@ -152,11 +152,11 @@ export function DailyArenaTournamentRewardsTable({ defaultPageSize, theme, data 
   );
 
   return (
-    <BaseTable defaultPageSize={defaultPageSize} columns={columns} data={data} />
+    <BaseTable theme={theme} columns={columns} defaultPageSize={defaultPageSize} data={data} />
   );
 }
 
-export function DailyArenaTournamentRewardsByTeamLevelTable({ defaultPageSize, theme, data }) {
+export function DailyArenaTournamentRewardsByTeamLevelTable({ theme, defaultPageSize, data }) {
   const columns = React.useMemo(
     () => [
       {
@@ -260,6 +260,6 @@ export function DailyArenaTournamentRewardsByTeamLevelTable({ defaultPageSize, t
   );
 
   return (
-    <BaseTable defaultPageSize={defaultPageSize} columns={columns} data={data} />
+    <BaseTable theme={theme} columns={columns} defaultPageSize={defaultPageSize} data={data} />
   );
 }

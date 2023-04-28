@@ -391,10 +391,14 @@ export function PlayersTable({ data }) {
                           {...column.getHeaderProps()}
                           align="center"
                           sx={{
+                            left: column.sticky ? 0 : undefined,
+                            position: column.sticky ? "sticky" : undefined,
+                            textAlign: column.textAlign ? column.textAlign : "center",
                             whiteSpace: "nowrap",
                             backgroundColor: column.backgroundColor
                               ? column.backgroundColor
-                              : undefined
+                              : undefined,
+                            zIndex: column.sticky ? theme.zIndex.appBar + 2 : undefined
                           }}
                         >
                           <div {...column.getSortByToggleProps()}>

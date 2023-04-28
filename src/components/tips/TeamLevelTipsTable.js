@@ -20,28 +20,54 @@ export default function TeamLevelTipsTable({ defaultPageSize, data }) {
       {
         accessor: "teamLevel",
         Header: "Team Level",
-        showHeader: true
+        showHeader: true,
+        sticky: true,
+        backgroundColor: theme.palette.background.default,
+        disableFilters: true,
+        disableSortBy: true
       },
       {
         accessor: "requirement",
         Header: "Requirement",
         showHeader: true,
-        textAlign: "left"
+        textAlign: "left",
+        disableFilters: true,
+        disableSortBy: true
       },
       {
         accessor: "action",
         Header: "Action",
         showHeader: true,
-        textAlign: "left"
+        textAlign: "left",
+        disableFilters: true,
+        disableSortBy: true
       },
       {
-        accessor: "total",
-        Header: "Total",
+        accessor: "totalStarters",
+        Header: " Total Starters",
         showHeader: true,
-        textAlign: "left"
+        textAlign: "left",
+        disableFilters: true,
+        disableSortBy: true
+      },
+      {
+        accessor: "totalAllStars",
+        Header: "Total All-Stars",
+        showHeader: true,
+        textAlign: "left",
+        disableFilters: true,
+        disableSortBy: true
+      },
+      {
+        accessor: "totalAllWorlds",
+        Header: "Total All-Worlds",
+        showHeader: true,
+        textAlign: "left",
+        disableFilters: true,
+        disableSortBy: true
       }
     ],
-    []
+    [ theme.palette.background.default ]
   );
 
   const {
@@ -86,10 +112,14 @@ export default function TeamLevelTipsTable({ defaultPageSize, data }) {
                             align="center"
                             width={column.width}
                             sx={{
+                              left: column.sticky ? 0 : undefined,
+                              position: column.sticky ? "sticky" : undefined,
+                              textAlign: column.textAlign ? column.textAlign : "center",
                               whiteSpace: "nowrap",
                               backgroundColor: column.backgroundColor
                                 ? column.backgroundColor
-                                : undefined
+                                : undefined,
+                              zIndex: column.sticky ? theme.zIndex.appBar + 2 : undefined
                             }}
                           >
                             <div>{column.showHeader ? column.render("Header") : null}</div>

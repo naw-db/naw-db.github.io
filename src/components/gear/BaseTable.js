@@ -1,15 +1,7 @@
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 import SwapVertIcon from "@mui/icons-material/SwapVert";
-import {
-  Stack,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TablePagination,
-  TableRow
-} from "@mui/material";
+import { Stack, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow } from "@mui/material";
 import React from "react";
 import { useFilters, usePagination, useSortBy, useTable } from "react-table";
 
@@ -92,7 +84,7 @@ export function generateRarityOptions(data, selectFieldFunction) {
   );
 }
 
-export function BaseTable({ defaultPageSize, columns, data }) {
+export function BaseTable({ theme, columns, defaultPageSize, data }) {
   const filterTypes = React.useMemo(
     () => ({
       fuzzyText: fuzzyTextFilterFn,
@@ -154,10 +146,14 @@ export function BaseTable({ defaultPageSize, columns, data }) {
                       align="center"
                       width={column.width}
                       sx={{
+                        left: column.sticky ? 0 : undefined,
+                        position: column.sticky ? "sticky" : undefined,
+                        textAlign: column.textAlign ? column.textAlign : "center",
                         whiteSpace: "nowrap",
                         backgroundColor: column.backgroundColor
                           ? column.backgroundColor
-                          : undefined
+                          : undefined,
+                        zIndex: column.sticky ? theme.zIndex.appBar + 2 : undefined
                       }}
                     >
                       <div {...column.getSortByToggleProps()}>

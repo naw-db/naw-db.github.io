@@ -1,5 +1,5 @@
 import { graphql } from "gatsby";
-import { Animation, Page, Section, Seo } from "gatsby-theme-portfolio-minimal";
+import { Animation, Page, Seo } from "gatsby-theme-portfolio-minimal";
 import React from "react";
 import { isBrowser } from "react-device-detect";
 
@@ -28,7 +28,9 @@ export const pageQuery = graphql`
         teamLevel
         requirement
         action
-        total
+        totalStarters
+        totalAllStars
+        totalAllWorlds
       }
     }
   }
