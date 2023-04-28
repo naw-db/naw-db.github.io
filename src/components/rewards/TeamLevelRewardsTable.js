@@ -2,7 +2,7 @@ import React from "react";
 
 import { BaseTable } from "src/components/rewards/BaseTable";
 
-export function TeamLevelRewardsTable({ defaultPageSize, theme, data }) {
+export function TeamLevelRewardsTable({ theme, defaultPageSize, data }) {
   const columns = React.useMemo(
     () => [
       {
@@ -89,6 +89,6 @@ export function TeamLevelRewardsTable({ defaultPageSize, theme, data }) {
   );
 
   return (
-    <BaseTable defaultPageSize={defaultPageSize} columns={columns} data={data} />
+    <BaseTable theme={theme} columns={columns} defaultPageSize={defaultPageSize} data={data} />
   );
 }

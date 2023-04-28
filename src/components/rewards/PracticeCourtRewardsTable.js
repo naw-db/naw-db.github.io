@@ -3,7 +3,7 @@ import React from "react";
 import { BaseTable } from "src/components/rewards/BaseTable";
 import { SelectColumnFilter } from "src/components/common/Table";
 
-export function PracticeCourtRewardsTable({ defaultPageSize, theme, data }) {
+export function PracticeCourtRewardsTable({ theme, defaultPageSize, data }) {
   const columns = React.useMemo(
     () => [
       {
@@ -48,6 +48,6 @@ export function PracticeCourtRewardsTable({ defaultPageSize, theme, data }) {
   );
 
   return (
-    <BaseTable defaultPageSize={defaultPageSize} columns={columns} data={data} />
+    <BaseTable theme={theme} columns={columns} defaultPageSize={defaultPageSize} data={data} />
   );
 }

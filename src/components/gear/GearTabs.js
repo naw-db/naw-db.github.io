@@ -117,25 +117,25 @@ export function GearTabs({ data }) {
           <Tab label="Socks" {...a11yProps(6)} />
         </Tabs>
         <TabPanel value={tab} index={0}>
-          <ShirtsTable defaultPageSize={defaultPageSize} theme={theme} data={shirtsTableData} />
+          <ShirtsTable theme={theme} defaultPageSize={defaultPageSize} data={shirtsTableData} />
         </TabPanel>
         <TabPanel value={tab} index={1}>
-          <PantsTable defaultPageSize={defaultPageSize} theme={theme} data={pantsTableData} />
+          <PantsTable theme={theme} defaultPageSize={defaultPageSize} data={pantsTableData} />
         </TabPanel>
         <TabPanel value={tab} index={2}>
-          <SneakersTable defaultPageSize={defaultPageSize} theme={theme} data={sneakersTableData} />
+          <SneakersTable theme={theme} defaultPageSize={defaultPageSize} data={sneakersTableData} />
         </TabPanel>
         <TabPanel value={tab} index={3}>
-          <HeadwearTable defaultPageSize={defaultPageSize} theme={theme} data={headwearTableData} />
+          <HeadwearTable theme={theme} defaultPageSize={defaultPageSize} data={headwearTableData} />
         </TabPanel>
         <TabPanel value={tab} index={4}>
-          <EyewearTable defaultPageSize={defaultPageSize} theme={theme} data={eyewearTableData} />
+          <EyewearTable theme={theme} defaultPageSize={defaultPageSize} data={eyewearTableData} />
         </TabPanel>
         <TabPanel value={tab} index={5}>
-          <BallsTable defaultPageSize={defaultPageSize} theme={theme} data={ballsTableData} />
+          <BallsTable theme={theme} defaultPageSize={defaultPageSize} data={ballsTableData} />
         </TabPanel>
         <TabPanel value={tab} index={6}>
-          <SocksTable defaultPageSize={defaultPageSize} theme={theme} data={socksTableData} />
+          <SocksTable theme={theme} defaultPageSize={defaultPageSize} data={socksTableData} />
         </TabPanel>
       </CssBaseline>
     </ThemeProvider>

@@ -3,13 +3,12 @@ import React from "react";
 import { BaseTable } from "src/components/rewards/BaseTable";
 import { SelectColumnFilter } from "src/components/common/Table";
 
-export function OneOnOneRewardsTable({ defaultPageSize, theme, data }) {
+export function OneOnOneRewardsTable({ theme, defaultPageSize, data }) {
   const columns = React.useMemo(
     () => [
       {
         accessor: "teamLevel",
-        Header: "Team Level",
-        showHeader: true,
+        helperText: "Team Level",
         sticky: true,
         backgroundColor: theme.palette.background.default,
         Filter: SelectColumnFilter,
@@ -18,8 +17,7 @@ export function OneOnOneRewardsTable({ defaultPageSize, theme, data }) {
       },
       {
         accessor: "type",
-        Header: "Type",
-        showHeader: true,
+        helperText: "Type",
         Filter: SelectColumnFilter,
         filter: "equals",
         disableSortBy: true
@@ -92,6 +90,6 @@ export function OneOnOneRewardsTable({ defaultPageSize, theme, data }) {
   );
 
   return (
-    <BaseTable defaultPageSize={defaultPageSize} columns={columns} data={data} />
+    <BaseTable theme={theme} columns={columns} defaultPageSize={defaultPageSize} data={data} />
   );
 }
