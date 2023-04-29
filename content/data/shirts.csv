@@ -13,7 +13,7 @@ N/A,Icon Jersey,N/A,Jersey,Varies,Starter,N/A,,,,,,,,,,,,,,,,,,,,,,,
 1,Uniform (Custom) 1,All-World,Jersey,Black,Starter,50,0,0,1,3,150,0,1,1,5,500,0,1,2,7,1000,0,2,2,10,2500,1,2,2
 1,Basic Sweatshirt,All-World,Hoodie,Gray,Starter,50,1,0,0,3,150,1,0,1,5,500,2,0,1,7,1000,?,?,?,10,2500,2,1,2
 1,Untucked (Custom) 1,All-World,Jersey,Black,Starter,50,0,0,1,3,150,0,1,1,5,500,0,1,2,7,1000,0,2,2,10,2500,1,2,2
-2,Warm Up Jacket,All-World,Jacket,Red,Starter,60,0,2,0,3,150,?,?,0,5,500,?,?,0,7,1000,2,3,0,10,2500,2,3,1
+2,Warm Up Jacket,All-World,Jacket,Red,Starter,60,0,2,0,3,150,1,2,0,5,500,1,3,0,7,1000,2,3,0,10,2500,2,3,1
 2,Uniform (Custom) 2,All-World,Jersey,Purple,Starter,60,0,0,2,3,150,0,1,2,5,500,?,?,?,7,1000,?,?,?,10,2500,1,2,3
 2,Untucked (Custom) 2,All-World,Jersey,Purple,Starter,60,0,0,2,3,150,0,1,2,5,500,?,?,?,7,1000,?,?,?,10,2500,1,2,3
 2,Long Sleeve Shirt,All-World,Long Sleeve,Gray,Starter,60,2,0,0,3,150,2,0,1,5,500,?,?,?,7,1000,?,?,?,10,2500,3,1,2
@@ -117,10 +117,10 @@ N/A,Icon Jersey,N/A,Jersey,Varies,Starter,N/A,,,,,,,,,,,,,,,,,,,,,,,
 11,Timberwolves Tee,HOMAGE,T-shirt,Blue,All-Star,N/A,4,4,4,3,150,4,5,4,5,500,4,5,5,7,1000,5,5,5,10,2500,5,6,5
 11,Warriors Tee,HOMAGE,T-shirt,White,All-Star,N/A,4,4,4,3,150,4,5,4,5,500,4,5,5,7,1000,5,5,5,10,2500,5,6,5
 11,Wizards Tee,HOMAGE,T-shirt,White,All-Star,N/A,4,4,4,3,150,4,5,4,5,500,4,5,5,7,1000,5,5,5,10,2500,5,6,5
-12,Tiled Drawstring,All-World,Hoodie,Yellow,Starter,325,5,4,3,3,150,5,?,?,5,500,5,5,4,7,1000,6,5,4,10,2500,6,5,5
-12,Drawstring Hoodie,All-World,Hoodie,Blue/Gold,Starter,325,5,4,3,3,150,5,?,?,5,500,5,5,4,7,1000,6,5,4,10,2500,6,5,5
-12,Tiled Drawstring,All-World,Hoodie,Cyan,Starter,325,5,4,3,3,150,5,?,?,5,500,5,5,4,7,1000,6,5,4,10,2500,6,5,5
-12,Drawstring Hoodie,All-World,Hoodie,Gray/White,Starter,325,5,4,3,3,150,5,?,?,5,500,5,5,4,7,1000,6,5,4,10,2500,6,5,5
+12,Tiled Drawstring,All-World,Hoodie,Yellow,Starter,325,5,4,3,3,150,5,5,3,5,500,5,5,4,7,1000,6,5,4,10,2500,6,5,5
+12,Drawstring Hoodie,All-World,Hoodie,Blue/Gold,Starter,325,5,4,3,3,150,5,5,3,5,500,5,5,4,7,1000,6,5,4,10,2500,6,5,5
+12,Tiled Drawstring,All-World,Hoodie,Cyan,Starter,325,5,4,3,3,150,5,5,3,5,500,5,5,4,7,1000,6,5,4,10,2500,6,5,5
+12,Drawstring Hoodie,All-World,Hoodie,Gray/White,Starter,325,5,4,3,3,150,5,5,3,5,500,5,5,4,7,1000,6,5,4,10,2500,6,5,5
 12,Sleeveless Tee,Adidas,Tank Top,Black,All-Star,N/A,4,3,6,3,150,5,3,6,5,500,5,4,6,7,1000,5,4,7,10,2500,6,4,7
 12,Sleeveless Tee,Adidas,Tank Top,White,All-Star,N/A,4,3,6,3,150,5,3,6,5,500,5,4,6,7,1000,5,4,7,10,2500,6,4,7
 12,Sleeveless Tee,Adidas,Tank Top,Red,All-Star,N/A,4,3,6,3,150,5,3,6,5,500,5,4,6,7,1000,5,4,7,10,2500,6,4,7
