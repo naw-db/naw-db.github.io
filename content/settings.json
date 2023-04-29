@@ -20,7 +20,8 @@
         { "label": "Compare Players", "url": "/compare-players" },
         { "label": "Gear", "url": "/gear" },
         { "label": "Rewards", "url": "/rewards" },
-        { "label": "Tips", "url": "/tips" }
+        { "label": "Tips", "url": "/tips" },
+        { "label": "More", "url": "/more" }
       ],
       "footer": [
         { "label": "Copyright", "url": "/copyright" }
