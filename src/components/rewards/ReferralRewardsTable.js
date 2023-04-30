@@ -9,8 +9,7 @@ export function ReferralRewardsTable({ theme, defaultPageSize, data }) {
         accessor: "task",
         Header: "Task",
         showHeader: true,
-        sticky: true,
-        backgroundColor: theme.palette.background.default,
+        textAlign: "left",
         disableFilters: true,
         disableSortBy: true
       },
@@ -24,6 +23,7 @@ export function ReferralRewardsTable({ theme, defaultPageSize, data }) {
             Header: "Reward",
             showHeader: true,
             backgroundColor: theme.palette.text.secondary,
+            textAlign: "left",
             disableFilters: true,
             disableSortBy: true
           },
@@ -45,6 +45,7 @@ export function ReferralRewardsTable({ theme, defaultPageSize, data }) {
             accessor: "referrerReward",
             Header: "Reward",
             showHeader: true,
+            textAlign: "left",
             disableFilters: true,
             disableSortBy: true
           },
@@ -58,10 +59,7 @@ export function ReferralRewardsTable({ theme, defaultPageSize, data }) {
         ]
       }
     ],
-    [
-      theme.palette.background.default,
-      theme.palette.text.secondary
-    ]
+    [ theme.palette.text.secondary ]
   );
 
   return (
