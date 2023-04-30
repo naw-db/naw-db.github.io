@@ -16,7 +16,7 @@ export default function MorePage({ data }) {
         <Animation type="fadeUp">
           <Section heading="Player Level Requirements">
             <PlayerLevelRequirementsTable defaultPageSize={defaultPageSize} data={data.allPlayerLevelRequirementsCsv.nodes}/>
-            </Section>
+          </Section>
         </Animation>
       </Page>
     </>
