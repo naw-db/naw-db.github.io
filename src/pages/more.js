@@ -1,5 +1,5 @@
 import { graphql } from "gatsby";
-import { Animation, Page, Seo } from "gatsby-theme-portfolio-minimal";
+import { Animation, Page, Section, Seo } from "gatsby-theme-portfolio-minimal";
 import React from "react";
 import { isBrowser } from "react-device-detect";
 
@@ -14,7 +14,9 @@ export default function MorePage({ data }) {
       <Seo title="More" />
       <Page useSplashScreenAnimation>
         <Animation type="fadeUp">
-          <PlayerLevelRequirementsTable defaultPageSize={defaultPageSize} data={data.allPlayerLevelRequirementsCsv.nodes}/>
+          <Section heading="Player Level Requirements">
+            <PlayerLevelRequirementsTable defaultPageSize={defaultPageSize} data={data.allPlayerLevelRequirementsCsv.nodes}/>
+          </Section>
         </Animation>
       </Page>
     </>

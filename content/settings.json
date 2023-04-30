@@ -9,7 +9,7 @@
     "avatar": "../content/images/nba-all-world.png",
     "bio": "",
     "social": {
-      "github": "https://github.com/naw-db/naw-db.github.io"
+      "github": "https://github.com/naw-db/naw-db.github.io/"
     }
   },
   "siteConfiguration": {
@@ -24,6 +24,7 @@
         { "label": "More", "url": "/more" }
       ],
       "footer": [
+        { "label": "Credits", "url": "/credits" },
         { "label": "Copyright", "url": "/copyright" }
       ]
     },

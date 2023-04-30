@@ -1,5 +1,5 @@
 import { graphql } from "gatsby";
-import { Animation, Page, Seo } from "gatsby-theme-portfolio-minimal";
+import { Animation, Page, Section, Seo } from "gatsby-theme-portfolio-minimal";
 import React from "react";
 import { isBrowser } from "react-device-detect";
 
@@ -14,7 +14,9 @@ export default function TipsPage({ data }) {
       <Seo title="Tips" />
       <Page useSplashScreenAnimation>
         <Animation type="fadeUp">
-          <TeamLevelTipsTable defaultPageSize={defaultPageSize} data={data.allTeamLevelTipsCsv.nodes}/>
+          <Section heading="Level Up Team Level Fast">
+            <TeamLevelTipsTable defaultPageSize={defaultPageSize} data={data.allTeamLevelTipsCsv.nodes}/>
+          </Section>
         </Animation>
       </Page>
     </>
