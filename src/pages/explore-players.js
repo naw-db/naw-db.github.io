@@ -39,7 +39,7 @@ export default function ExplorePlayersPage({ data }) {
       <Seo title="Explore Players" />
       <Page useSplashScreenAnimation>
         <Animation type="fadeUp">
-          <Section heading="Explore Players">
+          <Section>
             <PlayersTable data={tableData} />
           </Section>
         </Animation>
