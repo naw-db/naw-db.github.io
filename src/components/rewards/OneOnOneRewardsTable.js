@@ -18,6 +18,7 @@ export function OneOnOneRewardsTable({ theme, defaultPageSize, data }) {
       {
         accessor: "type",
         helperText: "Type",
+        textAlign: "left",
         Filter: SelectColumnFilter,
         filter: "equals",
         disableSortBy: true

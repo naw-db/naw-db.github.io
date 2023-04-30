@@ -23,7 +23,6 @@ export const pageQuery = graphql`
   query pageQuery {
     allPlayersCsv {
       nodes {
-        id
         name
         shortName
         startingRank

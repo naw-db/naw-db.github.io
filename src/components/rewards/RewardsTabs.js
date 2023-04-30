@@ -12,7 +12,9 @@ import {
 } from "src/components/rewards/ArenaTournamentRewardsTable";
 import { EncounterRewardsTable } from "src/components/rewards/EncounterRewardsTable";
 import { OneOnOneRewardsTable } from "src/components/rewards/OneOnOneRewardsTable";
+import { MilestoneRewardsTable } from "src/components/rewards/MilestoneRewardsTable";
 import { PracticeCourtRewardsTable } from "src/components/rewards/PracticeCourtRewardsTable";
+import { ReferralRewardsTable } from "src/components/rewards/ReferralRewardsTable";
 import { RuleTheCourtRewardsTable } from "src/components/rewards/RuleTheCourtRewardsTable";
 import { TeamLevelRewardsTable } from "src/components/rewards/TeamLevelRewardsTable";
 
@@ -106,6 +108,16 @@ export function RewardsTabs({ data }) {
     [ data.allOneOnOneRewardsCsv.nodes ]
   );
 
+  const milestoneRewardsTableData = React.useMemo(
+    () => data.allMilestoneRewardsCsv.nodes,
+    [ data.allMilestoneRewardsCsv.nodes ]
+  );
+
+  const referralRewardsTableData = React.useMemo(
+    () => data.allReferralRewardsCsv.nodes,
+    [ data.allReferralRewardsCsv.nodes ]
+  );
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline>
@@ -122,6 +134,8 @@ export function RewardsTabs({ data }) {
           <Tab label="Arena Tournament" {...a11yProps(3)} />
           <Tab label="Practice Court" {...a11yProps(4)} />
           <Tab label="1v1" {...a11yProps(5)} />
+          <Tab label="Milestones" {...a11yProps(6)} />
+          <Tab label="Referral" {...a11yProps(7)} />
         </Tabs>
         <TabPanel value={tab} index={0}>
           <TeamLevelRewardsTable defaultPageSize={defaultPageSize} theme={theme} data={teamLevelRewardsTableData} />
@@ -149,6 +163,12 @@ export function RewardsTabs({ data }) {
         </TabPanel>
         <TabPanel value={tab} index={5}>
           <OneOnOneRewardsTable defaultPageSize={defaultPageSize} theme={theme} data={oneOnOneRewardsTableData} />
+        </TabPanel>
+        <TabPanel value={tab} index={6}>
+          <MilestoneRewardsTable defaultPageSize={defaultPageSize} theme={theme} data={milestoneRewardsTableData} />
+        </TabPanel>
+        <TabPanel value={tab} index={7}>
+          <ReferralRewardsTable defaultPageSize={defaultPageSize} theme={theme} data={referralRewardsTableData} />
         </TabPanel>
       </CssBaseline>
     </ThemeProvider>

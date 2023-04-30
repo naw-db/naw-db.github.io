@@ -23,7 +23,6 @@ export const pageQuery = graphql`
   query pageQuery {
     allShirtsCsv {
       nodes {
-        id
         name
         levelAvailable
         brand
@@ -58,7 +57,6 @@ export const pageQuery = graphql`
     }
     allPantsCsv {
       nodes {
-        id
         name
         levelAvailable
         brand
@@ -93,7 +91,6 @@ export const pageQuery = graphql`
     }
     allSneakersCsv {
       nodes {
-        id
         name
         levelAvailable
         brand
@@ -128,7 +125,6 @@ export const pageQuery = graphql`
     }
     allHeadwearCsv {
       nodes {
-        id
         name
         levelAvailable
         brand
@@ -140,7 +136,6 @@ export const pageQuery = graphql`
     }
     allEyewearCsv {
       nodes {
-        id
         type
         levelAvailable
         brand
@@ -152,7 +147,6 @@ export const pageQuery = graphql`
     }
     allBallsCsv {
       nodes {
-        id
         name
         levelAvailable
         brand
@@ -164,7 +158,6 @@ export const pageQuery = graphql`
     }
     allSocksCsv {
       nodes {
-        id
         name
         levelAvailable
         brand
