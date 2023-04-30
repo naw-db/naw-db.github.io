@@ -23,7 +23,6 @@ export const pageQuery = graphql`
   query pageQuery {
     allTeamLevelRewardsCsv {
       nodes {
-        id
         teamLevel
         teamRep
         playersRecruited
@@ -39,7 +38,6 @@ export const pageQuery = graphql`
     }
     allEncounterRewardsCsv {
       nodes {
-        id
         teamLevel
         opponentTier
         credsToPlay
@@ -51,7 +49,6 @@ export const pageQuery = graphql`
     }
     allRuleTheCourtRewardsCsv {
       nodes {
-        id
         wins
         teamRep
         starTokens
@@ -62,7 +59,6 @@ export const pageQuery = graphql`
     }
     allWeeklyArenaTournamentRewardsCsv {
       nodes {
-        id
         type
         when
         requireArenaPass
@@ -76,7 +72,6 @@ export const pageQuery = graphql`
     }
     allDailyArenaTournamentRewardsCsv {
       nodes {
-        id
         type
         when
         requireArenaPass
@@ -90,7 +85,6 @@ export const pageQuery = graphql`
     }
     allDailyArenaTournamentRewardsByTeamLevelCsv {
       nodes {
-        id
         teamLevel
         requireArenaPass
         regularThirdWinReward
@@ -107,7 +101,6 @@ export const pageQuery = graphql`
     }
     allPracticeCourtRewardsCsv {
       nodes {
-        id
         teamLevel
         type
         playerXpVsStarter
@@ -117,7 +110,6 @@ export const pageQuery = graphql`
     }
     allOneOnOneRewardsCsv {
       nodes {
-        id
         teamLevel
         type
         ladderPosition
@@ -129,6 +121,27 @@ export const pageQuery = graphql`
         playerXpUponWinVsAllStar
         teamRepUponWinVsAllWorld
         playerXpUponWinVsAllWorld
+      }
+    }
+    allMilestoneRewardsCsv {
+      nodes {
+        milestone
+        description
+        rings
+        creds
+        cash
+        xpWildcards
+        energyDrinks
+        notes
+      }
+    }
+    allReferralRewardsCsv {
+      nodes {
+        task
+        referralRecipientReward
+        referralRecipientRewardQuantity
+        referrerReward
+        referrerRewardQuantity
       }
     }
   }

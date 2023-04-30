@@ -5,6 +5,7 @@ import { styled } from "@mui/material/styles";
 import { Section } from "gatsby-theme-portfolio-minimal";
 import { useGlobalState } from "gatsby-theme-portfolio-minimal/src/context";
 import { camelCase, range } from "lodash";
+import { parseFullName } from "parse-full-name";
 import React from "react";
 import { getQueryParams, setQueryParams } from "react-use-query-param-string";
 
@@ -101,7 +102,7 @@ const BarWithLabel = ({ value, ...restProps }) => (
 function PlayerSelection(data, playerRawData, qualifier, queryParams, forceUpdate) {
   return (
     <>
-      <FormControl sx={{ width: 180 }} size="small">
+      <FormControl sx={{ width: 170 }} size="small">
         <PlayerDropdown
           name={qualifier}
           value={playerRawData.name}
@@ -120,6 +121,12 @@ function PlayerSelection(data, playerRawData, qualifier, queryParams, forceUpdat
           {
             data.allPlayersCsv
               .nodes
+              .sort(
+                (a, b) => {
+                  return parseFullName(a.name).last
+                    .localeCompare(parseFullName(b.name).last);
+                }
+              )
               .map(e => <MenuItem key={e.name} value={e.name}>{e.name}</MenuItem>)
           }
         </PlayerDropdown>

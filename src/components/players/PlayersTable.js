@@ -391,6 +391,7 @@ export function PlayersTable({ data }) {
                           {...column.getHeaderProps()}
                           align="center"
                           sx={{
+                            fontWeight: "bold",
                             left: column.sticky ? 0 : undefined,
                             position: column.sticky ? "sticky" : undefined,
                             textAlign: column.textAlign ? column.textAlign : "center",

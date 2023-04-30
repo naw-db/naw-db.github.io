@@ -9,6 +9,7 @@ export function WeeklyArenaTournamentRewardsTable({ theme, defaultPageSize, data
         accessor: "type",
         Header: "Type",
         showHeader: true,
+        textAlign: "left",
         sticky: true,
         backgroundColor: theme.palette.background.default,
         disableFilters: true,
@@ -18,6 +19,7 @@ export function WeeklyArenaTournamentRewardsTable({ theme, defaultPageSize, data
         accessor: "when",
         Header: "When",
         showHeader: true,
+        textAlign: "left",
         disableFilters: true,
         disableSortBy: true
       },
@@ -86,6 +88,7 @@ export function DailyArenaTournamentRewardsTable({ theme, defaultPageSize, data 
         accessor: "type",
         Header: "Type",
         showHeader: true,
+        textAlign: "left",
         sticky: true,
         backgroundColor: theme.palette.background.default,
         disableFilters: true,
@@ -95,6 +98,7 @@ export function DailyArenaTournamentRewardsTable({ theme, defaultPageSize, data 
         accessor: "when",
         Header: "When",
         showHeader: true,
+        textAlign: "left",
         disableFilters: true,
         disableSortBy: true
       },
