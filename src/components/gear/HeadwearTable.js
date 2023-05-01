@@ -1,9 +1,9 @@
 import React from "react";
 
-import { SelectColumnFilter, TextColumnFilter } from "src/components/common/Table";
-import { BaseTable, generateBrandOptions, generateColorOptions, generateStyleOptions } from "src/components/gear/BaseTable";
+import { BaseTable, SelectColumnFilter, TextColumnFilter } from "src/components/common/Table";
+import { generateBrandOptions, generateColorOptions, generateStyleOptions } from "src/components/gear/TableOptions";
 
-export function HeadwearTable({ theme, defaultPageSize, data }) {
+export function HeadwearTable(props) {
   const columns = React.useMemo(
     () => {
       return [
@@ -14,7 +14,7 @@ export function HeadwearTable({ theme, defaultPageSize, data }) {
               accessor: "name",
               helperText: "Name",
               sticky: true,
-              backgroundColor: theme.palette.background.default,
+              backgroundColor: props.theme.palette.background.default,
               Filter: TextColumnFilter,
               disableSortBy: true
             },
@@ -28,7 +28,7 @@ export function HeadwearTable({ theme, defaultPageSize, data }) {
             {
               accessor: "brand",
               helperText: "Brand",
-              options: generateBrandOptions(data, e => e.brand),
+              options: generateBrandOptions(props.data, e => e.brand),
               Filter: SelectColumnFilter,
               filter: "equals",
               disableSortBy: true
@@ -36,7 +36,7 @@ export function HeadwearTable({ theme, defaultPageSize, data }) {
             {
               accessor: "style",
               helperText: "Style",
-              options: generateStyleOptions(data, e => e.style),
+              options: generateStyleOptions(props.data, e => e.style),
               Filter: SelectColumnFilter,
               filter: "equals",
               disableSortBy: true
@@ -44,7 +44,7 @@ export function HeadwearTable({ theme, defaultPageSize, data }) {
             {
               accessor: "color",
               helperText: "Color",
-              options: generateColorOptions(data, e => e.color),
+              options: generateColorOptions(props.data, e => e.color),
               Filter: SelectColumnFilter,
               filter: "includes",
               disableSortBy: true
@@ -68,12 +68,12 @@ export function HeadwearTable({ theme, defaultPageSize, data }) {
       ];
     },
     [
-      theme.palette.background.default,
-      data
+      props.theme.palette.background.default,
+      props.data
     ]
   );
 
   return (
-    <BaseTable theme={theme} columns={columns} defaultPageSize={defaultPageSize} data={data} />
+    <BaseTable theme={props.theme} columns={columns} defaultPageSize={props.defaultPageSize} data={props.data} />
   );
 }

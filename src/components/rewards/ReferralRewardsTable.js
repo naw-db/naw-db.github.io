@@ -1,8 +1,8 @@
 import React from "react";
 
-import { BaseTable } from "src/components/rewards/BaseTable";
+import { BaseTable } from "src/components/common/Table";
 
-export function ReferralRewardsTable({ theme, defaultPageSize, data }) {
+export function ReferralRewardsTable(props) {
   const columns = React.useMemo(
     () => [
       {
@@ -16,13 +16,13 @@ export function ReferralRewardsTable({ theme, defaultPageSize, data }) {
       {
         Header: "Referral Recipient",
         showHeader: true,
-        backgroundColor: theme.palette.text.secondary,
+        backgroundColor: props.theme.palette.text.secondary,
         columns: [
           {
             accessor: "referralRecipientReward",
             Header: "Reward",
             showHeader: true,
-            backgroundColor: theme.palette.text.secondary,
+            backgroundColor: props.theme.palette.text.secondary,
             textAlign: "left",
             disableFilters: true,
             disableSortBy: true
@@ -31,7 +31,7 @@ export function ReferralRewardsTable({ theme, defaultPageSize, data }) {
             accessor: "referralRecipientRewardQuantity",
             Header: "Quantity",
             showHeader: true,
-            backgroundColor: theme.palette.text.secondary,
+            backgroundColor: props.theme.palette.text.secondary,
             disableFilters: true,
             disableSortBy: true
           }
@@ -59,10 +59,10 @@ export function ReferralRewardsTable({ theme, defaultPageSize, data }) {
         ]
       }
     ],
-    [ theme.palette.text.secondary ]
+    [ props.theme.palette.text.secondary ]
   );
 
   return (
-    <BaseTable theme={theme} columns={columns} defaultPageSize={defaultPageSize} data={data} />
+    <BaseTable theme={props.theme} columns={columns} defaultPageSize={props.defaultPageSize} data={props.data} />
   );
 }

@@ -1,31 +1,12 @@
-import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
-import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
-import SwapVertIcon from "@mui/icons-material/SwapVert";
-import {
-  createTheme,
-  CssBaseline,
-  FormControlLabel,
-  MenuItem,
-  Stack,
-  Switch,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TablePagination,
-  TableRow,
-  TextField,
-  ThemeProvider
-} from "@mui/material";
+import { createTheme, FormControlLabel, MenuItem, Switch, TextField } from "@mui/material";
 import { useGlobalState } from "gatsby-theme-portfolio-minimal/src/context"
 import bigDecimal from "js-big-decimal";
 import { parseFullName } from "parse-full-name";
 import React from "react";
 import { isBrowser } from "react-device-detect";
-import { useFilters, usePagination, useSortBy, useTable } from "react-table";
 
 import { DEFAULT_PAGE_SIZE, DEFAULT_PAGE_SIZE_IN_DESKTOP_VIEW } from "src/components/common/Defaults";
-import { fuzzyTextFilterFn, ScrollableTable, SelectColumnFilter, TextColumnFilter } from "src/components/common/Table";
+import { BaseTable, SelectColumnFilter, TextColumnFilter } from "src/components/common/Table";
 import { STAT_CATEGORIES } from "src/components/players/PlayerStats";
 
 export const RANK_UP_REQUIREMENT_SEPARATOR = " → ";
@@ -320,152 +301,18 @@ export function PlayersTable({ data }) {
     ]
   );
 
-  const filterTypes = React.useMemo(
-    () => ({
-      fuzzyText: fuzzyTextFilterFn,
-      text: (rows, id, filterValue) => {
-        return rows.filter(
-          row => {
-            const rowValue = row.values[id];
-            return rowValue !== undefined
-              ? String(rowValue)
-                .toLowerCase()
-                .startsWith(String(filterValue).toLowerCase())
-              : true;
-          }
-        );
-      }
-    }),
-    []
-  );
-
-  const {
-    getTableProps,
-    getTableBodyProps,
-    headerGroups,
-    prepareRow,
-    rows,
-    page,
-    gotoPage,
-    setPageSize,
-    state: { pageIndex, pageSize }
-  } = useTable(
-    {
-      columns,
-      data: displayData,
-      filterTypes,
-      initialState: {
-        pageSize: defaultPageSize
-      }
-    },
-    useFilters,
-    useSortBy,
-    usePagination
-  );
-
   function updateStats(event) {
     setDisplayData(event.target.checked ? maxStatsData : baseStatsData);
     setShowMaxStats(event.target.checked);
   }
 
-  function updatePage(event, page) {
-    gotoPage(page);
-  }
-
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline>
-        <FormControlLabel
-          control={<Switch checked={showMaxStats} onChange={updateStats} />}
-          label="Show Max Stats"
-        />
-        <TableContainer>
-          <ScrollableTable {...getTableProps()} stickyHeader size="small">
-            <TableHead>
-              {headerGroups.map(
-                headerGroup => (
-                  <TableRow {...headerGroup.getHeaderGroupProps()}>
-                    {headerGroup.headers.map(
-                      column => (
-                        <TableCell
-                          {...column.getHeaderProps()}
-                          align="center"
-                          sx={{
-                            fontWeight: "bold",
-                            left: column.sticky ? 0 : undefined,
-                            position: column.sticky ? "sticky" : undefined,
-                            textAlign: column.textAlign ? column.textAlign : "center",
-                            whiteSpace: "nowrap",
-                            backgroundColor: column.backgroundColor
-                              ? column.backgroundColor
-                              : undefined,
-                            zIndex: column.sticky ? theme.zIndex.appBar + 2 : undefined
-                          }}
-                        >
-                          <div {...column.getSortByToggleProps()}>
-                          <span>
-                            {
-                              column.showSortLabel
-                                ? column.isSorted
-                                  ? (column.isSortedDesc ? <ArrowDownwardIcon fontSize="small" /> : <ArrowUpwardIcon fontSize="small" />)
-                                  : <SwapVertIcon fontSize="small" />
-                                : null
-                            }
-                          </span>
-                            <div>{column.showHeader ? column.render("Header") : null}</div>
-                            <div>{column.canFilter ? column.render("Filter") : null}</div>
-                          </div>
-                        </TableCell>
-                      ))}
-                  </TableRow>
-                )
-              )}
-            </TableHead>
-            <TableBody {...getTableBodyProps()}>
-              {page.map(
-                (row, i) => {
-                  prepareRow(row);
-                  return (
-                    <TableRow {...row.getRowProps()}>
-                      {row.cells.map(
-                        cell => {
-                          return <TableCell
-                            {...cell.getCellProps()}
-                            sx={{
-                              left: cell.column.sticky ? 0 : undefined,
-                              position: cell.column.sticky ? "sticky" : undefined,
-                              textAlign: cell.column.textAlign ? cell.column.textAlign : "center",
-                              whiteSpace: "nowrap",
-                              backgroundColor: cell.column.backgroundColor
-                                ? cell.column.backgroundColor
-                                : undefined
-                            }}
-                          >
-                            {cell.render("Cell")}
-                          </TableCell>;
-                        }
-                      )}
-                    </TableRow>
-                  );
-                }
-              )}
-            </TableBody>
-          </ScrollableTable>
-          <Stack spacing={2}>
-            <TablePagination
-              component="div"
-              count={rows.length}
-              labelRowsPerPage="Rows"
-              rowsPerPage={pageSize}
-              page={pageIndex}
-              showFirstButton
-              showLastButton
-              onPageChange={updatePage}
-              onRowsPerPageChange={e => setPageSize(Number(e.target.value))}
-            />
-          </Stack>
-        </TableContainer>
-      </CssBaseline>
-    </ThemeProvider>
+    <>
+      <FormControlLabel
+        control={<Switch checked={showMaxStats} onChange={updateStats} />}
+        label="Show Max Stats"
+      />
+      <BaseTable theme={theme} columns={columns} defaultPageSize={defaultPageSize} data={displayData} />
+    </>
   );
 }
