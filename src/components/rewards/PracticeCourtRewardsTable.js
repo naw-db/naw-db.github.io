@@ -1,16 +1,15 @@
 import React from "react";
 
-import { BaseTable } from "src/components/rewards/BaseTable";
-import { SelectColumnFilter } from "src/components/common/Table";
+import { BaseTable, SelectColumnFilter } from "src/components/common/Table";
 
-export function PracticeCourtRewardsTable({ theme, defaultPageSize, data }) {
+export function PracticeCourtRewardsTable(props) {
   const columns = React.useMemo(
     () => [
       {
         accessor: "teamLevel",
         helperText: "Team Level",
         sticky: true,
-        backgroundColor: theme.palette.background.default,
+        backgroundColor: props.theme.palette.background.default,
         Filter: SelectColumnFilter,
         filter: "equals",
         disableSortBy: true
@@ -45,10 +44,10 @@ export function PracticeCourtRewardsTable({ theme, defaultPageSize, data }) {
         disableSortBy: true
       }
     ],
-    [ theme.palette.background.default ]
+    [ props.theme.palette.background.default ]
   );
 
   return (
-    <BaseTable theme={theme} columns={columns} defaultPageSize={defaultPageSize} data={data} />
+    <BaseTable theme={props.theme} columns={columns} defaultPageSize={props.defaultPageSize} data={props.data} />
   );
 }

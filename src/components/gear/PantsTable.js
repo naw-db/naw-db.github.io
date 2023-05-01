@@ -1,9 +1,9 @@
 import React from "react";
 
-import { SelectColumnFilter, TextColumnFilter } from "src/components/common/Table";
-import { BaseTable, generateBrandOptions, generateColorOptions, generateRarityOptions, generateStyleOptions } from "src/components/gear/BaseTable";
+import { BaseTable, SelectColumnFilter, TextColumnFilter } from "src/components/common/Table";
+import { generateBrandOptions, generateColorOptions, generateRarityOptions, generateStyleOptions } from "src/components/gear/TableOptions";
 
-export function PantsTable({ theme, defaultPageSize, data }) {
+export function PantsTable(props) {
   const columns = React.useMemo(
     () => [
       {
@@ -13,7 +13,7 @@ export function PantsTable({ theme, defaultPageSize, data }) {
             accessor: "name",
             helperText: "Name",
             sticky: true,
-            backgroundColor: theme.palette.background.default,
+            backgroundColor: props.theme.palette.background.default,
             Filter: TextColumnFilter,
             disableSortBy: true
           },
@@ -27,7 +27,7 @@ export function PantsTable({ theme, defaultPageSize, data }) {
           {
             accessor: "brand",
             helperText: "Brand",
-            options: generateBrandOptions(data, e => e.brand),
+            options: generateBrandOptions(props.data, e => e.brand),
             Filter: SelectColumnFilter,
             filter: "equals",
             disableSortBy: true
@@ -35,7 +35,7 @@ export function PantsTable({ theme, defaultPageSize, data }) {
           {
             accessor: "style",
             helperText: "Style",
-            options: generateStyleOptions(data, e => e.style),
+            options: generateStyleOptions(props.data, e => e.style),
             Filter: SelectColumnFilter,
             filter: "equals",
             disableSortBy: true
@@ -43,7 +43,7 @@ export function PantsTable({ theme, defaultPageSize, data }) {
           {
             accessor: "color",
             helperText: "Color",
-            options: generateColorOptions(data, e => e.color),
+            options: generateColorOptions(props.data, e => e.color),
             Filter: SelectColumnFilter,
             filter: "includes",
             disableSortBy: true
@@ -51,7 +51,7 @@ export function PantsTable({ theme, defaultPageSize, data }) {
           {
             accessor: "rarity",
             helperText: "Rarity",
-            options: generateRarityOptions(data, e => e.rarity),
+            options: generateRarityOptions(props.data, e => e.rarity),
             Filter: SelectColumnFilter,
             filter: "equals",
             disableSortBy: true
@@ -68,7 +68,7 @@ export function PantsTable({ theme, defaultPageSize, data }) {
       {
         Header: "Level 1",
         showHeader: true,
-        backgroundColor: theme.palette.text.secondary,
+        backgroundColor: props.theme.palette.text.secondary,
         columns: [
           {
             Header: "OFF",
@@ -147,7 +147,7 @@ export function PantsTable({ theme, defaultPageSize, data }) {
       {
         Header: "Level 3",
         showHeader: true,
-        backgroundColor: theme.palette.text.secondary,
+        backgroundColor: props.theme.palette.text.secondary,
         columns: [
           {
             Header: "OFF",
@@ -226,7 +226,7 @@ export function PantsTable({ theme, defaultPageSize, data }) {
       {
         Header: "Level 5",
         showHeader: true,
-        backgroundColor: theme.palette.text.secondary,
+        backgroundColor: props.theme.palette.text.secondary,
         columns: [
           {
             Header: "OFF",
@@ -253,13 +253,13 @@ export function PantsTable({ theme, defaultPageSize, data }) {
       }
     ],
     [
-      data,
-      theme.palette.background.default,
-      theme.palette.text.secondary
+      props.theme.palette.background.default,
+      props.theme.palette.text.secondary,
+      props.data
     ]
   );
 
   return (
-    <BaseTable theme={theme} columns={columns} defaultPageSize={defaultPageSize} data={data} />
+    <BaseTable theme={props.theme} columns={columns} defaultPageSize={props.defaultPageSize} data={props.data} />
   );
 }

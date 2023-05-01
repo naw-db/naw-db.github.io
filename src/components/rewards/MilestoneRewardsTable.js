@@ -1,15 +1,15 @@
 import React from "react";
 
-import { BaseTable } from "src/components/rewards/BaseTable";
+import { BaseTable } from "src/components/common/Table";
 
-export function MilestoneRewardsTable({ theme, defaultPageSize, data }) {
+export function MilestoneRewardsTable(props) {
   const columns = React.useMemo(
     () => [
       {
         accessor: "milestone",
         Header: "Milestone",
         sticky: true,
-        backgroundColor: theme.palette.background.default,
+        backgroundColor: props.theme.palette.background.default,
         showHeader: true,
         textAlign: "left",
         disableFilters: true,
@@ -67,10 +67,10 @@ export function MilestoneRewardsTable({ theme, defaultPageSize, data }) {
         disableSortBy: true
       }
     ],
-    [ theme.palette.background.default ]
+    [ props.theme.palette.background.default ]
   );
 
   return (
-    <BaseTable theme={theme} columns={columns} defaultPageSize={defaultPageSize} data={data} />
+    <BaseTable theme={props.theme} columns={columns} defaultPageSize={props.defaultPageSize} data={props.data} />
   );
 }

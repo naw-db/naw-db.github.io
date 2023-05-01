@@ -67,7 +67,7 @@ export const pageQuery = graphql`
         lossesToBeEliminated
         pointsToWin
         completionRings
-        leaderBoardRings
+        leaderboardRings
       }
     }
     allDailyArenaTournamentRewardsCsv {
@@ -80,7 +80,7 @@ export const pageQuery = graphql`
         lossesToBeEliminated
         pointsToWin
         completionRings
-        leaderBoardRings
+        leaderboardRings
       }
     }
     allDailyArenaTournamentRewardsByTeamLevelCsv {
@@ -90,13 +90,13 @@ export const pageQuery = graphql`
         regularThirdWinReward
         sundaySecondWinReward
         sundayThirdWinReward
-        mondayLeaderBoardBonus
-        tuesdayLeaderBoardBonus
-        wednesdayLeaderBoardBonus
-        thursdayLeaderBoardBonus
-        fridayLeaderBoardBonus
-        saturdayLeaderBoardBonus
-        sundayLeaderBoardBonus
+        mondayLeaderboardBonus
+        tuesdayLeaderboardBonus
+        wednesdayLeaderboardBonus
+        thursdayLeaderboardBonus
+        fridayLeaderboardBonus
+        saturdayLeaderboardBonus
+        sundayLeaderboardBonus
       }
     }
     allPracticeCourtRewardsCsv {

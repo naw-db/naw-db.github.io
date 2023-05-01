@@ -1,8 +1,8 @@
 import React from "react";
 
-import { BaseTable } from "src/components/rewards/BaseTable";
+import { BaseTable } from "src/components/common/Table";
 
-export function WeeklyArenaTournamentRewardsTable({ theme, defaultPageSize, data }) {
+export function WeeklyArenaTournamentRewardsTable(props) {
   const columns = React.useMemo(
     () => [
       {
@@ -11,7 +11,7 @@ export function WeeklyArenaTournamentRewardsTable({ theme, defaultPageSize, data
         showHeader: true,
         textAlign: "left",
         sticky: true,
-        backgroundColor: theme.palette.background.default,
+        backgroundColor: props.theme.palette.background.default,
         disableFilters: true,
         disableSortBy: true
       },
@@ -66,22 +66,22 @@ export function WeeklyArenaTournamentRewardsTable({ theme, defaultPageSize, data
         disableSortBy: true
       },
       {
-        accessor: "leaderBoardRings",
-        Header: "Leader Board Rings",
+        accessor: "leaderboardRings",
+        Header: "Leaderboard Rings",
         showHeader: true,
         disableFilters: true,
         disableSortBy: true
       }
     ],
-    [ theme.palette.background.default ]
+    [ props.theme.palette.background.default ]
   );
 
   return (
-    <BaseTable theme={theme} columns={columns} defaultPageSize={defaultPageSize} data={data} />
+    <BaseTable theme={props.theme} columns={columns} defaultPageSize={props.defaultPageSize} data={props.data} />
   );
 }
 
-export function DailyArenaTournamentRewardsTable({ theme, defaultPageSize, data }) {
+export function DailyArenaTournamentRewardsTable(props) {
   const columns = React.useMemo(
     () => [
       {
@@ -90,7 +90,7 @@ export function DailyArenaTournamentRewardsTable({ theme, defaultPageSize, data 
         showHeader: true,
         textAlign: "left",
         sticky: true,
-        backgroundColor: theme.palette.background.default,
+        backgroundColor: props.theme.palette.background.default,
         disableFilters: true,
         disableSortBy: true
       },
@@ -145,22 +145,22 @@ export function DailyArenaTournamentRewardsTable({ theme, defaultPageSize, data 
         disableSortBy: true
       },
       {
-        accessor: "leaderBoardRings",
-        Header: "Leader Board Rings",
+        accessor: "leaderboardRings",
+        Header: "Leaderboard Rings",
         showHeader: true,
         disableFilters: true,
         disableSortBy: true
       }
     ],
-    [ theme.palette.background.default ]
+    [ props.theme.palette.background.default ]
   );
 
   return (
-    <BaseTable theme={theme} columns={columns} defaultPageSize={defaultPageSize} data={data} />
+    <BaseTable theme={props.theme} columns={columns} defaultPageSize={props.defaultPageSize} data={props.data} />
   );
 }
 
-export function DailyArenaTournamentRewardsByTeamLevelTable({ theme, defaultPageSize, data }) {
+export function DailyArenaTournamentRewardsByTeamLevelTable(props) {
   const columns = React.useMemo(
     () => [
       {
@@ -168,7 +168,7 @@ export function DailyArenaTournamentRewardsByTeamLevelTable({ theme, defaultPage
         Header: "Team Level",
         showHeader: true,
         sticky: true,
-        backgroundColor: theme.palette.background.default,
+        backgroundColor: props.theme.palette.background.default,
         disableFilters: true,
         disableSortBy: true
       },
@@ -201,54 +201,54 @@ export function DailyArenaTournamentRewardsByTeamLevelTable({ theme, defaultPage
         disableSortBy: true
       },
       {
-        Header: "Leader Board Bonus",
+        Header: "Leaderboard Bonus",
         showHeader: true,
-        backgroundColor: theme.palette.text.secondary,
+        backgroundColor: props.theme.palette.text.secondary,
         columns: [
           {
-            accessor: "mondayLeaderBoardBonus",
+            accessor: "mondayLeaderboardBonus",
             Header: "Monday",
             showHeader: true,
             disableFilters: true,
             disableSortBy: true
           },
           {
-            accessor: "tuesdayLeaderBoardBonus",
+            accessor: "tuesdayLeaderboardBonus",
             Header: "Tuesday",
             showHeader: true,
             disableFilters: true,
             disableSortBy: true
           },
           {
-            accessor: "wednesdayLeaderBoardBonus",
+            accessor: "wednesdayLeaderboardBonus",
             Header: "Wednesday",
             showHeader: true,
             disableFilters: true,
             disableSortBy: true
           },
           {
-            accessor: "thursdayLeaderBoardBonus",
+            accessor: "thursdayLeaderboardBonus",
             Header: "Thursday",
             showHeader: true,
             disableFilters: true,
             disableSortBy: true
           },
           {
-            accessor: "fridayLeaderBoardBonus",
+            accessor: "fridayLeaderboardBonus",
             Header: "Friday",
             showHeader: true,
             disableFilters: true,
             disableSortBy: true
           },
           {
-            accessor: "saturdayLeaderBoardBonus",
+            accessor: "saturdayLeaderboardBonus",
             Header: "Saturday",
             showHeader: true,
             disableFilters: true,
             disableSortBy: true
           },
           {
-            accessor: "sundayLeaderBoardBonus",
+            accessor: "sundayLeaderboardBonus",
             Header: "Sunday",
             showHeader: true,
             disableFilters: true,
@@ -258,12 +258,12 @@ export function DailyArenaTournamentRewardsByTeamLevelTable({ theme, defaultPage
       }
     ],
     [
-      theme.palette.background.default,
-      theme.palette.text.secondary
+      props.theme.palette.background.default,
+      props.theme.palette.text.secondary
     ]
   );
 
   return (
-    <BaseTable theme={theme} columns={columns} defaultPageSize={defaultPageSize} data={data} />
+    <BaseTable theme={props.theme} columns={columns} defaultPageSize={props.defaultPageSize} data={props.data} />
   );
 }
