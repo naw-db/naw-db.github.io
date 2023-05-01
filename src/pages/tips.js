@@ -14,7 +14,7 @@ export default function TipsPage({ data }) {
       <Seo title="Tips" />
       <Page useSplashScreenAnimation>
         <Animation type="fadeUp">
-          <Section heading="Level Up Team Level Fast">
+          <Section anchor="level-up-team-level-fast" heading="Level Up Team Level Fast">
             <TeamLevelTipsTable defaultPageSize={defaultPageSize} data={data.allTeamLevelTipsCsv.nodes}/>
           </Section>
         </Animation>
