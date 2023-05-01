@@ -1,0 +1,19 @@
+﻿tournament,series,date,duration,arena,passRequired,leaderboardSize,playerRequirements,numberOfPlayers,pointsToWin,numberOfGames,lossesToBeEliminated,completionRings,leaderboardRings
+LeBron Points Record,One-off,"February 8, 2023",2 days,LAL,No,32,All players eligible,1 ~ 4,3,3,2,1,None
+All-Star Friday,All-Star Weekend 2023,"February 17, 2023",1 day,UTA,Yes,32,All-Star Game players,2 ~ 4,5,5,1,1,"1st: 5, 2nd: 3, 3rd: 1"
+All-Star Saturday,All-Star Weekend 2023,"February 18, 2023",1 day,UTA,Yes,32,Top 4 East Teams,2 ~ 4,5,5,1,1,"1st: 5, 2nd: 3, 3rd: 1"
+All-Star Sunday,All-Star Weekend 2023,"February 19, 2023",1 day,UTA,Yes,32,Top 4 West Teams,2 ~ 4,5,5,1,1,"1st: 6, 2nd: 3, 3rd: 1"
+Round 1,March Insanity 2023,"March 16, 2023",1 day,SAC,Yes,32,Top 8 Teams East & West,1 ~ 4,5,5,1,4,"1st: 3, 2nd: 2, 3rd: 1"
+Round 2,March Insanity 2023,"March 18, 2023",2 days,DEN,Yes,32,Top 4 Teams East & West,2 ~ 4,5,5,1,4,"1st: 3, 2nd: 2, 3rd: 1"
+Super 16,March Insanity 2023,"March 23, 2023",2 days,NYK,Yes,32,BKN/NYK/MIL/CLE/MIA/ORL,2 ~ 4,5,5,1,4,"1st: 3, 2nd: 2, 3rd: 1"
+Great 8,March Insanity 2023,"March 25, 2023",2 days,NYK,Yes,32,ATL/MIA/GSW/DAL,2 ~ 4,5,5,1,4,"1st: 3, 2nd: 2, 3rd: 1"
+Four the Glory Classic,March Insanity 2023,"April 1, 2023",2 days,HOU,Yes,32,BOS/PHI/SAC/MEM,2 ~ 4,5,5,1,4,"1st: 3, 2nd: 2, 3rd: 1"
+Last Dance,March Insanity 2023,"April 3, 2023",2 days,HOU,Yes,32,CLE/DEN,2 ~ 4,5,5,1,4,"1st: 3, 2nd: 2, 3rd: 1"
+Play-In Tournament,NBA Playoffs 2023,"April 11, 2023",4 days,MIA,Yes,32,Play in Tournament Teams,2 ~ 4,5,5,1,4,"1st: 3, 2nd: 3, 3rd: 3"
+East 4th vs 5th,NBA Playoffs 2023,"April 16, 2023",4 days,CLE,Yes,32,Knicks & Cavaliers,2 ~ 4,5,5,1,4,"1st: 3, 2nd: 3, 3rd: 3"
+Put a Ring On It,One-off,"April 18, 2023",5 days,LAC,No,64,All players eligible,1 ~ 4,3,3,2,4,All: 1
+East 1st vs 8th,NBA Playoffs 2023,"April 20, 2023",5 days,MIL,Yes,32,Bucks & Heat,2 ~ 4,5,5,1,4,"1st: 3, 2nd: 3, 3rd: 3"
+West 4th vs 5th,NBA Playoffs 2023,"April 20, 2023",5 days,PHX,Yes,32,Suns & Clippers,2 ~ 4,5,5,1,4,"1st: 3, 2nd: 3, 3rd: 3"
+East 4th vs 5th,NBA Playoffs 2023,"April 25, 2023",6 days,CLE,Yes,32,Knicks & Cavaliers (2),2 ~ 4,5,5,1,4,"1st: 3, 2nd: 3, 3rd: 3"
+East 1st vs 8th,NBA Playoffs 2023,"April 25, 2023",6 days,MIL,Yes,32,Bucks & Heat (2),2 ~ 4,5,5,1,4,"1st: 3, 2nd: 3, 3rd: 3"
+West 4th vs 5th,NBA Playoffs 2023,"April 25, 2023",6 days,PHX,Yes,32,Suns & Clippers (2),2 ~ 4,5,5,1,4,"1st: 3, 2nd: 3, 3rd: 3"
