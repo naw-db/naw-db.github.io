@@ -1,11 +1,11 @@
 import { createTheme, CssBaseline, Stack, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, ThemeProvider } from "@mui/material";
 import { useGlobalState } from "gatsby-theme-portfolio-minimal/src/context";
 import React from "react";
-import { usePagination, useTable } from "react-table";
+import { useFilters, usePagination, useTable } from "react-table";
 
-import { ScrollableTable } from "src/components/common/Table";
+import { ScrollableTable, SelectColumnFilter } from "src/components/common/Table";
 
-export default function PlayerLevelRequirementsTable({ defaultPageSize, data }) {
+export default function EventTournamentHistoryTable({ defaultPageSize, data }) {
   const { globalState } = useGlobalState();
 
   const theme = createTheme({
@@ -17,129 +17,111 @@ export default function PlayerLevelRequirementsTable({ defaultPageSize, data }) 
   const columns = React.useMemo(
     () => [
       {
-        accessor: "rankAndLevel",
-        Header: "Rank / Level",
+        accessor: "tournament",
+        Header: "Tournament",
         showHeader: true,
         sticky: true,
         backgroundColor: theme.palette.background.default,
+        textAlign: "left",
         disableFilters: true,
         disableSortBy: true
       },
       {
-        accessor: "drillOpponentTier",
-        Header: "Drill Opponent Tier",
+        accessor: "series",
+        helperText: "Series",
+        textAlign: "left",
+        Filter: SelectColumnFilter,
+        filter: "equals",
+        disableSortBy: true
+      },
+      {
+        accessor: "date",
+        Header: "Date",
+        showHeader: true,
+        textAlign: "left",
+        disableFilters: true,
+        disableSortBy: true
+      },
+      {
+        accessor: "duration",
+        Header: "Duration",
         showHeader: true,
         disableFilters: true,
         disableSortBy: true
       },
       {
-        accessor: "drillWinsRequired",
-        Header: "Drill Wins",
+        accessor: "arena",
+        Header: "Arena",
         showHeader: true,
         disableFilters: true,
         disableSortBy: true
       },
       {
-        accessor: "starTokensRequired",
-        Header: "Star Tokens",
+        accessor: "passRequired",
+        Header: "Pass Required?",
         showHeader: true,
         disableFilters: true,
         disableSortBy: true
       },
       {
-        Header: "Starter",
+        accessor: "leaderboardSize",
+        Header: "Leaderboard Size",
         showHeader: true,
-        backgroundColor: theme.palette.text.secondary,
-        columns: [
-          {
-            accessor: "xpRequiredStarter",
-            Header: "XP",
-            showHeader: true,
-            backgroundColor: theme.palette.text.secondary,
-            disableFilters: true,
-            disableSortBy: true
-          },
-          {
-            accessor: "credsRequiredStarter",
-            Header: "Cred.",
-            showHeader: true,
-            backgroundColor: theme.palette.text.secondary,
-            disableFilters: true,
-            disableSortBy: true
-          },
-          {
-            accessor: "ringsRequiredStarter",
-            Header: "Rings",
-            showHeader: true,
-            backgroundColor: theme.palette.text.secondary,
-            disableFilters: true,
-            disableSortBy: true
-          }
-        ]
+        disableFilters: true,
+        disableSortBy: true
       },
       {
-        Header: "All-Star",
+        accessor: "playerRequirements",
+        Header: "Player Requirements",
         showHeader: true,
-        columns: [
-          {
-            accessor: "xpRequiredAllStar",
-            Header: "XP",
-            showHeader: true,
-            disableFilters: true,
-            disableSortBy: true
-          },
-          {
-            accessor: "credsRequiredAllStar",
-            Header: "Cred.",
-            showHeader: true,
-            disableFilters: true,
-            disableSortBy: true
-          },
-          {
-            accessor: "ringsRequiredAllStar",
-            Header: "Rings",
-            showHeader: true,
-            disableFilters: true,
-            disableSortBy: true
-          }
-        ]
+        textAlign: "left",
+        disableFilters: true,
+        disableSortBy: true
       },
       {
-        Header: "All-World",
+        accessor: "numberOfPlayers",
+        Header: "# of Players",
         showHeader: true,
-        backgroundColor: theme.palette.text.secondary,
-        columns: [
-          {
-            accessor: "xpRequiredAllWorld",
-            Header: "XP",
-            showHeader: true,
-            backgroundColor: theme.palette.text.secondary,
-            disableFilters: true,
-            disableSortBy: true
-          },
-          {
-            accessor: "credsRequiredAllWorld",
-            Header: "Cred.",
-            showHeader: true,
-            backgroundColor: theme.palette.text.secondary,
-            disableFilters: true,
-            disableSortBy: true
-          },
-          {
-            accessor: "ringsRequiredAllWorld",
-            Header: "Rings",
-            showHeader: true,
-            backgroundColor: theme.palette.text.secondary,
-            disableFilters: true,
-            disableSortBy: true
-          }
-        ]
+        disableFilters: true,
+        disableSortBy: true
+      },
+      {
+        accessor: "pointsToWin",
+        Header: "Points to Win",
+        showHeader: true,
+        disableFilters: true,
+        disableSortBy: true
+      },
+      {
+        accessor: "numberOfGames",
+        Header: "# of Games",
+        showHeader: true,
+        disableFilters: true,
+        disableSortBy: true
+      },
+      {
+        accessor: "lossesToBeEliminated",
+        Header: "Losses to be Eliminated",
+        showHeader: true,
+        disableFilters: true,
+        disableSortBy: true
+      },
+      {
+        accessor: "completionRings",
+        Header: "Completion Rings",
+        showHeader: true,
+        disableFilters: true,
+        disableSortBy: true
+      },
+      {
+        accessor: "leaderboardRings",
+        Header: "Leaderboard Rings",
+        showHeader: true,
+        disableFilters: true,
+        disableSortBy: true
       }
     ],
-    [
-      theme.palette.background.default,
-      theme.palette.text.secondary
-    ]
+    [ theme.palette.background.default ]
   );
 
   const {
@@ -160,6 +142,7 @@ export default function PlayerLevelRequirementsTable({ defaultPageSize, data }) 
         pageSize: defaultPageSize
       }
     },
+    useFilters,
     usePagination
   );
 
@@ -194,7 +177,10 @@ export default function PlayerLevelRequirementsTable({ defaultPageSize, data }) 
                             zIndex: column.sticky ? theme.zIndex.appBar + 2 : undefined
                           }}
                         >
-                          <div>{column.showHeader ? column.render("Header") : null}</div>
+                          <div>
+                            <div>{column.showHeader ? column.render("Header") : null}</div>
+                            <div>{column.canFilter ? column.render("Filter") : null}</div>
+                          </div>
                         </TableCell>
                       ))}
                   </TableRow>
