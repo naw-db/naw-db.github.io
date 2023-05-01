@@ -54,10 +54,13 @@ export default function TeamLevelTipsTable() {
           <br />
           <br />
           <h3>Other Contributors</h3>
-          <p>
+          <p>Also, major thanks to <b>SoleilNoir69</b> for the contribution to our catalog of data!</p>
+          <br />
+          <br />
+          <b>
             Wanna see your name here? Sumit a PR to our <a href="https://github.com/naw-db/naw-db.github.io/">GitHub repository</a>, or simply just upload
             screenshots of data that is missing from our database on <a href="https://disboard.org/server/1032854323752869964">our Discord server</a>!
-          </p>
+          </b>
         </CssBaseline>
       </ThemeProvider>
     </Section>
