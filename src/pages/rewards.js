@@ -36,6 +36,20 @@ export const pageQuery = graphql`
         rosterSlots
       }
     }
+    allDropZoneRewardsCsv {
+      nodes {
+        dropZone
+        rechargeTime
+        dailyLimit
+        primaryDrop
+        secondaryDropCreds
+        secondaryDropEnergyDrinks
+        secondaryDropBoosts
+        secondaryDropXpWildcards
+        secondaryDropStarTokens
+        secondaryDropArenaPasses
+      }
+    }
     allEncounterRewardsCsv {
       nodes {
         teamLevel

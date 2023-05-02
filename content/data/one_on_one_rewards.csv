@@ -1,4 +1,4 @@
-﻿teamLevel,type,ladderPosition,credsToPlay,credsUponWin,teamRepUponWinVsStarter,playerXpUponWinVsStarter,teamRepUponWinVsAllStar,playerXpUponWinVsAllStar,teamRepUponWinVsAllWorld,playerXpUponWinVsAllWorld
+teamLevel,type,ladderPosition,credsToPlay,credsUponWin,teamRepUponWinVsStarter,playerXpUponWinVsStarter,teamRepUponWinVsAllStar,playerXpUponWinVsAllStar,teamRepUponWinVsAllWorld,playerXpUponWinVsAllWorld
 1,Warm Up Game,N/A,0,50,8,20,15,30,23,40
 1,Practice 1v1,N/A,0,0,0,10,0,15,0,20
 1,Pick Up Game,N/A,200,400,8,20,15,30,23,40
