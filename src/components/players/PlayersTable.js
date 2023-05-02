@@ -43,8 +43,9 @@ function generateRankUpRequirementsOptions(data, selectFieldFunction) {
       .map(e => e.trim())
       .sort(
         (a, b) => {
-          return parseFullName(a).last
-            .localeCompare(parseFullName(b).last);
+          return parseFullName(a).last !== parseFullName(b).last
+            ? parseFullName(a).last.localeCompare(parseFullName(b).last)
+            : parseFullName(a).first.localeCompare(parseFullName(b).first)
         }
       )
   );
