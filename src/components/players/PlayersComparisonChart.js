@@ -41,6 +41,7 @@ const PlayerDropdown = styled(Select)`
 `;
 
 const RankDropdown = styled(Select)`
+  width: 65px;
   margin-left: 5px;
   margin-right: 5px;
 `;
@@ -123,8 +124,9 @@ function PlayerSelection(data, playerRawData, qualifier, queryParams, forceUpdat
               .nodes
               .sort(
                 (a, b) => {
-                  return parseFullName(a.name).last
-                    .localeCompare(parseFullName(b.name).last);
+                  return parseFullName(a.name).last !== parseFullName(b.name).last
+                    ? parseFullName(a.name).last.localeCompare(parseFullName(b.name).last)
+                    : parseFullName(a.name).first.localeCompare(parseFullName(b.name).first)
                 }
               )
               .map(e => <MenuItem key={e.name} value={e.name}>{e.name}</MenuItem>)
