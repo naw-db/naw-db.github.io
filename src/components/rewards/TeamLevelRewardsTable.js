@@ -32,6 +32,7 @@ export function TeamLevelRewardsTable(props) {
         accessor: "playerLevelRequirements",
         Header: "Player Level Requirements",
         showHeader: true,
+        textAlign: "left",
         disableFilters: true,
         disableSortBy: true
       },
