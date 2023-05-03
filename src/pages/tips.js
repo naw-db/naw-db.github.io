@@ -15,6 +15,11 @@ export default function TipsPage({ data }) {
       <Page useSplashScreenAnimation>
         <Animation type="fadeUp">
           <Section anchor="level-up-team-level-fast" heading="Level Up Team Level Fast">
+            <h5>
+              R: Rank, L: Level.
+              <br />
+              Example: R1L7 → Rank 1 Level 7
+            </h5>
             <TeamLevelTipsTable defaultPageSize={defaultPageSize} data={data.allTeamLevelTipsCsv.nodes}/>
           </Section>
         </Animation>
