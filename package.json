@@ -15,15 +15,15 @@
   "dependencies": {
     "@devexpress/dx-react-chart": "^4.0.3",
     "@devexpress/dx-react-chart-material-ui": "^4.0.3",
-    "@emotion/react": "^11.10.6",
-    "@emotion/styled": "^11.10.6",
+    "@emotion/react": "^11.10.8",
+    "@emotion/styled": "^11.10.8",
     "@mui/icons-material": "^5.11.16",
-    "@mui/material": "^5.12.2",
+    "@mui/material": "^5.12.3",
     "gatsby": "^5.9.0",
     "gatsby-plugin-google-tagmanager": "^5.9.0",
     "gatsby-plugin-root-import": "^2.0.9",
     "gatsby-source-filesystem": "^5.9.0",
-    "gatsby-theme-portfolio-minimal": "^4.4.0",
+    "gatsby-theme-portfolio-minimal": "^4.5.0",
     "gatsby-transformer-csv": "^5.9.0",
     "gatsby-transformer-inline-svg": "^1.2.0",
     "js-big-decimal": "^1.4.1",
@@ -56,7 +56,11 @@
     "NBA All-World"
   ],
   "devDependencies": {
-    "csv-parse": "^5.3.8",
-    "gh-pages": "^5.0.0"
+    "@types/node": "^18.16.3",
+    "@types/react": "^18.2.5",
+    "@types/react-dom": "^18.2.3",
+    "csv-parse": "^5.3.9",
+    "gh-pages": "^5.0.0",
+    "typescript": "^5.0.4"
   }
 }
