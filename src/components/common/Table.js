@@ -2,7 +2,9 @@ import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 import SwapVertIcon from "@mui/icons-material/SwapVert";
 import {
+  Checkbox,
   CssBaseline,
+  ListItemText,
   MenuItem,
   Stack,
   Table,
@@ -36,7 +38,7 @@ export function TextColumnFilter({ column: { label, helperText, filterValue, set
   );
 }
 
-export function SelectColumnFilter({ column: { id, label, helperText, options = null, filterValue, setFilter, preFilteredRows, sortOptions = false } }) {
+export function SelectColumnFilter({ column: { id, label, helperText, multiple = false, options = null, filterValue, setFilter, preFilteredRows, sortOptions = false } }) {
   // Calculate the organic options for filtering using the preFilteredRows.
   const columnOptions = Array.from(
     React.useMemo(
@@ -57,27 +59,42 @@ export function SelectColumnFilter({ column: { id, label, helperText, options = 
     columnOptions.sort();
   }
 
-  // Render a multi-select box.
   return (
     <TextField
       select
+      SelectProps={{
+        multiple: multiple,
+        renderValue: multiple ? (selected) => selected.join(", ") : undefined
+      }}
       label={label}
       helperText={helperText}
-      defaultValue=""
-      value={filterValue || ""}
+      value={filterValue || (multiple ? [] : "")}
       size="small"
       fullWidth
       onChange={
-        e => {
-          setFilter(e.target.value || undefined);
+        ({ target: { value: targetValue }}) => {
+          if (multiple) {
+            setFilter(
+              targetValue.length === 0 || targetValue.includes("")
+                ? undefined
+                : targetValue
+            );
+          } else {
+            setFilter(targetValue || undefined);
+          }
         }
       }
     >
-      <MenuItem value="">Any</MenuItem>
+      <MenuItem value="">
+        <ListItemText primary="Any" sx={{ textAlign: multiple ? "center" : undefined }} />
+      </MenuItem>
       {
         columnOptions.map(
           (option, i) => (
-            <MenuItem key={i} value={option}>{option}</MenuItem>
+            <MenuItem key={i} value={option}>
+              { multiple ? <Checkbox checked={filterValue ? filterValue.indexOf(option) > -1 : false} /> : undefined }
+              <ListItemText primary={option} />
+            </MenuItem>
           )
         )
       }
@@ -112,6 +129,13 @@ export function BaseTable({ theme, columns, defaultPageSize, data }) {
                 .toLowerCase()
                 .startsWith(String(filterValue).toLowerCase())
               : true;
+          }
+        );
+      },
+      in: (rows, id, filterValue) => {
+        return rows.filter(
+          row => {
+            return filterValue.includes(row.values[id]);
           }
         );
       }
