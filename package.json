@@ -6,6 +6,8 @@
     "clean": "gatsby clean",
     "validate-data": "node ./bin/validate_csv.mjs ./content/data/ && node ./bin/validate_json.mjs ./content/data/",
     "develop": "gatsby develop",
+    "cy:open": "cypress open --browser chrome --e2e",
+    "test:e2e": "CYPRESS_SUPPORT=y start-server-and-test develop http://localhost:8000 cy:open",
     "build": "npm run clean && gatsby build",
     "serve": "gatsby serve"
   },
@@ -56,11 +58,17 @@
     "NBA All-World"
   ],
   "devDependencies": {
+    "@testing-library/cypress": "^9.0.0",
     "@types/node": "^18.16.3",
     "@types/react": "^18.2.5",
     "@types/react-dom": "^18.2.3",
+    "axe-core": "^4.7.0",
     "csv-parse": "^5.3.9",
+    "cypress": "^12.11.0",
+    "cypress-axe": "^1.4.0",
+    "gatsby-cypress": "^3.9.0",
     "gh-pages": "^5.0.0",
+    "start-server-and-test": "^2.0.0",
     "typescript": "^5.0.4"
   }
 }
