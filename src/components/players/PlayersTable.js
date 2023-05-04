@@ -18,7 +18,7 @@ function PositionColumnFilter({ column: { label, helperText, filterValue, setFil
       label={label}
       helperText={helperText}
       defaultValue=""
-      value={filterValue}
+      value={filterValue || ""}
       size="small"
       fullWidth
       onChange={
@@ -27,7 +27,7 @@ function PositionColumnFilter({ column: { label, helperText, filterValue, setFil
         }
       }
     >
-      <MenuItem value="">All</MenuItem>
+      <MenuItem value="">Any</MenuItem>
       <MenuItem value="PG">PG</MenuItem>
       <MenuItem value="SG">SG</MenuItem>
       <MenuItem value="SF">SF</MenuItem>
@@ -136,24 +136,25 @@ export function PlayersTable({ data }) {
             accessor: "team",
             helperText: "Team",
             Filter: SelectColumnFilter,
+            filter: "in",
+            multiple: true,
             sortOptions: true,
-            filter: "equals",
             disableSortBy: true
           },
           {
             accessor: "conference",
             helperText: "Conf.",
             Filter: SelectColumnFilter,
-            sortOptions: true,
             filter: "equals",
+            sortOptions: true,
             disableSortBy: true
           },
           {
             accessor: "division",
             helperText: "Division",
             Filter: SelectColumnFilter,
-            sortOptions: true,
             filter: "equals",
+            sortOptions: true,
             disableSortBy: true
           },
           {
