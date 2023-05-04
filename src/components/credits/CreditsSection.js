@@ -54,7 +54,7 @@ export default function TeamLevelTipsTable() {
           <br />
           <br />
           <h3>Other Contributors</h3>
-          <p>Also, major thanks to <b>SoleilNoir69</b> for the contribution to our catalog of data!</p>
+          <p>Also, major thanks to <b>SoleilNoir69</b>, <b>Nickos19</b> & <b>WetzCoast</b> for the contribution to our catalog of data!</p>
           <br />
           <br />
           <b>
