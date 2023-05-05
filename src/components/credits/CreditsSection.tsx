@@ -7,6 +7,15 @@ import { useGlobalState } from "gatsby-theme-portfolio-minimal/src/context";
 import React from "react";
 import { Code } from "react-code-blocks";
 
+const OTHER_CONTRIBUTORS: Array<string> = [
+  "SoleilNoir69",
+  "Nickos19",
+  "GVExMIKE",
+  "1down5up",
+  "KalLightYear",
+  "WetzCoast"
+];
+
 export default function TeamLevelTipsTable() {
   const { globalState } = useGlobalState();
 
@@ -54,7 +63,12 @@ export default function TeamLevelTipsTable() {
           <br />
           <br />
           <h3>Other Contributors</h3>
-          <p>Also, major thanks to <b>SoleilNoir69</b> for the contribution to our catalog of data!</p>
+          <p>
+            Also, major thanks to the following for the contribution to our catalog of data!
+            <ul>
+              {OTHER_CONTRIBUTORS.map(contributor => <li><b>{contributor}</b></li>)}
+            </ul>
+          </p>
           <br />
           <br />
           <b>
