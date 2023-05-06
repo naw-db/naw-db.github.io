@@ -61,6 +61,8 @@ jobs:
             ${{ runner.os }}-gatsby-build-
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
+      - name: Validate data files
+        run: ${{ steps.detect-package-manager.outputs.manager }} run validate-data
       - name: Build with Gatsby
         env:
           PREFIX_PATHS: "true"
@@ -74,4 +76,4 @@ jobs:
         with:
           browser: chrome
           start: ${{ steps.detect-package-manager.outputs.manager }} run serve
-          wait-on: "http://0.0.0.0:8000"
+          wait-on: "http://[::1]:8000/"
