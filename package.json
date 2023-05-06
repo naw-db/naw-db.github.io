@@ -7,7 +7,9 @@
     "validate-data": "node ./bin/validate_csv.mjs ./content/data/ && node ./bin/validate_json.mjs ./content/data/",
     "develop": "gatsby develop",
     "cy:open": "cypress open --browser chrome --e2e",
-    "test:e2e": "CYPRESS_SUPPORT=y start-server-and-test develop http://localhost:8000 cy:open",
+    "cy:run": "cypress run --browser chrome --e2e",
+    "test:open:e2e": "CYPRESS_SUPPORT=y start-server-and-test develop http://localhost:8000 cy:open",
+    "test:run:e2e": "CYPRESS_SUPPORT=y start-server-and-test develop http://localhost:8000 cy:run",
     "build": "npm run clean && gatsby build",
     "serve": "gatsby serve"
   },

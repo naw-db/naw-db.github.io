@@ -1,4 +1,4 @@
-import { createTheme, FormControlLabel, MenuItem, PaletteMode, Switch, TextField } from "@mui/material";
+import { createTheme, FormControlLabel, ListItemText, MenuItem, PaletteMode, Switch, TextField } from "@mui/material";
 import { useGlobalState } from "gatsby-theme-portfolio-minimal/src/context"
 import bigDecimal from "js-big-decimal";
 import { parseFullName } from "parse-full-name";
@@ -43,12 +43,12 @@ function PositionColumnFilter(
         }
       }
     >
-      <MenuItem value="">Any</MenuItem>
-      <MenuItem value="PG">PG</MenuItem>
-      <MenuItem value="SG">SG</MenuItem>
-      <MenuItem value="SF">SF</MenuItem>
-      <MenuItem value="PF">PF</MenuItem>
-      <MenuItem value="C">C</MenuItem>
+      <MenuItem value=""><ListItemText primary="Any" /></MenuItem>
+      <MenuItem value="PG"><ListItemText primary="PG" /></MenuItem>
+      <MenuItem value="SG"><ListItemText primary="SG" /></MenuItem>
+      <MenuItem value="SF"><ListItemText primary="SF" /></MenuItem>
+      <MenuItem value="PF"><ListItemText primary="PF" /></MenuItem>
+      <MenuItem value="C"><ListItemText primary="C" /></MenuItem>
     </TextField>
   );
 }
@@ -185,6 +185,7 @@ export function PlayersTable({ data }: { data: Array<any> }) {
       {
         accessor: "overall",
         Header: "OVR",
+        hoverText: "Overall",
         showHeader: true,
         showSortLabel: true,
         disableFilters: true
@@ -197,6 +198,7 @@ export function PlayersTable({ data }: { data: Array<any> }) {
           {
             accessor: "totalOffense",
             Header: "TOT",
+            hoverText: "Overall Offense",
             showHeader: true,
             backgroundColor: theme.palette.text.secondary,
             showSortLabel: true,
@@ -205,6 +207,7 @@ export function PlayersTable({ data }: { data: Array<any> }) {
           {
             accessor: "ballHandling",
             Header: "BHL",
+            hoverText: "Ball Handling",
             showHeader: true,
             showSortLabel: true,
             disableFilters: true
@@ -212,6 +215,7 @@ export function PlayersTable({ data }: { data: Array<any> }) {
           {
             accessor: "perimeterShooting",
             Header: "PES",
+            hoverText: "Perimeter Shooting",
             showHeader: true,
             showSortLabel: true,
             disableFilters: true
@@ -219,6 +223,7 @@ export function PlayersTable({ data }: { data: Array<any> }) {
           {
             accessor: "midRangeShooting",
             Header: "MRS",
+            hoverText: "Mid-Range Shooting",
             showHeader: true,
             showSortLabel: true,
             disableFilters: true
@@ -226,6 +231,7 @@ export function PlayersTable({ data }: { data: Array<any> }) {
           {
             accessor: "dunkPower",
             Header: "DNK",
+            hoverText: "Dunk Power",
             showHeader: true,
             showSortLabel: true,
             disableFilters: true
@@ -239,6 +245,7 @@ export function PlayersTable({ data }: { data: Array<any> }) {
           {
             accessor: "totalDefense",
             Header: "TOT",
+            hoverText: "Overall Defense",
             showHeader: true,
             backgroundColor: theme.palette.text.secondary,
             showSortLabel: true,
@@ -247,6 +254,7 @@ export function PlayersTable({ data }: { data: Array<any> }) {
           {
             accessor: "defense",
             Header: "DEF",
+            hoverText: "Defense",
             showHeader: true,
             showSortLabel: true,
             disableFilters: true
@@ -254,6 +262,7 @@ export function PlayersTable({ data }: { data: Array<any> }) {
           {
             accessor: "blocking",
             Header: "BLK",
+            hoverText: "Blocking",
             showHeader: true,
             showSortLabel: true,
             disableFilters: true
@@ -261,6 +270,7 @@ export function PlayersTable({ data }: { data: Array<any> }) {
           {
             accessor: "stealing",
             Header: "STL",
+            hoverText: "Stealing",
             showHeader: true,
             showSortLabel: true,
             disableFilters: true
@@ -275,6 +285,7 @@ export function PlayersTable({ data }: { data: Array<any> }) {
           {
             accessor: "totalFitness",
             Header: "TOT",
+            hoverText: "Overall Fitness",
             showHeader: true,
             backgroundColor: theme.palette.text.secondary,
             showSortLabel: true,
@@ -283,6 +294,7 @@ export function PlayersTable({ data }: { data: Array<any> }) {
           {
             accessor: "strength",
             Header: "STR",
+            hoverText: "Strength",
             showHeader: true,
             showSortLabel: true,
             disableFilters: true
@@ -290,6 +302,7 @@ export function PlayersTable({ data }: { data: Array<any> }) {
           {
             accessor: "speed",
             Header: "SPD",
+            hoverText: "Speed",
             showHeader: true,
             showSortLabel: true,
             disableFilters: true
@@ -297,6 +310,7 @@ export function PlayersTable({ data }: { data: Array<any> }) {
           {
             accessor: "stamina",
             Header: "STA",
+            hoverText: "Stamina",
             showHeader: true,
             showSortLabel: true,
             disableFilters: true
