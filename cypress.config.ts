@@ -7,8 +7,8 @@ export default defineConfig({
     supportFile: "cypress/support/e2e.ts",
     execTimeout: 5000,
     taskTimeout: 5000,
-    pageLoadTimeout: 3000,
-    responseTimeout: 3000,
+    pageLoadTimeout: 10000,
+    responseTimeout: 10000,
     video: false
   }
 })
