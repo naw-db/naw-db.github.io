@@ -75,8 +75,9 @@ jobs:
       - name: Run E2E Tests
         uses: cypress-io/github-action@v5
         timeout-minutes: 5
-        env:
-          DEBUG: "cypress:*"
+        # Uncomment below to enable debugging.
+        # env:
+        #   DEBUG: "cypress:*"
         with:
           browser: chrome
           start: ${{ steps.detect-package-manager.outputs.manager }} run develop

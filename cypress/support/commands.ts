@@ -1,7 +1,6 @@
 Cypress.Commands.add(
   "testPagination",
-  (pageUrl: string) => {
-
+  () => {
     cy.get(".MuiTablePagination-toolbar")
       .get(".MuiTablePagination-select")
       .then(
@@ -18,15 +17,19 @@ Cypress.Commands.add(
                 let remainingRowsCount = totalRows;
                 let nextPageClicksCount = 0;
 
+                // Click on Next Page until last page is reached.
                 while (remainingRowsCount > defaultPageSize) {
+                  // Assert current page is full.
                   cy.get(".MuiTableBody-root")
                     .children()
                     .should("have.length", defaultPageSize);
 
+                  // Go to next page.
                   cy.get(".MuiIconButton-root")
                     .get("[aria-label='Go to next page']")
                     .click();
 
+                  // Assert row summary has changed.
                   cy.get(".MuiTablePagination-displayedRows")
                     .should(
                       ($updatedDisplayedRowSummary) => {
@@ -38,16 +41,19 @@ Cypress.Commands.add(
                   nextPageClicksCount++;
                 }
 
+                // Assert size of last page.
                 cy.get(".MuiTableBody-root")
                   .children()
                   .should("have.length", remainingRowsCount);
 
+                // Go back to first page by clicking on Previous Page.
                 for (let i = 0; i < nextPageClicksCount; i++) {
                   cy.get(".MuiIconButton-root")
                     .get("[aria-label='Go to previous page']")
                     .click();
                 }
 
+                // Assert row summary of first page has not changed.
                 cy.get(".MuiTablePagination-displayedRows")
                   .should(
                     ($updatedDisplayedRowSummary) => {
@@ -55,6 +61,7 @@ Cypress.Commands.add(
                     }
                   );
 
+                // Change page size.
                 cy.get(".MuiTablePagination-select")
                   .click();
 
@@ -62,6 +69,7 @@ Cypress.Commands.add(
                   .last()
                   .click();
 
+                // Assert size of current page has changed.
                 cy.get(".MuiTablePagination-toolbar")
                   .get(".MuiTablePagination-select")
                   .then(
@@ -82,22 +90,24 @@ Cypress.Commands.add(
 
 Cypress.Commands.add(
   "testTextBoxFilter",
-  (pageUrl: string, columnIndex: number, textBoxName: string, targetText: string) => {
-
+  (columnIndex: number, textBoxName: string, targetText: string) => {
     cy.get(".MuiTablePagination-select")
       .then(
         ($dropdown) => {
+          // Memorize initial page size.
           const pageSize = parseInt($dropdown.text());
 
           cy.get("tbody")
             .children()
             .should("have.length", pageSize);
 
+          // Type in text box to filter.
           cy.contains(textBoxName)
             .parent()
             .find("input")
             .type(targetText);
 
+          // Assert table has been filtered.
           cy.get("tbody")
             .children()
             .should("have.length.greaterThan", 1)
@@ -107,11 +117,13 @@ Cypress.Commands.add(
               }
             );
 
+          // Clear text box.
           cy.contains(textBoxName)
             .parent()
             .find("input")
             .clear();
 
+          // Assert table has been restored.
           cy.get("tbody")
             .children()
             .should("have.length", pageSize);
@@ -122,17 +134,18 @@ Cypress.Commands.add(
 
 Cypress.Commands.add(
   "testSingularSelectDropdown",
-  (pageUrl: string, columnIndex: number, dropdownText: string, targetOptionText: string, resultOperator: string, resetOptionText: string) => {
-
-      cy.get(".MuiTablePagination-select")
-        .then(
-          ($dropdown) => {
+  (columnIndex: number, dropdownText: string, targetOptionText: string, resultOperator: string, resetOptionText: string) => {
+    cy.get(".MuiTablePagination-select")
+      .then(
+        ($dropdown) => {
+          // Memorize intial page size.
           const pageSize = parseInt($dropdown.text());
 
           cy.get("tbody")
             .children()
             .should("have.length", pageSize);
 
+          // Click on dropdown and select the specified option.
           cy.contains(dropdownText)
             .parent()
             .find(".MuiSelect-select")
@@ -144,6 +157,7 @@ Cypress.Commands.add(
             .contains(targetOptionText)
             .click();
 
+          // Assert table has been filtered.
           cy.get("tbody")
             .children()
             .should("have.length.greaterThan", 1)
@@ -160,6 +174,7 @@ Cypress.Commands.add(
               }
             );
 
+          // Clear dropdown.
           cy.contains(dropdownText)
             .parent()
             .find(".MuiSelect-select")
@@ -171,6 +186,7 @@ Cypress.Commands.add(
             .contains(resetOptionText)
             .click();
 
+          // Assert table has been restored.
           cy.get("tbody")
             .children()
             .should("have.length", pageSize);
@@ -181,17 +197,18 @@ Cypress.Commands.add(
 
 Cypress.Commands.add(
   "testMultiSelectDropdown",
-  (pageUrl: string, columnIndex: number, dropdownText: string, targetOptionTexts: Array<string>, resetOptionText: string) => {
-
+  (columnIndex: number, dropdownText: string, targetOptionTexts: Array<string>, resetOptionText: string) => {
     cy.get(".MuiTablePagination-select")
       .then(
         ($dropdown) => {
+          // Memorize initial page size.
           const pageSize = parseInt($dropdown.text());
 
           cy.get("tbody")
             .children()
             .should("have.length", pageSize);
 
+          // Click on dropdown and select the specified options.
           cy.contains(dropdownText)
             .parent()
             .find(".MuiSelect-select")
@@ -208,6 +225,7 @@ Cypress.Commands.add(
               }
             );
 
+          // Assert table has been filtered.
           cy.get("tbody")
             .children()
             .should("have.length.greaterThan", 1)
@@ -217,12 +235,14 @@ Cypress.Commands.add(
               }
             );
 
+          // Clear dropdown.
           cy.contains(dropdownText)
             .parent()
             .get(".MuiListItemText-root")
             .contains(resetOptionText)
             .click();
 
+          // Assert table has been restored.
           cy.get("tbody")
             .children()
             .should("have.length", pageSize);
@@ -233,11 +253,11 @@ Cypress.Commands.add(
 
 Cypress.Commands.add(
   "testSortableColumn",
-  (pageUrl: string, columnIndex: number, columnHoverText: string) => {
-
+  (columnIndex: number, columnHoverText: string) => {
     cy.get(`[title='${columnHoverText}']`)
       .each(
         ($th) => {
+          // Assert column is sorted in ascending order after first click.
           let lastAscendingValue = 0;
 
           cy.wrap($th)
@@ -254,6 +274,7 @@ Cypress.Commands.add(
               }
             );
 
+          // Assert column is sorted in descending order after second click.
           let lastDescendingValue = Number.MAX_VALUE;
 
           cy.wrap($th)
@@ -270,6 +291,6 @@ Cypress.Commands.add(
               }
             );
         }
-      )
+      );
   }
 );
