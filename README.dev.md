@@ -46,6 +46,10 @@
 * `cd` into the root directory of the website project.
 * Run command: `npm install && gatsby build && gatsby serve`
 
+#### 3.3 To run E2E tests against your local website
+* To execute tests with GUI, run command: `CY_OP=open npm run test:run:e2e`
+* To execute tests without GUI, run command: `CY_OP=run npm run test:run:e2e`
+
 ### 4. Publish to GitHub Pages
 A GitHub Action is set up to automatically deploy the updated website when a commit is pushed to the 'develop' branch.
 
