@@ -70,8 +70,8 @@ jobs:
         with:
           path: ./public
       - name: Run E2E tests
-        uses: cypress-io/github-action@v3
+        uses: cypress-io/github-action@v5
         with:
-          path: ./public
           browser: chrome
-          wait-on: "http://localhost:8000"
+          start: ${{ steps.detect-package-manager.outputs.manager }} run serve
+          wait-on: "http://localhost:9000"
