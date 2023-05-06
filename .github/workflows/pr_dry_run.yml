@@ -79,5 +79,5 @@ jobs:
           DEBUG: "cypress:*"
         with:
           browser: chrome
-          start: ${{ steps.detect-package-manager.outputs.manager }} run serve
+          start: ${{ steps.detect-package-manager.outputs.manager }} run develop
           wait-on: "http://[::1]:8000/"

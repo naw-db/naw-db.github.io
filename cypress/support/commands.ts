@@ -1,7 +1,6 @@
 Cypress.Commands.add(
   "testPagination",
   (pageUrl: string) => {
-    cy.visit(pageUrl);
 
     cy.get(".MuiTablePagination-toolbar")
       .get(".MuiTablePagination-select")
@@ -84,7 +83,6 @@ Cypress.Commands.add(
 Cypress.Commands.add(
   "testTextBoxFilter",
   (pageUrl: string, columnIndex: number, textBoxName: string, targetText: string) => {
-    cy.visit(pageUrl);
 
     cy.get(".MuiTablePagination-select")
       .then(
@@ -125,7 +123,6 @@ Cypress.Commands.add(
 Cypress.Commands.add(
   "testSingularSelectDropdown",
   (pageUrl: string, columnIndex: number, dropdownText: string, targetOptionText: string, resultOperator: string, resetOptionText: string) => {
-    cy.visit(pageUrl);
 
       cy.get(".MuiTablePagination-select")
         .then(
@@ -185,7 +182,6 @@ Cypress.Commands.add(
 Cypress.Commands.add(
   "testMultiSelectDropdown",
   (pageUrl: string, columnIndex: number, dropdownText: string, targetOptionTexts: Array<string>, resetOptionText: string) => {
-    cy.visit(pageUrl);
 
     cy.get(".MuiTablePagination-select")
       .then(
@@ -238,7 +234,6 @@ Cypress.Commands.add(
 Cypress.Commands.add(
   "testSortableColumn",
   (pageUrl: string, columnIndex: number, columnHoverText: string) => {
-    cy.visit(pageUrl);
 
     cy.get(`[title='${columnHoverText}']`)
       .each(

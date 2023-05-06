@@ -35,9 +35,15 @@
 * `cd` into the root directory of the website project.
 * Run command: `yarn install && yarn run build && yarn run serve`
 
-#### 3.3 To run E2E tests against your local website
+#### 3.3 To run E2E tests locally against your local website
 * To execute tests with GUI, run command: `CY_OP=open yarn run test:run:e2e`
 * To execute tests without GUI, run command: `CY_OP=run yarn run test:run:e2e`
+
+#### 3.3 To run E2E tests in a docker against your local website
+* This can be used to simulate/troubleshoot the Cypress GitHub Action which is used in PR dry-run.
+* First, run a testing build locally on your host OS: `yarn install && yarn run develop`
+    * It has to be a testing build, not a production build. Otherwise, Cypress might have issues loading the pages fully because there will be external references that are otherwise disabled in testing build.
+* Run command: `docker run -it --network="host" -v $PWD:/e2e -w /e2e cypress/included:latest --browser chrome`
 
 ### 4. Publish to GitHub Pages
 A GitHub Action is set up to automatically deploy the updated website when a commit is pushed to the `develop` branch.

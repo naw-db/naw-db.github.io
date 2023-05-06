@@ -1,7 +1,5 @@
 # Dependencies
 node_modules
-/.pnp
-.pnp.js
 
 # Development
 .cache
@@ -16,7 +14,8 @@ content/sections/legal/imprint.md
 content/sections/projects/
 
 # Testing
-/coverage
+coverage
+cypress/screenshots/
 
 # Production
 build

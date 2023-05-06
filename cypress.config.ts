@@ -5,6 +5,10 @@ export default defineConfig({
     baseUrl: "http://localhost:8000",
     specPattern: "cypress/e2e",
     supportFile: "cypress/support/e2e.ts",
+    execTimeout: 5000,
+    taskTimeout: 5000,
+    pageLoadTimeout: 3000,
+    responseTimeout: 3000,
     video: false
   }
 })
