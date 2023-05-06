@@ -17,8 +17,9 @@ defaults:
 
 jobs:
   # Build job
-  build:
+  pr-dry-run:
     runs-on: ubuntu-22.04
+    timeout-minutes: 10
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -73,6 +74,9 @@ jobs:
           path: ./public
       - name: Run E2E Tests
         uses: cypress-io/github-action@v5
+        timeout-minutes: 5
+        env:
+          DEBUG: "cypress:*"
         with:
           browser: chrome
           start: ${{ steps.detect-package-manager.outputs.manager }} run serve
