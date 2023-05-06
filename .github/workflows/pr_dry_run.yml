@@ -22,7 +22,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Detect package manager
+      - name: Detect Package Manager
         id: detect-package-manager
         run: |
           if [ -f "${{ github.workspace }}/yarn.lock" ]; then
@@ -50,7 +50,7 @@ jobs:
           #
           # You may remove this line if you want to manage the configuration yourself.
           static_site_generator: gatsby
-      - name: Restore cache
+      - name: Restore Cache
         uses: actions/cache@v3
         with:
           path: |
@@ -59,19 +59,19 @@ jobs:
           key: ${{ runner.os }}-gatsby-build-${{ hashFiles('public') }}
           restore-keys: |
             ${{ runner.os }}-gatsby-build-
-      - name: Install dependencies
+      - name: Install Dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
-      - name: Validate data files
+      - name: Validate Data Files
         run: ${{ steps.detect-package-manager.outputs.manager }} run validate-data
       - name: Build with Gatsby
         env:
           PREFIX_PATHS: "true"
         run: ${{ steps.detect-package-manager.outputs.manager }} run build
-      - name: Upload artifact
+      - name: Upload Artifacts
         uses: actions/upload-pages-artifact@v1
         with:
           path: ./public
-      - name: Run E2E tests
+      - name: Run E2E Tests
         uses: cypress-io/github-action@v5
         with:
           browser: chrome
