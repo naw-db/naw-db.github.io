@@ -74,4 +74,4 @@ jobs:
         with:
           browser: chrome
           start: ${{ steps.detect-package-manager.outputs.manager }} run serve
-          wait-on: "http://localhost:9000"
+          wait-on: "http://0.0.0.0:8000"
