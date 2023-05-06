@@ -4,12 +4,12 @@
 * Install [Homebrew](https://docs.brew.sh/Installation).
 * Install `nvm`
     * Visit: https://github.com/nvm-sh/nvm
-* Install `node` and `npm`
+* Install `node` and `yarn`
     * Run command: `nvm install --lts`
-    * Run command: `npm install -g npm@latest`
-    * Verify version of the installed `node` and `npm`
-        * Run command: `node --version` (Version should be greater than or equal to `v18.9.1`.)
-        * Run command: `npm --version` (Version should be greater than or equal to `9.6.4`.)
+    * Run command: `npm install -g yarn@latest`
+    * Verify version of the installed `node` and `yarn`
+        * Run command: `node --version` (Version should be greater than or equal to `v18.16.0`.)
+        * Run command: `yarn --version` (Version should be greater than or equal to `1.22.19`.)
 * Install Git.
     * If you use a Mac, you can skip this. Apple ships their own fork of `git`.
 * Install Gatsby CLI.
@@ -21,32 +21,31 @@
 
 ### 3. Local Development
 #### 3.1 Check package health
-* Upgrade `node` and `npm`.
+* Upgrade `node` and `yarn`.
     * Run commands:
         * `nvm install --lts`
-        * `npm install -g npm@latest`
-* Check if there are dependencies not declared in `package.json`.
-    * This checks if there are dependencies that are available on your machine but not declared in this package's dependency closure, e.g. dependencies that were installed via `npm install` without specifying the `--save` flag.
-    * Run command: `npm prune`
-* Check if there are upgradable global dependencies.
-    * Run command: `npm outdated -g --depth=0`
-    * To update all global dependencies:
-        * Run command: `npm update -g`
+        * `npm install -g yarn@latest`
 * Check if there are upgradable project dependencies.
-    * Use `npm-check-updates`:
-        * `npm i -g npm-check-updates`
-        * `ncu -u`
-        * `npm install`
-
+    * Run command: `yarn upgrade`
 #### 3.2 To run a testing build of your website locally on your machine
 * `cd` into the root directory of the website project.
-* Run command: `npm install && gatsby develop`
+* Run command: `yarn install && yarn run develop`
 
 #### 3.2 To run a production build of your website locally on your machine
 * `cd` into the root directory of the website project.
-* Run command: `npm install && gatsby build && gatsby serve`
+* Run command: `yarn install && yarn run build && yarn run serve`
+
+#### 3.3 To run E2E tests locally against your local website
+* To execute tests with GUI, run command: `CY_OP=open yarn run test:run:e2e`
+* To execute tests without GUI, run command: `CY_OP=run yarn run test:run:e2e`
+
+#### 3.3 To run E2E tests in a docker against your local website
+* This can be used to simulate/troubleshoot the Cypress GitHub Action which is used in PR dry-run.
+* First, run a testing build locally on your host OS: `yarn install && yarn run develop`
+    * It has to be a testing build, not a production build. Otherwise, Cypress might have issues loading the pages fully because there will be external references that are otherwise disabled in testing build.
+* Run command: `docker run -it --network="host" -v $PWD:/e2e -w /e2e cypress/included:latest --browser chrome`
 
 ### 4. Publish to GitHub Pages
-A GitHub Action is set up to automatically deploy the updated website when a commit is pushed to the 'develop' branch.
+A GitHub Action is set up to automatically deploy the updated website when a commit is pushed to the `develop` branch.
 
 Go [here](https://github.com/naw-db/naw-db.github.io/actions/workflows/gatsby.yml) to view the deployments.

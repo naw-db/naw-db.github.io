@@ -1,13 +1,10 @@
 # Dependencies
-node_modules
-/.pnp
-.pnp.js
+node_modules/
 
 # Development
-.cache
-.husky
-.idea
-.vscode
+.cache/
+.idea/
+.vscode/
 *.iml
 
 # Auto-created by gatsby-theme-portfolio-minimal
@@ -16,11 +13,11 @@ content/sections/legal/imprint.md
 content/sections/projects/
 
 # Testing
-/coverage
+cypress/screenshots/
 
 # Production
-build
-public
+build/
+public/
 
 # Misc
 .DS_Store

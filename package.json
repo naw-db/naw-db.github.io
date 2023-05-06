@@ -6,8 +6,10 @@
     "clean": "gatsby clean",
     "validate-data": "node ./bin/validate_csv.mjs ./content/data/ && node ./bin/validate_json.mjs ./content/data/",
     "develop": "gatsby develop",
-    "build": "npm run clean && gatsby build",
-    "serve": "gatsby serve"
+    "cy:run": "cypress $CY_OP --browser chrome --e2e",
+    "test:run:e2e": "CYPRESS_SUPPORT=y start-server-and-test develop http://localhost:8000 cy:run",
+    "build": "yarn run clean && gatsby build",
+    "serve": "gatsby serve -p=8000"
   },
   "engines": {
     "node": ">=18.0.0"
@@ -15,6 +17,7 @@
   "dependencies": {
     "@devexpress/dx-react-chart": "^4.0.3",
     "@devexpress/dx-react-chart-material-ui": "^4.0.3",
+    "@devexpress/dx-react-core": "^4.0.3",
     "@emotion/react": "^11.10.8",
     "@emotion/styled": "^11.10.8",
     "@mui/icons-material": "^5.11.16",
@@ -34,6 +37,7 @@
     "react": "^18.2.0",
     "react-code-blocks": "^0.0.9-0",
     "react-device-detect": "^2.2.3",
+    "react-dom": "^18.2.0",
     "react-table": "^7.8.0",
     "react-use-query-param-string": "^2.0.10",
     "use-query-params": "^2.2.1"
@@ -47,7 +51,7 @@
     "url": "https://github.com/naw-db/naw-db.github.io.git"
   },
   "bugs": {
-    "url": "https://github.com/naw-db/naw-db.github.io/issues"
+    "url": "https://github.com/naw-db/naw-db.github.io/issues/"
   },
   "keywords": [
     "react",
@@ -56,11 +60,17 @@
     "NBA All-World"
   ],
   "devDependencies": {
+    "@testing-library/cypress": "^9.0.0",
     "@types/node": "^18.16.3",
     "@types/react": "^18.2.5",
-    "@types/react-dom": "^18.2.3",
+    "@types/react-dom": "^18.2.4",
+    "axe-core": "^4.7.0",
     "csv-parse": "^5.3.9",
+    "cypress": "^12.11.0",
+    "cypress-axe": "^1.4.0",
+    "gatsby-cypress": "^3.9.0",
     "gh-pages": "^5.0.0",
+    "start-server-and-test": "^2.0.0",
     "typescript": "^5.0.4"
   }
 }
