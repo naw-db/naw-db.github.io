@@ -69,3 +69,9 @@ jobs:
         uses: actions/upload-pages-artifact@v1
         with:
           path: ./public
+      - name: Run E2E tests
+        uses: cypress-io/github-action@v3
+        with:
+          path: ./public
+          browser: chrome
+          wait-on: "http://localhost:8000"
