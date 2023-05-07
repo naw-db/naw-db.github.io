@@ -327,13 +327,13 @@ Cypress.Commands.add(
     const playerTwoStats = calculateStat(playerTwoData, playerTwoRank, playerTwoLevel);
 
     const aggregatedStats = `${playerOneStats.totalFitness} ${playerOneStats.totalDefense} ${playerOneStats.totalOffense} ` +
-    `${playerTwoStats.totalFitness} ${playerTwoStats.totalDefense} ${playerTwoStats.totalOffense} ` +
-    `${playerOneStats.stamina} ${playerOneStats.speed} ${playerOneStats.strength} ` +
-    `${playerOneStats.stealing} ${playerOneStats.blocking} ${playerOneStats.defense} ` +
-    `${playerOneStats.dunkPower} ${playerOneStats.midRangeShooting} ${playerOneStats.perimeterShooting} ${playerOneStats.ballHandling} ` +
-    `${playerTwoStats.stamina} ${playerTwoStats.speed} ${playerTwoStats.strength} ` +
-    `${playerTwoStats.stealing} ${playerTwoStats.blocking} ${playerTwoStats.defense} ` +
-    `${playerTwoStats.dunkPower} ${playerTwoStats.midRangeShooting} ${playerTwoStats.perimeterShooting} ${playerTwoStats.ballHandling}`;
+      `${playerTwoStats.totalFitness} ${playerTwoStats.totalDefense} ${playerTwoStats.totalOffense} ` +
+      `${playerOneStats.stamina} ${playerOneStats.speed} ${playerOneStats.strength} ` +
+      `${playerOneStats.stealing} ${playerOneStats.blocking} ${playerOneStats.defense} ` +
+      `${playerOneStats.dunkPower} ${playerOneStats.midRangeShooting} ${playerOneStats.perimeterShooting} ${playerOneStats.ballHandling} ` +
+      `${playerTwoStats.stamina} ${playerTwoStats.speed} ${playerTwoStats.strength} ` +
+      `${playerTwoStats.stealing} ${playerTwoStats.blocking} ${playerTwoStats.defense} ` +
+      `${playerTwoStats.dunkPower} ${playerTwoStats.midRangeShooting} ${playerTwoStats.perimeterShooting} ${playerTwoStats.ballHandling}`;
 
     const expectedLabel = aggregatedStats.replaceAll(".0", "");
 
