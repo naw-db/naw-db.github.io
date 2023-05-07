@@ -2,7 +2,7 @@ import { graphql } from "gatsby";
 import { Animation, Page, Section, Seo } from "gatsby-theme-portfolio-minimal";
 import React from "react";
 
-import { GearTabs } from "src/components/gear/GearTabs";
+import { GearTabs } from "/src/components/gear/GearTabs";
 
 export default function GearPage({ data }: { data: any; }) {
   return (

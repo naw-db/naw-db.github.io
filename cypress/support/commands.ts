@@ -1,3 +1,5 @@
+import { calculateStat } from "/src/components/players/PlayerStats";
+
 Cypress.Commands.add(
   "testPagination",
   () => {
@@ -292,5 +294,49 @@ Cypress.Commands.add(
             );
         }
       );
+  }
+);
+
+Cypress.Commands.add(
+  "getPlayerComparisonChartLabels",
+  () => {
+    let labels;
+
+    cy.get(".BarSeriesLabel")
+    .then(
+      ($labels) => {
+        labels = $labels[0].textContent;
+
+        for (let i = 1; i < $labels.length; i++) {
+          labels += ` ${$labels[i].textContent}`;
+        }
+
+        return labels;
+      }
+    );
+  }
+);
+
+Cypress.Commands.add(
+  "calculateExpectedPlayerComparisonChartLabels",
+  (playerData: Array<any>, playerOne: string, playerOneRank: string, playerOneLevel: string, playerTwo: string, playerTwoRank: string, playerTwoLevel: string) => {
+    const playerOneData = playerData.find(e => e.name === playerOne);
+    const playerTwoData = playerData.find(e => e.name === playerTwo);
+
+    const playerOneStats = calculateStat(playerOneData, playerOneRank, playerOneLevel);
+    const playerTwoStats = calculateStat(playerTwoData, playerTwoRank, playerTwoLevel);
+
+    const aggregatedStats = `${playerOneStats.totalFitness} ${playerOneStats.totalDefense} ${playerOneStats.totalOffense} ` +
+      `${playerTwoStats.totalFitness} ${playerTwoStats.totalDefense} ${playerTwoStats.totalOffense} ` +
+      `${playerOneStats.stamina} ${playerOneStats.speed} ${playerOneStats.strength} ` +
+      `${playerOneStats.stealing} ${playerOneStats.blocking} ${playerOneStats.defense} ` +
+      `${playerOneStats.dunkPower} ${playerOneStats.midRangeShooting} ${playerOneStats.perimeterShooting} ${playerOneStats.ballHandling} ` +
+      `${playerTwoStats.stamina} ${playerTwoStats.speed} ${playerTwoStats.strength} ` +
+      `${playerTwoStats.stealing} ${playerTwoStats.blocking} ${playerTwoStats.defense} ` +
+      `${playerTwoStats.dunkPower} ${playerTwoStats.midRangeShooting} ${playerTwoStats.perimeterShooting} ${playerTwoStats.ballHandling}`;
+
+    const expectedLabel = aggregatedStats.replaceAll(".0", "");
+
+    return cy.wrap(expectedLabel);
   }
 );

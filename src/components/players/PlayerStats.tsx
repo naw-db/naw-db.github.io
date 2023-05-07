@@ -1,6 +1,6 @@
 import bigDecimal from "js-big-decimal";
 
-import gradients from "data/player_stat_gradients.json";
+import gradients from "/content/data/player_stat_gradients.json";
 
 export const STAT_CATEGORIES = [
   "ballHandling",

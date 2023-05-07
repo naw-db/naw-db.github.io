@@ -2,7 +2,7 @@ import { createTheme, PaletteMode } from "@mui/material";
 import { useGlobalState } from "gatsby-theme-portfolio-minimal/src/context";
 import React from "react";
 
-import { BaseTable } from "src/components/common/Table";
+import { BaseTable } from "/src/components/common/Table";
 
 export default function PlayerLevelRequirementsTable(props: any) {
   const { globalState } = useGlobalState();

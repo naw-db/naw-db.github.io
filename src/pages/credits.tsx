@@ -1,7 +1,7 @@
 import { Animation, Page, Seo } from "gatsby-theme-portfolio-minimal";
 import React from "react";
 
-import CreditsSection from "src/components/credits/CreditsSection";
+import CreditsSection from "/src/components/credits/CreditsSection";
 
 export default function CreditsPage() {
   return (

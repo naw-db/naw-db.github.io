@@ -4,20 +4,20 @@ import PropTypes from "prop-types";
 import React from "react";
 import { isBrowser } from "react-device-detect";
 
-import { DEFAULT_PAGE_SIZE, DEFAULT_PAGE_SIZE_IN_DESKTOP_VIEW } from "src/components/common/Defaults";
+import { DEFAULT_PAGE_SIZE, DEFAULT_PAGE_SIZE_IN_DESKTOP_VIEW } from "/src/components/common/Defaults";
 import {
   DailyArenaTournamentRewardsByTeamLevelTable,
   DailyArenaTournamentRewardsTable,
   WeeklyArenaTournamentRewardsTable
-} from "src/components/rewards/ArenaTournamentRewardsTable";
-import { DropZoneRewardsTable } from "src/components/rewards/DropZoneRewardsTable";
-import { EncounterRewardsTable } from "src/components/rewards/EncounterRewardsTable";
-import { MilestoneRewardsTable } from "src/components/rewards/MilestoneRewardsTable";
-import { OneOnOneRewardsTable } from "src/components/rewards/OneOnOneRewardsTable";
-import { PracticeCourtRewardsTable } from "src/components/rewards/PracticeCourtRewardsTable";
-import { ReferralRewardsTable } from "src/components/rewards/ReferralRewardsTable";
-import { RuleTheCourtRewardsTable } from "src/components/rewards/RuleTheCourtRewardsTable";
-import { TeamLevelRewardsTable } from "src/components/rewards/TeamLevelRewardsTable";
+} from "/src/components/rewards/ArenaTournamentRewardsTable";
+import { DropZoneRewardsTable } from "/src/components/rewards/DropZoneRewardsTable";
+import { EncounterRewardsTable } from "/src/components/rewards/EncounterRewardsTable";
+import { MilestoneRewardsTable } from "/src/components/rewards/MilestoneRewardsTable";
+import { OneOnOneRewardsTable } from "/src/components/rewards/OneOnOneRewardsTable";
+import { PracticeCourtRewardsTable } from "/src/components/rewards/PracticeCourtRewardsTable";
+import { ReferralRewardsTable } from "/src/components/rewards/ReferralRewardsTable";
+import { RuleTheCourtRewardsTable } from "/src/components/rewards/RuleTheCourtRewardsTable";
+import { TeamLevelRewardsTable } from "/src/components/rewards/TeamLevelRewardsTable";
 
 function TabPanel(props: any) {
   const { children, value, index, ...other } = props;

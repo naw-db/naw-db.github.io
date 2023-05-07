@@ -5,9 +5,9 @@ import { parseFullName } from "parse-full-name";
 import React from "react";
 import { isBrowser } from "react-device-detect";
 
-import { DEFAULT_PAGE_SIZE, DEFAULT_PAGE_SIZE_IN_DESKTOP_VIEW } from "src/components/common/Defaults";
-import { BaseTable, SelectColumnFilter, TextColumnFilter } from "src/components/common/Table";
-import { STAT_CATEGORIES } from "src/components/players/PlayerStats";
+import { DEFAULT_PAGE_SIZE, DEFAULT_PAGE_SIZE_IN_DESKTOP_VIEW } from "/src/components/common/Defaults";
+import { BaseTable, SelectColumnFilter, TextColumnFilter } from "/src/components/common/Table";
+import { STAT_CATEGORIES } from "/src/components/players/PlayerStats";
 
 export const RANK_UP_REQUIREMENT_SEPARATOR: string = " → ";
 

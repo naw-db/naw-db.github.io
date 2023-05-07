@@ -1,4 +1,5 @@
-import { defineConfig } from "cypress"
+import { parse } from "csv-parse/sync";
+import { defineConfig } from "cypress";
 
 export default defineConfig({
   e2e: {
@@ -9,6 +10,16 @@ export default defineConfig({
     taskTimeout: 5000,
     pageLoadTimeout: 10000,
     responseTimeout: 10000,
-    video: false
+    video: false,
+    setupNodeEvents(on, config) {
+      on(
+        "task",
+        {
+          csvToJson({ csv }) {
+            return parse(csv, { columns: true, skip_empty_lines: true });
+          }
+        }
+      );
+    }
   }
 })

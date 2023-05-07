@@ -2,7 +2,7 @@ import { graphql } from "gatsby";
 import { Animation, Page, Section, Seo } from "gatsby-theme-portfolio-minimal";
 import React from "react";
 
-import { RewardsTabs } from "src/components/rewards/RewardsTabs";
+import { RewardsTabs } from "/src/components/rewards/RewardsTabs";
 
 export default function RewardsPage({ data }: { data: any; }) {
   return (

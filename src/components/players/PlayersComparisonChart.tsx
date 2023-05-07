@@ -9,8 +9,8 @@ import { parseFullName } from "parse-full-name";
 import React from "react";
 import { getQueryParams, setQueryParams } from "react-use-query-param-string";
 
-import { calculateStat } from "src/components/players/PlayerStats";
-import gradients from "data/player_stat_gradients.json";
+import { calculateStat } from "/src/components/players/PlayerStats";
+import gradients from "/content/data/player_stat_gradients.json";
 
 // Chart displays attributes in reversed order.
 

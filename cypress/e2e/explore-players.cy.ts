@@ -29,5 +29,68 @@ describe(
     it("Tests Speed sortable column", () => { cy.testSortableColumn(19, "Speed"); });
     it("Tests Stamina sortable column", () => { cy.testSortableColumn(20, "Stamina"); });
     it("Tests Beat to Rank Up dropdown filter", () => { cy.testSingularSelectDropdown(21, "Beat to Rank Up", "Russell Westbrook", "include", "Any"); });
+
+    it(
+      "Tests Show Max Stats toggle",
+      () => {
+        // Memorize initial display data.
+        const initialDisplayData: Array<string> = [];
+
+        cy.get(".MuiTableBody-root > tr")
+          .then(
+            ($trs) => {
+              for (let i = 0; i < $trs.length; i++) {
+                let rowValue = $trs[i].children[0].textContent;
+                
+                for (let j = 1; j < $trs[i].children.length; j++) {
+                  rowValue += ` ${$trs[i].children[j].textContent || "NULL"}`;
+                }
+
+                initialDisplayData.push(rowValue || "NULL");
+              }
+            }
+          );
+
+        // Toggle to show base stats.
+        cy.contains("Show Max Stats")
+          .click();
+
+        // Assert each row has changed.
+        cy.get(".MuiTableBody-root > tr")
+          .then(
+            ($trs) => {
+              for (let i = 0; i < $trs.length; i++) {
+                let rowValue = $trs[i].children[0].textContent;
+                
+                for (let j = 1; j < $trs[i].children.length; j++) {
+                  rowValue += ` ${$trs[i].children[j].textContent || "NULL"}`;
+                }
+
+                expect(rowValue).not.equal(initialDisplayData[i]);
+              }
+            }
+          );
+
+        // Toggle again to show max stats.
+        cy.contains("Show Max Stats")
+          .click();
+
+        // Assert each row has changed back to intial display data.
+        cy.get(".MuiTableBody-root > tr")
+          .then(
+            ($trs) => {
+              for (let i = 0; i < $trs.length; i++) {
+                let rowValue = $trs[i].children[0].textContent;
+                
+                for (let j = 1; j < $trs[i].children.length; j++) {
+                  rowValue += ` ${$trs[i].children[j].textContent || "NULL"}`;
+                }
+
+                expect(rowValue).equal(initialDisplayData[i]);
+              }
+            }
+          );
+      }
+    );
   }
 );
