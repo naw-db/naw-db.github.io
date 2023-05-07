@@ -19,7 +19,6 @@ import {
   ThemeProvider
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import { log } from "console";
 import { matchSorter } from "match-sorter";
 import React from "react";
 import { useFilters, usePagination, useSortBy, useTable } from "react-table";

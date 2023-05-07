@@ -4,14 +4,14 @@ import PropTypes from "prop-types";
 import React from "react";
 import { isBrowser } from "react-device-detect";
 
-import { DEFAULT_PAGE_SIZE, DEFAULT_PAGE_SIZE_IN_DESKTOP_VIEW } from "src/components/common/Defaults";
-import { BallsTable } from "src/components/gear/BallsTable";
-import { EyewearTable } from "src/components/gear/EyewearTable";
-import { HeadwearTable } from "src/components/gear/HeadwearTable";
-import { PantsTable } from "src/components/gear/PantsTable";
-import { ShirtsTable } from "src/components/gear/ShirtsTable";
-import { SneakersTable } from "src/components/gear/SneakersTable";
-import { SocksTable } from "src/components/gear/SocksTable";
+import { DEFAULT_PAGE_SIZE, DEFAULT_PAGE_SIZE_IN_DESKTOP_VIEW } from "/src/components/common/Defaults";
+import { BallsTable } from "/src/components/gear/BallsTable";
+import { EyewearTable } from "/src/components/gear/EyewearTable";
+import { HeadwearTable } from "/src/components/gear/HeadwearTable";
+import { PantsTable } from "/src/components/gear/PantsTable";
+import { ShirtsTable } from "/src/components/gear/ShirtsTable";
+import { SneakersTable } from "/src/components/gear/SneakersTable";
+import { SocksTable } from "/src/components/gear/SocksTable";
 
 function TabPanel(props: any) {
   const { children, value, index, ...other } = props;

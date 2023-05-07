@@ -1,6 +1,6 @@
 import React from "react";
 
-import { BaseTable } from "src/components/common/Table";
+import { BaseTable } from "/src/components/common/Table";
 
 export function RuleTheCourtRewardsTable(props: any) {
   const columns = React.useMemo(

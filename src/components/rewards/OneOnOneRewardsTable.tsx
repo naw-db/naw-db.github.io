@@ -1,6 +1,6 @@
 import React from "react";
 
-import { BaseTable, SelectColumnFilter } from "src/components/common/Table";
+import { BaseTable, SelectColumnFilter } from "/src/components/common/Table";
 
 export function OneOnOneRewardsTable(props: any) {
   const columns = React.useMemo(

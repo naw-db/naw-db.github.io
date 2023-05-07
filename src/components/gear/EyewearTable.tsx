@@ -1,7 +1,7 @@
 import React from "react";
 
-import { BaseTable, SelectColumnFilter } from "src/components/common/Table";
-import { generateBrandOptions, generateColorOptions, generateRarityOptions, generateStyleOptions } from "src/components/gear/TableOptions";
+import { BaseTable, SelectColumnFilter } from "/src/components/common/Table";
+import { generateBrandOptions, generateColorOptions, generateRarityOptions, generateStyleOptions } from "/src/components/gear/TableOptions";
 
 export function EyewearTable(props: any) {
   const columns = React.useMemo(

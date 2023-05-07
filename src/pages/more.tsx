@@ -3,9 +3,9 @@ import { Animation, Page, Section, Seo } from "gatsby-theme-portfolio-minimal";
 import React from "react";
 import { isBrowser } from "react-device-detect";
 
-import { DEFAULT_PAGE_SIZE, DEFAULT_PAGE_SIZE_IN_DESKTOP_VIEW } from "src/components/common/Defaults";
-import EventTournamentHistoryTable from "src/components/events/EventTournamentHistoryTable";
-import PlayerLevelRequirementsTable from "src/components/players/PlayerLevelsRequirementsTable";
+import { DEFAULT_PAGE_SIZE, DEFAULT_PAGE_SIZE_IN_DESKTOP_VIEW } from "/src/components/common/Defaults";
+import EventTournamentHistoryTable from "/src/components/events/EventTournamentHistoryTable";
+import PlayerLevelRequirementsTable from "/src/components/players/PlayerLevelsRequirementsTable";
 
 export default function MorePage({ data }: { data: any; }) {
   const defaultPageSize = isBrowser ? DEFAULT_PAGE_SIZE_IN_DESKTOP_VIEW : DEFAULT_PAGE_SIZE;

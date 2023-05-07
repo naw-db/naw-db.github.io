@@ -2,7 +2,7 @@ import { createTheme, PaletteMode } from "@mui/material";
 import { useGlobalState } from "gatsby-theme-portfolio-minimal/src/context";
 import React from "react";
 
-import { BaseTable, SelectColumnFilter } from "src/components/common/Table";
+import { BaseTable, SelectColumnFilter } from "/src/components/common/Table";
 
 export default function EventTournamentHistoryTable(props: any) {
   const { globalState } = useGlobalState();

@@ -2,7 +2,7 @@ import { graphql } from "gatsby";
 import { Page, Seo } from "gatsby-theme-portfolio-minimal";
 import React from "react";
 
-import { PlayersComparisonChart } from "src/components/players/PlayersComparisonChart";
+import { PlayersComparisonChart } from "/src/components/players/PlayersComparisonChart";
 
 const DEFAULT_PLAYERS: string[] = [ "Stephen Curry", "LeBron James" ];
 
