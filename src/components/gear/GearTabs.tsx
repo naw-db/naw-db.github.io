@@ -1,10 +1,11 @@
-import { Box, createTheme, CssBaseline, PaletteMode, Tab, Tabs, ThemeProvider } from "@mui/material";
+import { createTheme, CssBaseline, PaletteMode, Tab, Tabs, ThemeProvider } from "@mui/material";
 import { useGlobalState } from "gatsby-theme-portfolio-minimal/src/context";
-import PropTypes from "prop-types";
 import React from "react";
 import { isBrowser } from "react-device-detect";
+import { getQueryParams, setQueryParams } from "react-use-query-param-string";
 
 import { DEFAULT_PAGE_SIZE, DEFAULT_PAGE_SIZE_IN_DESKTOP_VIEW } from "/src/components/common/Defaults";
+import { a11yProps, TabPanel } from "/src/components/common/Tab";
 import { BallsTable } from "/src/components/gear/BallsTable";
 import { EyewearTable } from "/src/components/gear/EyewearTable";
 import { HeadwearTable } from "/src/components/gear/HeadwearTable";
@@ -13,41 +14,10 @@ import { ShirtsTable } from "/src/components/gear/ShirtsTable";
 import { SneakersTable } from "/src/components/gear/SneakersTable";
 import { SocksTable } from "/src/components/gear/SocksTable";
 
-function TabPanel(props: any) {
-  const { children, value, index, ...other } = props;
-
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`scrollable-force-tabpanel-${index}`}
-      aria-labelledby={`scrollable-force-tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <Box>
-          {children}
-        </Box>
-      )}
-    </div>
-  );
-}
-
-TabPanel.propTypes = {
-  children: PropTypes.node,
-  index: PropTypes.any.isRequired,
-  value: PropTypes.any.isRequired,
-};
-
-function a11yProps(index: number) {
-  return {
-    id: `scrollable-force-tab-${index}`,
-    "aria-controls": `scrollable-force-tabpanel-${index}`,
-  };
-}
-
 export function GearTabs({ data }: { data: any; }) {
   const defaultPageSize = isBrowser ? DEFAULT_PAGE_SIZE_IN_DESKTOP_VIEW : DEFAULT_PAGE_SIZE;
+
+  const queryParams: any = getQueryParams();
 
   const { globalState } = useGlobalState();
 
@@ -57,7 +27,7 @@ export function GearTabs({ data }: { data: any; }) {
     }
   });
 
-  const [ tab, setTab ] = React.useState(0);
+  const [ tab, setTab ] = React.useState(queryParams.tab || "shirts");
 
   const shirtsTableData = React.useMemo(
     () => data.allShirtsCsv.nodes,
@@ -102,35 +72,43 @@ export function GearTabs({ data }: { data: any; }) {
           scrollButtons
           allowScrollButtonsMobile
           value={tab}
-          onChange={(e, targetTab) => setTab(targetTab)}
+          onChange={
+            (e) => {
+              const tabId = (e.target as HTMLButtonElement).id;
+              
+              queryParams.tab = tabId;
+              setQueryParams(queryParams);
+              setTab(tabId);
+            }
+          }
         >
-          <Tab label="Shirts" {...a11yProps(0)} />
-          <Tab label="Pants" {...a11yProps(1)} />
-          <Tab label="Sneakers" {...a11yProps(2)} />
-          <Tab label="Headwear" {...a11yProps(3)} />
-          <Tab label="Eyewear" {...a11yProps(4)} />
-          <Tab label="Balls" {...a11yProps(5)} />
-          <Tab label="Socks" {...a11yProps(6)} />
+          <Tab label="Shirts" value="shirts" {...a11yProps("shirts")} />
+          <Tab label="Pants" value="pants" {...a11yProps("pants")} />
+          <Tab label="Sneakers" value="sneakers" {...a11yProps("sneakers")} />
+          <Tab label="Headwear" value="headwear" {...a11yProps("headwear")} />
+          <Tab label="Eyewear" value="eyewear" {...a11yProps("eyewear")} />
+          <Tab label="Balls" value="balls" {...a11yProps("balls")} />
+          <Tab label="Socks" value="socks" {...a11yProps("socks")} />
         </Tabs>
-        <TabPanel value={tab} index={0}>
+        <TabPanel value="shirts" selected={tab === "shirts"}>
           <ShirtsTable theme={theme} defaultPageSize={defaultPageSize} data={shirtsTableData} />
         </TabPanel>
-        <TabPanel value={tab} index={1}>
+        <TabPanel value="pants" selected={tab === "pants"}>
           <PantsTable theme={theme} defaultPageSize={defaultPageSize} data={pantsTableData} />
         </TabPanel>
-        <TabPanel value={tab} index={2}>
+        <TabPanel value="sneakers" selected={tab === "sneakers"}>
           <SneakersTable theme={theme} defaultPageSize={defaultPageSize} data={sneakersTableData} />
         </TabPanel>
-        <TabPanel value={tab} index={3}>
+        <TabPanel value="headwear" selected={tab === "headwear"}>
           <HeadwearTable theme={theme} defaultPageSize={defaultPageSize} data={headwearTableData} />
         </TabPanel>
-        <TabPanel value={tab} index={4}>
+        <TabPanel value="eyewear" selected={tab === "eyewear"}>
           <EyewearTable theme={theme} defaultPageSize={defaultPageSize} data={eyewearTableData} />
         </TabPanel>
-        <TabPanel value={tab} index={5}>
+        <TabPanel value="balls" selected={tab === "balls"}>
           <BallsTable theme={theme} defaultPageSize={defaultPageSize} data={ballsTableData} />
         </TabPanel>
-        <TabPanel value={tab} index={6}>
+        <TabPanel value="socks" selected={tab === "socks"}>
           <SocksTable theme={theme} defaultPageSize={defaultPageSize} data={socksTableData} />
         </TabPanel>
       </CssBaseline>

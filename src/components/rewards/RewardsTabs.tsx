@@ -1,10 +1,11 @@
-import { Box, createTheme, CssBaseline, PaletteMode, Tab, Tabs, ThemeProvider, Typography } from "@mui/material";
+import { createTheme, CssBaseline, PaletteMode, Tab, Tabs, ThemeProvider, Typography } from "@mui/material";
 import { useGlobalState } from "gatsby-theme-portfolio-minimal/src/context";
-import PropTypes from "prop-types";
 import React from "react";
 import { isBrowser } from "react-device-detect";
+import { getQueryParams, setQueryParams } from "react-use-query-param-string";
 
 import { DEFAULT_PAGE_SIZE, DEFAULT_PAGE_SIZE_IN_DESKTOP_VIEW } from "/src/components/common/Defaults";
+import { a11yProps, TabPanel } from "/src/components/common/Tab";
 import {
   DailyArenaTournamentRewardsByTeamLevelTable,
   DailyArenaTournamentRewardsTable,
@@ -19,41 +20,10 @@ import { ReferralRewardsTable } from "/src/components/rewards/ReferralRewardsTab
 import { RuleTheCourtRewardsTable } from "/src/components/rewards/RuleTheCourtRewardsTable";
 import { TeamLevelRewardsTable } from "/src/components/rewards/TeamLevelRewardsTable";
 
-function TabPanel(props: any) {
-  const { children, value, index, ...other } = props;
-
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`scrollable-force-tabpanel-${index}`}
-      aria-labelledby={`scrollable-force-tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <Box>
-          {children}
-        </Box>
-      )}
-    </div>
-  );
-}
-
-TabPanel.propTypes = {
-  children: PropTypes.node,
-  index: PropTypes.any.isRequired,
-  value: PropTypes.any.isRequired,
-};
-
-function a11yProps(index: number) {
-  return {
-    id: `scrollable-force-tab-${index}`,
-    "aria-controls": `scrollable-force-tabpanel-${index}`,
-  };
-}
-
 export function RewardsTabs({ data }: { data: any; }) {
   const defaultPageSize = isBrowser ? DEFAULT_PAGE_SIZE_IN_DESKTOP_VIEW : DEFAULT_PAGE_SIZE;
+
+  const queryParams: any = getQueryParams();
 
   const { globalState } = useGlobalState();
 
@@ -63,7 +33,7 @@ export function RewardsTabs({ data }: { data: any; }) {
     }
   });
 
-  const [ tab, setTab ] = React.useState(0);
+  const [ tab, setTab ] = React.useState(queryParams.tab || "teamLevel");
 
   const teamLevelRewardsTableData = React.useMemo(
     () => data.allTeamLevelRewardsCsv.nodes,
@@ -128,31 +98,39 @@ export function RewardsTabs({ data }: { data: any; }) {
           scrollButtons
           allowScrollButtonsMobile
           value={tab}
-          onChange={(event: React.SyntheticEvent, targetTab: any) => setTab(targetTab)}
+          onChange={
+            (e) => {
+              const tabId = (e.target as HTMLButtonElement).id;
+              
+              queryParams.tab = tabId;
+              setQueryParams(queryParams);
+              setTab(tabId);
+            }
+          }
         >
-          <Tab label="Team Level" {...a11yProps(0)} />
-          <Tab label="Drop Zone" {...a11yProps(1)} />
-          <Tab label="Encounter" {...a11yProps(2)} />
-          <Tab label="Rule the Court" {...a11yProps(3)} />
-          <Tab label="Arena Tournament" {...a11yProps(4)} />
-          <Tab label="Practice Court" {...a11yProps(5)} />
-          <Tab label="1v1" {...a11yProps(6)} />
-          <Tab label="Milestones" {...a11yProps(7)} />
-          <Tab label="Referral" {...a11yProps(8)} />
+          <Tab label="Team Level" value="teamLevel" {...a11yProps("teamLevel")} />
+          <Tab label="Drop Zone" value="dropZone" {...a11yProps("dropZone")} />
+          <Tab label="Encounter" value="encounter" {...a11yProps("encounter")} />
+          <Tab label="Rule the Court" value="ruleTheCourt" {...a11yProps("ruleTheCourt")} />
+          <Tab label="Arena Tournament" value="arenaTournament" {...a11yProps("arenaTournament")} />
+          <Tab label="Practice Court" value="practiceCourt" {...a11yProps("practiceCourt")} />
+          <Tab label="1v1" value="oneOnOne" {...a11yProps("oneOnOne")} />
+          <Tab label="Milestones" value="milestones" {...a11yProps("milestones")} />
+          <Tab label="Referral" value="referral" {...a11yProps("referral")} />
         </Tabs>
-        <TabPanel value={tab} index={0}>
+        <TabPanel value="teamLevel" selected={tab === "teamLevel"}>
           <TeamLevelRewardsTable defaultPageSize={defaultPageSize} theme={theme} data={teamLevelRewardsTableData} />
         </TabPanel>
-        <TabPanel value={tab} index={1}>
+        <TabPanel value="dropZone" selected={tab === "dropZone"}>
           <DropZoneRewardsTable defaultPageSize={defaultPageSize} theme={theme} data={dropZoneRewardsTableData} />
         </TabPanel>
-        <TabPanel value={tab} index={2}>
+        <TabPanel value="encounter" selected={tab === "encounter"}>
           <EncounterRewardsTable defaultPageSize={defaultPageSize} theme={theme} data={encounterRewardsTableData} />
         </TabPanel>
-        <TabPanel value={tab} index={3}>
+        <TabPanel value="ruleTheCourt" selected={tab === "ruleTheCourt"}>
           <RuleTheCourtRewardsTable defaultPageSize={defaultPageSize} theme={theme} data={ruleTheCourtRewardsTableData} />
         </TabPanel>
-        <TabPanel value={tab} index={4}>
+        <TabPanel value="arenaTournament" selected={tab === "arenaTournament"}>
           <Typography variant="h6" gutterBottom>
             Weekly
           </Typography>
@@ -164,16 +142,16 @@ export function RewardsTabs({ data }: { data: any; }) {
           <DailyArenaTournamentRewardsTable defaultPageSize={defaultPageSize} theme={theme} data={dailyArenaTournamentRewardsTableData} />
           <DailyArenaTournamentRewardsByTeamLevelTable defaultPageSize={defaultPageSize} theme={theme} data={dailyArenaTournamentRewardsByTeamLevelTableData} />
         </TabPanel>
-        <TabPanel value={tab} index={5}>
+        <TabPanel value="practiceCourt" selected={tab === "practiceCourt"}>
           <PracticeCourtRewardsTable defaultPageSize={defaultPageSize} theme={theme} data={practiceCourtRewardsTableData} />
         </TabPanel>
-        <TabPanel value={tab} index={6}>
+        <TabPanel value="oneOnOne" selected={tab === "oneOnOne"}>
           <OneOnOneRewardsTable defaultPageSize={defaultPageSize} theme={theme} data={oneOnOneRewardsTableData} />
         </TabPanel>
-        <TabPanel value={tab} index={7}>
+        <TabPanel value="milestones" selected={tab === "milestones"}>
           <MilestoneRewardsTable defaultPageSize={defaultPageSize} theme={theme} data={milestoneRewardsTableData} />
         </TabPanel>
-        <TabPanel value={tab} index={8}>
+        <TabPanel value="referral" selected={tab === "referral"}>
           <ReferralRewardsTable defaultPageSize={defaultPageSize} theme={theme} data={referralRewardsTableData} />
         </TabPanel>
       </CssBaseline>

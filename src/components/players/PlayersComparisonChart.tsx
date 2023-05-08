@@ -14,13 +14,13 @@ import gradients from "/content/data/player_stat_gradients.json";
 
 // Chart displays attributes in reversed order.
 
-const OVERALL_ATTRIBUTES: string[] = [
+const OVERALL_ATTRIBUTES: Array<string> = [
   "Total Fitness",
   "Total Defense",
   "Total Offense"
 ];
 
-const DETAILED_ATTRIBUTES: string[] = [
+const DETAILED_ATTRIBUTES: Array<string> = [
   "Stamina",
   "Speed",
   "Strength",
@@ -71,7 +71,7 @@ const getBarSeriesLabelAnimationName = () => {
 };
 
 const StyledBarSeriesLabel = styled(Chart.Label)(() => ({
-  [`&.BarSeriesLabel`]: {
+  [ `&.BarSeriesLabel` ]: {
     fill: "#ffffff",
     fontSize: "10px",
     animation: `${getBarSeriesLabelAnimationName()} 1s`,
@@ -189,7 +189,7 @@ export function PlayersComparisonChart({ defaultPlayers, barColors, data }: { de
   });
 
   // eslint-disable-next-line no-unused-vars
-  const [ignored, forceUpdate] = React.useReducer(flag => !flag, false);  // A dummy that is to force update.
+  const [ ignored, forceUpdate ] = React.useReducer(flag => !flag, false);  // A dummy that is to force update.
 
   const queryParams: any = getQueryParams();
 
@@ -227,7 +227,7 @@ export function PlayersComparisonChart({ defaultPlayers, barColors, data }: { de
 
   DETAILED_ATTRIBUTES.forEach(
     attribute => {
-      const entry: { [key: string]: string | number } = { attribute: attribute };
+      const entry: { [ key: string ]: string | number } = { attribute: attribute };
       entry[playerOneName] = parseFloat(playerOneDisplayedData[camelCase(attribute)]);
       entry[playerTwoName] = parseFloat(playerTwoDisplayedData[camelCase(attribute)]);
 
