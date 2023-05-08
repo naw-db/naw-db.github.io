@@ -1,16 +1,8 @@
 describe(
   "Gear - Pants tab tests",
   () => {
-    it(
-      "Tests anchor.",
-      () => {
-        cy.visit("/gear/?tab=pants");
-
-        cy.get("[aria-selected='true']")
-          .should("have.id", "pants");
-      }
-    );
-    it("Tests pagination.", () => { cy.testPagination(); });
+    it("Tests anchor.", () => { cy.testTabAnchor("/gear/", "pants"); });
+    it("Tests pagination.", () => { cy.testPagination(0); });
     it("Tests Name text box filter.", () => { cy.testTextBoxFilter(0, "Name", "Pro"); });
     it("Tests Lvl Avail. dropdown filter.", () => { cy.testSingularSelectDropdown(1, "Lvl Avail.", "7", "equal", "Any"); });
     it("Tests Brand dropdown filter.", () => { cy.testSingularSelectDropdown(2, "Brand", "OVERTIME", "equal", "Any"); });

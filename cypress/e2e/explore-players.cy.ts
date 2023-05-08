@@ -96,8 +96,8 @@ describe(
           );
       }
     );
-    it("Tests pagination", () => { cy.testPagination(); });
-    it("Tests Player Name text box filter", () => { cy.testTextBoxFilter(0, "Name", "Green", 2); });
+    it("Tests pagination", () => { cy.testPagination(0); });
+    it("Tests Player Name text box filter", () => { cy.testTextBoxFilter(0, "Name", "Green"); });
     it("Tests Lvl Avail. dropdown filter", () => { cy.testSingularSelectDropdown(1, "Lvl Avail.", "7", "equal", "Any"); });
     it("Tests Type dropdown filter", () => { cy.testSingularSelectDropdown(2, "Type", "All-World", "equal", "Any"); });
     it("Tests Team dropdown filter", () => { cy.testMultiSelectDropdown(3, "Team", [ "ATL", "DAL" ], "Any"); });

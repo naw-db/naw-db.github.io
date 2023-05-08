@@ -1,16 +1,8 @@
 describe(
   "Gear - Sneakers tab tests",
   () => {
-    it(
-      "Tests anchor.",
-      () => {
-        cy.visit("/gear/?tab=sneakers");
-
-        cy.get("[aria-selected='true']")
-          .should("have.id", "sneakers");
-      }
-    );
-    it("Tests pagination.", () => { cy.testPagination(); });
+    it("Tests anchor.", () => { cy.testTabAnchor("/gear/", "sneakers"); });
+    it("Tests pagination.", () => { cy.testPagination(0); });
     it("Tests Name text box filter.", () => { cy.testTextBoxFilter(0, "Name", "Nitro"); });
     it("Tests Lvl Avail. dropdown filter.", () => { cy.testSingularSelectDropdown(1, "Lvl Avail.", "7", "equal", "Any"); });
     it("Tests Brand dropdown filter.", () => { cy.testSingularSelectDropdown(2, "Brand", "Adidas", "equal", "Any"); });

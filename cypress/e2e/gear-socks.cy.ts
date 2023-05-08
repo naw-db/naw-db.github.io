@@ -1,16 +1,8 @@
 describe(
   "Gear - Socks tab tests",
   () => {
-    it(
-      "Tests anchor.",
-      () => {
-        cy.visit("/gear/?tab=socks");
-
-        cy.get("[aria-selected='true']")
-          .should("have.id", "socks");
-      }
-    );
-    it("Tests pagination.", () => { cy.testPagination(); });
+    it("Tests anchor.", () => { cy.testTabAnchor("/gear/", "socks"); });
+    it("Tests pagination.", () => { cy.testPagination(0); });
     it("Tests Name text box filter.", () => { cy.testTextBoxFilter(0, "Name", "Trippy"); });
     it("Tests Lvl Avail. dropdown filter.", () => { cy.testSingularSelectDropdown(1, "Lvl Avail.", "1", "equal", "Any"); });
     it("Tests Brand dropdown filter.", () => { cy.testSingularSelectDropdown(2, "Brand", "Stance", "equal", "Any"); });
