@@ -1,20 +1,50 @@
 import { calculateStat } from "/src/components/players/PlayerStats";
 
 Cypress.Commands.add(
+  "testUrlAnchor",
+  (pageUrl: string, anchor: string, startingYGreaterThan: number, endingYLessThan: number) => {
+    cy.visit(pageUrl);
+
+    cy.get(`#${anchor}`)
+      .then($section => $section[0].getBoundingClientRect().y)
+      .should("be.greaterThan", startingYGreaterThan);
+
+    cy.get(`#${anchor}`)
+      .find("a")
+      .click();
+
+    cy.get(`#${anchor}`)
+      .then($section => $section[0].getBoundingClientRect().y)
+      .should("be.lessThan", endingYLessThan);
+  }
+);
+
+Cypress.Commands.add(
+  "testTabAnchor",
+  (pageUrl: string, anchor: string) => {
+    cy.visit(`${pageUrl}?tab=${anchor}`);
+
+    cy.get("[aria-selected='true']")
+      .should("have.id", anchor);
+  }
+);
+
+Cypress.Commands.add(
   "testPagination",
-  () => {
-    cy.get(".MuiTablePagination-toolbar")
-      .get(".MuiTablePagination-select")
+  (tableIndex: number) => {
+    cy.get(".MuiTablePagination-select")
+      .eq(tableIndex)
       .then(
         ($pageSize) => {
           const defaultPageSize = parseInt($pageSize.text());
 
           cy.get(".MuiTablePagination-displayedRows")
+            .eq(tableIndex)
             .then(
               ($displayedRowSummary) => {
                 // "1-XX of YY" - YY is the number of total rows.
                 const initialDisplayedRowSummary = $displayedRowSummary.text();
-                const totalRows = parseInt($displayedRowSummary.text().slice(8));
+                const totalRows = parseInt($displayedRowSummary.text().split(" ")[2]);
 
                 let remainingRowsCount = totalRows;
                 let nextPageClicksCount = 0;
@@ -23,16 +53,25 @@ Cypress.Commands.add(
                 while (remainingRowsCount > defaultPageSize) {
                   // Assert current page is full.
                   cy.get(".MuiTableBody-root")
+                    .eq(tableIndex)
                     .children()
                     .should("have.length", defaultPageSize);
 
                   // Go to next page.
-                  cy.get(".MuiIconButton-root")
-                    .get("[aria-label='Go to next page']")
+                  cy.get("[aria-label='Go to next page']")
+                    .eq(tableIndex)
                     .click();
 
                   // Assert row summary has changed.
                   cy.get(".MuiTablePagination-displayedRows")
+                    .eq(tableIndex)
+                    .should(
+                      ($updatedDisplayedRowSummary) => {
+                        expect($updatedDisplayedRowSummary.text()).not.equal(initialDisplayedRowSummary);
+                      }
+                    );
+                  cy.get(".MuiTablePagination-displayedRows")
+                    .eq(tableIndex)
                     .should(
                       ($updatedDisplayedRowSummary) => {
                         expect($updatedDisplayedRowSummary.text()).not.equal(initialDisplayedRowSummary);
@@ -45,18 +84,20 @@ Cypress.Commands.add(
 
                 // Assert size of last page.
                 cy.get(".MuiTableBody-root")
+                  .eq(tableIndex)
                   .children()
                   .should("have.length", remainingRowsCount);
 
                 // Go back to first page by clicking on Previous Page.
                 for (let i = 0; i < nextPageClicksCount; i++) {
-                  cy.get(".MuiIconButton-root")
-                    .get("[aria-label='Go to previous page']")
+                  cy.get("[aria-label='Go to previous page']")
+                    .eq(tableIndex)
                     .click();
                 }
 
                 // Assert row summary of first page has not changed.
                 cy.get(".MuiTablePagination-displayedRows")
+                  .eq(tableIndex)
                   .should(
                     ($updatedDisplayedRowSummary) => {
                       expect($updatedDisplayedRowSummary.text()).equal(initialDisplayedRowSummary);
@@ -65,20 +106,23 @@ Cypress.Commands.add(
 
                 // Change page size.
                 cy.get(".MuiTablePagination-select")
+                  .eq(tableIndex)
                   .click();
 
                 cy.get(".MuiTablePagination-menuItem")
+                  .eq(tableIndex)
                   .last()
                   .click();
 
                 // Assert size of current page has changed.
-                cy.get(".MuiTablePagination-toolbar")
-                  .get(".MuiTablePagination-select")
+                cy.get(".MuiTablePagination-select")
+                  .eq(tableIndex)
                   .then(
                     ($updatedPageSize) => {
                       const maxPageSize = parseInt($updatedPageSize.text());
 
                       cy.get(".MuiTableBody-root")
+                        .eq(tableIndex)
                         .children()
                         .should("have.length", totalRows < maxPageSize ? totalRows : maxPageSize);
                     }
@@ -86,6 +130,7 @@ Cypress.Commands.add(
 
                 // Reset page size.
                 cy.get(".MuiTablePagination-select")
+                  .eq(tableIndex)
                   .click();
 
                 cy.get(".MuiTablePagination-menuItem")
@@ -156,12 +201,14 @@ Cypress.Commands.add(
             .should("have.length", pageSize);
 
           // Click on dropdown and select the specified option.
-          cy.contains(dropdownText)
+          cy.get(".MuiFormHelperText-root")
+            .contains(dropdownText)
             .parent()
             .find(".MuiSelect-select")
             .click();
 
-          cy.contains(dropdownText)
+          cy.get(".MuiFormHelperText-root")
+            .contains(dropdownText)
             .parent()
             .get(".MuiListItemText-root")
             .contains(targetOptionText)
@@ -185,7 +232,8 @@ Cypress.Commands.add(
             );
 
           // Clear dropdown.
-          cy.contains(dropdownText)
+          cy.get(".MuiFormHelperText-root")
+            .contains(dropdownText)
             .parent()
             .find(".MuiSelect-select")
             .click();

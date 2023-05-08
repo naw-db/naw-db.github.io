@@ -1,16 +1,8 @@
 describe(
   "Gear - Headwear tab tests",
   () => {
-    it(
-      "Tests anchor.",
-      () => {
-        cy.visit("/gear/?tab=headwear");
-
-        cy.get("[aria-selected='true']")
-          .should("have.id", "headwear");
-      }
-    );
-    it("Tests pagination.", () => { cy.testPagination(); });
+    it("Tests anchor.", () => { cy.testTabAnchor("/gear/", "headwear"); });
+    it("Tests pagination.", () => { cy.testPagination(0); });
     it("Tests Name text box filter.", () => { cy.testTextBoxFilter(0, "Name", "Camo"); });
     it("Tests Lvl Avail. dropdown filter.", () => { cy.testSingularSelectDropdown(1, "Lvl Avail.", "3", "equal", "Any"); });
     it("Tests Brand dropdown filter.", () => { cy.testSingularSelectDropdown(2, "Brand", "Mitchell&Ness", "equal", "Any"); });

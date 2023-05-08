@@ -1,16 +1,8 @@
 describe(
   "Gear - Eyewear tab tests",
   () => {
-    it(
-      "Tests anchor.",
-      () => {
-        cy.visit("/gear/?tab=eyewear");
-
-        cy.get("[aria-selected='true']")
-          .should("have.id", "eyewear");
-      }
-    );
-    it("Tests pagination.", () => { cy.testPagination(); });
+    it("Tests anchor.", () => { cy.testTabAnchor("/gear/", "eyewear"); });
+    it("Tests pagination.", () => { cy.testPagination(0); });
     it("Tests Type dropdown filter.", () => { cy.testSingularSelectDropdown(0, "Type", "Sunglasses", "equal", "Any"); });
     it("Tests Lvl Avail. dropdown filter.", () => { cy.testSingularSelectDropdown(1, "Lvl Avail.", "3", "equal", "Any"); });
     it("Tests Brand dropdown filter.", () => { cy.testSingularSelectDropdown(2, "Brand", "All-World", "equal", "Any"); });
