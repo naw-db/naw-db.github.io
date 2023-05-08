@@ -58,10 +58,11 @@ export function EyewearTable(props: any) {
             disableSortBy: true
           },
           {
-            Header: "Price",
-            showHeader: true,
-            showSortLabel: true,
             accessor: "price",
+            Header: "$",
+            showHeader: true,
+            hoverText: "Price",
+            showSortLabel: true,
             disableFilters: true
           }
         ]

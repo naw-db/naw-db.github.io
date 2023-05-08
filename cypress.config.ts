@@ -3,6 +3,7 @@ import { defineConfig } from "cypress";
 
 export default defineConfig({
   e2e: {
+    testIsolation: false,
     baseUrl: "http://localhost:8000",
     specPattern: "cypress/e2e",
     supportFile: "cypress/support/e2e.ts",
