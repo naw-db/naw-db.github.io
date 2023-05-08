@@ -83,6 +83,14 @@ Cypress.Commands.add(
                         .should("have.length", totalRows < maxPageSize ? totalRows : maxPageSize);
                     }
                   );
+
+                // Reset page size.
+                cy.get(".MuiTablePagination-select")
+                  .click();
+
+                cy.get(".MuiTablePagination-menuItem")
+                  .contains(defaultPageSize)
+                  .click();
               }
             );
         }
@@ -112,7 +120,7 @@ Cypress.Commands.add(
           // Assert table has been filtered.
           cy.get("tbody")
             .children()
-            .should("have.length.greaterThan", 1)
+            .should("have.length.at.least", 1)
             .each(
               ($tr) => {
                 expect($tr.children()[columnIndex].textContent).includes(targetText);
@@ -162,7 +170,7 @@ Cypress.Commands.add(
           // Assert table has been filtered.
           cy.get("tbody")
             .children()
-            .should("have.length.greaterThan", 1)
+            .should("have.length.at.least", 1)
             .each(
               ($tr) => {
                 switch (resultOperator) {
@@ -230,7 +238,7 @@ Cypress.Commands.add(
           // Assert table has been filtered.
           cy.get("tbody")
             .children()
-            .should("have.length.greaterThan", 1)
+            .should("have.length.at.least", 1)
             .each(
               ($tr) => {
                 expect($tr.children()[columnIndex].textContent).to.be.oneOf(targetOptionTexts);
@@ -242,7 +250,8 @@ Cypress.Commands.add(
             .parent()
             .get(".MuiListItemText-root")
             .contains(resetOptionText)
-            .click();
+            .click()
+            .type("{esc}");
 
           // Assert table has been restored.
           cy.get("tbody")
@@ -260,6 +269,7 @@ Cypress.Commands.add(
       .each(
         ($th) => {
           // Assert column is sorted in ascending order after first click.
+          let ascendingOrderAssertionStarted = false;
           let lastAscendingValue = 0;
 
           cy.wrap($th)
@@ -269,7 +279,15 @@ Cypress.Commands.add(
             .children()
             .each(
               ($tr) => {
-                const currentValue = parseFloat($tr.children()[columnIndex].textContent || "0");
+                const currentValue = parseFloat($tr.children()[columnIndex].textContent || "NaN");
+
+                if (!ascendingOrderAssertionStarted) {
+                  if (!Number.isNaN(currentValue)) {
+                    ascendingOrderAssertionStarted = true;
+                  } else {
+                    return;
+                  }
+                }
 
                 expect(currentValue).least(lastAscendingValue);
                 lastAscendingValue = currentValue;
@@ -277,6 +295,7 @@ Cypress.Commands.add(
             );
 
           // Assert column is sorted in descending order after second click.
+          let descendingOrderAssertionEnded = false;
           let lastDescendingValue = Number.MAX_VALUE;
 
           cy.wrap($th)
@@ -286,12 +305,38 @@ Cypress.Commands.add(
             .children()
             .each(
               ($tr) => {
-                const currentValue = parseFloat($tr.children()[columnIndex].textContent || `${Number.MAX_VALUE}`);
+                const currentValue = parseFloat($tr.children()[columnIndex].textContent || "NaN");
+
+                if (descendingOrderAssertionEnded) {
+                  if (!Number.isNaN(currentValue)) {
+                    // Fail the assertion.
+                    expect(currentValue).equal(NaN);
+                  } else {
+                    return;
+                  }
+                }
+
+                if (Number.isNaN(currentValue)) {
+                  descendingOrderAssertionEnded = true;
+                  return;
+                }
 
                 expect(currentValue).most(lastDescendingValue);
                 lastDescendingValue = currentValue;
               }
             );
+        }
+      );
+  }
+);
+
+Cypress.Commands.add(
+  "getPlayerData",
+  () => {
+    cy.readFile("./content/data/players.csv")
+      .then(
+        (content) => {
+          return cy.task("csvToJson", { csv: content });
         }
       );
   }

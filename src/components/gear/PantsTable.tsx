@@ -57,10 +57,11 @@ export function PantsTable(props: any) {
             disableSortBy: true
           },
           {
-            Header: "Price",
-            showHeader: true,
-            showSortLabel: true,
             accessor: "price",
+            Header: "$",
+            showHeader: true,
+            hoverText: "Price",
+            showSortLabel: true,
             disableFilters: true
           }
         ]
@@ -71,36 +72,41 @@ export function PantsTable(props: any) {
         backgroundColor: props.theme.palette.text.secondary,
         columns: [
           {
+            accessor: "level1Offense",
             Header: "OFF",
             showHeader: true,
+            hoverText: "Level 1 Offense",
             showSortLabel: true,
-            accessor: "level1Offense",
             disableFilters: true
           },
           {
+            accessor: "level1Defense",
             Header: "DEF",
             showHeader: true,
+            hoverText: "Level 1 Defense",
             showSortLabel: true,
-            accessor: "level1Defense",
             disableFilters: true
           },
           {
+            accessor: "level1Fitness",
             Header: "FIT",
             showHeader: true,
+            hoverText: "Level 1 Fitness",
             showSortLabel: true,
-            accessor: "level1Fitness",
             disableFilters: true
           },
           {
+            accessor: "level1QuantityRequiredToUpgrade",
             Header: "QTY",
             showHeader: true,
-            accessor: "level1QuantityRequiredToUpgrade",
+            hoverText: "Quantity Required to Upgrade to Level 2",
             disableFilters: true
           },
           {
+            accessor: "level1CredsRequiredToUpgrade",
             Header: "CDT",
             showHeader: true,
-            accessor: "level1CredsRequiredToUpgrade",
+            hoverText: "Cred. Required to Upgrade to Level 2",
             disableFilters: true
           }
         ]
@@ -110,36 +116,41 @@ export function PantsTable(props: any) {
         showHeader: true,
         columns: [
           {
+            accessor: "level2Offense",
             Header: "OFF",
             showHeader: true,
+            hoverText: "Level 2 Offense",
             showSortLabel: true,
-            accessor: "level2Offense",
             disableFilters: true
           },
           {
+            accessor: "level2Defense",
             Header: "DEF",
             showHeader: true,
+            hoverText: "Level 2 Defense",
             showSortLabel: true,
-            accessor: "level2Defense",
             disableFilters: true
           },
           {
+            accessor: "level2Fitness",
             Header: "FIT",
             showHeader: true,
+            hoverText: "Level 2 Fitness",
             showSortLabel: true,
-            accessor: "level2Fitness",
             disableFilters: true
           },
           {
+            accessor: "level2QuantityRequiredToUpgrade",
             Header: "QTY",
             showHeader: true,
-            accessor: "level2QuantityRequiredToUpgrade",
+            hoverText: "Quantity Required to Upgrade to Level 3",
             disableFilters: true
           },
           {
+            accessor: "level2CredsRequiredToUpgrade",
             Header: "CDT",
             showHeader: true,
-            accessor: "level2CredsRequiredToUpgrade",
+            hoverText: "Cred. Required to Upgrade to Level 3",
             disableFilters: true
           }
         ]
@@ -150,36 +161,41 @@ export function PantsTable(props: any) {
         backgroundColor: props.theme.palette.text.secondary,
         columns: [
           {
+            accessor: "level3Offense",
             Header: "OFF",
             showHeader: true,
+            hoverText: "Level 3 Offense",
             showSortLabel: true,
-            accessor: "level3Offense",
             disableFilters: true
           },
           {
+            accessor: "level3Defense",
             Header: "DEF",
             showHeader: true,
+            hoverText: "Level 3 Defense",
             showSortLabel: true,
-            accessor: "level3Defense",
             disableFilters: true
           },
           {
+            accessor: "level3Fitness",
             Header: "FIT",
             showHeader: true,
+            hoverText: "Level 3 Fitness",
             showSortLabel: true,
-            accessor: "level3Fitness",
             disableFilters: true
           },
           {
+            accessor: "level3QuantityRequiredToUpgrade",
             Header: "QTY",
             showHeader: true,
-            accessor: "level3QuantityRequiredToUpgrade",
+            hoverText: "Quantity Required to Upgrade to Level 4",
             disableFilters: true
           },
           {
+            accessor: "level3CredsRequiredToUpgrade",
             Header: "CDT",
             showHeader: true,
-            accessor: "level3CredsRequiredToUpgrade",
+            hoverText: "Cred. Required to Upgrade to Level 4",
             disableFilters: true
           }
         ]
@@ -189,36 +205,41 @@ export function PantsTable(props: any) {
         showHeader: true,
         columns: [
           {
+            accessor: "level4Offense",
             Header: "OFF",
             showHeader: true,
+            hoverText: "Level 4 Offense",
             showSortLabel: true,
-            accessor: "level4Offense",
             disableFilters: true
           },
           {
+            accessor: "level4Defense",
             Header: "DEF",
             showHeader: true,
+            hoverText: "Level 4 Defense",
             showSortLabel: true,
-            accessor: "level4Defense",
             disableFilters: true
           },
           {
+            accessor: "level4Fitness",
             Header: "FIT",
             showHeader: true,
+            hoverText: "Level 4 Fitness",
             showSortLabel: true,
-            accessor: "level4Fitness",
             disableFilters: true
           },
           {
+            accessor: "level4QuantityRequiredToUpgrade",
             Header: "QTY",
             showHeader: true,
-            accessor: "level4QuantityRequiredToUpgrade",
+            hoverText: "Quantity Required to Upgrade to Level 5",
             disableFilters: true
           },
           {
+            accessor: "level4CredsRequiredToUpgrade",
             Header: "CDT",
             showHeader: true,
-            accessor: "level4CredsRequiredToUpgrade",
+            hoverText: "Cred. Required to Upgrade to Level 5",
             disableFilters: true
           }
         ]
@@ -229,24 +250,27 @@ export function PantsTable(props: any) {
         backgroundColor: props.theme.palette.text.secondary,
         columns: [
           {
+            accessor: "level5Offense",
             Header: "OFF",
             showHeader: true,
+            hoverText: "Level 5 Offense",
             showSortLabel: true,
-            accessor: "level5Offense",
             disableFilters: true
           },
           {
+            accessor: "level5Defense",
             Header: "DEF",
             showHeader: true,
+            hoverText: "Level 5 Defense",
             showSortLabel: true,
-            accessor: "level5Defense",
             disableFilters: true
           },
           {
+            accessor: "level5Fitness",
             Header: "FIT",
             showHeader: true,
+            hoverText: "Level 5 Fitness",
             showSortLabel: true,
-            accessor: "level5Fitness",
             disableFilters: true
           }
         ]

@@ -58,8 +58,9 @@ export function BallsTable(props: any) {
           },
           {
             accessor: "price",
-            Header: "Price",
+            Header: "$",
             showHeader: true,
+            hoverText: "Price",
             showSortLabel: true,
             disableFilters: true
           }

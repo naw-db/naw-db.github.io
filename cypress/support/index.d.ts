@@ -13,6 +13,7 @@ declare namespace Cypress {
     ): Chainable<any>;
     testMultiSelectDropdown(columnIndex: number, dropdownText: string, targetOptionTexts: Array<string>, resetOptionText: string): Chainable<any>;
     testSortableColumn(columnIndex: number, columnHoverText: string): Chainable<any>;
+    getPlayerData(): Chainable<Array<any>>;
     getPlayerComparisonChartLabels(): Chainable<string>;
     calculateExpectedPlayerComparisonChartLabels(
       playerData: Array<any>,

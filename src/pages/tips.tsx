@@ -16,7 +16,7 @@ export default function TipsPage({ data }: { data: any; }) {
       <Seo title="Tips" />
       <Page useSplashScreenAnimation>
         <Animation type="fadeUp">
-          <AnchoredSection anchor="levelUpTeamLevelFast" heading="Level Up Team Level Fast">
+          <AnchoredSection anchor="level-up-team-level-fast" heading="Level Up Team Level Fast">
             <h5>
               R: Rank, L: Level.
               <br />

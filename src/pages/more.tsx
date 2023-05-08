@@ -16,10 +16,10 @@ export default function MorePage({ data }: { data: any; }) {
       <Seo title="More" />
       <Page useSplashScreenAnimation>
         <Animation type="fadeUp">
-          <AnchoredSection anchor="playerLevelRequirements" heading="Player Level Requirements">
+          <AnchoredSection anchor="player-level-requirements" heading="Player Level Requirements">
             <PlayerLevelRequirementsTable defaultPageSize={defaultPageSize} data={data.allPlayerLevelRequirementsCsv.nodes}/>
           </AnchoredSection>
-          <AnchoredSection anchor="eventTournamentHistory" heading="Event Tournament History">
+          <AnchoredSection anchor="event-tournament-history" heading="Event Tournament History">
             <EventTournamentHistoryTable defaultPageSize={defaultPageSize} data={data.allEventTournamentHistoryCsv.nodes}/>
           </AnchoredSection>
         </Animation>
