@@ -4,7 +4,7 @@ import React from "react";
 import { isBrowser } from "react-device-detect";
 import { getQueryParams, setQueryParams } from "react-use-query-param-string";
 
-import { DEFAULT_PAGE_SIZE, DEFAULT_PAGE_SIZE_IN_DESKTOP_VIEW } from "/src/components/common/Defaults";
+import { DEFAULT_TABLE_PAGE_SIZE, DEFAULT_TABLE_PAGE_SIZE_IN_DESKTOP_VIEW } from "/src/components/common/Defaults";
 import { a11yProps, TabPanel } from "/src/components/common/Tab";
 import { BallsTable } from "/src/components/gear/BallsTable";
 import { EyewearTable } from "/src/components/gear/EyewearTable";
@@ -15,7 +15,7 @@ import { SneakersTable } from "/src/components/gear/SneakersTable";
 import { SocksTable } from "/src/components/gear/SocksTable";
 
 export function GearTabs({ data }: { data: any; }) {
-  const defaultPageSize = isBrowser ? DEFAULT_PAGE_SIZE_IN_DESKTOP_VIEW : DEFAULT_PAGE_SIZE;
+  const defaultPageSize = isBrowser ? DEFAULT_TABLE_PAGE_SIZE_IN_DESKTOP_VIEW : DEFAULT_TABLE_PAGE_SIZE;
 
   const queryParams: any = getQueryParams();
 

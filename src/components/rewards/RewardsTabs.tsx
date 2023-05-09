@@ -4,7 +4,7 @@ import React from "react";
 import { isBrowser } from "react-device-detect";
 import { getQueryParams, setQueryParams } from "react-use-query-param-string";
 
-import { DEFAULT_PAGE_SIZE, DEFAULT_PAGE_SIZE_IN_DESKTOP_VIEW } from "/src/components/common/Defaults";
+import { DEFAULT_TABLE_PAGE_SIZE, DEFAULT_TABLE_PAGE_SIZE_IN_DESKTOP_VIEW } from "/src/components/common/Defaults";
 import { a11yProps, TabPanel } from "/src/components/common/Tab";
 import {
   DailyArenaTournamentRewardsByTeamLevelTable,
@@ -21,7 +21,7 @@ import { RuleTheCourtRewardsTable } from "/src/components/rewards/RuleTheCourtRe
 import { TeamLevelRewardsTable } from "/src/components/rewards/TeamLevelRewardsTable";
 
 export function RewardsTabs({ data }: { data: any; }) {
-  const defaultPageSize = isBrowser ? DEFAULT_PAGE_SIZE_IN_DESKTOP_VIEW : DEFAULT_PAGE_SIZE;
+  const defaultPageSize = isBrowser ? DEFAULT_TABLE_PAGE_SIZE_IN_DESKTOP_VIEW : DEFAULT_TABLE_PAGE_SIZE;
 
   const queryParams: any = getQueryParams();
 

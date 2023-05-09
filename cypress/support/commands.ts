@@ -412,21 +412,27 @@ Cypress.Commands.add(
 
 Cypress.Commands.add(
   "calculateExpectedPlayerComparisonChartLabels",
-  (playerData: Array<any>, playerOne: string, playerOneRank: string, playerOneLevel: string, playerTwo: string, playerTwoRank: string, playerTwoLevel: string) => {
-    const playerOneData = playerData.find(e => e.name === playerOne);
-    const playerTwoData = playerData.find(e => e.name === playerTwo);
+  (playerData: Array<any>, players: Array<string>, ranks: Array<string>, levels: Array<string>) => {
+    const selectedPlayerData = players.map(
+      player => playerData.find(e => e.name === player)
+    );
 
-    const playerOneStats = calculateStat(playerOneData, playerOneRank, playerOneLevel);
-    const playerTwoStats = calculateStat(playerTwoData, playerTwoRank, playerTwoLevel);
+    const selectedPlayerStats = selectedPlayerData.map(
+      (data, index) => calculateStat(data, ranks[index], levels[index])
+    );
 
-    const aggregatedStats = `${playerOneStats.totalFitness} ${playerOneStats.totalDefense} ${playerOneStats.totalOffense} ` +
-      `${playerTwoStats.totalFitness} ${playerTwoStats.totalDefense} ${playerTwoStats.totalOffense} ` +
-      `${playerOneStats.stamina} ${playerOneStats.speed} ${playerOneStats.strength} ` +
-      `${playerOneStats.stealing} ${playerOneStats.blocking} ${playerOneStats.defense} ` +
-      `${playerOneStats.dunkPower} ${playerOneStats.midRangeShooting} ${playerOneStats.perimeterShooting} ${playerOneStats.ballHandling} ` +
-      `${playerTwoStats.stamina} ${playerTwoStats.speed} ${playerTwoStats.strength} ` +
-      `${playerTwoStats.stealing} ${playerTwoStats.blocking} ${playerTwoStats.defense} ` +
-      `${playerTwoStats.dunkPower} ${playerTwoStats.midRangeShooting} ${playerTwoStats.perimeterShooting} ${playerTwoStats.ballHandling}`;
+    const aggregatedOverallStats = selectedPlayerStats.map(
+      stats => `${stats.totalFitness} ${stats.totalDefense} ${stats.totalOffense}`
+    )
+      .join(" ");
+
+    let aggregatedIndividualStats = selectedPlayerStats.map(
+      stats => `${stats.stamina} ${stats.speed} ${stats.strength} ${stats.stealing} ${stats.blocking} ${stats.defense} `
+        + `${stats.dunkPower} ${stats.midRangeShooting} ${stats.perimeterShooting} ${stats.ballHandling}`
+    )
+      .join(" ");
+
+    const aggregatedStats = `${aggregatedOverallStats} ${aggregatedIndividualStats}`;
 
     const expectedLabel = aggregatedStats.replaceAll(".0", "");
 

@@ -4,9 +4,9 @@ import React from "react";
 
 import { PlayersComparisonChart } from "/src/components/players/PlayersComparisonChart";
 
-const DEFAULT_PLAYERS: string[] = [ "Stephen Curry", "LeBron James" ];
+const DEFAULT_PLAYERS: Array<string> = [ "Stephen Curry", "LeBron James", "Kevin Durant", "Giannis Antetokounmpo" ];
 
-const BAR_CHART_COLORS: string[] = [ "#55B4B0", "#D65076" ];
+const BAR_CHART_COLORS: Array<string> = [ "#39A0CA", "#FF5E6C", "#657A00", "#C89666" ];
 
 export default function ComparePlayersPage({ data }: { data: any; }) {
   return (

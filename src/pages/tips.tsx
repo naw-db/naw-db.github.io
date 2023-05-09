@@ -5,11 +5,11 @@ import React from "react";
 import { isBrowser } from "react-device-detect";
 
 import { AnchoredSection } from "/src/components/common/AnchoredSection";
-import { DEFAULT_PAGE_SIZE, DEFAULT_PAGE_SIZE_IN_DESKTOP_VIEW } from "/src/components/common/Defaults";
+import { DEFAULT_TABLE_PAGE_SIZE, DEFAULT_TABLE_PAGE_SIZE_IN_DESKTOP_VIEW } from "/src/components/common/Defaults";
 import TeamLevelTipsTable from "/src/components/tips/TeamLevelTipsTable";
 
 export default function TipsPage({ data }: { data: any; }) {
-  const defaultPageSize = isBrowser ? DEFAULT_PAGE_SIZE_IN_DESKTOP_VIEW : DEFAULT_PAGE_SIZE;
+  const defaultPageSize = isBrowser ? DEFAULT_TABLE_PAGE_SIZE_IN_DESKTOP_VIEW : DEFAULT_TABLE_PAGE_SIZE;
 
   return (
     <>

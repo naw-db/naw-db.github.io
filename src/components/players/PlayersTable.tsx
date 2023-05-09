@@ -5,7 +5,7 @@ import { parseFullName } from "parse-full-name";
 import React from "react";
 import { isBrowser } from "react-device-detect";
 
-import { DEFAULT_PAGE_SIZE, DEFAULT_PAGE_SIZE_IN_DESKTOP_VIEW } from "/src/components/common/Defaults";
+import { DEFAULT_TABLE_PAGE_SIZE, DEFAULT_TABLE_PAGE_SIZE_IN_DESKTOP_VIEW } from "/src/components/common/Defaults";
 import { BaseTable, SelectColumnFilter, TextColumnFilter } from "/src/components/common/Table";
 import { STAT_CATEGORIES } from "/src/components/players/PlayerStats";
 
@@ -110,7 +110,7 @@ export function PlayersTable({ data }: { data: Array<any> }) {
   const [ displayData, setDisplayData ] = React.useState(maxStatsData);
   const [ showMaxStats, setShowMaxStats ] = React.useState(true);
 
-  const defaultPageSize = isBrowser ? DEFAULT_PAGE_SIZE_IN_DESKTOP_VIEW : DEFAULT_PAGE_SIZE;
+  const defaultPageSize = isBrowser ? DEFAULT_TABLE_PAGE_SIZE_IN_DESKTOP_VIEW : DEFAULT_TABLE_PAGE_SIZE;
 
   const { globalState } = useGlobalState();
 
