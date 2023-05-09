@@ -1,6 +1,7 @@
 import { Animation, Stack } from "@devexpress/dx-react-chart";
-import { ArgumentAxis, BarSeries, Chart, Legend, ValueAxis } from "@devexpress/dx-react-chart-material-ui";
-import { createTheme, CssBaseline, Divider, FormControl, FormHelperText, MenuItem, PaletteMode, Select, ThemeProvider } from "@mui/material";
+import { ArgumentAxis, BarSeries, Chart, ValueAxis } from "@devexpress/dx-react-chart-material-ui";
+import AddIcon from "@mui/icons-material/Add";
+import { Button, createTheme, CssBaseline, Divider, FormControl, FormHelperText, MenuItem, PaletteMode, Select, Stack as MuiStack, ThemeProvider, Chip } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { Section } from "gatsby-theme-portfolio-minimal";
 import { useGlobalState } from "gatsby-theme-portfolio-minimal/src/context";
@@ -9,6 +10,7 @@ import { parseFullName } from "parse-full-name";
 import React from "react";
 import { getQueryParams, setQueryParams } from "react-use-query-param-string";
 
+import { DEFAULT_NUMBER_OF_PLAYERS_TO_COMPARE, MAXIMUM_NUMBER_OF_PLAYERS_TO_COMPARE } from "/src/components/common/Defaults";
 import { calculateStat } from "/src/components/players/PlayerStats";
 import gradients from "/content/data/player_stat_gradients.json";
 
@@ -80,18 +82,11 @@ const getBarSeriesLabelAnimationName = () => {
 
 const StyledBarSeriesLabel = styled(Chart.Label)(() => ({
   [ `&.BarSeriesLabel` ]: {
-    fill: "#ffffff",
+    fill: "#FFFFFF",
     fontSize: "10px",
     animation: `${getBarSeriesLabelAnimationName()} 1s`,
   }
 }));
-
-const LegendRoot = (props: any) => (
-  <Legend.Root {...props} sx={{ display: "flex", margin: "auto", flexDirection: "row" }}  children={props.children} />
-);
-const LegendLabel = (props: any) => (
-  <Legend.Label {...props} sx={{ whiteSpace: "nowrap" }} />
-);
 
 const BarWithLabel = ({ value, ...restProps }: any) => (
   <React.Fragment>
@@ -107,6 +102,15 @@ const BarWithLabel = ({ value, ...restProps }: any) => (
     </StyledBarSeriesLabel>
   </React.Fragment>
 );
+
+function getSelectedPlayers(defaultPlayers: Array<string>, queryParams: any): Array<string> {
+  const parsedPlayers = Object.keys(PLAYER_INDEX)
+    .map(index => queryParams[`player${PLAYER_INDEX[parseInt(index)]}`])
+    .filter(name => name != null)
+    .map(name => decodeURIComponent(name));
+
+  return parsedPlayers.length === 0 ? defaultPlayers.slice(0, DEFAULT_NUMBER_OF_PLAYERS_TO_COMPARE) : parsedPlayers;
+}
 
 function PlayerSelection(data: any, playerRawData: any, qualifier: string, queryParams: any, forceUpdate: Function) {
   return (
@@ -201,12 +205,8 @@ export function PlayersComparisonChart({ defaultPlayers, barColors, data }: { de
   // eslint-disable-next-line no-unused-vars
   const [ ignored, forceUpdate ] = React.useReducer(flag => !flag, false);  // A dummy that is to force update.
 
-  const selectedPlayers = defaultPlayers.map(
-    (defaultPlayer, index) => queryParams[`player${PLAYER_INDEX[index]}`] == null
-      ? defaultPlayer
-      : decodeURIComponent(queryParams[`player${PLAYER_INDEX[index]}`])
-  );
-
+  const selectedPlayers = getSelectedPlayers(defaultPlayers, queryParams);
+  
   const playerRawData = selectedPlayers.map(
     player => data.allPlayersCsv
       .nodes
@@ -246,11 +246,20 @@ export function PlayersComparisonChart({ defaultPlayers, barColors, data }: { de
       return entry;
     }
   );
+  
+  const newQueryParams: { [ key: string ]: string } = {};
+  selectedPlayers.forEach(
+    (player, index) => {
+      newQueryParams[`player${PLAYER_INDEX[index]}`] = player;
+      newQueryParams[`player${PLAYER_INDEX[index]}Rank`] = playerRanks[index];
+      newQueryParams[`player${PLAYER_INDEX[index]}Level`] = playerLevels[index];
+    }
+  );
 
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline>
-        <Section heading="Select Players">
+        <Section>
           <div style={{ textAlign: "center" }}>
             {
               playerRawData.map(
@@ -270,14 +279,7 @@ export function PlayersComparisonChart({ defaultPlayers, barColors, data }: { de
                         data,
                         rawData,
                         `player${PLAYER_INDEX[index]}`,
-                        {
-                          playerOne: selectedPlayers[0],
-                          playerOneRank: playerRanks[0],
-                          playerOneLevel: playerLevels[0],
-                          playerTwo: selectedPlayers[1],
-                          playerTwoRank: playerRanks[1],
-                          playerTwoLevel: playerLevels[1]
-                        },
+                        newQueryParams,
                         forceUpdate
                       )
                     }
@@ -285,11 +287,45 @@ export function PlayersComparisonChart({ defaultPlayers, barColors, data }: { de
                 }
               )
             }
+            {
+              selectedPlayers.length >= MAXIMUM_NUMBER_OF_PLAYERS_TO_COMPARE
+                ? undefined
+                : <>
+                  <br />
+                  <br />
+                  <Button
+                    color="inherit"
+                    variant="contained"
+                    startIcon={<AddIcon />}
+                    onClick={
+                      event => {
+                        newQueryParams[`player${PLAYER_INDEX[selectedPlayers.length]}`] = defaultPlayers[selectedPlayers.length];
+                        setQueryParams(newQueryParams);
+                        forceUpdate();
+                      }
+                    }
+                  >
+                    Add
+                  </Button>
+                </>
+              
+            }
           </div>
         </Section>
-        <Section heading="Overall">
+        <Section>
+          <MuiStack direction="row" spacing={1}>
+            {
+              playerRawData.map(
+                (rawData, index) => <Chip label={rawData.shortName} sx={{ backgroundColor: barColors[index], fontSize: 10, color: "#FFFFFF" }} />
+              )
+            }
+          </MuiStack>
+          <br />
+          <br />
+          <br />
           <Chart
             data={overallChartData}
+            height={selectedPlayers.length * OVERALL_ATTRIBUTES.length * 50}
             rotated
           >
             <ArgumentAxis />
@@ -298,7 +334,6 @@ export function PlayersComparisonChart({ defaultPlayers, barColors, data }: { de
             {
               playerRawData.map(
                 (rawData, index) => <BarSeries
-                  name={rawData.shortName}
                   valueField={rawData.name}
                   argumentField="attribute"
                   color={barColors[index]}
@@ -307,13 +342,13 @@ export function PlayersComparisonChart({ defaultPlayers, barColors, data }: { de
               )
             }
             <Animation />
-            <Legend position="top" rootComponent={LegendRoot} labelComponent={LegendLabel} />
             <Stack />
           </Chart>
-        </Section>
-        <Section heading="Individual Attributes">
+          <br />
+          <br />
           <Chart
             data={detailedChartData}
+            height={selectedPlayers.length * DETAILED_ATTRIBUTES.length * 30}
             rotated
           >
             <ArgumentAxis />
@@ -322,7 +357,6 @@ export function PlayersComparisonChart({ defaultPlayers, barColors, data }: { de
             {
               playerRawData.map(
                 (rawData, index) => <BarSeries
-                  name={rawData.shortName}
                   valueField={rawData.name}
                   argumentField="attribute"
                   color={barColors[index]}
@@ -331,7 +365,6 @@ export function PlayersComparisonChart({ defaultPlayers, barColors, data }: { de
               )
             }
             <Animation />
-            <Legend position="top" rootComponent={LegendRoot} labelComponent={LegendLabel} />
             <Stack />
           </Chart>
         </Section>
