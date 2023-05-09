@@ -19,12 +19,9 @@ declare namespace Cypress {
     getPlayerComparisonChartLabels(): Chainable<string>;
     calculateExpectedPlayerComparisonChartLabels(
       playerData: Array<any>,
-      playerOne: string,
-      playerOneRank: string,
-      playerOneLevel: string,
-      playerTwo: string,
-      playerTwoRank: string,
-      playerTwoLevel: string
+      players: Array<string>,
+      ranks: Array<string>,
+      levels: Array<string>
     ): Chainable<string>;
   }
 }
