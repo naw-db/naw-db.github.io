@@ -102,7 +102,7 @@ describe(
     it("Tests Type dropdown filter", () => { cy.testSingularSelectDropdown(2, "Type", "All-World", "equal", "Any"); });
     it("Tests Team dropdown filter", () => { cy.testMultiSelectDropdown(3, "Team", [ "ATL", "DAL" ], "Any"); });
     it("Tests Conf. dropdown filter", () => { cy.testSingularSelectDropdown(4, "Conf.", "West", "equal", "Any"); });
-    it("Tests Division dropdown filter", () => { cy.testSingularSelectDropdown(5, "Division", "Southwest", "equal", "Any"); });
+    it("Tests Division dropdown filter", () => { cy.testMultiSelectDropdown(5, "Division", [ "Central", "Southwest" ], "Any"); });
     it("Tests Pos. dropdown filter", () => { cy.testSingularSelectDropdown(6, "Pos.", "C", "include", "Any"); });
     it("Tests Overall sortable column", () => { cy.testSortableColumn(7, "Overall"); });
     it("Tests Overall Offense sortable column", () => { cy.testSortableColumn(8, "Overall Offense"); });
