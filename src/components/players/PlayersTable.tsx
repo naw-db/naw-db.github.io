@@ -1,13 +1,4 @@
-import {
-  Checkbox,
-  createTheme,
-  FormControlLabel,
-  ListItemText,
-  MenuItem,
-  PaletteMode,
-  Switch,
-  TextField
-} from "@mui/material";
+import { Checkbox, createTheme, FormControlLabel, ListItemText, MenuItem, PaletteMode, Switch, TextField } from "@mui/material";
 import { useGlobalState } from "gatsby-theme-portfolio-minimal/src/context"
 import bigDecimal from "js-big-decimal";
 import { parseFullName } from "parse-full-name";
