@@ -12,6 +12,14 @@ import { getQueryParams, setQueryParams } from "react-use-query-param-string";
 import { calculateStat } from "/src/components/players/PlayerStats";
 import gradients from "/content/data/player_stat_gradients.json";
 
+const PLAYER_INDEX: { [ key: number ]: string } = {
+  0: "One",
+  1: "Two",
+  2: "Three",
+  3: "Four",
+  4: "Five"
+};
+
 // Chart displays attributes in reversed order.
 
 const OVERALL_ATTRIBUTES: Array<string> = [
@@ -188,50 +196,54 @@ export function PlayersComparisonChart({ defaultPlayers, barColors, data }: { de
     }
   });
 
+  const queryParams: any = getQueryParams();
+
   // eslint-disable-next-line no-unused-vars
   const [ ignored, forceUpdate ] = React.useReducer(flag => !flag, false);  // A dummy that is to force update.
 
-  const queryParams: any = getQueryParams();
+  const selectedPlayers = defaultPlayers.map(
+    (defaultPlayer, index) => queryParams[`player${PLAYER_INDEX[index]}`] == null
+      ? defaultPlayer
+      : decodeURIComponent(queryParams[`player${PLAYER_INDEX[index]}`])
+  );
 
-  const playerOne = queryParams.playerOne == null ? defaultPlayers[0] : decodeURIComponent(queryParams.playerOne);
-  const playerTwo = queryParams.playerTwo == null ? defaultPlayers[1] : decodeURIComponent(queryParams.playerTwo);
+  const playerRawData = selectedPlayers.map(
+    player => data.allPlayersCsv
+      .nodes
+      .find((e: any) => e.name === player)
+  );
 
-  const playerOneName = decodeURIComponent(playerOne);
-  const playerTwoName = decodeURIComponent(playerTwo);
+  const playerRanks = playerRawData.map((rawData, index) => queryParams[`player${PLAYER_INDEX[index]}Rank`] || rawData.maxRank);
 
-  const playerOneRawData = data.allPlayersCsv.nodes.find((e: any) => e.name === playerOneName);
-  const playerTwoRawData = data.allPlayersCsv.nodes.find((e: any) => e.name === playerTwoName);
+  const playerLevels = playerRawData.map((rawData, index) => queryParams[`player${PLAYER_INDEX[index]}Level`] || "10");
 
-  const playerOneRank = queryParams.playerOneRank == null ? playerOneRawData.maxRank : queryParams.playerOneRank;
-  const playerTwoRank = queryParams.playerTwoRank == null ? playerTwoRawData.maxRank : queryParams.playerTwoRank;
+  const displayData = playerRawData.map((rawData, index) => calculateStat(rawData, playerRanks[index], playerLevels[index]));
 
-  const playerOneLevel = queryParams.playerOneLevel == null ? "10" : queryParams.playerOneLevel;
-  const playerTwoLevel = queryParams.playerTwoLevel == null ? "10" : queryParams.playerTwoLevel;
-
-  const playerOneDisplayedData = calculateStat(playerOneRawData, playerOneRank, playerOneLevel);
-  const playerTwoDisplayedData = calculateStat(playerTwoRawData, playerTwoRank, playerTwoLevel);
-
-  const overallChartData: Array<any> = [];
-
-  OVERALL_ATTRIBUTES.forEach(
+  const overallChartData = OVERALL_ATTRIBUTES.map(
     attribute => {
       const entry: { [key: string]: string | number } = { attribute: attribute };
-      entry[playerOneName] = parseFloat(playerOneDisplayedData[camelCase(attribute)]);
-      entry[playerTwoName] = parseFloat(playerTwoDisplayedData[camelCase(attribute)]);
 
-      overallChartData.push(entry);
+      selectedPlayers.forEach(
+        (player, index) => {
+          entry[player] = parseFloat(displayData[index][camelCase(attribute)])
+        }
+      );
+
+      return entry;
     }
   );
 
-  const detailedChartData: Array<any> = [];
-
-  DETAILED_ATTRIBUTES.forEach(
+  const detailedChartData = DETAILED_ATTRIBUTES.map(
     attribute => {
-      const entry: { [ key: string ]: string | number } = { attribute: attribute };
-      entry[playerOneName] = parseFloat(playerOneDisplayedData[camelCase(attribute)]);
-      entry[playerTwoName] = parseFloat(playerTwoDisplayedData[camelCase(attribute)]);
+      const entry: { [key: string]: string | number } = { attribute: attribute };
 
-      detailedChartData.push(entry);
+      selectedPlayers.forEach(
+        (player, index) => {
+          entry[player] = parseFloat(displayData[index][camelCase(attribute)])
+        }
+      );
+
+      return entry;
     }
   );
 
@@ -241,24 +253,36 @@ export function PlayersComparisonChart({ defaultPlayers, barColors, data }: { de
         <Section heading="Select Players">
           <div style={{ textAlign: "center" }}>
             {
-              PlayerSelection(
-                data,
-                playerOneRawData,
-                "playerOne",
-                { playerOne, playerOneRank, playerOneLevel, playerTwo, playerTwoRank, playerTwoLevel },
-                forceUpdate
-              )
-            }
-            <br/>
-            <Divider variant="middle">v.s.</Divider>
-            <br/>
-            {
-              PlayerSelection(
-                data,
-                playerTwoRawData,
-                "playerTwo",
-                { playerOne, playerOneRank, playerOneLevel, playerTwo, playerTwoRank, playerTwoLevel },
-                forceUpdate
+              playerRawData.map(
+                (rawData, index) => {
+                  return <>
+                    {
+                      index === 0
+                        ? undefined
+                        : <>
+                          <br/>
+                          <Divider variant="middle">v.s.</Divider>
+                          <br/>
+                        </>
+                    }
+                    {
+                      PlayerSelection(
+                        data,
+                        rawData,
+                        `player${PLAYER_INDEX[index]}`,
+                        {
+                          playerOne: selectedPlayers[0],
+                          playerOneRank: playerRanks[0],
+                          playerOneLevel: playerLevels[0],
+                          playerTwo: selectedPlayers[1],
+                          playerTwoRank: playerRanks[1],
+                          playerTwoLevel: playerLevels[1]
+                        },
+                        forceUpdate
+                      )
+                    }
+                  </>;
+                }
               )
             }
           </div>
@@ -271,20 +295,17 @@ export function PlayersComparisonChart({ defaultPlayers, barColors, data }: { de
             <ArgumentAxis />
             <ValueAxis />
 
-            <BarSeries
-              name={playerOneRawData.shortName}
-              valueField={playerOneName}
-              argumentField="attribute"
-              color={barColors[0]}
-              pointComponent={BarWithLabel}
-            />
-            <BarSeries
-              name={playerTwoRawData.shortName}
-              valueField={playerTwoName}
-              argumentField="attribute"
-              color={barColors[1]}
-              pointComponent={BarWithLabel}
-            />
+            {
+              playerRawData.map(
+                (rawData, index) => <BarSeries
+                  name={rawData.shortName}
+                  valueField={rawData.name}
+                  argumentField="attribute"
+                  color={barColors[index]}
+                  pointComponent={BarWithLabel}
+                />
+              )
+            }
             <Animation />
             <Legend position="top" rootComponent={LegendRoot} labelComponent={LegendLabel} />
             <Stack />
@@ -298,20 +319,17 @@ export function PlayersComparisonChart({ defaultPlayers, barColors, data }: { de
             <ArgumentAxis />
             <ValueAxis />
 
-            <BarSeries
-              name={playerOneRawData.shortName}
-              valueField={playerOneName}
-              argumentField="attribute"
-              color={barColors[0]}
-              pointComponent={BarWithLabel}
-            />
-            <BarSeries
-              name={playerTwoRawData.shortName}
-              valueField={playerTwoName}
-              argumentField="attribute"
-              color={barColors[1]}
-              pointComponent={BarWithLabel}
-            />
+            {
+              playerRawData.map(
+                (rawData, index) => <BarSeries
+                  name={rawData.shortName}
+                  valueField={rawData.name}
+                  argumentField="attribute"
+                  color={barColors[index]}
+                  pointComponent={BarWithLabel}
+                />
+              )
+            }
             <Animation />
             <Legend position="top" rootComponent={LegendRoot} labelComponent={LegendLabel} />
             <Stack />
