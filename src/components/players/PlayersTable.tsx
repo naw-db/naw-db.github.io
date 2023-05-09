@@ -169,7 +169,8 @@ export function PlayersTable({ data }: { data: Array<any> }) {
             accessor: "division",
             helperText: "Division",
             Filter: SelectColumnFilter,
-            filter: "equals",
+            filter: "in",
+            multiple: true,
             sortOptions: true,
             disableSortBy: true
           },
