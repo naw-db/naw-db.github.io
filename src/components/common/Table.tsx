@@ -183,6 +183,13 @@ export function BaseTable(
             return filterValue.includes(row.values[id]);
           }
         );
+      },
+      intersect: (rows: Array<any>, id: string, filterValue: Array<string>) => {
+        return rows.filter(
+          row => {
+            return filterValue.filter(selected => row.values[id].includes(selected)).length > 0;
+          }
+        );
       }
     }),
     []

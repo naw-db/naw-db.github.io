@@ -1,4 +1,13 @@
-import { createTheme, FormControlLabel, ListItemText, MenuItem, PaletteMode, Switch, TextField } from "@mui/material";
+import {
+  Checkbox,
+  createTheme,
+  FormControlLabel,
+  ListItemText,
+  MenuItem,
+  PaletteMode,
+  Switch,
+  TextField
+} from "@mui/material";
 import { useGlobalState } from "gatsby-theme-portfolio-minimal/src/context"
 import bigDecimal from "js-big-decimal";
 import { parseFullName } from "parse-full-name";
@@ -31,24 +40,35 @@ function PositionColumnFilter(
   return (
     <TextField
       select
+      SelectProps={{
+        multiple: true,
+        renderValue: (selected: any) => selected.join(", ")
+      }}
       label={label}
       helperText={helperText}
       defaultValue=""
-      value={filterValue || ""}
+      value={filterValue || []}
       size="small"
       fullWidth
       onChange={
-        e => {
-          setFilter(e.target.value || undefined);
+        ({ target: { value: targetValue }}) => {
+          setFilter(
+            targetValue.length === 0 || targetValue.includes("")
+              ? undefined
+              : targetValue
+          );
         }
       }
     >
-      <MenuItem value=""><ListItemText primary="Any" /></MenuItem>
-      <MenuItem value="PG"><ListItemText primary="PG" /></MenuItem>
-      <MenuItem value="SG"><ListItemText primary="SG" /></MenuItem>
-      <MenuItem value="SF"><ListItemText primary="SF" /></MenuItem>
-      <MenuItem value="PF"><ListItemText primary="PF" /></MenuItem>
-      <MenuItem value="C"><ListItemText primary="C" /></MenuItem>
+      <MenuItem value=""><ListItemText primary="Any" sx={{ textAlign: "center" }} /></MenuItem>
+      {
+        [ "PG", "SG", "SF", "PF", "C" ].map(
+          position => <MenuItem key={position} value={position}>
+            <Checkbox checked={filterValue ? filterValue.indexOf(position) > -1 : false} />
+            <ListItemText primary={position} />
+          </MenuItem>
+        )
+      }
     </TextField>
   );
 }
@@ -178,7 +198,7 @@ export function PlayersTable({ data }: { data: Array<any> }) {
             accessor: "position",
             helperText: "Pos.",
             Filter: PositionColumnFilter,
-            filter: "includes",
+            filter: "intersect",
             disableSortBy: true
           }
         ]
