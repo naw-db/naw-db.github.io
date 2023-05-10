@@ -16,7 +16,7 @@ describe(
             ($trs) => {
               for (let i = 0; i < $trs.length; i++) {
                 let rowValue = $trs[i].children[0].textContent;
-                
+
                 for (let j = 1; j < $trs[i].children.length; j++) {
                   rowValue += ` ${$trs[i].children[j].textContent || "NULL"}`;
                 }
@@ -36,7 +36,7 @@ describe(
             ($trs) => {
               for (let i = 0; i < $trs.length; i++) {
                 let rowValue = $trs[i].children[0].textContent;
-                
+
                 for (let j = 1; j < $trs[i].children.length; j++) {
                   rowValue += ` ${$trs[i].children[j].textContent || "NULL"}`;
                 }
@@ -70,7 +70,7 @@ describe(
                       expect(expectedRowValue).equal(rowValue);
                     }
                   );
-                
+
               }
             }
           );
@@ -85,7 +85,7 @@ describe(
             ($trs) => {
               for (let i = 0; i < $trs.length; i++) {
                 let rowValue = $trs[i].children[0].textContent;
-                
+
                 for (let j = 1; j < $trs[i].children.length; j++) {
                   rowValue += ` ${$trs[i].children[j].textContent || "NULL"}`;
                 }
@@ -103,7 +103,71 @@ describe(
     it("Tests Team dropdown filter", () => { cy.testMultiSelectDropdown(3, "Team", [ "ATL", "DAL" ], "Any"); });
     it("Tests Conf. dropdown filter", () => { cy.testSingularSelectDropdown(4, "Conf.", "West", "equal", "Any"); });
     it("Tests Division dropdown filter", () => { cy.testMultiSelectDropdown(5, "Division", [ "Central", "Southwest" ], "Any"); });
-    it("Tests Pos. dropdown filter", () => { cy.testSingularSelectDropdown(6, "Pos.", "C", "include", "Any"); });
+    it(
+      "Tests Pos. dropdown filter",
+      () => {
+        cy.get(".MuiTablePagination-select")
+          .then(
+            ($dropdown) => {
+              const dropdownText = "Pos.";
+              const selectedPositions = [ "PG", "SF" ];
+
+              // Memorize initial page size.
+              const pageSize = parseInt($dropdown.text());
+
+              cy.get("tbody")
+                .children()
+                .should("have.length", pageSize);
+
+              // Click on dropdown and select the specified options.
+              cy.contains(dropdownText)
+                .parent()
+                .find(".MuiSelect-select")
+                .click();
+
+              cy.wrap(selectedPositions)
+                .each(
+                  (targetOptionText: string) => {
+                    cy.contains(dropdownText)
+                      .parent()
+                      .get(".MuiListItemText-root")
+                      .contains(targetOptionText)
+                      .click();
+                  }
+                );
+
+              // Assert table has been filtered.
+              cy.get("tbody")
+                .children()
+                .should("have.length.at.least", 1)
+                .each(
+                  ($tr) => {
+                    // @ts-ignore
+                    expect($tr.children()[6].textContent.split(", "))
+                      .to
+                      .satisfy(
+                        (positions: Array<string>) => positions.filter(p => selectedPositions.includes(p))
+                          .length > 0
+                      );
+                  }
+                );
+
+              // Clear dropdown.
+              cy.contains(dropdownText)
+                .parent()
+                .get(".MuiListItemText-root")
+                .contains("Any")
+                .click()
+                .type("{esc}");
+
+              // Assert table has been restored.
+              cy.get("tbody")
+                .children()
+                .should("have.length", pageSize);
+            }
+          );
+      }
+    );
     it("Tests Overall sortable column", () => { cy.testSortableColumn(7, "Overall"); });
     it("Tests Overall Offense sortable column", () => { cy.testSortableColumn(8, "Overall Offense"); });
     it("Tests Ball Handling sortable column", () => { cy.testSortableColumn(9, "Ball Handling"); });
