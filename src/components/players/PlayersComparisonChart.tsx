@@ -206,7 +206,7 @@ export function PlayersComparisonChart({ defaultPlayers, barColors, data }: { de
   const [ ignored, forceUpdate ] = React.useReducer(flag => !flag, false);  // A dummy that is to force update.
 
   const selectedPlayers = getSelectedPlayers(defaultPlayers, queryParams);
-  
+
   const playerRawData = selectedPlayers.map(
     player => data.allPlayersCsv
       .nodes
@@ -246,7 +246,7 @@ export function PlayersComparisonChart({ defaultPlayers, barColors, data }: { de
       return entry;
     }
   );
-  
+
   const newQueryParams: { [ key: string ]: string } = {};
   selectedPlayers.forEach(
     (player, index) => {
@@ -308,7 +308,6 @@ export function PlayersComparisonChart({ defaultPlayers, barColors, data }: { de
                     Add
                   </Button>
                 </>
-              
             }
           </div>
         </Section>
