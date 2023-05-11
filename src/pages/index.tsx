@@ -23,7 +23,6 @@ export const pageQuery = graphql`
     allAnnouncementsCsv {
       nodes {
         id
-        type
         date
         text
       }

@@ -5,10 +5,10 @@
   "scripts": {
     "clean": "gatsby clean",
     "validate-data": "node ./bin/validate_csv.mjs ./content/data/ && node ./bin/validate_json.mjs ./content/data/",
-    "develop": "gatsby develop",
+    "develop": "yarn run validate-data && gatsby develop",
     "cy:run": "cypress $CY_OP --browser chrome --e2e",
     "test:run:e2e": "CYPRESS_SUPPORT=y start-server-and-test develop http://localhost:8000 cy:run",
-    "build": "yarn run clean && gatsby build",
+    "build": "yarn run clean && yarn run validate-data && gatsby build",
     "serve": "gatsby serve -p=8000"
   },
   "engines": {
