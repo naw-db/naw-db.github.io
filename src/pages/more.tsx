@@ -14,7 +14,7 @@ export default function MorePage({ data }: { data: any; }) {
   return (
     <>
       <Seo title="More" />
-      <Page useSplashScreenAnimation>
+      <Page>
         <Animation type="fadeUp">
           <AnchoredSection anchor="player-level-requirements" heading="Player Level Requirements">
             <PlayerLevelRequirementsTable defaultPageSize={defaultPageSize} data={data.allPlayerLevelRequirementsCsv.nodes}/>

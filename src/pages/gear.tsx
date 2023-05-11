@@ -8,7 +8,7 @@ export default function GearPage({ data }: { data: any; }) {
   return (
     <>
       <Seo title="Gear" />
-      <Page useSplashScreenAnimation>
+      <Page>
         <Animation type="fadeUp">
           <Section>
             <GearTabs data={data}/>

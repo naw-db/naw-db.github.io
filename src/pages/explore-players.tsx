@@ -37,7 +37,7 @@ export default function ExplorePlayersPage({ data }: { data: any; }) {
   return (
     <>
       <Seo title="Explore Players" />
-      <Page useSplashScreenAnimation>
+      <Page>
         <Animation type="fadeUp">
           <Section>
             <PlayersTable data={tableData} />

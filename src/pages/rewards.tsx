@@ -8,7 +8,7 @@ export default function RewardsPage({ data }: { data: any; }) {
   return (
     <>
       <Seo title="Rewards" />
-      <Page useSplashScreenAnimation>
+      <Page>
         <Animation type="fadeUp">
           <Section>
             <RewardsTabs data={data}/>
