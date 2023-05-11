@@ -1,15 +1,16 @@
 import PropTypes, { InferProps } from "prop-types";
 import React from "react";
-import { AnchoredSection } from "./AnchoredSection";
 
-Markdown.propTypes = {
+import { AnchoredSection } from "/src/components/common/AnchoredSection";
+
+AnchoredMarkdownSection.propTypes = {
   data: PropTypes.any.isRequired,
   category: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   anchor: PropTypes.string.isRequired
 };
 
-export function Markdown(props: InferProps<typeof Markdown.propTypes>): React.ReactElement {
+export function AnchoredMarkdownSection(props: InferProps<typeof AnchoredMarkdownSection.propTypes>): React.ReactElement {
   return (
     <AnchoredSection anchor={props.anchor} heading={props.title}>
       <div
