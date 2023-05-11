@@ -1,14 +1,8 @@
 import AnnouncementIcon from "@mui/icons-material/Announcement";
-import InfoIcon from "@mui/icons-material/Info";
 import { createTheme, CssBaseline, Divider, List, ListItem, ListItemAvatar, ListItemText, PaletteMode, ThemeProvider } from "@mui/material";
 import { Animation, Section } from "gatsby-theme-portfolio-minimal";
 import React from "react";
 import { useGlobalState } from "gatsby-theme-portfolio-minimal/src/context";
-
-const ICONS: { [key: string]: any } = {
-  "announcement": <AnnouncementIcon fontSize="small" />,
-  "info": <InfoIcon fontSize="small" />
-};
 
 export function AnnouncementsSection(props: any) {
   const { globalState } = useGlobalState();
@@ -31,7 +25,7 @@ export function AnnouncementsSection(props: any) {
         announcements.push(
           <ListItem key={e.id}>
             <ListItemAvatar>
-              {ICONS[e.type]}
+              <AnnouncementIcon fontSize="small" />
             </ListItemAvatar>
             <ListItemText primary={e.text} secondary={e.date} />
           </ListItem>
