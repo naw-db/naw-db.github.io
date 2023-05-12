@@ -10,10 +10,10 @@ import { DEFAULT_TABLE_PAGE_SIZE, DEFAULT_TABLE_PAGE_SIZE_IN_DESKTOP_VIEW } from
 import { AnchoredMarkdownSection } from "/src/components/common/AnchoredMarkdownSection";
 import TeamLevelTipsTable from "/src/components/tips/TeamLevelTipsTable";
 
-export default function TipsPage({ data }: { data: any; }) {
+export default function TipsPage({ data, location }: { data: any; location: any }) {
   const defaultPageSize = isBrowser ? DEFAULT_TABLE_PAGE_SIZE_IN_DESKTOP_VIEW : DEFAULT_TABLE_PAGE_SIZE;
 
-  scrollIntoView();
+  scrollIntoView(location);
 
   return (
     <>

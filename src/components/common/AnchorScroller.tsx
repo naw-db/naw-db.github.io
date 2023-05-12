@@ -1,10 +1,8 @@
 import React from "react";
 
-export function scrollIntoView() {
-  const hash = window.location.hash;
-
-  if (hash !== "") {
-    const elementId = hash.slice(1);
+export function scrollIntoView(location: any) {
+  if (location.hash !== "") {
+    const elementId = location.hash.slice(1);
 
     React.useEffect(
       () => {
