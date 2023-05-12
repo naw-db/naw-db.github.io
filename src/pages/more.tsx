@@ -4,12 +4,15 @@ import React from "react";
 import { isBrowser } from "react-device-detect";
 
 import { AnchoredSection } from "/src/components/common/AnchoredSection";
+import { scrollIntoView } from "/src/components/common/AnchorScroller";
 import { DEFAULT_TABLE_PAGE_SIZE, DEFAULT_TABLE_PAGE_SIZE_IN_DESKTOP_VIEW } from "/src/components/common/Defaults";
 import EventTournamentHistoryTable from "/src/components/events/EventTournamentHistoryTable";
 import PlayerLevelRequirementsTable from "/src/components/players/PlayerLevelsRequirementsTable";
 
-export default function MorePage({ data }: { data: any; }) {
+export default function MorePage({ data, location }: { data: any; location: any }) {
   const defaultPageSize = isBrowser ? DEFAULT_TABLE_PAGE_SIZE_IN_DESKTOP_VIEW : DEFAULT_TABLE_PAGE_SIZE;
+
+  scrollIntoView(location);
 
   return (
     <>

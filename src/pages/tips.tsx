@@ -4,8 +4,8 @@ import { Animation, Page, Seo } from "gatsby-theme-portfolio-minimal";
 import React from "react";
 import { isBrowser } from "react-device-detect";
 
-import { scrollIntoView } from "/src/components/common/AnchorScroller";
 import { AnchoredSection } from "/src/components/common/AnchoredSection";
+import { scrollIntoView } from "/src/components/common/AnchorScroller";
 import { DEFAULT_TABLE_PAGE_SIZE, DEFAULT_TABLE_PAGE_SIZE_IN_DESKTOP_VIEW } from "/src/components/common/Defaults";
 import { AnchoredMarkdownSection } from "/src/components/common/AnchoredMarkdownSection";
 import TeamLevelTipsTable from "/src/components/tips/TeamLevelTipsTable";

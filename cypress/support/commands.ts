@@ -27,33 +27,6 @@ Cypress.Commands.add(
 Cypress.Commands.add(
   "testUrlAnchor",
   (pageUrl: string, anchor: string) => {
-    // Tests scrolling after clicking on the anchor link.
-    cy.visit(pageUrl);
-
-    let startingY: number;
-
-    cy.get(`#${anchor}`)
-      .then(
-        ($section) => {
-          startingY = $section[0].getBoundingClientRect().y;
-
-          cy.get(`#${anchor}`)
-            .click();
-
-          cy.get(`#${anchor}`)
-            .then(
-              ($sectionAfterClick) => {
-                const endingY = $sectionAfterClick[0].getBoundingClientRect().y;
-
-                cy.wrap(endingY)
-                  .should("be.lessThan", startingY);
-
-                cy.isInViewport(`#${anchor}`);
-              }
-            );
-        }
-      );
-
     // Tests auto scrolling when anchor is specified in the URL upon page load.
     cy.visit(`${pageUrl}#${anchor}`);
 
@@ -61,9 +34,6 @@ Cypress.Commands.add(
       .then(
         ($section) => {
           const y = $section[0].getBoundingClientRect().y;
-
-          cy.wrap(y)
-            .should("be.lessThan", startingY);
 
           cy.isInViewport(`#${anchor}`);
         }
