@@ -2,7 +2,8 @@
 
 declare namespace Cypress {
   interface Chainable<Subject = any> {
-    testUrlAnchor(pageUrl: string, anchor: string, startingYGreaterThan: number, endingYLessThan: number): Chainable<any>
+    isInViewport(element: string): Chainable<any>;
+    testUrlAnchor(pageUrl: string, anchor: string): Chainable<any>
     testTabAnchor(pagePathUrlPrefix: string, anchor: string): Chainable<any>
     testPagination(tableIndex: number): Chainable<any>;
     testTextBoxFilter(columnIndex: number, textBoxName: string, targetText: string): Chainable<any>;

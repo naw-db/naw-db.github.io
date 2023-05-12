@@ -7,7 +7,7 @@ export default function CreditsPage() {
   return (
     <>
       <Seo title="Credits" />
-      <Page useSplashScreenAnimation>
+      <Page>
         <Animation type="fadeUp">
           <CreditsSection />
         </Animation>

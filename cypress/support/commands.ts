@@ -1,21 +1,60 @@
 import { calculateStat } from "/src/components/players/PlayerStats";
 
 Cypress.Commands.add(
+  "isInViewport",
+  (selector: string) => {
+    cy.get(selector)
+      .then(
+        $el => {
+          cy.window()
+            .then(
+              window => {
+                const { documentElement } = window.document;
+                const bottom = documentElement.clientHeight;
+                const right = documentElement.clientWidth;
+                const rect = $el[0].getBoundingClientRect();
+                expect(rect.top).to.be.lessThan(bottom);
+                expect(rect.bottom).to.be.greaterThan(0);
+                expect(rect.right).to.be.greaterThan(0);
+                expect(rect.left).to.be.lessThan(right);
+              }
+            );
+        }
+      );
+  }
+);
+
+Cypress.Commands.add(
   "testUrlAnchor",
-  (pageUrl: string, anchor: string, startingYGreaterThan: number, endingYLessThan: number) => {
+  (pageUrl: string, anchor: string) => {
+    // Visit page without anchor to determine starting Y of target element.
     cy.visit(pageUrl);
 
-    cy.get(`#${anchor}`)
-      .then($section => $section[0].getBoundingClientRect().y)
-      .should("be.greaterThan", startingYGreaterThan);
+    let startingY: number;
 
     cy.get(`#${anchor}`)
-      .find("a")
-      .click();
+      .then(
+        ($section) => {
+          startingY = $section[0].getBoundingClientRect().y;
 
-    cy.get(`#${anchor}`)
-      .then($section => $section[0].getBoundingClientRect().y)
-      .should("be.lessThan", endingYLessThan);
+          // Tests auto scrolling when anchor is specified in the URL upon page load.
+          cy.visit(`${pageUrl}#${anchor}`);
+
+          cy.wait(1000);
+
+          cy.get(`#${anchor}`)
+            .then(
+              ($section) => {
+                const y = $section[0].getBoundingClientRect().y;
+
+                cy.wrap(y)
+                  .should("be.lessThan", startingY);
+              }
+            );
+
+          cy.isInViewport(`#${anchor}`);
+        }
+      );
   }
 );
 

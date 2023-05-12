@@ -12,7 +12,7 @@ export default function ComparePlayersPage({ data }: { data: any; }) {
   return (
     <>
       <Seo title="Compare Players" />
-      <Page useSplashScreenAnimation>
+      <Page>
         <PlayersComparisonChart defaultPlayers={DEFAULT_PLAYERS} barColors={BAR_CHART_COLORS} data={data}/>
       </Page>
     </>
