@@ -1,6 +1,6 @@
 [![Deploy Gatsby site to Pages](https://github.com/naw-db/naw-db.github.io/actions/workflows/gatsby.yml/badge.svg)](https://github.com/naw-db/naw-db.github.io/actions/workflows/gatsby.yml)
 
-### 1. Environment Setup
+## 1. Environment Setup
 * Install [Homebrew](https://docs.brew.sh/Installation).
 * Install `nvm`
     * Visit: https://github.com/nvm-sh/nvm
@@ -15,11 +15,12 @@
 * Install Gatsby CLI.
     * Run command: `npm install -g gatsby-cli`
 
-### 2. Recommended Development Tools
+## 2. Recommended Development Tools
 * Terminal: [iTerm2](https://www.iterm2.com/)
 * Shell: [Oh My Zsh](https://github.com/robbyrussell/oh-my-zsh)
 
-### 3. Local Development
+## 3. Local Development
+
 #### 3.1 Check package health
 * Upgrade `node` and `yarn`.
     * Run commands:
@@ -27,6 +28,9 @@
         * `npm install -g yarn@latest`
 * Check if there are upgradable project dependencies.
     * Run command: `yarn upgrade`
+        * Or interactively: `yarn upgrade-interactive`
+        * To ignore the version ranges specified in `package.json`, e.g. for major version upgrades: `yarn upgrade --latest` or `yarn upgrade-interactive --latest`
+
 #### 3.2 To run a testing build of your website locally on your machine
 * `cd` into the root directory of the website project.
 * Run command: `yarn install && yarn run develop`
@@ -43,7 +47,7 @@
 * This can be used to simulate/troubleshoot the Cypress GitHub Action which is used in PR dry-run.
 * Run command: `docker run -it --network="host" -v $PWD:/e2e -w /e2e cypress/included:latest --browser chrome`
 
-### 4. Publish to GitHub Pages
+## 4. Publish to GitHub Pages
 A GitHub Action is set up to automatically deploy the updated website when a commit is pushed to the `develop` branch.
 
 Go [here](https://github.com/naw-db/naw-db.github.io/actions/workflows/gatsby.yml) to view the deployments.
