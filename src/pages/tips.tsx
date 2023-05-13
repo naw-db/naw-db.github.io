@@ -30,7 +30,7 @@ export default function TipsPage({ data, location }: { data: any; location: any 
           </AnchoredSection>
           <AnchoredMarkdownSection data={data} category="tips" title="Arena Tournaments" anchor="arena-tournaments" />
           <AnchoredMarkdownSection data={data} category="tips" title="Rule the Court" anchor="rule-the-court" />
-          <AnchoredMarkdownSection data={data} category="tips" title="Practice Court (Rucker Park)" anchor="practice" />
+          <AnchoredMarkdownSection data={data} category="tips" title="Practice Court (Rucker Park)" anchor="practice-court" />
           <AnchoredMarkdownSection data={data} category="tips" title="Players" anchor="players" />
           <AnchoredMarkdownSection data={data} category="tips" title="Team Levels" anchor="team-levels" />
           <AnchoredMarkdownSection data={data} category="tips" title="Cash" anchor="cash" />
