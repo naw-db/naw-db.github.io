@@ -29,14 +29,15 @@ export default function TipsPage({ data, location }: { data: any; location: any 
             <TeamLevelTipsTable defaultPageSize={defaultPageSize} data={data.allTeamLevelTipsCsv.nodes}/>
           </AnchoredSection>
           <AnchoredMarkdownSection data={data} category="tips" title="Arena Tournaments" anchor="arena-tournaments" />
+          <AnchoredMarkdownSection data={data} category="tips" title="Rule the Court" anchor="rule-the-court" />
           <AnchoredMarkdownSection data={data} category="tips" title="Players" anchor="players" />
           <AnchoredMarkdownSection data={data} category="tips" title="Team Levels" anchor="team-levels" />
-          <AnchoredMarkdownSection data={data} category="tips" title="Rule the Court" anchor="rule-the-court" />
-          <AnchoredMarkdownSection data={data} category="tips" title="Milestones" anchor="milestones" />
           <AnchoredMarkdownSection data={data} category="tips" title="Cash" anchor="cash" />
           <AnchoredMarkdownSection data={data} category="tips" title="Gear" anchor="gear" />
           <AnchoredMarkdownSection data={data} category="tips" title="Boosts" anchor="boosts" />
           <AnchoredMarkdownSection data={data} category="tips" title="Energy" anchor="energy" />
+          <AnchoredMarkdownSection data={data} category="tips" title="Arena Passes" anchor="arena-passes" />
+          <AnchoredMarkdownSection data={data} category="tips" title="Milestones" anchor="milestones" />
           <AnchoredMarkdownSection data={data} category="tips" title="Referrals" anchor="referrals" />
         </Animation>
       </Page>
