@@ -184,6 +184,7 @@ describe(
                   }
                 );
 
+              // Assert Add button is removed.
               cy.contains("Add")
                 .should("not.exist");
             }
@@ -263,6 +264,108 @@ describe(
                 [ "Jimmy Butler", "James Harden", "Anthony Davis", "Anthony Edwards" ],
                 [ "5", "5", "4", "4" ],
                 [ "7", "7", "7", "7" ]
+              )
+                .then(
+                  (expectedLabels) => {
+                    cy.getPlayerComparisonChartLabels()
+                      .should("eq", expectedLabels);
+                  }
+                );
+            }
+          );
+      }
+    );
+    it(
+      "Tests query parameters with two of the same player",
+      () => {
+        cy.visit(
+          "/compare-players/?playerOne=Damian%20Lillard&playerOneRank=3&playerOneLevel=3&" +
+          "playerTwo=Damian%20Lillard&playerTwoRank=4&playerTwoLevel=4"
+        );
+
+        cy.get(".MuiChip-root")
+          .should("have.length", 2)
+          .should("contain.text", "D. Lillard")
+          .should("contain.text", "D. Lillard (2)");
+
+        cy.getPlayerData()
+          .then(
+            (playerData) => {
+              cy.calculateExpectedPlayerComparisonChartLabels(
+                playerData as Array<any>,
+                [ "Damian Lillard", "Damian Lillard" ],
+                [ "3", "4" ],
+                [ "3", "4" ]
+              )
+                .then(
+                  (expectedLabels) => {
+                    cy.getPlayerComparisonChartLabels()
+                      .should("eq", expectedLabels);
+                  }
+                );
+            }
+          );
+      }
+    );
+    it(
+      "Tests query parameters with three of the same player",
+      () => {
+        cy.visit(
+          "/compare-players/?playerOne=Damian%20Lillard&playerOneRank=3&playerOneLevel=3&" +
+          "playerTwo=Damian%20Lillard&playerTwoRank=4&playerTwoLevel=4&" +
+          "playerThree=Damian%20Lillard&playerThreeRank=5&playerThreeLevel=5"
+        );
+
+        cy.get(".MuiChip-root")
+          .should("have.length", 3)
+          .should("contain.text", "D. Lillard")
+          .should("contain.text", "D. Lillard (2)")
+          .should("contain.text", "D. Lillard (3)");
+
+        cy.getPlayerData()
+          .then(
+            (playerData) => {
+              cy.calculateExpectedPlayerComparisonChartLabels(
+                playerData as Array<any>,
+                [ "Damian Lillard", "Damian Lillard", "Damian Lillard" ],
+                [ "3", "4", "5" ],
+                [ "3", "4", "5" ]
+              )
+                .then(
+                  (expectedLabels) => {
+                    cy.getPlayerComparisonChartLabels()
+                      .should("eq", expectedLabels);
+                  }
+                );
+            }
+          );
+      }
+    );
+    it(
+      "Tests query parameters with four of the same player",
+      () => {
+        cy.visit(
+          "/compare-players/?playerOne=Damian%20Lillard&playerOneRank=3&playerOneLevel=3&" +
+          "playerTwo=Damian%20Lillard&playerTwoRank=4&playerTwoLevel=4&" +
+          "playerThree=Damian%20Lillard&playerThreeRank=5&playerThreeLevel=5&" +
+          "playerFour=Damian%20Lillard&playerFourRank=6&playerFourLevel=6"
+        );
+
+        cy.get(".MuiChip-root")
+          .should("have.length", 4)
+          .should("contain.text", "D. Lillard")
+          .should("contain.text", "D. Lillard (2)")
+          .should("contain.text", "D. Lillard (3)")
+          .should("contain.text", "D. Lillard (4)");
+
+        cy.getPlayerData()
+          .then(
+            (playerData) => {
+              cy.calculateExpectedPlayerComparisonChartLabels(
+                playerData as Array<any>,
+                [ "Damian Lillard", "Damian Lillard", "Damian Lillard", "Damian Lillard" ],
+                [ "3", "4", "5", "6" ],
+                [ "3", "4", "5", "6" ]
               )
                 .then(
                   (expectedLabels) => {
