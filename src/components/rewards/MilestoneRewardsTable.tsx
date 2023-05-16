@@ -7,6 +7,7 @@ export function MilestoneRewardsTable(props: any) {
     () => [
       {
         accessor: "milestone",
+        width: "15%",
         Header: "Milestone",
         sticky: true,
         backgroundColor: props.theme.palette.background.default,
@@ -17,6 +18,7 @@ export function MilestoneRewardsTable(props: any) {
       },
       {
         accessor: "description",
+        width: "15%",
         Header: "Description",
         showHeader: true,
         textAlign: "left",
@@ -25,6 +27,7 @@ export function MilestoneRewardsTable(props: any) {
       },
       {
         accessor: "rings",
+        width: "15%",
         Header: "Rings",
         showHeader: true,
         disableFilters: true,
@@ -32,6 +35,7 @@ export function MilestoneRewardsTable(props: any) {
       },
       {
         accessor: "creds",
+        width: "15%",
         Header: "Cred.",
         showHeader: true,
         disableFilters: true,
@@ -39,6 +43,7 @@ export function MilestoneRewardsTable(props: any) {
       },
       {
         accessor: "cash",
+        width: "15%",
         Header: "Cash",
         showHeader: true,
         disableFilters: true,
@@ -46,6 +51,7 @@ export function MilestoneRewardsTable(props: any) {
       },
       {
         accessor: "xpWildcards",
+        width: "15%",
         Header: "XP Wildcards",
         showHeader: true,
         disableFilters: true,
@@ -53,6 +59,7 @@ export function MilestoneRewardsTable(props: any) {
       },
       {
         accessor: "energyDrinks",
+        width: "15%",
         Header: "Energy Drinks",
         showHeader: true,
         disableFilters: true,
@@ -60,6 +67,7 @@ export function MilestoneRewardsTable(props: any) {
       },
       {
         accessor: "notes",
+        width: "15%",
         Header: "Notes",
         showHeader: true,
         textAlign: "left",

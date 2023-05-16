@@ -17,6 +17,7 @@ export default function EventTournamentHistoryTable(props: any) {
     () => [
       {
         accessor: "tournament",
+        width: "10%",
         Header: "Tournament",
         showHeader: true,
         sticky: true,
@@ -27,6 +28,7 @@ export default function EventTournamentHistoryTable(props: any) {
       },
       {
         accessor: "series",
+        width: "10%",
         helperText: "Series",
         textAlign: "left",
         Filter: SelectColumnFilter,
@@ -35,6 +37,7 @@ export default function EventTournamentHistoryTable(props: any) {
       },
       {
         accessor: "date",
+        width: "10%",
         Header: "Date",
         showHeader: true,
         textAlign: "left",
@@ -43,6 +46,7 @@ export default function EventTournamentHistoryTable(props: any) {
       },
       {
         accessor: "duration",
+        width: "10%",
         Header: "Duration",
         showHeader: true,
         disableFilters: true,
@@ -50,6 +54,7 @@ export default function EventTournamentHistoryTable(props: any) {
       },
       {
         accessor: "arena",
+        width: "10%",
         Header: "Arena",
         showHeader: true,
         disableFilters: true,
@@ -57,6 +62,7 @@ export default function EventTournamentHistoryTable(props: any) {
       },
       {
         accessor: "passRequired",
+        width: "10%",
         Header: "Pass Required?",
         showHeader: true,
         disableFilters: true,
@@ -64,6 +70,7 @@ export default function EventTournamentHistoryTable(props: any) {
       },
       {
         accessor: "leaderboardSize",
+        width: "10%",
         Header: "Leaderboard Size",
         showHeader: true,
         disableFilters: true,
@@ -71,6 +78,7 @@ export default function EventTournamentHistoryTable(props: any) {
       },
       {
         accessor: "playerRequirements",
+        width: "10%",
         Header: "Player Requirements",
         showHeader: true,
         textAlign: "left",
@@ -79,6 +87,7 @@ export default function EventTournamentHistoryTable(props: any) {
       },
       {
         accessor: "numberOfPlayers",
+        width: "10%",
         Header: "# of Players",
         showHeader: true,
         disableFilters: true,
@@ -86,6 +95,7 @@ export default function EventTournamentHistoryTable(props: any) {
       },
       {
         accessor: "pointsToWin",
+        width: "10%",
         Header: "Points to Win",
         showHeader: true,
         disableFilters: true,
@@ -93,6 +103,7 @@ export default function EventTournamentHistoryTable(props: any) {
       },
       {
         accessor: "numberOfGames",
+        width: "10%",
         Header: "# of Games",
         showHeader: true,
         disableFilters: true,
@@ -100,6 +111,7 @@ export default function EventTournamentHistoryTable(props: any) {
       },
       {
         accessor: "lossesToBeEliminated",
+        width: "10%",
         Header: "Losses to Be Eliminated",
         showHeader: true,
         disableFilters: true,
@@ -107,6 +119,7 @@ export default function EventTournamentHistoryTable(props: any) {
       },
       {
         accessor: "completionRings",
+        width: "10%",
         Header: "Completion Rings",
         showHeader: true,
         disableFilters: true,
@@ -114,6 +127,7 @@ export default function EventTournamentHistoryTable(props: any) {
       },
       {
         accessor: "leaderboardRings",
+        width: "10%",
         Header: "Leaderboard Rings",
         showHeader: true,
         disableFilters: true,

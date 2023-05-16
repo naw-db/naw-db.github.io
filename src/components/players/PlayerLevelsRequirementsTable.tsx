@@ -17,6 +17,7 @@ export default function PlayerLevelRequirementsTable(props: any) {
     () => [
       {
         accessor: "rankAndLevel",
+        width: "10%",
         Header: "Rank / Level",
         showHeader: true,
         sticky: true,
@@ -26,6 +27,7 @@ export default function PlayerLevelRequirementsTable(props: any) {
       },
       {
         accessor: "drillOpponentTier",
+        width: "10%",
         Header: "Drill Opponent Tier",
         showHeader: true,
         disableFilters: true,
@@ -33,6 +35,7 @@ export default function PlayerLevelRequirementsTable(props: any) {
       },
       {
         accessor: "drillWinsRequired",
+        width: "10%",
         Header: "Drill Wins",
         showHeader: true,
         disableFilters: true,
@@ -40,6 +43,7 @@ export default function PlayerLevelRequirementsTable(props: any) {
       },
       {
         accessor: "starTokensRequired",
+        width: "10%",
         Header: "Star Tokens",
         showHeader: true,
         disableFilters: true,
@@ -52,6 +56,7 @@ export default function PlayerLevelRequirementsTable(props: any) {
         columns: [
           {
             accessor: "xpRequiredStarter",
+            width: "10%",
             Header: "XP",
             showHeader: true,
             backgroundColor: theme.palette.text.secondary,
@@ -60,6 +65,7 @@ export default function PlayerLevelRequirementsTable(props: any) {
           },
           {
             accessor: "credsRequiredStarter",
+            width: "10%",
             Header: "Cred.",
             showHeader: true,
             backgroundColor: theme.palette.text.secondary,
@@ -68,6 +74,7 @@ export default function PlayerLevelRequirementsTable(props: any) {
           },
           {
             accessor: "ringsRequiredStarter",
+            width: "10%",
             Header: "Rings",
             showHeader: true,
             backgroundColor: theme.palette.text.secondary,
@@ -82,6 +89,7 @@ export default function PlayerLevelRequirementsTable(props: any) {
         columns: [
           {
             accessor: "xpRequiredAllStar",
+            width: "10%",
             Header: "XP",
             showHeader: true,
             disableFilters: true,
@@ -89,6 +97,7 @@ export default function PlayerLevelRequirementsTable(props: any) {
           },
           {
             accessor: "credsRequiredAllStar",
+            width: "10%",
             Header: "Cred.",
             showHeader: true,
             disableFilters: true,
@@ -96,6 +105,7 @@ export default function PlayerLevelRequirementsTable(props: any) {
           },
           {
             accessor: "ringsRequiredAllStar",
+            width: "10%",
             Header: "Rings",
             showHeader: true,
             disableFilters: true,
@@ -110,6 +120,7 @@ export default function PlayerLevelRequirementsTable(props: any) {
         columns: [
           {
             accessor: "xpRequiredAllWorld",
+            width: "10%",
             Header: "XP",
             showHeader: true,
             backgroundColor: theme.palette.text.secondary,
@@ -118,6 +129,7 @@ export default function PlayerLevelRequirementsTable(props: any) {
           },
           {
             accessor: "credsRequiredAllWorld",
+            width: "10%",
             Header: "Cred.",
             showHeader: true,
             backgroundColor: theme.palette.text.secondary,
@@ -126,6 +138,7 @@ export default function PlayerLevelRequirementsTable(props: any) {
           },
           {
             accessor: "ringsRequiredAllWorld",
+            width: "10%",
             Header: "Rings",
             showHeader: true,
             backgroundColor: theme.palette.text.secondary,

@@ -11,7 +11,9 @@ export function BallsTable(props: any) {
         columns: [
           {
             accessor: "name",
+            width: "20%",
             helperText: "Name",
+            textAlign: "left",
             sticky: true,
             backgroundColor: props.theme.palette.background.default,
             Filter: TextColumnFilter,
@@ -19,6 +21,7 @@ export function BallsTable(props: any) {
           },
           {
             accessor: "levelAvailable",
+            width: "10%",
             helperText: "Lvl Avail.",
             Filter: SelectColumnFilter,
             filter: "equals",
@@ -26,6 +29,7 @@ export function BallsTable(props: any) {
           },
           {
             accessor: "brand",
+            width: "20%",
             helperText: "Brand",
             options: generateBrandOptions(props.data, (e: any) => e.brand),
             Filter: SelectColumnFilter,
@@ -34,6 +38,7 @@ export function BallsTable(props: any) {
           },
           {
             accessor: "pattern",
+            width: "20%",
             helperText: "Pattern",
             Filter: SelectColumnFilter,
             sortOptions: true,
@@ -42,6 +47,7 @@ export function BallsTable(props: any) {
           },
           {
             accessor: "color",
+            width: "20%",
             helperText: "Color",
             options: generateColorOptions(props.data, (e: any) => e.color),
             Filter: SelectColumnFilter,
@@ -50,6 +56,7 @@ export function BallsTable(props: any) {
           },
           {
             accessor: "rarity",
+            width: "20%",
             helperText: "Rarity",
             options: generateRarityOptions(props.data, (e: any) => e.rarity),
             Filter: SelectColumnFilter,
@@ -58,6 +65,7 @@ export function BallsTable(props: any) {
           },
           {
             accessor: "price",
+            width: "10%",
             Header: "$",
             showHeader: true,
             hoverText: "Price",

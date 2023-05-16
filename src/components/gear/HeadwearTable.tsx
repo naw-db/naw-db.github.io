@@ -12,7 +12,9 @@ export function HeadwearTable(props: any) {
           columns: [
             {
               accessor: "name",
+              width: "20%",
               helperText: "Name",
+              textAlign: "left",
               sticky: true,
               backgroundColor: props.theme.palette.background.default,
               Filter: TextColumnFilter,
@@ -20,6 +22,7 @@ export function HeadwearTable(props: any) {
             },
             {
               accessor: "levelAvailable",
+              width: "10%",
               helperText: "Lvl Avail.",
               Filter: SelectColumnFilter,
               filter: "equals",
@@ -27,6 +30,7 @@ export function HeadwearTable(props: any) {
             },
             {
               accessor: "brand",
+              width: "20%",
               helperText: "Brand",
               options: generateBrandOptions(props.data, (e: any) => e.brand),
               Filter: SelectColumnFilter,
@@ -35,6 +39,7 @@ export function HeadwearTable(props: any) {
             },
             {
               accessor: "style",
+              width: "15%",
               helperText: "Style",
               options: generateStyleOptions(props.data, (e: any) => e.style),
               Filter: SelectColumnFilter,
@@ -43,6 +48,7 @@ export function HeadwearTable(props: any) {
             },
             {
               accessor: "color",
+              width: "15%",
               helperText: "Color",
               options: generateColorOptions(props.data, (e: any) => e.color),
               Filter: SelectColumnFilter,
@@ -51,6 +57,7 @@ export function HeadwearTable(props: any) {
             },
             {
               accessor: "rarity",
+              width: "20%",
               helperText: "Rarity",
               Filter: SelectColumnFilter,
               filter: "equals",
@@ -58,6 +65,7 @@ export function HeadwearTable(props: any) {
             },
             {
               accessor: "price",
+              width: "20%",
               Header: "$",
               showHeader: true,
               hoverText: "Price",

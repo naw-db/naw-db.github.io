@@ -17,6 +17,7 @@ export default function TeamLevelTipsTable(props: any) {
     () => [
       {
         accessor: "teamLevel",
+        width: "20%",
         Header: "Team Level",
         showHeader: true,
         sticky: true,
@@ -26,6 +27,7 @@ export default function TeamLevelTipsTable(props: any) {
       },
       {
         accessor: "requirement",
+        width: "20%",
         Header: "Requirement",
         showHeader: true,
         textAlign: "left",
@@ -34,6 +36,7 @@ export default function TeamLevelTipsTable(props: any) {
       },
       {
         accessor: "action",
+        width: "20%",
         Header: "Action",
         showHeader: true,
         textAlign: "left",
@@ -42,6 +45,7 @@ export default function TeamLevelTipsTable(props: any) {
       },
       {
         accessor: "totalStarters",
+        width: "20%",
         Header: " Total Starters",
         showHeader: true,
         textAlign: "left",
@@ -50,6 +54,7 @@ export default function TeamLevelTipsTable(props: any) {
       },
       {
         accessor: "totalAllStars",
+        width: "20%",
         Header: "Total All-Stars",
         showHeader: true,
         textAlign: "left",
@@ -58,6 +63,7 @@ export default function TeamLevelTipsTable(props: any) {
       },
       {
         accessor: "totalAllWorlds",
+        width: "20%",
         Header: "Total All-Worlds",
         showHeader: true,
         textAlign: "left",

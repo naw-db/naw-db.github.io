@@ -12,6 +12,7 @@ export function SneakersTable(props: any) {
           {
             accessor: "name",
             helperText: "Name",
+            textAlign: "left",
             sticky: true,
             backgroundColor: props.theme.palette.background.default,
             Filter: TextColumnFilter,

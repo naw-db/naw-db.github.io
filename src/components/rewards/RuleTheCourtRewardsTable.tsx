@@ -7,6 +7,7 @@ export function RuleTheCourtRewardsTable(props: any) {
     () => [
       {
         accessor: "wins",
+        width: "20%",
         Header: "Wins",
         showHeader: true,
         sticky: true,
@@ -16,6 +17,7 @@ export function RuleTheCourtRewardsTable(props: any) {
       },
       {
         accessor: "teamRep",
+        width: "20%",
         Header: "Team Rep.",
         showHeader: true,
         disableFilters: true,
@@ -23,6 +25,7 @@ export function RuleTheCourtRewardsTable(props: any) {
       },
       {
         accessor: "starTokens",
+        width: "20%",
         Header: "Star Tokens",
         showHeader: true,
         disableFilters: true,
@@ -30,6 +33,7 @@ export function RuleTheCourtRewardsTable(props: any) {
       },
       {
         accessor: "cash",
+        width: "20%",
         Header: "Cash",
         showHeader: true,
         disableFilters: true,
@@ -37,6 +41,7 @@ export function RuleTheCourtRewardsTable(props: any) {
       },
       {
         accessor: "creds",
+        width: "15%",
         Header: "Cred.",
         showHeader: true,
         disableFilters: true,
@@ -44,6 +49,7 @@ export function RuleTheCourtRewardsTable(props: any) {
       },
       {
         accessor: "timeRequired",
+        width: "15%",
         Header: "Time Required",
         showHeader: true,
         disableFilters: true,

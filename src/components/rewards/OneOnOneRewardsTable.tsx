@@ -7,6 +7,7 @@ export function OneOnOneRewardsTable(props: any) {
     () => [
       {
         accessor: "teamLevel",
+        width: "10%",
         helperText: "Team Level",
         sticky: true,
         backgroundColor: props.theme.palette.background.default,
@@ -16,6 +17,7 @@ export function OneOnOneRewardsTable(props: any) {
       },
       {
         accessor: "type",
+        width: "20%",
         helperText: "Type",
         textAlign: "left",
         Filter: SelectColumnFilter,
@@ -24,6 +26,7 @@ export function OneOnOneRewardsTable(props: any) {
       },
       {
         accessor: "ladderPosition",
+        width: "10%",
         Header: "Ladder Pos.",
         showHeader: true,
         disableFilters: true,
@@ -31,6 +34,7 @@ export function OneOnOneRewardsTable(props: any) {
       },
       {
         accessor: "credsToPlay",
+        width: "10%",
         Header: "Cred. to Play",
         showHeader: true,
         disableFilters: true,
@@ -38,6 +42,7 @@ export function OneOnOneRewardsTable(props: any) {
       },
       {
         accessor: "credsUponWin",
+        width: "10%",
         Header: "Cred.",
         showHeader: true,
         disableFilters: true,
@@ -45,6 +50,7 @@ export function OneOnOneRewardsTable(props: any) {
       },
       {
         accessor: "teamRepUponWinVsStarter",
+        width: "10%",
         Header: "Team Rep. v.s. Starter",
         showHeader: true,
         disableFilters: true,
@@ -52,6 +58,7 @@ export function OneOnOneRewardsTable(props: any) {
       },
       {
         accessor: "playerXpUponWinVsStarter",
+        width: "10%",
         Header: "Player XP v.s. Starter",
         showHeader: true,
         disableFilters: true,
@@ -59,6 +66,7 @@ export function OneOnOneRewardsTable(props: any) {
       },
       {
         accessor: "teamRepUponWinVsAllStar",
+        width: "10%",
         Header: "Team Rep. v.s. All-Star",
         showHeader: true,
         disableFilters: true,
@@ -66,6 +74,7 @@ export function OneOnOneRewardsTable(props: any) {
       },
       {
         accessor: "playerXpUponWinVsAllStar",
+        width: "10%",
         Header: "Player XP v.s. All-Star",
         showHeader: true,
         disableFilters: true,
@@ -73,6 +82,7 @@ export function OneOnOneRewardsTable(props: any) {
       },
       {
         accessor: "teamRepUponWinVsAllWorld",
+        width: "10%",
         Header: "Team Rep. v.s. All-World",
         showHeader: true,
         disableFilters: true,
@@ -80,6 +90,7 @@ export function OneOnOneRewardsTable(props: any) {
       },
       {
         accessor: "playerXpUponWinVsAllWorld",
+        width: "10%",
         Header: "Player XP v.s. All-World",
         showHeader: true,
         disableFilters: true,
