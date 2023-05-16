@@ -7,6 +7,7 @@ export function EncounterRewardsTable(props: any) {
     () => [
       {
         accessor: "teamLevel",
+        width: "15%",
         helperText: "Team Level",
         sticky: true,
         backgroundColor: props.theme.palette.background.default,
@@ -16,6 +17,7 @@ export function EncounterRewardsTable(props: any) {
       },
       {
         accessor: "opponentTier",
+        width: "25%",
         Header: "Opponent Tier",
         showHeader: true,
         disableFilters: true,
@@ -23,6 +25,7 @@ export function EncounterRewardsTable(props: any) {
       },
       {
         accessor: "credsToPlay",
+        width: "15%",
         Header: "Cred. to Play",
         showHeader: true,
         disableFilters: true,
@@ -30,6 +33,7 @@ export function EncounterRewardsTable(props: any) {
       },
       {
         accessor: "teamRepUponWin",
+        width: "15%",
         Header: "Team Rep.",
         showHeader: true,
         disableFilters: true,
@@ -37,6 +41,7 @@ export function EncounterRewardsTable(props: any) {
       },
       {
         accessor: "credsUponWin",
+        width: "15%",
         Header: "Cred.",
         showHeader: true,
         disableFilters: true,
@@ -44,6 +49,7 @@ export function EncounterRewardsTable(props: any) {
       },
       {
         accessor: "playerXpUponWin",
+        width: "20%",
         Header: "Player XP",
         showHeader: true,
         disableFilters: true,
@@ -51,6 +57,7 @@ export function EncounterRewardsTable(props: any) {
       },
       {
         accessor: "replayCost",
+        width: "15%",
         Header: "Replay Cost",
         showHeader: true,
         disableFilters: true,

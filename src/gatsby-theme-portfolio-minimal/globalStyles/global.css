@@ -1,0 +1,134 @@
+@import 'normalize.css';
+
+/* GLOBAL VARIABLES */
+:root {
+    --breakpoint-xs: 480px;
+    --breakpoint-sm: 768px;
+    --breakpoint-md: 992px;
+    --breakpoint-lg: 1200px;
+    --border-radius: 1rem;
+    --page-width: 150rem;
+    --page-padding: 0 2.5rem;
+    --header-height: 6.25rem;
+    --footer-height: 7.5rem;
+}
+
+/* GLOBAL STYLES */
+* {
+    box-sizing: border-box;
+}
+
+html {
+    width: 100%;
+    height: 100%;
+    scroll-behavior: smooth;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-size: 1rem;
+    font-family: var(--base-font);
+    line-height: 1.5rem;
+    font-weight: 400;
+    text-rendering: optimizeLegibility;
+}
+
+body.fixed {
+    position: fixed;
+    overflow: hidden;
+}
+
+a {
+    display: inline-block;
+    text-decoration: none;
+    text-decoration-skip-ink: auto;
+    color: var(--subtext-color);
+    cursor: pointer;
+}
+
+a:hover {
+    outline: 0;
+}
+
+a:focus {
+    outline-color: var(--subtext-color);
+    outline-style: dotted;
+    outline-width: 2px;
+}
+
+h1 {
+    font-weight: 700;
+    font-size: 1.75rem;
+    line-height: 2rem;
+    color: var(--primary-color);
+    margin: 1rem 0;
+}
+
+h2 {
+    font-weight: 700;
+    font-size: 1.625rem;
+    line-height: 2rem;
+    color: var(--primary-color);
+    margin: 2rem 0 1rem 0;
+}
+
+h3 {
+    font-weight: 700;
+    font-size: 1.375rem;
+    line-height: 2rem;
+    color: var(--primary-color);
+    margin: 2rem 0 1rem 0;
+}
+
+h4 {
+    font-weight: 700;
+    font-size: 1.125rem;
+    line-height: 2rem;
+    color: var(--primary-color);
+    margin: 2rem 0 1rem 0;
+}
+
+hr {
+    margin: 3rem auto;
+    border-width: 0.05rem;
+    color: var(--tertiary-color);
+    opacity: 0.1;
+}
+
+u {
+    text-decoration: none;
+    box-shadow: inset 0 -0.5em 0 var(--secondary-color);
+    transition: box-shadow 0.3s ease-out;
+}
+
+u:hover {
+    box-shadow: inset 0 -1em 0 var(--secondary-color);
+}
+
+#___gatsby,
+#gatsby-focus-wrapper {
+    width: 100%;
+    height: 100%;
+}
+
+/* Disable smooth scrolling when users have prefers-reduced-motion enabled */
+@media screen and (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}
+
+@media screen and (min-width: 1600px) {
+    header {
+        padding: 0 10rem;
+    }
+    section {
+        padding: 0 10rem;
+    }
+    footer {
+        padding: 0 10rem;
+    }
+}

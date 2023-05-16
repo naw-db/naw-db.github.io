@@ -7,6 +7,7 @@ export function WeeklyArenaTournamentRewardsTable(props: any) {
     () => [
       {
         accessor: "type",
+        width: "15%",
         Header: "Type",
         showHeader: true,
         textAlign: "left",
@@ -17,6 +18,7 @@ export function WeeklyArenaTournamentRewardsTable(props: any) {
       },
       {
         accessor: "when",
+        width: "15%",
         Header: "When",
         showHeader: true,
         textAlign: "left",
@@ -25,6 +27,7 @@ export function WeeklyArenaTournamentRewardsTable(props: any) {
       },
       {
         accessor: "requireArenaPass",
+        width: "10%",
         Header: "Arena Pass Required?",
         showHeader: true,
         disableFilters: true,
@@ -32,6 +35,7 @@ export function WeeklyArenaTournamentRewardsTable(props: any) {
       },
       {
         accessor: "playersAllowed",
+        width: "15%",
         Header: "Players Allowed",
         showHeader: true,
         disableFilters: true,
@@ -39,6 +43,7 @@ export function WeeklyArenaTournamentRewardsTable(props: any) {
       },
       {
         accessor: "winsRequired",
+        width: "15%",
         Header: "Wins Required",
         showHeader: true,
         disableFilters: true,
@@ -46,6 +51,7 @@ export function WeeklyArenaTournamentRewardsTable(props: any) {
       },
       {
         accessor: "lossesToBeEliminated",
+        width: "10%",
         Header: "Losses to Be Eliminated",
         showHeader: true,
         disableFilters: true,
@@ -53,6 +59,7 @@ export function WeeklyArenaTournamentRewardsTable(props: any) {
       },
       {
         accessor: "pointsToWin",
+        width: "10%",
         Header: "Points to Win",
         showHeader: true,
         disableFilters: true,
@@ -60,6 +67,7 @@ export function WeeklyArenaTournamentRewardsTable(props: any) {
       },
       {
         accessor: "completionRings",
+        width: "15%",
         Header: "Completion Rings",
         showHeader: true,
         disableFilters: true,
@@ -67,6 +75,7 @@ export function WeeklyArenaTournamentRewardsTable(props: any) {
       },
       {
         accessor: "leaderboardRings",
+        width: "15%",
         Header: "Leaderboard Rings",
         showHeader: true,
         disableFilters: true,
@@ -86,6 +95,7 @@ export function DailyArenaTournamentRewardsTable(props: any) {
     () => [
       {
         accessor: "type",
+        width: "15%",
         Header: "Type",
         showHeader: true,
         textAlign: "left",
@@ -96,6 +106,7 @@ export function DailyArenaTournamentRewardsTable(props: any) {
       },
       {
         accessor: "when",
+        width: "15%",
         Header: "When",
         showHeader: true,
         textAlign: "left",
@@ -104,6 +115,7 @@ export function DailyArenaTournamentRewardsTable(props: any) {
       },
       {
         accessor: "requireArenaPass",
+        width: "15%",
         Header: "Arena Pass Required?",
         showHeader: true,
         disableFilters: true,
@@ -111,6 +123,7 @@ export function DailyArenaTournamentRewardsTable(props: any) {
       },
       {
         accessor: "playersAllowed",
+        width: "15%",
         Header: "Players Allowed",
         showHeader: true,
         disableFilters: true,
@@ -118,6 +131,7 @@ export function DailyArenaTournamentRewardsTable(props: any) {
       },
       {
         accessor: "winsRequired",
+        width: "10%",
         Header: "Wins Required",
         showHeader: true,
         disableFilters: true,
@@ -125,6 +139,7 @@ export function DailyArenaTournamentRewardsTable(props: any) {
       },
       {
         accessor: "lossesToBeEliminated",
+        width: "10%",
         Header: "Losses to Be Eliminated",
         showHeader: true,
         disableFilters: true,
@@ -132,6 +147,7 @@ export function DailyArenaTournamentRewardsTable(props: any) {
       },
       {
         accessor: "pointsToWin",
+        width: "10%",
         Header: "Points to Win",
         showHeader: true,
         disableFilters: true,
@@ -139,6 +155,7 @@ export function DailyArenaTournamentRewardsTable(props: any) {
       },
       {
         accessor: "completionRings",
+        width: "10%",
         Header: "Completion Rings",
         showHeader: true,
         disableFilters: true,
@@ -146,6 +163,7 @@ export function DailyArenaTournamentRewardsTable(props: any) {
       },
       {
         accessor: "leaderboardRings",
+        width: "10%",
         Header: "Leaderboard Rings",
         showHeader: true,
         disableFilters: true,
@@ -165,8 +183,10 @@ export function DailyArenaTournamentRewardsByTeamLevelTable(props: any) {
     () => [
       {
         accessor: "teamLevel",
+        width: "10%",
         Header: "Team Level",
         showHeader: true,
+        textAlign: "left",
         sticky: true,
         backgroundColor: props.theme.palette.background.default,
         disableFilters: true,
@@ -174,6 +194,7 @@ export function DailyArenaTournamentRewardsByTeamLevelTable(props: any) {
       },
       {
         accessor: "requireArenaPass",
+        width: "10%",
         Header: "Arena Pass Required?",
         showHeader: true,
         disableFilters: true,
@@ -181,6 +202,7 @@ export function DailyArenaTournamentRewardsByTeamLevelTable(props: any) {
       },
       {
         accessor: "regularThirdWinReward",
+        width: "10%",
         Header: "3rd Win Reward (Mon. ~ Sat.)",
         showHeader: true,
         disableFilters: true,
@@ -188,6 +210,7 @@ export function DailyArenaTournamentRewardsByTeamLevelTable(props: any) {
       },
       {
         accessor: "sundaySecondWinReward",
+        width: "10%",
         Header: "2nd Win Reward (Sun.)",
         showHeader: true,
         disableFilters: true,
@@ -195,6 +218,7 @@ export function DailyArenaTournamentRewardsByTeamLevelTable(props: any) {
       },
       {
         accessor: "sundayThirdWinReward",
+        width: "10%",
         Header: "3rd Win Reward (Sun.)",
         showHeader: true,
         disableFilters: true,
@@ -207,6 +231,7 @@ export function DailyArenaTournamentRewardsByTeamLevelTable(props: any) {
         columns: [
           {
             accessor: "mondayLeaderboardBonus",
+            width: "10%",
             Header: "Monday",
             showHeader: true,
             disableFilters: true,
@@ -214,6 +239,7 @@ export function DailyArenaTournamentRewardsByTeamLevelTable(props: any) {
           },
           {
             accessor: "tuesdayLeaderboardBonus",
+            width: "10%",
             Header: "Tuesday",
             showHeader: true,
             disableFilters: true,
@@ -221,6 +247,7 @@ export function DailyArenaTournamentRewardsByTeamLevelTable(props: any) {
           },
           {
             accessor: "wednesdayLeaderboardBonus",
+            width: "10%",
             Header: "Wednesday",
             showHeader: true,
             disableFilters: true,
@@ -228,6 +255,7 @@ export function DailyArenaTournamentRewardsByTeamLevelTable(props: any) {
           },
           {
             accessor: "thursdayLeaderboardBonus",
+            width: "10%",
             Header: "Thursday",
             showHeader: true,
             disableFilters: true,
@@ -235,6 +263,7 @@ export function DailyArenaTournamentRewardsByTeamLevelTable(props: any) {
           },
           {
             accessor: "fridayLeaderboardBonus",
+            width: "10%",
             Header: "Friday",
             showHeader: true,
             disableFilters: true,
@@ -242,6 +271,7 @@ export function DailyArenaTournamentRewardsByTeamLevelTable(props: any) {
           },
           {
             accessor: "saturdayLeaderboardBonus",
+            width: "10%",
             Header: "Saturday",
             showHeader: true,
             disableFilters: true,
@@ -249,6 +279,7 @@ export function DailyArenaTournamentRewardsByTeamLevelTable(props: any) {
           },
           {
             accessor: "sundayLeaderboardBonus",
+            width: "10%",
             Header: "Sunday",
             showHeader: true,
             disableFilters: true,

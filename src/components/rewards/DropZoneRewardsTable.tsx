@@ -7,6 +7,7 @@ export function DropZoneRewardsTable(props: any) {
     () => [
       {
         accessor: "dropZone",
+        width: "10%",
         Header: "Drop Zone",
         showHeader: true,
         textAlign: "left",
@@ -17,6 +18,7 @@ export function DropZoneRewardsTable(props: any) {
       },
       {
         accessor: "rechargeTime",
+        width: "10%",
         Header: "Recharge Time",
         showHeader: true,
         disableFilters: true,
@@ -24,6 +26,7 @@ export function DropZoneRewardsTable(props: any) {
       },
       {
         accessor: "dailyLimit",
+        width: "10%",
         Header: "Daily Limit",
         showHeader: true,
         disableFilters: true,
@@ -31,6 +34,7 @@ export function DropZoneRewardsTable(props: any) {
       },
       {
         accessor: "primaryDrop",
+        width: "10%",
         Header: "Primary Drop",
         showHeader: true,
         textAlign: "left",
@@ -43,6 +47,7 @@ export function DropZoneRewardsTable(props: any) {
         columns: [
           {
             accessor: "secondaryDropCreds",
+            width: "10%",
             Header: "Cred.",
             showHeader: true,
             disableFilters: true,
@@ -50,6 +55,7 @@ export function DropZoneRewardsTable(props: any) {
           },
           {
             accessor: "secondaryDropEnergyDrinks",
+            width: "10%",
             Header: "Energy Drinks",
             showHeader: true,
             disableFilters: true,
@@ -57,6 +63,7 @@ export function DropZoneRewardsTable(props: any) {
           },
           {
             accessor: "secondaryDropBoosts",
+            width: "10%",
             Header: "Boosts",
             showHeader: true,
             disableFilters: true,
@@ -64,6 +71,7 @@ export function DropZoneRewardsTable(props: any) {
           },
           {
             accessor: "secondaryDropXpWildcards",
+            width: "10%",
             Header: "XP Wildcards",
             showHeader: true,
             disableFilters: true,
@@ -71,6 +79,7 @@ export function DropZoneRewardsTable(props: any) {
           },
           {
             accessor: "secondaryDropStarTokens",
+            width: "10%",
             Header: "Star Tokens",
             showHeader: true,
             disableFilters: true,
@@ -78,6 +87,7 @@ export function DropZoneRewardsTable(props: any) {
           },
           {
             accessor: "secondaryDropArenaPasses",
+            width: "10%",
             Header: "Arena Passes",
             showHeader: true,
             disableFilters: true,

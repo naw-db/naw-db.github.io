@@ -7,6 +7,7 @@ export function TeamLevelRewardsTable(props: any) {
     () => [
       {
         accessor: "teamLevel",
+        width: "10%",
         Header: "Team Level",
         showHeader: true,
         sticky: true,
@@ -16,6 +17,7 @@ export function TeamLevelRewardsTable(props: any) {
       },
       {
         accessor: "teamRep",
+        width: "10%",
         Header: "Team Rep.",
         showHeader: true,
         disableFilters: true,
@@ -23,6 +25,7 @@ export function TeamLevelRewardsTable(props: any) {
       },
       {
         accessor: "playersRecruited",
+        width: "10%",
         Header: "Players Recruited",
         showHeader: true,
         disableFilters: true,
@@ -30,6 +33,7 @@ export function TeamLevelRewardsTable(props: any) {
       },
       {
         accessor: "playerLevelRequirements",
+        width: "10%",
         Header: "Player Level Requirements",
         showHeader: true,
         textAlign: "left",
@@ -38,6 +42,7 @@ export function TeamLevelRewardsTable(props: any) {
       },
       {
         accessor: "metersTraveled",
+        width: "10%",
         Header: "Meters Traveled",
         showHeader: true,
         disableFilters: true,
@@ -45,6 +50,7 @@ export function TeamLevelRewardsTable(props: any) {
       },
       {
         accessor: "creds",
+        width: "10%",
         Header: "Cred.",
         showHeader: true,
         disableFilters: true,
@@ -52,6 +58,7 @@ export function TeamLevelRewardsTable(props: any) {
       },
       {
         accessor: "starTokens",
+        width: "10%",
         Header: "Star Tokens",
         showHeader: true,
         disableFilters: true,
@@ -59,6 +66,7 @@ export function TeamLevelRewardsTable(props: any) {
       },
       {
         accessor: "cash",
+        width: "10%",
         Header: "Cash",
         showHeader: true,
         disableFilters: true,
@@ -66,6 +74,7 @@ export function TeamLevelRewardsTable(props: any) {
       },
       {
         accessor: "xpWildcards",
+        width: "10%",
         Header: "XP Wildcards",
         showHeader: true,
         disableFilters: true,
@@ -73,6 +82,7 @@ export function TeamLevelRewardsTable(props: any) {
       },
       {
         accessor: "energyDrinks",
+        width: "10%",
         Header: "Energy Drinks",
         showHeader: true,
         disableFilters: true,
@@ -80,6 +90,7 @@ export function TeamLevelRewardsTable(props: any) {
       },
       {
         accessor: "rosterSlots",
+        width: "10%",
         Header: "Roster Slots",
         showHeader: true,
         disableFilters: true,

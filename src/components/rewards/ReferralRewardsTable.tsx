@@ -7,6 +7,7 @@ export function ReferralRewardsTable(props: any) {
     () => [
       {
         accessor: "task",
+        width: "35%",
         Header: "Task",
         showHeader: true,
         textAlign: "left",
@@ -20,6 +21,7 @@ export function ReferralRewardsTable(props: any) {
         columns: [
           {
             accessor: "referralRecipientReward",
+            width: "25%",
             Header: "Reward",
             showHeader: true,
             backgroundColor: props.theme.palette.text.secondary,
@@ -29,6 +31,7 @@ export function ReferralRewardsTable(props: any) {
           },
           {
             accessor: "referralRecipientRewardQuantity",
+            width: "15%",
             Header: "Quantity",
             showHeader: true,
             backgroundColor: props.theme.palette.text.secondary,
@@ -43,6 +46,7 @@ export function ReferralRewardsTable(props: any) {
         columns: [
           {
             accessor: "referrerReward",
+            width: "25%",
             Header: "Reward",
             showHeader: true,
             textAlign: "left",
@@ -51,6 +55,7 @@ export function ReferralRewardsTable(props: any) {
           },
           {
             accessor: "referrerRewardQuantity",
+            width: "15%",
             Header: "Quantity",
             showHeader: true,
             disableFilters: true,

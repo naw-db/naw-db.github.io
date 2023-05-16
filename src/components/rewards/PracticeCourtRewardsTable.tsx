@@ -7,6 +7,7 @@ export function PracticeCourtRewardsTable(props: any) {
     () => [
       {
         accessor: "teamLevel",
+        width: "30%",
         helperText: "Team Level",
         sticky: true,
         backgroundColor: props.theme.palette.background.default,
@@ -16,6 +17,7 @@ export function PracticeCourtRewardsTable(props: any) {
       },
       {
         accessor: "type",
+        width: "30%",
         helperText: "Type",
         textAlign: "left",
         Filter: SelectColumnFilter,
@@ -24,6 +26,7 @@ export function PracticeCourtRewardsTable(props: any) {
       },
       {
         accessor: "playerXpVsStarter",
+        width: "20%",
         Header: "Player XP v.s. Starter",
         showHeader: true,
         disableFilters: true,
@@ -31,6 +34,7 @@ export function PracticeCourtRewardsTable(props: any) {
       },
       {
         accessor: "playerXpVsAllStar",
+        width: "20%",
         Header: "Player XP v.s. All-Star",
         showHeader: true,
         disableFilters: true,
@@ -38,6 +42,7 @@ export function PracticeCourtRewardsTable(props: any) {
       },
       {
         accessor: "playerXpVsAllWorld",
+        width: "20%",
         Header: "Player XP v.s. All-World",
         showHeader: true,
         disableFilters: true,
