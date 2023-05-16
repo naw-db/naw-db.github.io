@@ -112,13 +112,13 @@ function getSelectedPlayers(defaultPlayers: Array<string>, queryParams: any): Ar
   return parsedPlayers.length === 0 ? defaultPlayers.slice(0, DEFAULT_NUMBER_OF_PLAYERS_TO_COMPARE) : parsedPlayers;
 }
 
-function PlayerSelection(data: any, playerRawData: any, qualifier: string, queryParams: any, forceUpdate: Function) {
+function PlayerSelection(data: any, enrichedPlayerData: any, qualifier: string, queryParams: any, forceUpdate: Function) {
   return (
     <>
       <FormControl sx={{ width: 170 }} size="small">
         <PlayerDropdown
           name={qualifier}
-          value={playerRawData.name}
+          value={enrichedPlayerData.name}
           onChange={
             (event) => {
               queryParams[event.target.name] = event.target.value;
@@ -159,7 +159,7 @@ function PlayerSelection(data: any, playerRawData: any, qualifier: string, query
           }
         >
           {
-            Object.keys(gradients.startingRank[playerRawData.startingRank].gradientAtRank)
+            Object.keys(gradients.startingRank[enrichedPlayerData.startingRank].gradientAtRank)
               .map(
                 rank => <MenuItem key={rank} value={rank}>{rank}</MenuItem>
               )
@@ -213,11 +213,31 @@ export function PlayersComparisonChart({ defaultPlayers, barColors, data }: { de
       .find((e: any) => e.name === player)
   );
 
-  const playerRanks = playerRawData.map((rawData, index) => queryParams[`player${PLAYER_INDEX[index]}Rank`] || rawData.maxRank);
+  const memorizedPlayers: { [ key: string ]: number } = {};
 
-  const playerLevels = playerRawData.map((rawData, index) => queryParams[`player${PLAYER_INDEX[index]}Level`] || "10");
+  const enrichedPlayerData = playerRawData.map(
+    (e: any, index: number) => {
+      const enriched = Object.assign({}, e);
 
-  const displayData = playerRawData.map((rawData, index) => calculateStat(rawData, playerRanks[index], playerLevels[index]));
+      if (memorizedPlayers[e.name]) {
+        memorizedPlayers[e.name] += 1;
+      } else {
+        memorizedPlayers[e.name] = 1;
+      }
+
+      enriched.chartIndex = index;
+      enriched.displayName = memorizedPlayers[e.name] === 1 ? e.name : `${e.name} (${memorizedPlayers[e.name]})`;
+      enriched.displayShortName = memorizedPlayers[e.name] === 1 ? e.shortName : `${e.shortName} (${memorizedPlayers[e.name]})`;
+
+      return enriched;
+    }
+  );
+
+  const playerRanks = enrichedPlayerData.map((enrichedData, index) => queryParams[`player${PLAYER_INDEX[index]}Rank`] || enrichedData.maxRank);
+
+  const playerLevels = enrichedPlayerData.map((enrichedData, index) => queryParams[`player${PLAYER_INDEX[index]}Level`] || "10");
+
+  const displayData = enrichedPlayerData.map((enrichedData, index) => calculateStat(enrichedData, playerRanks[index], playerLevels[index]));
 
   const overallChartData = OVERALL_ATTRIBUTES.map(
     attribute => {
@@ -225,7 +245,9 @@ export function PlayersComparisonChart({ defaultPlayers, barColors, data }: { de
 
       selectedPlayers.forEach(
         (player, index) => {
-          entry[player] = parseFloat(displayData[index][camelCase(attribute)])
+          const label = enrichedPlayerData.find((e: any) => e.chartIndex === index)
+            .displayName;
+          entry[label] = parseFloat(displayData[index][camelCase(attribute)]);
         }
       );
 
@@ -239,7 +261,9 @@ export function PlayersComparisonChart({ defaultPlayers, barColors, data }: { de
 
       selectedPlayers.forEach(
         (player, index) => {
-          entry[player] = parseFloat(displayData[index][camelCase(attribute)])
+          const label = enrichedPlayerData.find((e: any) => e.chartIndex === index)
+            .displayName;
+          entry[label] = parseFloat(displayData[index][camelCase(attribute)]);
         }
       );
 
@@ -262,8 +286,8 @@ export function PlayersComparisonChart({ defaultPlayers, barColors, data }: { de
         <Section>
           <div style={{ textAlign: "center" }}>
             {
-              playerRawData.map(
-                (rawData, index) => {
+              enrichedPlayerData.map(
+                (enrichedData, index) => {
                   return <>
                     {
                       index === 0
@@ -277,7 +301,7 @@ export function PlayersComparisonChart({ defaultPlayers, barColors, data }: { de
                     {
                       PlayerSelection(
                         data,
-                        rawData,
+                        enrichedData,
                         `player${PLAYER_INDEX[index]}`,
                         newQueryParams,
                         forceUpdate
@@ -314,8 +338,8 @@ export function PlayersComparisonChart({ defaultPlayers, barColors, data }: { de
         <Section>
           <MuiStack direction="row" spacing={1}>
             {
-              playerRawData.map(
-                (rawData, index) => <Chip label={rawData.shortName} sx={{ backgroundColor: barColors[index], fontSize: 10, color: "#FFFFFF" }} />
+              enrichedPlayerData.map(
+                (enrichedData, index) => <Chip label={enrichedData.displayShortName} sx={{ backgroundColor: barColors[index], fontSize: 10, color: "#FFFFFF" }} />
               )
             }
           </MuiStack>
@@ -331,9 +355,9 @@ export function PlayersComparisonChart({ defaultPlayers, barColors, data }: { de
             <ValueAxis />
 
             {
-              playerRawData.map(
-                (rawData, index) => <BarSeries
-                  valueField={rawData.name}
+              enrichedPlayerData.map(
+                (enrichedData, index) => <BarSeries
+                  valueField={enrichedData.displayName}
                   argumentField="attribute"
                   color={barColors[index]}
                   pointComponent={BarWithLabel}
@@ -354,9 +378,9 @@ export function PlayersComparisonChart({ defaultPlayers, barColors, data }: { de
             <ValueAxis />
 
             {
-              playerRawData.map(
-                (rawData, index) => <BarSeries
-                  valueField={rawData.name}
+              enrichedPlayerData.map(
+                (enrichedData, index) => <BarSeries
+                  valueField={enrichedData.displayName}
                   argumentField="attribute"
                   color={barColors[index]}
                   pointComponent={BarWithLabel}
