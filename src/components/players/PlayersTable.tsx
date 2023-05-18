@@ -156,7 +156,8 @@ export function PlayersTable({ data }: { data: Array<any> }) {
             accessor: "type",
             helperText: "Type",
             Filter: SelectColumnFilter,
-            filter: "equals",
+            filter: "in",
+            multiple: true,
             disableSortBy: true
           },
           {

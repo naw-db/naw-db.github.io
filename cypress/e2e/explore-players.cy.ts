@@ -99,7 +99,7 @@ describe(
     it("Tests pagination", () => { cy.testPagination(0); });
     it("Tests Player Name text box filter", () => { cy.testTextBoxFilter(0, "Name", "Green"); });
     it("Tests Lvl Avail. dropdown filter", () => { cy.testSingularSelectDropdown(1, "Lvl Avail.", "7", "equal", "Any"); });
-    it("Tests Type dropdown filter", () => { cy.testSingularSelectDropdown(2, "Type", "All-World", "equal", "Any"); });
+    it("Tests Type dropdown filter", () => { cy.testMultiSelectDropdown(2, "Type", [ "All-Star", "All-World" ], "Any"); });
     it("Tests Team dropdown filter", () => { cy.testMultiSelectDropdown(3, "Team", [ "ATL", "DAL" ], "Any"); });
     it("Tests Conf. dropdown filter", () => { cy.testSingularSelectDropdown(4, "Conf.", "West", "equal", "Any"); });
     it("Tests Division dropdown filter", () => { cy.testMultiSelectDropdown(5, "Division", [ "Central", "Southwest" ], "Any"); });
