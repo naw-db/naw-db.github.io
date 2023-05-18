@@ -1,5 +1,5 @@
 import { graphql } from "gatsby";
-import { Animation, Page, Seo } from "gatsby-theme-portfolio-minimal";
+import { Page, Seo } from "gatsby-theme-portfolio-minimal";
 import React from "react";
 import { isBrowser } from "react-device-detect";
 
@@ -18,14 +18,12 @@ export default function MorePage({ data, location }: { data: any; location: any 
     <>
       <Seo title="More" />
       <Page>
-        <Animation type="fadeUp">
-          <AnchoredSection anchor="player-level-requirements" heading="Player Level Requirements">
-            <PlayerLevelRequirementsTable defaultPageSize={defaultPageSize} data={data.allPlayerLevelRequirementsCsv.nodes}/>
-          </AnchoredSection>
-          <AnchoredSection anchor="event-tournament-history" heading="Event Tournament History">
-            <EventTournamentHistoryTable defaultPageSize={defaultPageSize} data={data.allEventTournamentHistoryCsv.nodes}/>
-          </AnchoredSection>
-        </Animation>
+        <AnchoredSection anchor="player-level-requirements" heading="Player Level Requirements">
+          <PlayerLevelRequirementsTable defaultPageSize={defaultPageSize} data={data.allPlayerLevelRequirementsCsv.nodes}/>
+        </AnchoredSection>
+        <AnchoredSection anchor="event-tournament-history" heading="Event Tournament History">
+          <EventTournamentHistoryTable defaultPageSize={defaultPageSize} data={data.allEventTournamentHistoryCsv.nodes}/>
+        </AnchoredSection>
       </Page>
     </>
   );
