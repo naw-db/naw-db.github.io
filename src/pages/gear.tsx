@@ -1,5 +1,5 @@
 import { graphql } from "gatsby";
-import { Animation, Page, Section, Seo } from "gatsby-theme-portfolio-minimal";
+import { Page, Section, Seo } from "gatsby-theme-portfolio-minimal";
 import React from "react";
 
 import { GearTabs } from "/src/components/gear/GearTabs";
@@ -9,11 +9,9 @@ export default function GearPage({ data }: { data: any; }) {
     <>
       <Seo title="Gear" />
       <Page>
-        <Animation type="fadeUp">
-          <Section>
-            <GearTabs data={data}/>
-          </Section>
-        </Animation>
+        <Section>
+          <GearTabs data={data}/>
+        </Section>
       </Page>
     </>
   );

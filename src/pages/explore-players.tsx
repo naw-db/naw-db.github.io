@@ -1,5 +1,5 @@
 import { graphql } from "gatsby";
-import { Animation, Page, Section, Seo } from "gatsby-theme-portfolio-minimal";
+import { Page, Section, Seo } from "gatsby-theme-portfolio-minimal";
 import React from "react";
 
 import { PlayersTable, RANK_UP_REQUIREMENT_SEPARATOR } from "/src/components/players/PlayersTable";
@@ -38,11 +38,9 @@ export default function ExplorePlayersPage({ data }: { data: any; }) {
     <>
       <Seo title="Explore Players" />
       <Page>
-        <Animation type="fadeUp">
-          <Section>
-            <PlayersTable data={tableData} />
-          </Section>
-        </Animation>
+        <Section>
+          <PlayersTable data={tableData} />
+        </Section>
       </Page>
     </>
   );
