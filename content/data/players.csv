@@ -16,7 +16,7 @@ Kelly Oubre Jr.,K. Oubre Jr.,1,1,4,Starter,CHA,Southeast,East,SF,SG,16,16,17,16,
 Jordan Poole,J. Poole,1,1,4,Starter,GSW,Pacific,West,SG,PG,17,18,17,15,11,10,9,12,15,16,86,91,85,76,56,50,41,61,75,80,Jalen Green,Kelly Oubre Jr.,DeMar DeRozan,,
 Kevin Porter Jr.,K. Porter Jr.,1,1,4,Starter,HOU,Southwest,West,SG,SF,16,12,16,16,12,11,12,9,16,16,79,61,82,79,60,57,59,46,82,80,Kelly Oubre Jr.,Jalen Brunson,Karl-Anthony Towns,,
 Immanuel Quickley,I. Quickley,1,1,4,Starter,NYK,Atlantic,East,PG,,16,14,15,11,15,9,11,11,14,16,79,69,77,57,75,46,53,60,77,80,De'Andre Hunter,Spencer Dinwiddie,Paolo Banchero,,
-Austin Reaves,A. Reaves,1,1,4,Starter,LAL,Pacific,West,SG,,16,15,17,13,13,11,13,10,14,16,81,77,83,66,65,56,64,48,71,80,Max Strus,?,?,,
+Austin Reaves,A. Reaves,1,1,4,Starter,LAL,Pacific,West,SG,,16,15,17,13,13,11,13,10,14,16,81,77,83,66,65,56,64,48,71,80,Max Strus,Jaden McDaniels,?,,
 Max Strus,M. Strus,1,1,4,Starter,MIA,Southeast,East,SF,,16,14,13,11,11,9,9,10,14,16,79,72,68,57,55,46,50,47,73,80,Jaden McDaniels,?,?,,
 Gary Trent Jr.,G. Trent Jr.,1,1,4,Starter,TOR,Atlantic,East,SG,,14,17,15,14,12,10,13,11,16,16,69,85,76,68,60,51,67,55,81,80,Rui Hachimura,Kevin Huerter,Kristaps Porzingis,,
 Derrick White,D. White,1,1,4,Starter,BOS,Atlantic,East,SG,PG,16,15,16,12,13,12,11,10,16,16,79,73,81,62,66,62,53,51,82,80,Gary Trent Jr.,Rui Hachimura,Bam Adebayo,,
@@ -54,7 +54,7 @@ Jamal Murray,J. Murray,3,2,5,All-Star,DEN,Northwest,West,PG,SG,26.9,22.5,25.7,26
 Kristaps Porzingis,K. Porzingis,3,2,5,All-Star,WAS,Southeast,East,C,PF,20.3,22.6,23.6,25.4,20.1,26.3,19,22,19.1,27,68,78,79,85,67,85,65,74,66,90,,Darius Bazley,?,?,
 Klay Thompson,K. Thompson,3,2,5,All-Star,GSW,Pacific,West,SG,SF,23.8,25.4,23.6,17.5,24,18.1,20.6,19.6,20.8,27,80,85,79,66,81,65,70,69,71,90,,Andre Drummond,Rudy Gobert,Malcolm Brogdon,
 Nikola Vucevic,N. Vucevic,3,2,5,All-Star,CHI,Central,East,C,,16.1,22,25.7,20.9,23.6,27,19.1,27,18.9,27,57,74,87,72,79,90,66,90,64,90,,Darius Bazley,?,?,
-Bam Adebayo,B. Adebayo,4,2,5,All-Star,MIA,Southeast,East,C,,17.5,19.3,25.1,23.6,25.5,26.7,20.9,27.3,20.8,27,61,67,83,79,86,88,72,92,71,90,,Buddy Hield,Nikola Vucevic,?,
+Bam Adebayo,B. Adebayo,4,2,5,All-Star,MIA,Southeast,East,C,,17.5,19.3,25.1,23.6,25.5,26.7,20.9,27.3,20.8,27,61,67,83,79,86,88,72,92,71,90,,Buddy Hield,Nikola Vucevic,Christian Wood,
 Jaylen Brown,J. Brown,4,2,5,All-Star,BOS,Atlantic,East,SG,SF,25.3,22.5,25.4,27.1,25.4,22.5,23.6,25.4,25.1,27,84,77,85,91,85,77,79,85,83,90,,Devonte Graham,Dejounte Murray,Kristaps Porzingis,
 CJ McCollum,C. McCollum,4,2,5,All-Star,NOP,Southwest,West,SG,PG,26.9,23.8,29.9,20.8,17.7,19.1,18.7,18.9,23.8,27,89,80,98,71,62,66,63,64,80,90,,Kevin Love,?,?,
 Donovan Mitchell,D. Mitchell,4,2,5,All-Star,CLE,Central,East,SG,PG,25.1,23.8,26.9,27.1,22.4,17.7,25.1,25.3,28.5,27,83,80,89,91,76,62,83,84,94,90,,Kelly Oubre Jr.,Darius Garland,Draymond Green,
@@ -84,7 +84,7 @@ James Harden,J. Harden,17,3,6,All-World,PHI,Atlantic,East,PG,SG,42.5,40.5,42,38.
 Giannis Antetokounmpo,Giannis,18,3,6,All-World,MIL,Central,East,PF,C,30.8,32.3,35.5,42.5,42.5,40.5,40.8,43.8,37.8,43.8,72,75,82,98,98,93,94,100,88,100,,,Jonathan Isaac,Jaylen Brown,LeBron James
 Stephen Curry,S. Curry,19,3,6,All-World,GSW,Pacific,West,PG,SG,43.5,43.8,36,32.8,34.3,29.3,37.5,28.3,39,43.8,99,100,84,77,80,70,87,67,90,100,,,LaMelo Ball,Zach LaVine,?
 LeBron James,L. James,20,3,6,All-World,LAL,Pacific,West,SF,PG,37.8,34.5,36,43.5,39,42,35.8,42.5,39,43.8,88,81,84,99,90,96,83,98,90,100,,,CJ McCollum,Dejounte Murray,Stephen Curry
-Carmelo Anthony,C. Anthony,Removed,1,4,Starter,LAL,Pacific,West,PF,SF,14,17,18,15,11,12,8,15,12,16,70,84,89,73,54,60,41,74,60,80,Alec Burks,Devonte Graham,Jonathan Isaac,,
+Carmelo Anthony,C. Anthony,Limited,1,4,Starter,LAL,Pacific,West,PF,SF,14,17,18,15,11,12,8,15,12,16,70,84,89,73,54,60,41,74,60,80,Alec Burks,Devonte Graham,Jonathan Isaac,,
 DeMarcus Cousins,D. Cousins,Removed,1,4,Starter,DEN,Northwest,West,C,,14,14,15,16,12,13,15,18,13,16,65,73,72,72,55,66,64,80,63,80,?,Donte DiVincenzo,Malcolm Brogdon,,
 Dwight Howard,D. Howard,Removed,1,4,Starter,LAL,Pacific,West,C,,8,11,13,17,15,17,10,18,14,16,40,55,63,86,75,85,50,88,70,80,Bojan Bogdanovic,Devonte Graham,Zion Williamson,,
 Josh Jackson,J. Jackson,Removed,1,4,Starter,TOR,Atlantic,East,SG,SF,14,15,17,15,13,13,10,11,12,16,71,76,86,75,65,66,49,57,60,80,Dillon Brooks,Larry Nance Jr.,?,,
