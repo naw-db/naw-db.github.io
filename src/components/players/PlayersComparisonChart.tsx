@@ -1,5 +1,5 @@
 import { Animation, Stack } from "@devexpress/dx-react-chart";
-import { ArgumentAxis, BarSeries, Chart, ValueAxis } from "@devexpress/dx-react-chart-material-ui";
+import { ArgumentAxis, BarSeries, Chart } from "@devexpress/dx-react-chart-material-ui";
 import AddIcon from "@mui/icons-material/Add";
 import { Button, createTheme, CssBaseline, Divider, FormControl, FormHelperText, MenuItem, PaletteMode, Select, Stack as MuiStack, ThemeProvider, Chip } from "@mui/material";
 import { styled } from "@mui/material/styles";
@@ -24,7 +24,11 @@ const PLAYER_INDEX: { [ key: number ]: string } = {
 
 // Chart displays attributes in reversed order.
 
-const OVERALL_ATTRIBUTES: Array<string> = [
+const OVERALL_ATTRIBUTE: Array<string> = [
+  "Overall"
+];
+
+const TOTAL_ATTRIBUTES: Array<string> = [
   "Total Fitness",
   "Total Defense",
   "Total Offense"
@@ -239,36 +243,22 @@ export function PlayersComparisonChart({ defaultPlayers, barColors, data }: { de
 
   const displayData = enrichedPlayerData.map((enrichedData, index) => calculateStat(enrichedData, playerRanks[index], playerLevels[index]));
 
-  const overallChartData = OVERALL_ATTRIBUTES.map(
-    attribute => {
-      const entry: { [key: string]: string | number } = { attribute: attribute };
+  const [ overallChartData, totalChartData, detailedChartData ] = [ OVERALL_ATTRIBUTE, TOTAL_ATTRIBUTES, DETAILED_ATTRIBUTES ].map(
+    attributes => attributes.map(
+      attribute => {
+        const entry: { [key: string]: string | number } = { attribute: attribute };
 
-      selectedPlayers.forEach(
-        (player, index) => {
-          const label = enrichedPlayerData.find((e: any) => e.chartIndex === index)
-            .displayName;
-          entry[label] = parseFloat(displayData[index][camelCase(attribute)]);
-        }
-      );
+        selectedPlayers.forEach(
+          (player, index) => {
+            const label = enrichedPlayerData.find((e: any) => e.chartIndex === index)
+              .displayName;
+            entry[label] = parseFloat(displayData[index][camelCase(attribute)]);
+          }
+        );
 
-      return entry;
-    }
-  );
-
-  const detailedChartData = DETAILED_ATTRIBUTES.map(
-    attribute => {
-      const entry: { [key: string]: string | number } = { attribute: attribute };
-
-      selectedPlayers.forEach(
-        (player, index) => {
-          const label = enrichedPlayerData.find((e: any) => e.chartIndex === index)
-            .displayName;
-          entry[label] = parseFloat(displayData[index][camelCase(attribute)]);
-        }
-      );
-
-      return entry;
-    }
+        return entry;
+      }
+    )
   );
 
   const newQueryParams: { [ key: string ]: string } = {};
@@ -348,11 +338,32 @@ export function PlayersComparisonChart({ defaultPlayers, barColors, data }: { de
           <br />
           <Chart
             data={overallChartData}
-            height={selectedPlayers.length * OVERALL_ATTRIBUTES.length * 50}
+            height={selectedPlayers.length * OVERALL_ATTRIBUTE.length * 40}
             rotated
           >
             <ArgumentAxis />
-            <ValueAxis />
+
+            {
+              enrichedPlayerData.map(
+                (enrichedData, index) => <BarSeries
+                  valueField={enrichedData.displayName}
+                  argumentField="attribute"
+                  color={barColors[index]}
+                  pointComponent={BarWithLabel}
+                />
+              )
+            }
+            <Animation />
+            <Stack />
+          </Chart>
+          <br />
+          <br />
+          <Chart
+            data={totalChartData}
+            height={selectedPlayers.length * TOTAL_ATTRIBUTES.length * 35}
+            rotated
+          >
+            <ArgumentAxis />
 
             {
               enrichedPlayerData.map(
@@ -375,7 +386,6 @@ export function PlayersComparisonChart({ defaultPlayers, barColors, data }: { de
             rotated
           >
             <ArgumentAxis />
-            <ValueAxis />
 
             {
               enrichedPlayerData.map(

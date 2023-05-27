@@ -461,6 +461,11 @@ Cypress.Commands.add(
     );
 
     const aggregatedOverallStats = selectedPlayerStats.map(
+      stats => `${stats.overall}`
+    )
+      .join(" ");
+
+    const aggregatedTotalStats = selectedPlayerStats.map(
       stats => `${stats.totalFitness} ${stats.totalDefense} ${stats.totalOffense}`
     )
       .join(" ");
@@ -471,7 +476,7 @@ Cypress.Commands.add(
     )
       .join(" ");
 
-    const aggregatedStats = `${aggregatedOverallStats} ${aggregatedIndividualStats}`;
+    const aggregatedStats = `${aggregatedOverallStats} ${aggregatedTotalStats} ${aggregatedIndividualStats}`;
 
     const expectedLabel = aggregatedStats.replaceAll(".0", "");
 
