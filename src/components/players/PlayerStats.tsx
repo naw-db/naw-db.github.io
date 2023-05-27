@@ -110,5 +110,10 @@ export function calculateStat(playerStats: any, targetRank: string, targetLevel:
     .add(new bigDecimal(displayedStats.stamina))
     .getValue();
 
+  displayedStats.overall = new bigDecimal(displayedStats.totalOffense)
+    .add(new bigDecimal(displayedStats.totalDefense))
+    .add(new bigDecimal(displayedStats.totalFitness))
+    .getValue();
+
   return displayedStats;
 }
