@@ -1,4 +1,5 @@
 levelAvailable,name,brand,style,color,rarity,price
+1,Celtics Hat,Mitchell&Ness,Hat,Black,All-Star,200
 1,Dark Camo Cap,All-World,Cap,Black/Gray,Starter,100
 1,Swirl Cap,All-World,Cap,Green/Blue,Starter,100
 1,Tech Cap,All-World,Cap,Red,Starter,100
@@ -7,11 +8,13 @@ levelAvailable,name,brand,style,color,rarity,price
 1,Hex Cap,All-World,Cap,Red/Blue/Purple,Starter,100
 2,Heat ver.1,COMPOUND7,Snapback,Black,All-Star,200
 2,Mavericks Hat,Mitchell&Ness,Hat,Black,All-Star,
+2,Nuggets Hat,Mitchell&Ness,Hat,Black,All-Star,200
 2,Sunrise Cap,All-World,Backwards Cap,Yellow/Orange,Starter,125
 2,Blotch Cap,All-World,Backwards Cap,Purple/Green,Starter,125
 2,Waves Cap,All-World,Backwards Cap,Blue,Starter,125
 2,Ants Cap,All-World,Backwards Cap,Red,Starter,125
 2,Tech Cap,All-World,Backwards Cap,Red,Starter,125
+3,Lakers Hat,Mitchell&Ness,Hat,Black,All-Star,200
 3,Head Band,All-World,Head Band,White,Starter,150
 3,Head Band,All-World,Head Band,Black,Starter,150
 3,Head Band,All-World,Head Band,Blue,Starter,150
@@ -20,6 +23,7 @@ levelAvailable,name,brand,style,color,rarity,price
 3,Head Band,All-World,Head Band,Purple,Starter,150
 3,Head Band,All-World,Head Band,Red,Starter,150
 3,Head Band,All-World,Head Band,Yellow,Starter,150
+4,Heat Hat,Mitchell&Ness,Hat,Black,All-Star,200
 4,Bucks Hat,Mitchell&Ness,Hat,Black,All-Star,
 4,Beanie,N/A,Beanie,Red,Starter,175
 4,Beanie,N/A,Beanie,Royal Blue,Starter,175
@@ -43,3 +47,4 @@ Exclusive,ALL-STAR Hat,NBA,Hat,White,All-Star,75
 Exclusive,ALL-STAR Hat,NBA,Hat,Yellow,All-Star,75
 Exclusive,ALL-STAR Hat,NBA,Hat,Red,All-Star,75
 Exclusive,ALL-STAR Hat,NBA,Hat,Blue,All-Star,75
+Exclusive,Warriors Hat,Mitchell&Ness,Hat,Black,All-Star,
