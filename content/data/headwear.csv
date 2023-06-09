@@ -1,4 +1,8 @@
 levelAvailable,name,brand,style,color,rarity,price
+1,7 Snapback,COMPOUND,Snapback,Camo,All-Star,200
+1,7 Snapback,COMPOUND,Snapback,Black,All-Star,200
+1,7 Snapback,COMPOUND,Snapback,Purple,All-Star,200
+1,7 Snapback,COMPOUND,Snapback,Red,All-Star,200
 1,Celtics Hat,Mitchell&Ness,Hat,Black,All-Star,200
 1,Dark Camo Cap,All-World,Cap,Black/Gray,Starter,100
 1,Swirl Cap,All-World,Cap,Green/Blue,Starter,100
@@ -6,7 +10,8 @@ levelAvailable,name,brand,style,color,rarity,price
 1,Sun Burst Cap,All-World,Cap,Orange/Yellow,Starter,100
 1,Arrows Cap,All-World,Cap,Yellow/Green,Starter,100
 1,Hex Cap,All-World,Cap,Red/Blue/Purple,Starter,100
-2,Heat ver.1,COMPOUND7,Snapback,Black,All-Star,200
+2,7 Snapback,COMPOUND,Snapback,Green,All-Star,200
+2,Heat ver.1,COMPOUND,Snapback,Black,All-Star,200
 2,Mavericks Hat,Mitchell&Ness,Hat,Black,All-Star,
 2,Nuggets Hat,Mitchell&Ness,Hat,Black,All-Star,200
 2,Sunrise Cap,All-World,Backwards Cap,Yellow/Orange,Starter,125
@@ -30,7 +35,7 @@ levelAvailable,name,brand,style,color,rarity,price
 4,Beanie,N/A,Beanie,Heather Gray,Starter,175
 4,Beanie,N/A,Beanie,Black,Starter,175
 4,Beanie,N/A,Beanie,White,Starter,175
-5,Lakers Camo,COMPOUND7,Snapback,Army Green,All-Star,200
+5,Lakers Camo,COMPOUND,Snapback,Army Green,All-Star,200
 5,Beanie,All-World,Beanie,Ice Blue,Starter,200
 5,AW Beanie,All-World,Beanie,Black/Yellow,Starter,200
 5,Beanie,All-World,Beanie,Lilac,Starter,200
