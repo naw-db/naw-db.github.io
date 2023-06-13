@@ -121,8 +121,8 @@ N/A,Icon Jersey,N/A,Jersey,Varies,Starter,N/A,,,,,,,,,,,,,,,,,,,,,,,
 11,Timberwolves Tee,HOMAGE,T-shirt,Blue,All-Star,N/A,4,4,4,3,150,4,5,4,5,500,4,5,5,7,1000,5,5,5,10,2500,5,6,5
 11,Warriors Tee,HOMAGE,T-shirt,White,All-Star,N/A,4,4,4,3,150,4,5,4,5,500,4,5,5,7,1000,5,5,5,10,2500,5,6,5
 11,Wizards Tee,HOMAGE,T-shirt,White,All-Star,N/A,4,4,4,3,150,4,5,4,5,500,4,5,5,7,1000,5,5,5,10,2500,5,6,5
-11,NBA Finals '23,NBA Playoffs,T-shirt,Black,All-Star,250,4,1,1,13,300,6,2,1,15,800,8,2,2,17,1400,?,?,?,19,?,12,4,2
-11,NBA Finals '23,NBA Playoffs,T-shirt,Gold,All-Star,250,8,2,1,13,300,10,3,1,15,800,12,5,2,17,1400,?,?,?,19,?,17,7,2
+11,NBA Finals '23,NBA Playoffs,T-shirt,Black,All-Star,250,4,1,1,13,300,6,2,1,15,800,8,2,2,17,1400,?,?,2,19,2500,12,4,2
+11,NBA Finals '23,NBA Playoffs,T-shirt,Gold,All-Star,250,8,2,1,13,300,10,3,1,15,800,12,5,2,17,1400,?,?,2,19,2500,17,7,2
 12,Drawstring Hoodie,All-World,Hoodie,Blue/Gold,Starter,325,5,4,3,3,150,5,5,3,5,500,5,5,4,7,1000,6,5,4,10,2500,6,5,5
 12,Drawstring Hoodie,All-World,Hoodie,Gray/White,Starter,325,5,4,3,3,150,5,5,3,5,500,5,5,4,7,1000,6,5,4,10,2500,6,5,5
 12,Tiled Drawstring,All-World,Hoodie,Cyan,Starter,325,5,4,3,3,150,5,5,3,5,500,5,5,4,7,1000,6,5,4,10,2500,6,5,5
@@ -130,8 +130,8 @@ N/A,Icon Jersey,N/A,Jersey,Varies,Starter,N/A,,,,,,,,,,,,,,,,,,,,,,,
 12,Sleeveless Tee,Adidas,Tank Top,Black,All-Star,N/A,4,3,6,3,150,5,3,6,5,500,5,4,6,7,1000,5,4,7,10,2500,6,4,7
 12,Sleeveless Tee,Adidas,Tank Top,Red,All-Star,N/A,4,3,6,3,150,5,3,6,5,500,5,4,6,7,1000,5,4,7,10,2500,6,4,7
 12,Sleeveless Tee,Adidas,Tank Top,White,All-Star,N/A,4,3,6,3,150,5,3,6,5,500,5,4,6,7,1000,5,4,7,10,2500,6,4,7
-13,Flame Hoodie,All-World,Hoodie,Blue,Starter,350,5,4,4,3,150,5,5,4,5,500,6,4,5,7,1000,6,5,5,10,2500,6,6,5
-13,Flame Hoodie,All-World,Hoodie,Red,Starter,350,5,4,4,3,150,5,5,4,5,500,6,5,4,7,1000,6,5,5,10,2500,6,6,5
+13,Flame Hoodie,All-World,Hoodie,Blue,Starter,350,5,4,4,3,150,5,4,5,5,500,6,4,5,7,1000,6,5,5,10,2500,6,6,5
+13,Flame Hoodie,All-World,Hoodie,Red,Starter,350,5,4,4,3,150,5,4,5,5,500,6,4,5,7,1000,6,5,5,10,2500,6,6,5
 13,Skull Hoodie,All-World,Hoodie,Green,Starter,350,5,4,4,3,150,5,5,4,5,500,6,5,4,7,1000,6,5,5,10,2500,6,5,6
 13,Skull Hoodie,All-World,Hoodie,Purple,Starter,350,5,4,4,3,150,5,5,4,5,500,6,5,4,7,1000,6,5,5,10,2500,6,5,6
 13,Skull Hoodie,All-World,Hoodie,Red,Starter,350,5,4,4,3,150,5,5,4,5,500,6,5,4,7,1000,6,5,5,10,2500,6,5,6
@@ -139,21 +139,22 @@ N/A,Icon Jersey,N/A,Jersey,Varies,Starter,N/A,,,,,,,,,,,,,,,,,,,,,,,
 13,WBT Sleeveless Tee,Adidas,Tank Top,Gray,All-Star,N/A,5,3,5,3,150,5,4,6,5,500,5,4,7,7,1000,6,4,7,10,2500,6,5,7
 13,Play Hoops Hoodie,OVERTIME,Hoodie,Yellow,All-Star,400,5,4,4,13,150,6,5,5,15,500,9,6,6,17,1000,15,7,7,19,2500,18,8,8
 14,Classic Hoodie,OVERTIME,Hoodie,Black,All-Star,400,3,3,4,13,300,4,5,8,15,800,4,6,16,17,1400,5,7,21,19,2500,5,8,24
-Exclusive,AW Contender,All-World,Hoodie,Gray,All-Star,N/A,3,6,4,13,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?
+Exclusive,AW Contender,All-World,Hoodie,Gray,All-Star,N/A,3,6,4,13,300,4,7,5,15,800,5,8,6,17,1400,?,?,?,19,2500,?,?,?
+Exclusive,AW Dynasty,All-World,Hoodie,Black,All-Star,N/A,3,6,7,13,300,4,7,10,15,800,5,8,13,17,1400,?,?,?,19,2500,?,?,?
 Exclusive,All-Star Tee,NBA All-Star,T-shirt,Blue,All-Star,250,0,4,0,3,150,0,4,2,5,500,0,4,4,7,1000,2,4,4,10,2500,2,6,4
 Exclusive,All-Star Tee,NBA All-Star,T-shirt,Red,All-Star,250,0,4,0,3,150,0,4,2,5,500,0,4,4,7,1000,2,4,4,10,2500,2,6,4
 Exclusive,All-Star Long Sleeve,NBA All-Star,Long Sleeve,Black,All-Star,250,4,0,0,3,150,4,2,0,5,500,4,4,0,7,1000,4,4,2,10,2500,6,4,2
 Exclusive,All-Star Long Sleeve,NBA All-Star,Long Sleeve,Yellow,All-Star,250,4,0,0,3,150,4,2,0,5,500,4,4,0,7,1000,4,4,2,10,2500,6,4,2
-Exclusive,Bucks Playoffs '23,NBA,T-shirt,Dark Green,All-Star,N/A,2,3,1,13,300,3,4,1,15,800,4,5,2,17,1400,4,6,2,19,?,?,?,?
-Exclusive,Cavaliers Playoffs '23,NBA,T-shirt,Maroon,All-Star,N/A,2,3,1,13,300,3,4,1,15,800,4,5,2,17,1400,4,6,2,19,?,?,?,?
-Exclusive,Celtics Playoffs '23,NBA,T-shirt,Green,All-Star,N/A,2,3,1,13,300,3,4,1,15,800,4,5,2,17,1400,4,6,2,19,?,?,?,?
-Exclusive,Clippers Playoffs '23,NBA,T-shirt,Red,All-Star,N/A,2,3,1,13,300,3,4,1,15,800,4,5,2,17,1400,4,6,2,19,?,?,?,?
-Exclusive,Grizzlies Playoffs '23,NBA,T-shirt,Light Blue,All-Star,N/A,2,3,1,13,300,3,4,1,15,800,4,5,2,17,1400,4,6,2,19,?,?,?,?
-Exclusive,Hawks Playoffs '23,NBA,T-shirt,Red,All-Star,N/A,2,3,1,13,300,3,4,1,15,800,4,5,2,17,1400,4,6,2,19,?,?,?,?
-Exclusive,Heat Playoffs '23,NBA,T-shirt,Gold,All-Star,N/A,2,3,1,13,300,3,4,1,15,800,4,5,2,17,1400,4,6,2,19,?,?,?,?
-Exclusive,Kings Playoffs '23,NBA,T-shirt,Black,All-Star,N/A,2,3,1,13,300,3,4,1,15,800,4,5,2,17,1400,4,6,2,19,?,?,?,?
-Exclusive,Lakers Playoffs '23,NBA,T-shirt,Purple,All-Star,N/A,2,3,1,13,300,3,4,1,15,800,4,5,2,17,1400,4,6,2,19,?,?,?,?
-Exclusive,Nets Playoffs '23,NBA,T-shirt,Black,All-Star,N/A,2,3,1,13,300,3,4,1,15,800,4,5,2,17,1400,4,6,2,19,?,?,?,?
-Exclusive,Nuggets Playoffs '23,NBA,T-shirt,Yellow,All-Star,N/A,2,3,1,13,300,3,4,1,15,800,4,5,2,17,1400,4,6,2,19,?,?,?,?
-Exclusive,Timberwolves Playoffs '23,NBA,T-shirt,Lime Green,All-Star,N/A,2,3,1,13,300,3,4,1,15,800,4,5,2,17,1400,4,6,2,19,?,?,?,?
+Exclusive,Bucks Playoffs '23,NBA,T-shirt,Dark Green,All-Star,N/A,2,3,1,13,300,3,4,1,15,800,4,5,2,17,1400,4,6,2,19,2500,?,?,?
+Exclusive,Cavaliers Playoffs '23,NBA,T-shirt,Maroon,All-Star,N/A,2,3,1,13,300,3,4,1,15,800,4,5,2,17,1400,4,6,2,19,2500,?,?,?
+Exclusive,Celtics Playoffs '23,NBA,T-shirt,Green,All-Star,N/A,2,3,1,13,300,3,4,1,15,800,4,5,2,17,1400,4,6,2,19,2500,?,?,?
+Exclusive,Clippers Playoffs '23,NBA,T-shirt,Red,All-Star,N/A,2,3,1,13,300,3,4,1,15,800,4,5,2,17,1400,4,6,2,19,2500,?,?,?
+Exclusive,Grizzlies Playoffs '23,NBA,T-shirt,Light Blue,All-Star,N/A,2,3,1,13,300,3,4,1,15,800,4,5,2,17,1400,4,6,2,19,2500,?,?,?
+Exclusive,Hawks Playoffs '23,NBA,T-shirt,Red,All-Star,N/A,2,3,1,13,300,3,4,1,15,800,4,5,2,17,1400,4,6,2,19,2500,?,?,?
+Exclusive,Heat Playoffs '23,NBA,T-shirt,Gold,All-Star,N/A,2,3,1,13,300,3,4,1,15,800,4,5,2,17,1400,4,6,2,19,2500,?,?,?
+Exclusive,Kings Playoffs '23,NBA,T-shirt,Black,All-Star,N/A,2,3,1,13,300,3,4,1,15,800,4,5,2,17,1400,4,6,2,19,2500,?,?,?
+Exclusive,Lakers Playoffs '23,NBA,T-shirt,Purple,All-Star,N/A,2,3,1,13,300,3,4,1,15,800,4,5,2,17,1400,4,6,2,19,2500,?,?,?
+Exclusive,Nets Playoffs '23,NBA,T-shirt,Black,All-Star,N/A,2,3,1,13,300,3,4,1,15,800,4,5,2,17,1400,4,6,2,19,2500,?,?,?
+Exclusive,Nuggets Playoffs '23,NBA,T-shirt,Yellow,All-Star,N/A,2,3,1,13,300,3,4,1,15,800,4,5,2,17,1400,4,6,2,19,2500,?,?,?
+Exclusive,Timberwolves Playoffs '23,NBA,T-shirt,Lime Green,All-Star,N/A,2,3,1,13,300,3,4,1,15,800,4,5,2,17,1400,4,6,2,19,2500,?,?,?
 Exclusive,Lunar New Year '23,N/A,T-shirt,Red,Starter,N/A,1,0,1,3,150,1,1,1,8,500,1,1,2,8,1000,2,1,2,8,2500,2,2,2
