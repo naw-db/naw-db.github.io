@@ -31,8 +31,8 @@ N/A,Icon Jersey,N/A,Jersey,Varies,Starter,N/A,,,,,,,,,,,,,,,,,,,,,,,
 3,Jelly Hoodie,All-World,Hoodie,Pink,Starter,100,0,2,1,3,150,0,2,2,5,500,1,2,2,7,1000,1,3,2,10,2500,2,3,2
 3,Jelly Hoodie,All-World,Hoodie,White,Starter,100,0,2,1,3,150,0,2,2,5,500,1,2,2,7,1000,1,3,2,10,2500,2,3,2
 3,Bulls Tee,HOMAGE,T-shirt,Black,All-Star,N/A,0,2,2,3,150,1,2,2,5,500,1,3,2,7,1000,1,3,3,10,2500,2,3,3
-3,Cavs Tee,HOMAGE,T-shirt,White,All-Star,N/A,0,2,2,3,150,1,2,2,5,500,1,3,2,7,1000,?,3,?,10,2500,2,3,3
-3,Cavs Tee,HOMAGE,T-shirt,Yellow,All-Star,N/A,0,2,2,3,150,1,2,2,5,500,1,3,2,7,1000,?,3,?,10,2500,2,3,3
+3,Cavs Tee,HOMAGE,T-shirt,White,All-Star,N/A,0,2,2,3,150,1,2,2,5,500,1,3,2,7,1000,1,3,3,10,2500,2,3,3
+3,Cavs Tee,HOMAGE,T-shirt,Yellow,All-Star,N/A,0,2,2,3,150,1,2,2,5,500,1,3,2,7,1000,1,3,3,10,2500,2,3,3
 3,Celtics Tee,HOMAGE,T-shirt,Gray,All-Star,N/A,0,2,2,3,150,1,2,2,5,500,1,3,2,7,1000,1,3,3,10,2500,2,3,3
 3,Clippers Tee,HOMAGE,T-shirt,Red,All-Star,N/A,0,2,2,3,150,1,2,2,5,500,1,3,2,7,1000,1,3,3,10,2500,2,3,3
 3,Grizzlies Tee,HOMAGE,T-shirt,Yellow,All-Star,N/A,0,2,2,3,150,1,2,2,5,500,1,3,2,7,1000,1,3,3,10,2500,2,3,3
@@ -140,7 +140,7 @@ N/A,Icon Jersey,N/A,Jersey,Varies,Starter,N/A,,,,,,,,,,,,,,,,,,,,,,,
 13,Play Hoops Hoodie,OVERTIME,Hoodie,Yellow,All-Star,400,5,4,4,13,150,6,5,5,15,500,9,6,6,17,1000,15,7,7,19,2500,18,8,8
 14,Classic Hoodie,OVERTIME,Hoodie,Black,All-Star,400,3,3,4,13,300,4,5,8,15,800,4,6,16,17,1400,5,7,21,19,2500,5,8,24
 Exclusive,AW Contender,All-World,Hoodie,Gray,All-Star,N/A,3,6,4,13,300,4,7,5,15,800,5,8,6,17,1400,?,?,?,19,2500,?,?,?
-Exclusive,AW Dynasty,All-World,Hoodie,Black,All-Star,N/A,3,6,7,13,300,4,7,10,15,800,5,8,13,17,1400,?,?,?,19,2500,?,?,?
+Exclusive,AW Dynasty,All-World,Hoodie,Black,All-Star,N/A,3,6,7,13,300,4,7,10,15,800,5,8,13,17,1400,7,9,16,19,2500,9,10,19
 Exclusive,All-Star Tee,NBA All-Star,T-shirt,Blue,All-Star,250,0,4,0,3,150,0,4,2,5,500,0,4,4,7,1000,2,4,4,10,2500,2,6,4
 Exclusive,All-Star Tee,NBA All-Star,T-shirt,Red,All-Star,250,0,4,0,3,150,0,4,2,5,500,0,4,4,7,1000,2,4,4,10,2500,2,6,4
 Exclusive,All-Star Long Sleeve,NBA All-Star,Long Sleeve,Black,All-Star,250,4,0,0,3,150,4,2,0,5,500,4,4,0,7,1000,4,4,2,10,2500,6,4,2

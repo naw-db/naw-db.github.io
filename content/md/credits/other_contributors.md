@@ -11,6 +11,11 @@ Also, major thanks to the following for the contribution to our catalog of data!
 * **1down5up**
 * **KalLightYear**
 * **WetzCoast**
+* **WhoDep**
+* **DarthAfrica**
+* **Byronpol**
+* **SweetJ**
+* **Adelis**
 
 <br />
 
